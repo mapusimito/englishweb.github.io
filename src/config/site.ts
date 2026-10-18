@@ -13,11 +13,11 @@ export const site = {
   city: 'Alicante',
   /**
    * Dominio público, sin barra final, y subcarpeta donde se sirve la web.
-   * GitHub Pages publica este repositorio en https://mapusimito.github.io/englishweb/.
+   * GitHub Pages publica este repositorio en https://mapusimito.github.io/englishweb.github.io/.
    * Con un dominio propio: url = 'https://tudominio.com' y base = '/'.
    */
   url: 'https://mapusimito.github.io',
-  base: '/englishweb',
+  base: '/englishweb.github.io',
   locale: 'es_ES',
   title: 'Daniel Guanipa · Clases de inglés en Alicante',
   description:

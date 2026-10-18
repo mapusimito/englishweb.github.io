@@ -14,13 +14,13 @@ npm run preview   # sirve /dist en local
 
 ## Publicación (GitHub Pages)
 
-La web se publica en **https://mapusimito.github.io/englishweb/** con el workflow
+La web se publica en **https://mapusimito.github.io/englishweb.github.io/** con el workflow
 `.github/workflows/deploy.yml`, que compila y despliega en cada push a `main`
 (también se puede lanzar a mano desde la pestaña *Actions*).
 
 Configuración única en GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-Como la web vive en la subcarpeta `/englishweb/`, los enlaces internos usan `withBase()`
+Como la web vive en la subcarpeta `/englishweb.github.io/`, los enlaces internos usan `withBase()`
 (`src/config/paths.ts`). Si más adelante usas un dominio propio, cambia en `src/config/site.ts`
 `url` por tu dominio y `base` por `'/'`, y configura el dominio en Settings → Pages.
 
@@ -51,7 +51,7 @@ Al compilar, la consola lista los datos que siguen pendientes.
   3. Sin endpoint ni WhatsApp pero con email: abre el programa de correo con el mensaje redactado.
   4. Sin nada configurado: el formulario valida, pero avisa claramente de que **no se ha enviado**.
 - **Teléfono y email** (`contact.phone`, `contact.email`): opcionales; si se rellenan aparecen en Contacto y en el pie.
-- **Dominio propio** (opcional): ahora se usa `mapusimito.github.io/englishweb`; ver «Publicación».
+- **Dominio propio** (opcional): ahora se usa `mapusimito.github.io/englishweb.github.io`; ver «Publicación».
 - **Política de privacidad**: el formulario recoge datos personales, así que hay que sustituir
   `src/pages/privacidad.astro` por un texto definitivo antes de publicar.
 - **Fotografías**: ver abajo.
