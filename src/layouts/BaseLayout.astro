@@ -21,8 +21,9 @@ const {
 } = Astro.props;
 
 const pathname = Astro.url.pathname.replace(/\/?$/, '/');
-const canonical = new URL(pathname, site.url).href;
-const ogImage = new URL(withBase('og-image.png'), site.url).href;
+const origin = Astro.site?.origin ?? site.url;
+const canonical = new URL(pathname, origin).href;
+const ogImage = new URL(withBase('og-image.png'), origin).href;
 
 if (import.meta.env.SSR && missingConfig.length && isHome) {
   console.warn(
@@ -35,7 +36,7 @@ const jsonLd = {
   '@type': 'Person',
   name: site.name,
   jobTitle: site.role,
-  url: site.url,
+  url: new URL(withBase(), origin).href,
   knowsLanguage: ['es', 'en'],
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'ES' },
 };

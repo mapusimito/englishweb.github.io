@@ -12,6 +12,16 @@ npm run build     # comprueba tipos y genera /dist
 npm run preview   # sirve /dist en local
 ```
 
+## Publicación en Vercel (recomendado)
+
+1. Entra en https://vercel.com/new e importa el repositorio de GitHub.
+2. Vercel detecta Astro automáticamente: no hay que cambiar nada. Pulsa **Deploy**.
+3. Cada push a `main` publica una nueva versión; cada pull request recibe una URL de vista previa.
+
+Al compilar en Vercel la web se sirve en la raíz del dominio (`base: '/'`) y la URL canónica
+usa el dominio de producción del proyecto. Si añades un dominio propio en Vercel, pon ese dominio
+en `site.url` (`src/config/site.ts`).
+
 ## Publicación (GitHub Pages)
 
 La web se publica en **https://mapusimito.github.io/englishweb.github.io/** con el workflow
