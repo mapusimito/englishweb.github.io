@@ -1,0 +1,115 @@
+---
+import Icon, { type IconName } from './Icon.astro';
+
+const items: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: 'users',
+    title: 'Alumnos de distintas edades',
+    text: 'Escolares, estudiantes y adultos de unos 10 a 30 años, sobre todo desde niveles iniciales (A1–A2).',
+  },
+  {
+    icon: 'layers',
+    title: 'Clases individuales y grupales',
+    text: 'Presenciales y online, con grupos pequeños y también numerosos.',
+  },
+  {
+    icon: 'pencil',
+    title: 'Materiales pensados para cada nivel',
+    text: 'Actividades y evaluaciones preparadas para que cada clase tenga un propósito.',
+  },
+  {
+    icon: 'chart',
+    title: 'Práctica activa y seguimiento',
+    text: 'Recursos interactivos para practicar y revisión continua del progreso.',
+  },
+];
+---
+
+<section class="trust" aria-label="Experiencia docente">
+  <div class="container">
+    <ul class="trust__list" role="list">
+      {
+        items.map((item, i) => (
+          <li class="trust__item" data-reveal style={`--reveal-delay: ${i * 0.07}s`}>
+            <span class="trust__icon">
+              <Icon name={item.icon} />
+            </span>
+            <div>
+              <p class="trust__title">{item.title}</p>
+              <p class="trust__text">{item.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust {
+    border-block: 1px solid var(--line);
+    background: var(--card);
+  }
+  .trust__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .trust__item {
+    display: flex;
+    gap: 1rem;
+    padding: clamp(1.4rem, 1rem + 1.5vw, 2.25rem) clamp(0rem, 1vw, 1.5rem);
+  }
+  @media (min-width: 1024px) {
+    .trust__item + .trust__item {
+      border-left: 1px solid var(--line);
+      padding-left: 1.5rem;
+    }
+    .trust__item:first-child {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 1023px) {
+    .trust__item + .trust__item {
+      border-top: 1px solid var(--line);
+    }
+    .trust__list {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .trust__list {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+    }
+    .trust__item:nth-child(2) {
+      border-top: 0;
+    }
+  }
+  .trust__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 12px;
+    background: var(--accent-wash);
+    color: var(--accent-text);
+  }
+  .trust__icon :global(svg) {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+  .trust__title {
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  .trust__text {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+</style>

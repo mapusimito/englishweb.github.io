@@ -1,0 +1,208 @@
+---
+import PhotoFrame from './PhotoFrame.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import Icon from './Icon.astro';
+import { heroPhoto } from '../config/photos';
+import { site } from '../config/site';
+import { stages } from '../config/approach';
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Clases de inglés en {site.city}</p>
+      <h1 id="hero-title">
+        Inglés con <span class="mark">estructura</span>, adaptado a <span class="mark">cómo aprendes</span>.
+      </h1>
+      <p class="hero__lead">
+        Soy Daniel Guanipa, profesor de inglés. Mis clases siguen un plan claro, pero la forma de
+        llegar al objetivo se ajusta a ti: tu nivel, tus dificultades y tu manera de entender. Para
+        que no solo completes el temario, sino que <em>sepas usar</em> lo que aprendes.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--ink" href="#clases">
+          Ver clases
+          <Icon name="arrow" />
+        </a>
+        <WhatsAppButton variant="accent" />
+      </div>
+      <ul class="hero__meta" role="list">
+        <li><Icon name="pin" /> {site.city}</li>
+        <li><Icon name="users" /> Individual, en pareja o grupo reducido</li>
+        <li><Icon name="layers" /> Desde nivel inicial</li>
+      </ul>
+    </div>
+
+    <div class="hero__media">
+      <PhotoFrame
+        photo={heroPhoto}
+        ratio="4 / 5"
+        sizes="(min-width: 960px) 40vw, 92vw"
+        priority
+        class="hero__photo"
+      />
+      <div class="hero__card" aria-hidden="true">
+        <span class="hero__card-label">Cómo trabajamos</span>
+        <ol>
+          {
+            stages.map((stage, i) => (
+              <li>
+                <span>{i + 1}</span> {stage.name}
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(1.5rem, 1rem + 3vw, 4.5rem) clamp(3rem, 2rem + 4vw, 6rem);
+  }
+  .hero__grid {
+    display: grid;
+    gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .hero__grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+  }
+
+  .hero__copy {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+  h1 {
+    font-size: var(--step-4);
+    font-weight: 680;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    max-width: 15ch;
+  }
+  .hero__lead {
+    max-width: 36rem;
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .hero__lead em {
+    font-style: normal;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .hero__meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .hero__meta :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--accent-text);
+  }
+
+  .hero__media {
+    position: relative;
+    width: min(100%, 30rem);
+    justify-self: center;
+  }
+  .hero__media::before {
+    content: '';
+    position: absolute;
+    inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+    border-radius: var(--r-lg);
+    background: var(--navy);
+    z-index: -1;
+  }
+  .hero__media :global(.hero__photo) {
+    border-radius: var(--r-lg);
+  }
+
+  .hero__card {
+    position: absolute;
+    left: -1.25rem;
+    bottom: 2rem;
+    display: grid;
+    gap: 0.6rem;
+    padding: 1rem 1.15rem;
+    background: var(--card);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+  }
+  .hero__card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .hero__card ol {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.55rem 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .hero__card li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero__card li span {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--accent-wash);
+    color: var(--accent-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 959px) {
+    .hero__media {
+      width: min(100% - 1.25rem, 26rem);
+      justify-self: start;
+    }
+  }
+  /* En móvil la tarjeta taparía a los alumnos de la foto; el método se explica más abajo. */
+  @media (max-width: 520px) {
+    .hero__card {
+      display: none;
+    }
+    /* Que los dos botones queden visibles sin hacer scroll también en pantallas bajas */
+    .hero__copy {
+      gap: 1.15rem;
+    }
+    h1 {
+      font-size: clamp(2.1rem, 9.6vw, 2.5rem);
+    }
+    .hero__lead {
+      font-size: var(--step-0);
+    }
+  }
+</style>

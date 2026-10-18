@@ -1,0 +1,232 @@
+---
+import PhotoFrame from './PhotoFrame.astro';
+import Icon from './Icon.astro';
+import { portraitPhoto } from '../config/photos';
+import { site } from '../config/site';
+
+const inClass = [
+  'Atención uno a uno o en grupos pequeños',
+  'Un ambiente cercano, donde equivocarse forma parte de aprender',
+  'Conversación desde el principio, adaptada a tu nivel',
+  'Explicaciones con ejemplos cotidianos, comparaciones y metáforas',
+];
+
+const resources = [
+  'Materiales y actividades preparados para cada nivel',
+  'Kahoot, Lingoclip y juegos de mesa para practicar pronunciación, gramática y vocabulario',
+  'Dinámicas que hacen participar a todos, también en grupo',
+  'Seguimiento del progreso para saber qué reforzar',
+];
+---
+
+<section class="section about" id="sobre-mi" aria-labelledby="about-title">
+  <div class="container about__grid">
+    <aside class="about__side" data-reveal>
+      <PhotoFrame
+        photo={portraitPhoto}
+        ratio="4 / 5"
+        sizes="(min-width: 960px) 30vw, 92vw"
+        class="about__photo"
+      />
+      <dl class="about__facts">
+        <div>
+          <dt>Dónde</dt>
+          <dd>{site.city}</dd>
+        </div>
+        <div>
+          <dt>Formatos</dt>
+          <dd>Individual, en pareja y en grupos reducidos</dd>
+        </div>
+        <div>
+          <dt>Alumnos</dt>
+          <dd>Escolares, estudiantes y adultos, desde nivel inicial</dd>
+        </div>
+      </dl>
+    </aside>
+
+      <div class="about__intro" data-reveal>
+        <p class="eyebrow">Sobre mí</p>
+        <h2 id="about-title">Una trayectoria hecha en el aula.</h2>
+        <p class="about__lead">
+          Soy Daniel Guanipa. He dado clases de inglés a alumnos de unos 10 a 30 años, en clases
+          individuales y en grupo, presenciales y online, sobre todo a personas que empezaban desde
+          un nivel inicial.
+        </p>
+        <p>
+          Trabajar con perfiles tan distintos, y con grupos grandes y pequeños, me enseñó a fijarme
+          en la dificultad concreta de cada alumno y a buscar la explicación que le funciona. Con el
+          tiempo me impliqué también en lo que hay detrás de una buena clase: preparar materiales,
+          mejorar la forma de evaluar el progreso y elegir recursos que hagan participar.
+        </p>
+        <p>
+          De ahí sale la forma en que doy clase hoy: una estructura clara, atención a lo que cada
+          alumno necesita y actividades que hacen que el inglés se use, no solo se estudie.
+        </p>
+      </div>
+
+      <div class="about__timeline" data-reveal>
+        <div class="about__role">
+          <h3 class="about__org">Mi entorno de clase</h3>
+        </div>
+        <div class="about__cols">
+          <div>
+            <h4>En clase</h4>
+            <ul role="list">
+              {
+                inClass.map((item) => (
+                  <li>
+                    <Icon name="check" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h4>Recursos</h4>
+            <ul role="list">
+              {
+                resources.map((item) => (
+                  <li>
+                    <Icon name="check" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-areas: 'intro' 'side' 'timeline';
+    gap: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+  .about__side {
+    grid-area: side;
+  }
+  .about__intro {
+    grid-area: intro;
+  }
+  .about__timeline {
+    grid-area: timeline;
+  }
+  @media (min-width: 960px) {
+    .about__grid {
+      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: 'intro side' 'timeline side';
+      column-gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+      align-items: start;
+    }
+    .about__side {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+  .about__side {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 26rem;
+  }
+  .about__facts {
+    margin: 0;
+    display: grid;
+  }
+  .about__facts div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--step--1);
+  }
+  .about__facts div:first-child {
+    border-top: 1px solid var(--line);
+  }
+  dt {
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  dd {
+    margin: 0;
+  }
+
+  .about__intro {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 40rem;
+  }
+  .about__intro h2 {
+    font-size: var(--step-3);
+  }
+  .about__intro p:not(.eyebrow) {
+    color: var(--ink-soft);
+  }
+  .about__intro .about__lead {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .about__timeline {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+  .about__role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .about__org {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .about__cols {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 700px) {
+    .about__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .about__cols h4 {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+  .about__cols ul {
+    display: grid;
+    gap: 0.85rem;
+  }
+  .about__cols li {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: 0.65rem;
+    line-height: 1.45;
+  }
+  .about__cols li :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.1rem;
+    color: var(--accent-text);
+  }
+</style>

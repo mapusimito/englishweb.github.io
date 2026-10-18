@@ -1,0 +1,505 @@
+---
+import Icon from './Icon.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import { contact, hasWhatsapp, legal, phoneHref, plans } from '../config/site';
+
+/** Canal real que usará el formulario, por orden de preferencia. */
+const channel = contact.formEndpoint
+  ? 'endpoint'
+  : hasWhatsapp
+    ? 'whatsapp'
+    : contact.email
+      ? 'email'
+      : 'none';
+
+const submitLabel = {
+  endpoint: 'Enviar solicitud',
+  whatsapp: 'Preparar mensaje de WhatsApp',
+  email: 'Preparar email',
+  none: 'Enviar solicitud',
+}[channel];
+
+const steps = [
+  'Me cuentas tu nivel aproximado, tus objetivos y qué formato te interesa.',
+  'Hablamos para resolver dudas y ver horarios disponibles.',
+  'Confirmamos nivel, plan y horario antes de empezar.',
+];
+---
+
+<section class="section contact" id="contacto" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__panel">
+      <div class="contact__intro" data-reveal>
+        <p class="eyebrow">Contacto</p>
+        <h2 id="contact-title">Cuéntame qué necesitas y vemos qué formato te encaja.</h2>
+        <ol class="contact__steps" role="list">
+          {
+            steps.map((step, i) => (
+              <li>
+                <span aria-hidden="true">{i + 1}</span>
+                {step}
+              </li>
+            ))
+          }
+        </ol>
+
+        <div class="contact__direct">
+          {hasWhatsapp && <WhatsAppButton variant="accent" />}
+          {
+            (phoneHref || contact.email) && (
+              <ul class="contact__channels" role="list">
+                {phoneHref && (
+                  <li>
+                    <Icon name="phone" />
+                    <a href={phoneHref}>{contact.phone}</a>
+                  </li>
+                )}
+                {contact.email && (
+                  <li>
+                    <Icon name="mail" />
+                    <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  </li>
+                )}
+              </ul>
+            )
+          }
+          {
+            !hasWhatsapp && !phoneHref && !contact.email && (
+              <p class="pending-note">
+                Pendiente: añadir WhatsApp, teléfono o email en <code>src/config/site.ts</code>.
+              </p>
+            )
+          }
+        </div>
+      </div>
+
+      <form
+        class="form"
+        novalidate
+        data-contact-form
+        data-channel={channel}
+        data-endpoint={contact.formEndpoint}
+        data-whatsapp={contact.whatsapp}
+        data-email={contact.email}
+        action={contact.formEndpoint || undefined}
+        method="post"
+        aria-labelledby="form-title"
+      >
+        <h3 id="form-title" class="form__title">Solicitar información</h3>
+        <p class="form__hint">Todos los campos marcados con * son obligatorios.</p>
+
+        <div class="form__error-summary" data-error-summary tabindex="-1" hidden>
+          <p>Revisa los campos marcados para continuar.</p>
+        </div>
+
+        <div class="field">
+          <label for="f-name">Nombre *</label>
+          <input id="f-name" name="nombre" type="text" autocomplete="name" required aria-describedby="f-name-error" />
+          <p class="field__error" id="f-name-error" data-error-for="nombre"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-contact">Teléfono o email *</label>
+          <input
+            id="f-contact"
+            name="contacto"
+            type="text"
+            inputmode="email"
+            autocomplete="email"
+            required
+            aria-describedby="f-contact-help f-contact-error"
+          />
+          <p class="field__help" id="f-contact-help">Para poder responderte por el medio que prefieras.</p>
+          <p class="field__error" id="f-contact-error" data-error-for="contacto"></p>
+        </div>
+
+        <fieldset class="field">
+          <legend>¿Para quién son las clases?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="alumno" value="Para mí" checked /><span>Para mí</span></label>
+            <label class="chip"><input type="radio" name="alumno" value="Para mi hijo o hija" /><span>Para mi hijo o hija</span></label>
+            <label class="chip"><input type="radio" name="alumno" value="Para otra persona" /><span>Para otra persona</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Formato preferido</legend>
+          <div class="chips">
+            {
+              plans.map((plan) => (
+                <label class="chip">
+                  <input type="radio" name="formato" value={plan.name} data-plan-option={plan.id} />
+                  <span>{plan.name}</span>
+                </label>
+              ))
+            }
+            <label class="chip"><input type="radio" name="formato" value="Aún no lo sé" checked /><span>Aún no lo sé</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-goals">¿Qué te gustaría conseguir? *</label>
+          <textarea
+            id="f-goals"
+            name="objetivos"
+            rows="4"
+            required
+            aria-describedby="f-goals-help f-goals-error"
+            placeholder="Por ejemplo: reforzar el inglés del instituto, ganar soltura al hablar, empezar desde cero…"
+          ></textarea>
+          <p class="field__help" id="f-goals-help">Incluye tu nivel aproximado si lo conoces y tu disponibilidad horaria.</p>
+          <p class="field__error" id="f-goals-error" data-error-for="objetivos"></p>
+        </div>
+
+        <!-- Campo trampa para bots: los usuarios no lo ven -->
+        <div class="form__trap" aria-hidden="true">
+          <label for="f-website">No rellenar</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="field field--check">
+          <input id="f-privacy" name="privacidad" type="checkbox" required aria-describedby="f-privacy-error" />
+          <label for="f-privacy">
+            He leído y acepto la <a href={legal.privacyUrl}>política de privacidad</a>. *
+          </label>
+          <p class="field__error" id="f-privacy-error" data-error-for="privacidad"></p>
+        </div>
+
+        {
+          channel === 'none' && (
+            <p class="pending-note">
+              Aviso: este formulario aún no está conectado a ningún canal de envío. Configura{' '}
+              <code>contact.formEndpoint</code>, <code>contact.whatsapp</code> o{' '}
+              <code>contact.email</code> en <code>src/config/site.ts</code>.
+            </p>
+          )
+        }
+
+        <button class="btn btn--ink form__submit" type="submit" data-submit>
+          {channel === 'whatsapp' && <Icon name="whatsapp" />}
+          <span data-submit-label>{submitLabel}</span>
+        </button>
+        {
+          channel === 'whatsapp' && (
+            <p class="field__help">Se abrirá WhatsApp con tu mensaje ya escrito; solo tendrás que enviarlo.</p>
+          )
+        }
+        {
+          channel === 'email' && (
+            <p class="field__help">Se abrirá tu programa de correo con el mensaje ya escrito; solo tendrás que enviarlo.</p>
+          )
+        }
+
+        <div class="form__status" data-status role="status" aria-live="polite" tabindex="-1" hidden></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-top: 0;
+  }
+  .contact__panel {
+    display: grid;
+    gap: clamp(2.5rem, 2rem + 3vw, 4rem);
+    padding: clamp(1.5rem, 1rem + 4vw, 4rem);
+    border-radius: clamp(var(--r), 2vw, var(--r-lg));
+    background: var(--navy);
+    color: var(--on-navy);
+  }
+  @media (min-width: 960px) {
+    .contact__panel {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
+  }
+  @media (max-width: 600px) {
+    .contact .container {
+      width: 100%;
+    }
+    .contact {
+      padding-bottom: 0;
+    }
+    .contact__panel {
+      border-radius: 0;
+      padding-inline: var(--gutter);
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid rgb(255 255 255 / 0.1);
+    }
+  }
+
+  .contact__intro {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+  }
+  .contact__intro .eyebrow {
+    color: var(--accent);
+  }
+  .contact__intro h2 {
+    font-size: var(--step-3);
+  }
+  .contact__steps {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .contact__steps li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    color: var(--on-navy-soft);
+  }
+  .contact__steps span {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1.5px solid rgb(255 255 255 / 0.25);
+    color: var(--on-navy);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .contact__direct {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+  }
+  .contact__channels {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .contact__channels li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .contact__channels :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--accent);
+  }
+  .contact__channels a {
+    text-underline-offset: 3px;
+  }
+
+  .pending-note {
+    padding: 0.75rem 0.9rem;
+    border: 1.5px dashed currentColor;
+    border-radius: var(--r-sm);
+    font-size: var(--step--1);
+    opacity: 0.85;
+  }
+  .pending-note code {
+    font-size: 0.9em;
+  }
+
+  /* Formulario */
+  .form {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: var(--r-lg);
+  }
+  .form__title {
+    font-size: var(--step-2);
+  }
+  .form__hint {
+    margin-top: -0.75rem;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .form__error-summary {
+    padding: 0.8rem 1rem;
+    border-radius: var(--r-sm);
+    background: #fdecea;
+    color: var(--danger);
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  label,
+  legend {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0;
+  }
+  legend {
+    margin-bottom: 0.5rem;
+  }
+  input[type='text'],
+  textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 0.9rem;
+    border: 1.5px solid var(--line-strong);
+    border-radius: var(--r-sm);
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    transition:
+      border-color 0.2s var(--ease),
+      background-color 0.2s var(--ease);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 7.5rem;
+  }
+  input[type='text']:hover,
+  textarea:hover {
+    border-color: var(--ink-soft);
+  }
+  input[type='text']:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--ink);
+    background: var(--card);
+  }
+  [aria-invalid='true'] {
+    border-color: var(--danger) !important;
+  }
+  ::placeholder {
+    color: #7d8599;
+  }
+  .field__help {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .field__error {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--danger);
+  }
+  .field__error:empty {
+    display: none;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    position: relative;
+    font-weight: 500;
+    font-size: 0.92rem;
+  }
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .chip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.5rem 1rem;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--paper);
+    transition:
+      background-color 0.2s var(--ease),
+      border-color 0.2s var(--ease),
+      color 0.2s var(--ease);
+  }
+  .chip:hover span {
+    border-color: var(--ink-soft);
+  }
+  .chip input:checked + span {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+  .chip input:focus-visible + span {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .field--check {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 0.7rem;
+  }
+  .field--check input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.15rem 0 0;
+    accent-color: var(--ink);
+  }
+  .field--check label {
+    font-weight: 500;
+    font-size: 0.92rem;
+  }
+  .field--check label a {
+    color: var(--accent-text);
+    text-underline-offset: 2px;
+  }
+  .field--check .field__error {
+    grid-column: 1 / -1;
+  }
+
+  .form__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .form__submit {
+    width: 100%;
+    min-height: 54px;
+  }
+  .form__submit[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+  }
+
+  .form__status {
+    padding: 1rem 1.1rem;
+    border-radius: var(--r-sm);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .form__status:focus {
+    outline: none;
+  }
+  .form__status[data-tone='success'] {
+    background: #e7f4ec;
+    color: var(--success);
+  }
+  .form__status[data-tone='info'] {
+    background: var(--paper-2);
+    color: var(--ink);
+  }
+  .form__status[data-tone='error'] {
+    background: #fdecea;
+    color: var(--danger);
+  }
+  .form__status :global(strong) {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+</style>
+
+<script>
+  import { initContactForm } from '../scripts/contact-form';
+  initContactForm();
+</script>

@@ -1,0 +1,236 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import { navLinks } from '../config/nav';
+
+interface Props {
+  isHome?: boolean;
+}
+const { isHome = true } = Astro.props;
+const prefix = isHome ? '' : '/';
+---
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="header__brand" href={isHome ? '#top' : '/'} aria-label="Daniel Guanipa, inicio">
+      <Logo />
+    </a>
+
+    <button
+      class="header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >
+      <Icon name="menu" class="icon-open" />
+      <Icon name="close" class="icon-close" />
+      <span class="visually-hidden">Menú</span>
+    </button>
+
+    <nav class="header__nav" id="site-nav" aria-label="Principal" data-nav>
+      <ul role="list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={`${prefix}${link.href}`}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn--ink header__cta" href={`${prefix}#contacto`}>Consultar disponibilidad</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(246 242 234 / 0.86);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s var(--ease);
+  }
+  .header.is-scrolled {
+    border-bottom-color: var(--line);
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: var(--header-h);
+  }
+  .header__brand {
+    text-decoration: none;
+    border-radius: 6px;
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+  }
+  .header__nav ul {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 2rem);
+  }
+  .header__nav ul a {
+    position: relative;
+    padding-block: 0.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s var(--ease);
+  }
+  .header__nav ul a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease);
+  }
+  .header__nav ul a:hover {
+    color: var(--ink);
+  }
+  .header__nav ul a:hover::after {
+    transform: scaleX(1);
+  }
+  .header__nav a {
+    white-space: nowrap;
+  }
+  .header__cta {
+    min-height: 42px;
+    padding: 0.6rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .header__toggle {
+    display: none;
+  }
+
+  /* Móvil: menú desplegable (solo con JS; sin JS los enlaces se muestran en línea) */
+  @media (max-width: 1023px) {
+    .header__nav ul {
+      gap: 1rem;
+    }
+    :global(html:not(.js)) .header__inner {
+      flex-wrap: wrap;
+      padding-block: 0.75rem;
+    }
+    :global(html:not(.js)) .header__nav {
+      flex-wrap: wrap;
+    }
+
+    :global(.js) .header__toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin-right: -6px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .header__toggle :global(svg) {
+      width: 26px;
+      height: 26px;
+      grid-area: 1 / 1;
+    }
+    .header__toggle :global(.icon-close),
+    .header__toggle[aria-expanded='true'] :global(.icon-open) {
+      display: none;
+    }
+    .header__toggle[aria-expanded='true'] :global(.icon-close) {
+      display: block;
+    }
+
+    :global(.js) .header__nav {
+      position: fixed;
+      inset: var(--header-h) 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.5rem;
+      padding: 1.25rem var(--gutter) 2rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 24px 40px -24px rgb(15 27 51 / 0.25);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        opacity 0.2s var(--ease),
+        transform 0.2s var(--ease),
+        visibility 0s linear 0.2s;
+    }
+    :global(.js) .header__nav.is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      transition-delay: 0s;
+    }
+    :global(.js) .header__nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    :global(.js) .header__nav ul a {
+      display: block;
+      padding: 0.95rem 0;
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      font-weight: 600;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+    :global(.js) .header__nav ul a::after {
+      display: none;
+    }
+    :global(.js) .header__cta {
+      min-height: 52px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const setOpen = (open: boolean) => {
+    if (!toggle || !nav) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.querySelector('.visually-hidden')!.textContent = open ? 'Cerrar menú' : 'Menú';
+    nav.classList.toggle('is-open', open);
+  };
+
+  toggle?.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  nav?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+</script>

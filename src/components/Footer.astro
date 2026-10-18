@@ -1,0 +1,121 @@
+---
+import Logo from './Logo.astro';
+import { navLinks } from '../config/nav';
+import { contact, hasWhatsapp, legal, phoneHref, site, whatsappUrl } from '../config/site';
+
+interface Props {
+  isHome?: boolean;
+}
+const { isHome = true } = Astro.props;
+const prefix = isHome ? '' : '/';
+const year = new Date().getFullYear();
+const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
+---
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <Logo light />
+      <p>Clases de inglés particulares, en pareja y en grupos reducidos en {site.city}.</p>
+    </div>
+
+    <nav aria-label="Pie de página">
+      <p class="footer__label">Secciones</p>
+      <ul role="list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={`${prefix}${link.href}`}>{link.label}</a>
+            </li>
+          ))
+        }
+        <li><a href={`${prefix}#preguntas`}>Preguntas frecuentes</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <p class="footer__label">Contacto</p>
+      <ul role="list">
+        {
+          hasWhatsapp && (
+            <li>
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </li>
+          )
+        }
+        {phoneHref && <li><a href={phoneHref}>{contact.phone}</a></li>}
+        {contact.email && <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>}
+        {!hasAnyContact && <li class="footer__pending">Datos de contacto pendientes</li>}
+        <li><a href={`${prefix}#contacto`}>Formulario de contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© <span data-year>{year}</span> {site.name}</p>
+    <a href={legal.privacyUrl}>Política de privacidad</a>
+  </div>
+</footer>
+
+<script is:inline>
+  document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));
+</script>
+
+<style>
+  .footer {
+    background: var(--navy);
+    color: var(--on-navy-soft);
+    padding-block: clamp(3rem, 2rem + 4vw, 5rem) 2rem;
+    font-size: var(--step--1);
+  }
+  .footer__grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 760px) {
+    .footer__grid {
+      grid-template-columns: 1.6fr 1fr 1fr;
+    }
+  }
+  .footer__brand {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    max-width: 22rem;
+  }
+  .footer__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--on-navy);
+    margin-bottom: 0.9rem;
+  }
+  ul {
+    display: grid;
+    gap: 0.55rem;
+  }
+  a {
+    color: var(--on-navy-soft);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+  a:hover {
+    color: var(--on-navy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer__pending {
+    font-style: italic;
+    opacity: 0.8;
+  }
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+</style>
