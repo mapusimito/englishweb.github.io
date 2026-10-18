@@ -5,17 +5,17 @@ import { portraitPhoto } from '../config/photos';
 import { site } from '../config/site';
 
 const inClass = [
-  'Clases individuales y en grupo, presenciales y online',
-  'Alumnos de aproximadamente 10 a 30 años, sobre todo de nivel A1–A2',
-  'Algunos de los grupos más numerosos de la academia',
-  'Lecciones adaptadas al perfil, las necesidades y el nivel de cada alumno',
+  'Atención uno a uno o en grupos pequeños',
+  'Un ambiente cercano, donde equivocarse forma parte de aprender',
+  'Conversación desde el principio, adaptada a tu nivel',
+  'Explicaciones con ejemplos cotidianos, comparaciones y metáforas',
 ];
 
-const behindClass = [
-  'Rediseño del sistema de evaluación',
-  'Liderazgo en la renovación de libros y materiales de clase',
-  'Incorporación de Kahoot, Lingoclip y juegos de mesa para trabajar pronunciación, gramática y participación',
-  'Participación en decisiones académicas y en las clases de prueba con nuevos alumnos',
+const resources = [
+  'Materiales y actividades preparados para cada nivel',
+  'Kahoot, Lingoclip y juegos de mesa para practicar pronunciación, gramática y vocabulario',
+  'Dinámicas que hacen participar a todos, también en grupo',
+  'Seguimiento del progreso para saber qué reforzar',
 ];
 ---
 
@@ -30,49 +30,47 @@ const behindClass = [
       />
       <dl class="about__facts">
         <div>
-          <dt>Ubicación</dt>
+          <dt>Dónde</dt>
           <dd>{site.city}</dd>
         </div>
         <div>
-          <dt>Idiomas</dt>
-          <dd>Español (nativo) · Inglés (B2/C1)</dd>
+          <dt>Formatos</dt>
+          <dd>Individual, en pareja y en grupos reducidos</dd>
         </div>
         <div>
-          <dt>También</dt>
-          <dd>Tutorías de matemáticas y tecnología educativa</dd>
+          <dt>Alumnos</dt>
+          <dd>Escolares, estudiantes y adultos, desde nivel inicial</dd>
         </div>
       </dl>
     </aside>
 
       <div class="about__intro" data-reveal>
         <p class="eyebrow">Sobre mí</p>
-        <h2 id="about-title">De dónde viene este enfoque.</h2>
+        <h2 id="about-title">Una trayectoria hecha en el aula.</h2>
         <p class="about__lead">
-          Entre noviembre de 2024 y diciembre de 2025 fui profesor de inglés en CD Academy, con
-          alumnos de unos 10 a 30 años, en clases individuales y en grupo, presenciales y online.
+          Soy Daniel Guanipa. He dado clases de inglés a alumnos de unos 10 a 30 años, en clases
+          individuales y en grupo, presenciales y online, sobre todo a personas que empezaban desde
+          un nivel inicial.
         </p>
         <p>
-          Trabajar con perfiles tan distintos, y llevar algunos de los grupos más numerosos de la
-          academia, me hizo fijarme en las dificultades concretas de cada alumno y en cómo elegir la
-          explicación adecuada para cada uno. Con el tiempo pasé de aplicar planes de clase ya
-          establecidos a participar en cómo se enseñaba: el sistema de evaluación, los materiales y
-          los recursos para que las clases fueran más participativas.
+          Trabajar con perfiles tan distintos, y con grupos grandes y pequeños, me enseñó a fijarme
+          en la dificultad concreta de cada alumno y a buscar la explicación que le funciona. Con el
+          tiempo me impliqué también en lo que hay detrás de una buena clase: preparar materiales,
+          mejorar la forma de evaluar el progreso y elegir recursos que hagan participar.
         </p>
         <p>
-          De esa etapa viene lo que hoy guía mis clases: una estructura clara, atención a lo que
-          cada alumno necesita y actividades que hacen que el inglés se use, no solo se estudie.
-          Durante ese tiempo la academia me reconoció como uno de sus profesores destacados.
+          De ahí sale la forma en que doy clase hoy: una estructura clara, atención a lo que cada
+          alumno necesita y actividades que hacen que el inglés se use, no solo se estudie.
         </p>
       </div>
 
       <div class="about__timeline" data-reveal>
         <div class="about__role">
-          <span class="about__org">CD Academy</span>
-          <span class="about__dates">Nov 2024 – Dic 2025</span>
+          <h3 class="about__org">Mi entorno de clase</h3>
         </div>
         <div class="about__cols">
           <div>
-            <h3>En el aula: conocer a cada alumno</h3>
+            <h4>En clase</h4>
             <ul role="list">
               {
                 inClass.map((item) => (
@@ -85,10 +83,10 @@ const behindClass = [
             </ul>
           </div>
           <div>
-            <h3>Detrás del aula: mejorar cómo se enseña</h3>
+            <h4>Recursos</h4>
             <ul role="list">
               {
-                behindClass.map((item) => (
+                resources.map((item) => (
                   <li>
                     <Icon name="check" />
                     {item}
@@ -197,14 +195,6 @@ const behindClass = [
     font-weight: 650;
     letter-spacing: -0.02em;
   }
-  .about__dates {
-    font-size: var(--step--1);
-    font-weight: 600;
-    color: var(--accent-text);
-    background: var(--accent-wash);
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-  }
   .about__cols {
     display: grid;
     gap: 2rem;
@@ -214,7 +204,7 @@ const behindClass = [
       grid-template-columns: 1fr 1fr;
     }
   }
-  .about__cols h3 {
+  .about__cols h4 {
     font-size: 0.8rem;
     font-family: var(--font-body);
     font-weight: 700;
