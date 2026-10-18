@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../config/paths';
 import Logo from './Logo.astro';
 import { navLinks } from '../config/nav';
 import { contact, hasWhatsapp, legal, phoneHref, site, whatsappUrl } from '../config/site';
@@ -7,7 +8,7 @@ interface Props {
   isHome?: boolean;
 }
 const { isHome = true } = Astro.props;
-const prefix = isHome ? '' : '/';
+const prefix = isHome ? '' : withBase();
 const year = new Date().getFullYear();
 const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
 ---
@@ -53,7 +54,7 @@ const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
 
   <div class="container footer__bottom">
     <p>© <span data-year>{year}</span> {site.name}</p>
-    <a href={legal.privacyUrl}>Política de privacidad</a>
+    <a href={withBase(legal.privacyUrl)}>Política de privacidad</a>
   </div>
 </footer>
 

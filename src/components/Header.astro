@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../config/paths';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import { navLinks } from '../config/nav';
@@ -7,12 +8,12 @@ interface Props {
   isHome?: boolean;
 }
 const { isHome = true } = Astro.props;
-const prefix = isHome ? '' : '/';
+const prefix = isHome ? '' : withBase();
 ---
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="header__brand" href={isHome ? '#top' : '/'} aria-label="Daniel Guanipa, inicio">
+    <a class="header__brand" href={isHome ? '#top' : withBase()} aria-label="Daniel Guanipa, inicio">
       <Logo />
     </a>
 
