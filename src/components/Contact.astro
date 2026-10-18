@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../config/paths';
 import Icon from './Icon.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import { contact, hasWhatsapp, legal, phoneHref, plans } from '../config/site';
@@ -160,7 +161,7 @@ const steps = [
         <div class="field field--check">
           <input id="f-privacy" name="privacidad" type="checkbox" required aria-describedby="f-privacy-error" />
           <label for="f-privacy">
-            He leído y acepto la <a href={legal.privacyUrl}>política de privacidad</a>. *
+            He leído y acepto la <a href={withBase(legal.privacyUrl)}>política de privacidad</a>. *
           </label>
           <p class="field__error" id="f-privacy-error" data-error-for="privacidad"></p>
         </div>

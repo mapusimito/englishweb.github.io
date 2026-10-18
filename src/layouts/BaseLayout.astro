@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site, missingConfig } from '../config/site';
+import { withBase } from '../config/paths';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -19,8 +20,9 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, site.url).href;
-const ogImage = new URL('/og-image.png', site.url).href;
+const pathname = Astro.url.pathname.replace(/\/?$/, '/');
+const canonical = new URL(pathname, site.url).href;
+const ogImage = new URL(withBase('og-image.png'), site.url).href;
 
 if (import.meta.env.SSR && missingConfig.length && isHome) {
   console.warn(
@@ -49,7 +51,7 @@ const jsonLd = {
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#f6f2ea" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={site.locale} />

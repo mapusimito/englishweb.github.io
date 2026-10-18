@@ -11,8 +11,13 @@ export const site = {
   name: 'Daniel Guanipa',
   role: 'Profesor de inglés',
   city: 'Alicante',
-  /** URL pública definitiva, sin barra final. Se usa para canonical y Open Graph. */
-  url: 'https://example.com', // PENDIENTE: dominio real
+  /**
+   * Dominio público, sin barra final, y subcarpeta donde se sirve la web.
+   * GitHub Pages publica este repositorio en https://mapusimito.github.io/englishweb/.
+   * Con un dominio propio: url = 'https://tudominio.com' y base = '/'.
+   */
+  url: 'https://mapusimito.github.io',
+  base: '/englishweb',
   locale: 'es_ES',
   title: 'Daniel Guanipa · Clases de inglés en Alicante',
   description:
@@ -42,7 +47,8 @@ export const contact = {
 };
 
 export const legal = {
-  privacyUrl: '/privacidad',
+  /** Ruta relativa a la raíz de la web; se le añade `base` al enlazarla. */
+  privacyUrl: 'privacidad/',
 };
 
 /* ------------------------------------------------------------------ */
@@ -135,5 +141,4 @@ export const missingConfig = [
   !contact.formEndpoint && 'contact.formEndpoint',
   !contact.email && 'contact.email',
   !contact.phone && 'contact.phone',
-  site.url.includes('example.com') && 'site.url',
 ].filter(Boolean) as string[];
