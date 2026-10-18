@@ -1,0 +1,262 @@
+---
+import Icon from './Icon.astro';
+import { plans, formatPrice } from '../config/site';
+
+const sameHours = plans.every((p) => p.hoursPerWeek === plans[0].hoursPerWeek);
+---
+
+<section class="section plans" id="clases" aria-labelledby="plans-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Clases y precios</p>
+      <h2 id="plans-title">Elige cómo quieres aprender.</h2>
+      <p>
+        {sameHours && `Los tres formatos incluyen ${plans[0].hoursPerWeek} horas de clase a la semana. `}
+        La diferencia está en el equilibrio entre la atención individual que recibes y la
+        interacción con otros alumnos. Ninguno es mejor para todo el mundo: depende de tus
+        objetivos y de cómo aprendes.
+      </p>
+    </div>
+
+    <ul class="plans__list" role="list">
+      {
+        plans.map((plan, i) => (
+          <li class="plan" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+            <article aria-labelledby={`plan-${plan.id}`}>
+              <header class="plan__head">
+                <h3 id={`plan-${plan.id}`}>{plan.name}</h3>
+                <span class="plan__size">{plan.groupSize}</span>
+              </header>
+
+              <p class="plan__price">
+                <span class="plan__amount">{formatPrice(plan.pricePerStudent)}</span>
+                <span class="plan__unit">
+                  al mes
+                  {plan.id !== 'individual' && <> por alumno</>}
+                </span>
+              </p>
+              <p class="plan__hours">{plan.hoursPerWeek} horas de clase por semana</p>
+
+              <p class="plan__summary">{plan.summary}</p>
+
+              <div class="plan__scale">
+                <div class="plan__scale-track" aria-hidden="true">
+                  <span style={`left: ${plan.interaction * 100}%`} />
+                </div>
+                <div class="plan__scale-labels" aria-hidden="true">
+                  <span>Atención individual</span>
+                  <span>Interacción en grupo</span>
+                </div>
+                <p class="visually-hidden">
+                  {plan.interaction < 0.33
+                    ? 'Formato centrado en la atención individual.'
+                    : plan.interaction < 0.66
+                      ? 'Formato que equilibra atención individual e interacción.'
+                      : 'Formato centrado en la interacción en grupo.'}
+                </p>
+              </div>
+
+              <div class="plan__fit">
+                <p class="plan__label">Encaja si buscas</p>
+                <ul role="list">
+                  {plan.idealFor.map((item) => (
+                    <li>
+                      <Icon name="check" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a class="btn btn--ghost plan__cta" href="#contacto" data-plan={plan.id}>
+                Consultar disponibilidad
+                <span class="visually-hidden">para {plan.name.toLowerCase()}</span>
+              </a>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="plans__note" data-reveal>
+      <strong>Antes de empezar</strong> confirmamos disponibilidad, horario y nivel. En pareja y en
+      grupo reducido, además, comprobamos que los compañeros tengan un nivel compatible. Los precios
+      indicados son mensuales y por alumno.
+    </p>
+  </div>
+</section>
+
+<style>
+  .plans__list {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 900px) {
+    .plans__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    /* Subgrid: precio, escala y lista alineados entre tarjetas */
+    @supports (grid-template-rows: subgrid) {
+      .plans__list > .plan,
+      .plans__list > .plan > article {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 7;
+        row-gap: 1.1rem;
+      }
+      .plans__list .plan__hours {
+        margin-top: -0.6rem;
+      }
+    }
+  }
+
+  .plan article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    transition:
+      border-color 0.25s var(--ease),
+      box-shadow 0.25s var(--ease),
+      transform 0.25s var(--ease);
+  }
+  .plan article:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .plan__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .plan__head h3 {
+    font-size: var(--step-1);
+  }
+  .plan__size {
+    flex: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: var(--paper-2);
+    color: var(--ink-soft);
+  }
+
+  .plan__price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+  .plan__amount {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 2rem + 1.6vw, 3.25rem);
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .plan__unit {
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .plan__hours {
+    margin-top: -0.5rem;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+  .plan__summary {
+    color: var(--ink-soft);
+  }
+
+  .plan__scale {
+    padding: 1rem;
+    border-radius: var(--r);
+    background: var(--paper);
+  }
+  .plan__scale-track {
+    position: relative;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--ink) 0%, var(--accent) 100%);
+    opacity: 0.85;
+  }
+  .plan__scale-track span {
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 4px solid var(--ink);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 6px rgb(15 27 51 / 0.25);
+  }
+  .plan__scale-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  .plan__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.7rem;
+  }
+  .plan__fit ul {
+    display: grid;
+    gap: 0.55rem;
+  }
+  .plan__fit li {
+    display: grid;
+    grid-template-columns: 1.1rem 1fr;
+    gap: 0.6rem;
+    font-size: var(--step--1);
+    line-height: 1.45;
+  }
+  .plan__fit li :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.1rem;
+    color: var(--accent-text);
+  }
+  .plan__cta {
+    margin-top: auto;
+    width: 100%;
+  }
+  .plan article:hover .plan__cta {
+    --btn-bg: var(--ink);
+    --btn-fg: var(--paper);
+    --btn-border: var(--ink);
+  }
+
+  .plans__note {
+    max-width: 52rem;
+    margin-top: 2rem;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--accent);
+    background: var(--card);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .plans__note strong {
+    color: var(--ink);
+  }
+</style>

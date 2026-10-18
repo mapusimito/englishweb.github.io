@@ -1,0 +1,36 @@
+---
+/**
+ * Botón de contacto principal. Con WhatsApp configurado abre una conversación
+ * con un mensaje inicial; sin él, lleva al formulario de contacto en lugar de
+ * mostrar un botón que no funciona.
+ */
+import { hasWhatsapp, whatsappUrl } from '../config/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  variant?: 'accent' | 'ink' | 'ghost' | 'ghost-light';
+  message?: string;
+  class?: string;
+}
+const { variant = 'accent', message, class: className } = Astro.props;
+---
+
+{
+  hasWhatsapp ? (
+    <a
+      class:list={['btn', `btn--${variant}`, className]}
+      href={whatsappUrl(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="whatsapp" />
+      Contactar por WhatsApp
+      <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+    </a>
+  ) : (
+    <a class:list={['btn', `btn--${variant}`, className]} href="#contacto">
+      Solicitar información
+      <Icon name="arrow" />
+    </a>
+  )
+}

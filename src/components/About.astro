@@ -1,0 +1,236 @@
+---
+import PhotoFrame from './PhotoFrame.astro';
+import Icon from './Icon.astro';
+import { portraitPhoto } from '../config/photos';
+import { site } from '../config/site';
+
+const inClass = [
+  'Clases individuales y en grupo, presenciales y online',
+  'Alumnos de aproximadamente 10 a 30 años, sobre todo de nivel A1–A2',
+  'Algunos de los grupos más numerosos de la academia',
+  'Lecciones adaptadas al perfil, las necesidades y el nivel de cada alumno',
+];
+
+const behindClass = [
+  'Rediseño del sistema de evaluación',
+  'Liderazgo en la renovación de libros y materiales de clase',
+  'Incorporación de Kahoot, Lingoclip y juegos de mesa para trabajar pronunciación, gramática y participación',
+  'Participación en decisiones académicas y en las clases de prueba con nuevos alumnos',
+];
+---
+
+<section class="section about" id="sobre-mi" aria-labelledby="about-title">
+  <div class="container about__grid">
+    <aside class="about__side" data-reveal>
+      <PhotoFrame
+        photo={portraitPhoto}
+        ratio="4 / 5"
+        sizes="(min-width: 960px) 30vw, 92vw"
+        class="about__photo"
+      />
+      <dl class="about__facts">
+        <div>
+          <dt>Ubicación</dt>
+          <dd>{site.city}</dd>
+        </div>
+        <div>
+          <dt>Idiomas</dt>
+          <dd>Español (nativo) · Inglés (B2/C1)</dd>
+        </div>
+        <div>
+          <dt>También</dt>
+          <dd>Tutorías de matemáticas y tecnología educativa</dd>
+        </div>
+      </dl>
+    </aside>
+
+      <div class="about__intro" data-reveal>
+        <p class="eyebrow">Sobre mí</p>
+        <h2 id="about-title">Me interesa lo que pasa en clase, y también lo que hay detrás.</h2>
+        <p class="about__lead">
+          Entre noviembre de 2024 y diciembre de 2025 fui profesor de inglés en CD Academy. Empecé
+          aplicando planes de clase ya establecidos y terminé participando en cómo se enseñaba:
+          la evaluación, los materiales y la metodología.
+        </p>
+        <p>
+          Esa doble experiencia es la base de mis clases. Sé lo que funciona con un grupo real un
+          martes por la tarde, y sé organizar un curso para que cada sesión tenga un propósito.
+          Durante esa etapa la academia me reconoció como uno de sus profesores destacados.
+        </p>
+      </div>
+
+      <div class="about__timeline" data-reveal>
+        <div class="about__role">
+          <span class="about__org">CD Academy</span>
+          <span class="about__dates">Nov 2024 – Dic 2025</span>
+        </div>
+        <div class="about__cols">
+          <div>
+            <h3>En el aula</h3>
+            <ul role="list">
+              {
+                inClass.map((item) => (
+                  <li>
+                    <Icon name="check" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3>Detrás del aula</h3>
+            <ul role="list">
+              {
+                behindClass.map((item) => (
+                  <li>
+                    <Icon name="check" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-areas: 'intro' 'side' 'timeline';
+    gap: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+  .about__side {
+    grid-area: side;
+  }
+  .about__intro {
+    grid-area: intro;
+  }
+  .about__timeline {
+    grid-area: timeline;
+  }
+  @media (min-width: 960px) {
+    .about__grid {
+      grid-template-columns: 0.75fr 1.25fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: 'side intro' 'side timeline';
+      column-gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+      align-items: start;
+    }
+    .about__side {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+  .about__side {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 26rem;
+  }
+  .about__facts {
+    margin: 0;
+    display: grid;
+  }
+  .about__facts div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--step--1);
+  }
+  .about__facts div:first-child {
+    border-top: 1px solid var(--line);
+  }
+  dt {
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  dd {
+    margin: 0;
+  }
+
+  .about__intro {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 40rem;
+  }
+  .about__intro h2 {
+    font-size: var(--step-3);
+  }
+  .about__intro p:not(.eyebrow) {
+    color: var(--ink-soft);
+  }
+  .about__intro .about__lead {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .about__timeline {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+  .about__role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .about__org {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .about__dates {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--accent-text);
+    background: var(--accent-wash);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+  }
+  .about__cols {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 700px) {
+    .about__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .about__cols h3 {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+  .about__cols ul {
+    display: grid;
+    gap: 0.85rem;
+  }
+  .about__cols li {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: 0.65rem;
+    line-height: 1.45;
+  }
+  .about__cols li :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.1rem;
+    color: var(--accent-text);
+  }
+</style>

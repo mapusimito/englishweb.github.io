@@ -1,0 +1,192 @@
+---
+import Icon from './Icon.astro';
+
+const pillars = [
+  {
+    title: 'Evaluar y planificar',
+    text: 'Antes de empezar vemos tu nivel de partida y qué necesitas conseguir: comunicarte en el día a día, reforzar el inglés del colegio o la universidad, ganar seguridad al hablar… Con esa información se planifican las clases, no al revés.',
+    practice: [
+      'Una conversación inicial y algunos ejercicios para situar tu nivel',
+      'Objetivos concretos y realistas',
+      'Clases organizadas por bloques, con un propósito claro',
+    ],
+  },
+  {
+    title: 'Practicar y participar',
+    text: 'En clase hablas, escuchas, escribes y te equivocas en un entorno seguro. La gramática y el vocabulario se aprenden usándolos, con ejercicios prácticos, conversación y recursos interactivos cuando aportan algo.',
+    practice: [
+      'Conversación desde el principio, adaptada a tu nivel',
+      'Ejercicios prácticos de gramática, vocabulario y pronunciación',
+      'Kahoot, Lingoclip o juegos de mesa cuando ayudan al objetivo',
+    ],
+  },
+  {
+    title: 'Revisar y progresar',
+    text: 'Las actividades y las correcciones muestran qué está consolidado y qué necesita más trabajo. Con eso ajustamos el plan para dedicar el tiempo a lo que de verdad lo necesita.',
+    practice: [
+      'Correcciones claras durante la clase',
+      'Repaso periódico de lo aprendido',
+      'Ajustes del plan según tu evolución',
+    ],
+  },
+];
+---
+
+<section class="section method" id="metodo" aria-labelledby="method-title">
+  <div class="container">
+    <div class="method__head" data-reveal>
+      <p class="eyebrow">Método</p>
+      <h2 id="method-title">
+        Saber dónde estás, practicar mucho y revisar a menudo.
+      </h2>
+      <p>
+        Clases amenas y estructura no son opuestas: la estructura es lo que hace que la práctica
+        tenga sentido. Cada clase sigue este ciclo.
+      </p>
+    </div>
+
+    <ol class="method__list" role="list">
+      {
+        pillars.map((pillar, i) => (
+          <li class="pillar" data-reveal style={`--reveal-delay: ${i * 0.1}s`}>
+            <span class="pillar__num" aria-hidden="true">
+              0{i + 1}
+            </span>
+            <h3>{pillar.title}</h3>
+            <p class="pillar__text">{pillar.text}</p>
+            <div class="pillar__practice">
+              <p class="pillar__label">En la práctica</p>
+              <ul role="list">
+                {pillar.practice.map((item) => (
+                  <li>
+                    <Icon name="check" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .method {
+    background: var(--navy);
+    color: var(--on-navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .method::before {
+    /* Retícula muy sutil, evoca un cuaderno */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 70%);
+    pointer-events: none;
+  }
+  .method .container {
+    position: relative;
+  }
+  .method__head {
+    display: grid;
+    gap: 1rem;
+    max-width: 46rem;
+    margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .method__head .eyebrow {
+    color: var(--accent);
+  }
+  .method__head h2 {
+    font-size: var(--step-3);
+  }
+  .method__head p:last-child {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--on-navy-soft);
+  }
+
+  .method__list {
+    display: grid;
+    gap: 1.25rem;
+    counter-reset: pillar;
+  }
+  @media (min-width: 900px) {
+    .method__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    /* Subgrid: títulos, textos y bloques "En la práctica" alineados entre columnas */
+    @supports (grid-template-rows: subgrid) {
+      .method__list > .pillar {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 4;
+        row-gap: 1rem;
+      }
+      .method__list .pillar__practice {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+    background: var(--navy-2);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: var(--r-lg);
+  }
+  .pillar__num {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+  }
+  .pillar h3 {
+    font-size: var(--step-2);
+  }
+  .pillar__text {
+    color: var(--on-navy-soft);
+    line-height: 1.6;
+  }
+  .pillar__practice {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .pillar__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--on-navy-soft);
+    margin-bottom: 0.75rem;
+  }
+  .pillar ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .pillar li {
+    display: grid;
+    grid-template-columns: 1.1rem 1fr;
+    gap: 0.6rem;
+    font-size: var(--step--1);
+    line-height: 1.45;
+  }
+  .pillar li :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.1rem;
+    color: var(--accent);
+  }
+</style>

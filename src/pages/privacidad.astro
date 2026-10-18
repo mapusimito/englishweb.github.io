@@ -1,0 +1,60 @@
+---
+/**
+ * PENDIENTE: sustituir por la política de privacidad definitiva, redactada o
+ * revisada por un profesional (RGPD / LOPDGDD). No se inventan datos legales.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title={`Política de privacidad · ${site.name}`} isHome={false} noindex>
+  <section class="section">
+    <div class="container legal">
+      <p class="eyebrow">Legal</p>
+      <h1>Política de privacidad</h1>
+      <p class="legal__pending">
+        Documento pendiente. Esta página debe sustituirse por la política de privacidad definitiva
+        antes de publicar la web y de recoger datos a través del formulario.
+      </p>
+      <h2>Contenido mínimo que deberá incluir</h2>
+      <ul>
+        <li>Responsable del tratamiento: nombre completo, NIF y datos de contacto.</li>
+        <li>Finalidad: responder a las solicitudes de información sobre clases.</li>
+        <li>Base legal: consentimiento de la persona interesada.</li>
+        <li>Plazo de conservación de los datos.</li>
+        <li>Destinatarios y encargados del tratamiento (por ejemplo, el servicio de formularios utilizado).</li>
+        <li>Derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad, y cómo ejercerlos.</li>
+        <li>Derecho a reclamar ante la Agencia Española de Protección de Datos.</li>
+      </ul>
+      <p><a class="btn btn--ghost" href="/">Volver al inicio</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 46rem;
+  }
+  h1 {
+    font-size: var(--step-3);
+  }
+  h2 {
+    font-size: var(--step-1);
+    margin-top: 1rem;
+  }
+  ul {
+    display: grid;
+    gap: 0.5rem;
+    padding-left: 1.25rem;
+    color: var(--ink-soft);
+  }
+  .legal__pending {
+    padding: 1rem 1.1rem;
+    border: 1.5px dashed var(--accent-text);
+    border-radius: var(--r-sm);
+    color: var(--accent-text);
+    font-weight: 600;
+  }
+</style>
