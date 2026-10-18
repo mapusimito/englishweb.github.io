@@ -1,0 +1,222 @@
+---
+import PhotoFrame from './PhotoFrame.astro';
+import { approachPhoto } from '../config/photos';
+
+const responses = [
+  {
+    when: 'Si una explicación no funciona',
+    then: 'buscamos otra forma de entenderlo.',
+  },
+  {
+    when: 'Si una regla gramatical parece demasiado abstracta',
+    then: 'recurrimos a ejemplos cotidianos, comparaciones y metáforas.',
+  },
+  {
+    when: 'Si conoces la teoría, pero no consigues aplicarla al hablar',
+    then: 'trabajamos precisamente esa dificultad.',
+  },
+];
+---
+
+<section class="section approach" id="enfoque" aria-labelledby="approach-title">
+  <div class="container">
+    <header class="approach__head" data-reveal>
+      <p class="eyebrow">Mi enfoque</p>
+      <h2 id="approach-title">
+        No todos aprendemos de la misma manera.
+        <span>¿Por qué deberíamos enseñar igual?</span>
+      </h2>
+      <p class="approach__lead">
+        Aprender inglés no consiste únicamente en completar un temario. Consiste en comprender,
+        practicar y conseguir utilizar lo aprendido.
+      </p>
+    </header>
+
+    <div class="approach__grid">
+      <div class="approach__media" data-reveal>
+        <PhotoFrame
+          photo={approachPhoto}
+          ratio="4 / 5"
+          sizes="(min-width: 960px) 36vw, 92vw"
+          class="approach__photo"
+        />
+      </div>
+
+      <div class="approach__body">
+        <div class="approach__text" data-reveal>
+          <p>
+            En una clase convencional, el profesor debe distribuir su atención entre todos los alumnos
+            y mantener un ritmo común. Esto puede funcionar bien, pero deja menos margen para
+            detenerse en las dificultades particulares de cada estudiante.
+          </p>
+          <blockquote class="approach__quote">
+            <p class="approach__quote-label">Mi punto de partida</p>
+            <p>La enseñanza debe adaptarse a las necesidades del alumno.</p>
+          </blockquote>
+          <p>
+            Por eso mis clases no se limitan a seguir un libro o completar ejercicios. Primero
+            identificamos qué necesitas aprender y qué dificultades te impiden avanzar. A partir de
+            ahí organizamos un plan de trabajo y ajustamos las explicaciones, los ejemplos y las
+            actividades según tu progreso.
+          </p>
+        </div>
+
+        <ul class="approach__responses" role="list" data-reveal>
+          {
+            responses.map((item) => (
+              <li>
+                <span class="approach__when">{item.when},</span>
+                <span class="approach__then">{item.then}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="approach__structure" data-reveal>
+          <strong>No se trata de improvisar ni de renunciar a una estructura.</strong> Se trata de
+          utilizarla para que el aprendizaje tenga sentido para ti.
+        </p>
+      </div>
+    </div>
+
+    <p class="approach__closing" data-reveal>
+      El objetivo no es avanzar más rápido por el temario. Es que puedas avanzar con una
+      <span class="mark">comprensión real</span> de lo que estás aprendiendo.
+    </p>
+  </div>
+</section>
+
+<style>
+  .approach__head {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 52rem;
+    margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .approach__head h2 {
+    font-size: clamp(2.1rem, 1.5rem + 2.8vw, 3.9rem);
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+  }
+  .approach__head h2 span {
+    display: block;
+    color: var(--accent-text);
+  }
+  .approach__lead {
+    max-width: 40rem;
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .approach__grid {
+    display: grid;
+    gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+  @media (min-width: 960px) {
+    .approach__grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: start;
+    }
+    .approach__media {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+  .approach__media {
+    max-width: 28rem;
+  }
+  .approach__media :global(.approach__photo) {
+    border-radius: var(--r-lg);
+  }
+
+  .approach__body {
+    display: grid;
+    gap: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+    max-width: 40rem;
+  }
+  .approach__text {
+    display: grid;
+    gap: 1.5rem;
+    color: var(--ink-soft);
+  }
+
+  .approach__quote {
+    margin: 0.25rem 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 3px solid var(--accent);
+  }
+  .approach__quote-label {
+    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .approach__quote p:last-child {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  /* «Si… → …»: la adaptación en tres situaciones concretas */
+  .approach__responses {
+    display: grid;
+    border-top: 1px solid var(--line-strong);
+  }
+  .approach__responses li {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  @media (min-width: 640px) {
+    .approach__responses li {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+  .approach__when {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .approach__then {
+    position: relative;
+    padding-left: 1.6rem;
+    color: var(--ink-soft);
+  }
+  .approach__then::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-text);
+    font-weight: 700;
+  }
+
+  .approach__structure {
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--r);
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .approach__structure strong {
+    color: var(--ink);
+  }
+
+  .approach__closing {
+    max-width: 50rem;
+    margin-top: clamp(3rem, 2rem + 4vw, 5.5rem);
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+</style>

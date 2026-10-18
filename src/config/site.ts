@@ -16,7 +16,7 @@ export const site = {
   locale: 'es_ES',
   title: 'Daniel Guanipa · Clases de inglés en Alicante',
   description:
-    'Clases de inglés particulares, en pareja y en grupos reducidos en Alicante. Evaluación inicial, objetivos claros y práctica activa adaptada a tu nivel.',
+    'Clases de inglés particulares, en pareja y en grupos reducidos en Alicante. Un plan estructurado que adapta explicaciones, ejemplos y ritmo a tu nivel, tus objetivos y tus dificultades.',
 };
 
 export const contact = {
@@ -71,7 +71,7 @@ export const plans: Plan[] = [
     hoursPerWeek: 3,
     groupSize: '1 alumno',
     summary:
-      'Todo el tiempo de clase gira en torno a ti: tu ritmo, tus dudas y tus objetivos concretos.',
+      'Toda la sesión se adapta a ti: tus objetivos, tus dificultades, tu ritmo y tu manera de entender los conceptos.',
     idealFor: [
       'Objetivos muy específicos o con fecha',
       'Quien prefiere avanzar a su propio ritmo',
@@ -86,7 +86,7 @@ export const plans: Plan[] = [
     hoursPerWeek: 3,
     groupSize: '2 alumnos',
     summary:
-      'Atención muy cercana con un compañero de práctica: ideal para hermanos, amigos o compañeros con un nivel parecido.',
+      'Objetivos compartidos con un compañero de nivel parecido y atención muy cercana a las dificultades de cada uno.',
     idealFor: [
       'Dos personas con nivel y objetivos similares',
       'Practicar conversación con un compañero estable',
@@ -101,7 +101,7 @@ export const plans: Plan[] = [
     hoursPerWeek: 3,
     groupSize: '3–4 alumnos',
     summary:
-      'Más dinámica, más voces y más situaciones de conversación, manteniendo un grupo pequeño para seguir a cada alumno.',
+      'Objetivos comunes, conversación y aprendizaje entre compañeros, en un grupo pequeño que permite seguir a cada alumno.',
     idealFor: [
       'Quien aprende mejor interactuando',
       'Ganar soltura hablando delante de otros',

@@ -46,16 +46,22 @@ const behindClass = [
 
       <div class="about__intro" data-reveal>
         <p class="eyebrow">Sobre mí</p>
-        <h2 id="about-title">Me interesa lo que pasa en clase, y también lo que hay detrás.</h2>
+        <h2 id="about-title">De dónde viene este enfoque.</h2>
         <p class="about__lead">
-          Entre noviembre de 2024 y diciembre de 2025 fui profesor de inglés en CD Academy. Empecé
-          aplicando planes de clase ya establecidos y terminé participando en cómo se enseñaba:
-          la evaluación, los materiales y la metodología.
+          Entre noviembre de 2024 y diciembre de 2025 fui profesor de inglés en CD Academy, con
+          alumnos de unos 10 a 30 años, en clases individuales y en grupo, presenciales y online.
         </p>
         <p>
-          Esa doble experiencia es la base de mis clases. Sé lo que funciona con un grupo real un
-          martes por la tarde, y sé organizar un curso para que cada sesión tenga un propósito.
-          Durante esa etapa la academia me reconoció como uno de sus profesores destacados.
+          Trabajar con perfiles tan distintos, y llevar algunos de los grupos más numerosos de la
+          academia, me hizo fijarme en las dificultades concretas de cada alumno y en cómo elegir la
+          explicación adecuada para cada uno. Con el tiempo pasé de aplicar planes de clase ya
+          establecidos a participar en cómo se enseñaba: el sistema de evaluación, los materiales y
+          los recursos para que las clases fueran más participativas.
+        </p>
+        <p>
+          De esa etapa viene lo que hoy guía mis clases: una estructura clara, atención a lo que
+          cada alumno necesita y actividades que hacen que el inglés se use, no solo se estudie.
+          Durante ese tiempo la academia me reconoció como uno de sus profesores destacados.
         </p>
       </div>
 
@@ -66,7 +72,7 @@ const behindClass = [
         </div>
         <div class="about__cols">
           <div>
-            <h3>En el aula</h3>
+            <h3>En el aula: conocer a cada alumno</h3>
             <ul role="list">
               {
                 inClass.map((item) => (
@@ -79,7 +85,7 @@ const behindClass = [
             </ul>
           </div>
           <div>
-            <h3>Detrás del aula</h3>
+            <h3>Detrás del aula: mejorar cómo se enseña</h3>
             <ul role="list">
               {
                 behindClass.map((item) => (
@@ -113,9 +119,9 @@ const behindClass = [
   }
   @media (min-width: 960px) {
     .about__grid {
-      grid-template-columns: 0.75fr 1.25fr;
+      grid-template-columns: 1.25fr 0.75fr;
       grid-template-rows: auto 1fr;
-      grid-template-areas: 'side intro' 'side timeline';
+      grid-template-areas: 'intro side' 'timeline side';
       column-gap: clamp(2.5rem, 2rem + 3vw, 5rem);
       align-items: start;
     }

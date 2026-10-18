@@ -190,6 +190,25 @@ ol[role='list'] {
   line-height: 1.5;
 }
 
+/* Subrayado de énfasis en titulares */
+.mark {
+  position: relative;
+  white-space: nowrap;
+  z-index: 0;
+}
+.mark::after {
+  content: '';
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  bottom: 0.06em;
+  height: 0.3em;
+  background: var(--accent);
+  opacity: 0.38;
+  border-radius: 3px;
+  z-index: -1;
+}
+
 /* ------------------------------------------------------------------ */
 /* Botones                                                             */
 /* ------------------------------------------------------------------ */

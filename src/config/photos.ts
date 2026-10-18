@@ -52,14 +52,37 @@ export const portraitPhoto: Photo = {
   focus: '45% 40%',
 };
 
-/** Foto de apoyo en la sección Método. */
-export const methodPhoto: Photo = {
-  id: 'metodo',
+/** Foto junto a la explicación del enfoque («Mi enfoque»). */
+export const approachPhoto: Photo = {
+  id: 'enfoque',
   src: explicandoGestos,
   alt: 'Daniel Guanipa explicando con gestos durante una clase',
   slot: 'Daniel explicando o guiando una actividad',
   shape: 'portrait',
   focus: '48% 55%',
+};
+
+/*
+ * Huecos opcionales: solo se muestran cuando tienen `src`. Si están vacíos,
+ * la sección se maqueta sin foto, así que añadirlos no requiere rediseño.
+ */
+
+/** Junto a las cuatro fases del método: recursos o una actividad en marcha. */
+export const methodPhoto: Photo = {
+  id: 'metodo-recursos',
+  src: null,
+  alt: 'Materiales y recursos preparados para una actividad de clase',
+  slot: 'Recursos o actividad en marcha: fichas, juegos, pizarra',
+  shape: 'landscape',
+};
+
+/** Junto a la comparación entre clases individuales y en grupo. */
+export const formatsPhoto: Photo = {
+  id: 'formatos',
+  src: null,
+  alt: 'Alumnos conversando durante una actividad en grupo reducido',
+  slot: 'Interacción entre alumnos en pareja o grupo reducido',
+  shape: 'landscape',
 };
 
 export const gallery: Photo[] = [

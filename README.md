@@ -21,7 +21,8 @@ El contenido de `dist/` se puede publicar en cualquier hosting estático (Netlif
 | Precios, horas y descripción de los planes | `src/config/site.ts` → `plans` |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
 | Dominio, título y descripción SEO | `src/config/site.ts` → `site` |
-| Fotografías (principal, retrato, galería) | `src/config/photos.ts` |
+| Fotografías (principal, enfoque, retrato, opcionales, galería) | `src/config/photos.ts` |
+| Fases del método (Diagnosticar, Diseñar, Adaptar, Consolidar) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
 | Colores, tipografía, espaciado | `src/styles/global.css` (variables en `:root`) |
 | Textos de cada sección | `src/components/*.astro` |
@@ -52,12 +53,15 @@ Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
 | Hueco | Archivo |
 | --- | --- |
 | Portada (hero) | `clase-grupo-reducido.jpg` |
+| Mi enfoque | `daniel-explicando-gestos.jpg` |
 | Sobre mí | `daniel-explicando-ventana.jpg` |
-| Método | `daniel-explicando-gestos.jpg` |
+| Método (opcional: recursos o actividad) | pendiente |
+| Clases, comparación individual/grupo (opcional) | pendiente |
 | Galería | sin fotos todavía: la sección no se muestra hasta que haya al menos una |
 
-En los huecos con `src: null` (portada, retrato, método) se muestra un marcador rayado «Foto pendiente».
-En la galería, los huecos sin foto simplemente no se publican.
+Los huecos opcionales y la galería no muestran nada mientras no tengan foto: la sección se maqueta
+sin ella y, al añadirla, se coloca sola (sin rediseño). En los huecos obligatorios (portada, enfoque,
+retrato) un `src: null` muestra un marcador rayado «Foto pendiente».
 
 Para poner una foto real:
 

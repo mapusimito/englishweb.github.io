@@ -1,6 +1,15 @@
 ---
 import Icon from './Icon.astro';
+import PhotoFrame from './PhotoFrame.astro';
 import { plans, formatPrice } from '../config/site';
+import { formatsPhoto } from '../config/photos';
+
+const included = [
+  'Diagnóstico de nivel, objetivos y dificultades',
+  'Plan de trabajo con objetivos claros',
+  'Explicaciones y actividades ajustadas a lo que necesitas',
+  'Seguimiento del progreso y ajustes del plan',
+];
 
 const sameHours = plans.every((p) => p.hoursPerWeek === plans[0].hoursPerWeek);
 ---
@@ -11,11 +20,25 @@ const sameHours = plans.every((p) => p.hoursPerWeek === plans[0].hoursPerWeek);
       <p class="eyebrow">Clases y precios</p>
       <h2 id="plans-title">Elige cómo quieres aprender.</h2>
       <p>
-        {sameHours && `Los tres formatos incluyen ${plans[0].hoursPerWeek} horas de clase a la semana. `}
-        La diferencia está en el equilibrio entre la atención individual que recibes y la
-        interacción con otros alumnos. Ninguno es mejor para todo el mundo: depende de tus
-        objetivos y de cómo aprendes.
+        No pagas solo horas de clase, sino un aprendizaje organizado y revisado.
+        {sameHours && ` Los tres formatos incluyen ${plans[0].hoursPerWeek} horas a la semana y el mismo método; `}
+        cambia cuánta parte de la sesión se dedica solo a ti. Ninguno es mejor para todo el mundo:
+        depende de tus objetivos y de cómo aprendes.
       </p>
+    </div>
+
+    <div class="plans__included" data-reveal>
+      <p class="plans__included-title">Incluido en los tres formatos</p>
+      <ul role="list">
+        {
+          included.map((item) => (
+            <li>
+              <Icon name="check" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <ul class="plans__list" role="list">
@@ -77,6 +100,35 @@ const sameHours = plans.every((p) => p.hoursPerWeek === plans[0].hoursPerWeek);
         ))
       }
     </ul>
+
+    <div class:list={['formats', { 'formats--photo': formatsPhoto.src }]} data-reveal>
+      <div class="formats__body">
+        <h3 class="formats__title">El mismo enfoque, distinta dinámica.</h3>
+        <div class="formats__cols">
+          <div>
+            <p class="formats__label">Clases individuales</p>
+            <p>
+              Toda la sesión gira en torno a una persona: sus objetivos, sus dificultades, su ritmo y
+              su manera de entender. Es el formato con más margen para adaptar la clase entera: si
+              algo no encaja, toda la sesión puede reorientarse.
+            </p>
+          </div>
+          <div>
+            <p class="formats__label">En pareja y grupos reducidos</p>
+            <p>
+              Trabajamos objetivos comunes con conversación e interacción entre compañeros. Al ser
+              pocos alumnos, conozco las necesidades de cada uno y atiendo sus dificultades
+              particulares, aunque la atención se reparte entre el grupo.
+            </p>
+          </div>
+        </div>
+      </div>
+      {
+        formatsPhoto.src && (
+          <PhotoFrame photo={formatsPhoto} ratio="4 / 3" sizes="(min-width: 960px) 30vw, 92vw" />
+        )
+      }
+    </div>
 
     <p class="plans__note" data-reveal>
       <strong>Antes de empezar</strong> confirmamos disponibilidad, horario y nivel. En pareja y en
@@ -244,6 +296,85 @@ const sameHours = plans.every((p) => p.hoursPerWeek === plans[0].hoursPerWeek);
     --btn-bg: var(--ink);
     --btn-fg: var(--paper);
     --btn-border: var(--ink);
+  }
+
+  .plans__included {
+    display: grid;
+    gap: 0.9rem;
+    margin-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+  }
+  .plans__included-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .plans__included ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 0.6rem;
+  }
+  .plans__included li {
+    display: grid;
+    grid-template-columns: 1.1rem 1fr;
+    gap: 0.6rem;
+    align-items: start;
+    padding: 0.85rem 1rem;
+    border-radius: var(--r-sm);
+    background: var(--paper-2);
+    font-size: var(--step--1);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .plans__included li :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--accent-text);
+  }
+
+  .formats {
+    display: grid;
+    gap: 2rem;
+    margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+  @media (min-width: 960px) {
+    .formats--photo {
+      grid-template-columns: 1.4fr 0.8fr;
+      align-items: center;
+    }
+  }
+  .formats__title {
+    font-size: var(--step-2);
+    margin-bottom: 1.5rem;
+  }
+  .formats__cols {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 720px) {
+    .formats__cols {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .formats__cols > div + div {
+      border-left: 1px solid var(--line);
+      padding-left: 2.5rem;
+    }
+  }
+  .formats__cols p:not(.formats__label) {
+    color: var(--ink-soft);
+  }
+  .formats__label {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: var(--step-1);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
   }
 
   .plans__note {

@@ -104,6 +104,9 @@ const prefix = isHome ? '' : '/';
   .header__nav ul a:hover::after {
     transform: scaleX(1);
   }
+  .header__nav a {
+    white-space: nowrap;
+  }
   .header__cta {
     min-height: 42px;
     padding: 0.6rem 1.15rem;
@@ -115,7 +118,7 @@ const prefix = isHome ? '' : '/';
   }
 
   /* Móvil: menú desplegable (solo con JS; sin JS los enlaces se muestran en línea) */
-  @media (max-width: 860px) {
+  @media (max-width: 1023px) {
     .header__nav ul {
       gap: 1rem;
     }
@@ -227,7 +230,7 @@ const prefix = isHome ? '' : '/';
       toggle.focus();
     }
   });
-  window.matchMedia('(min-width: 861px)').addEventListener('change', (e) => {
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
     if (e.matches) setOpen(false);
   });
 </script>
