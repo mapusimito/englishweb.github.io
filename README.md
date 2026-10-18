@@ -47,8 +47,17 @@ Al compilar, la consola lista los datos que siguen pendientes.
 
 ## Fotografías
 
-Cada hueco de foto está definido en `src/config/photos.ts`. Mientras `src` sea `null` se muestra un
-marcador rayado con el texto «Foto pendiente» y el tipo de imagen que encaja en ese hueco.
+Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
+
+| Hueco | Archivo |
+| --- | --- |
+| Portada (hero) | `clase-grupo-reducido.jpg` |
+| Sobre mí | `daniel-explicando-ventana.jpg` |
+| Método | `daniel-explicando-gestos.jpg` |
+| Galería | sin fotos todavía: la sección no se muestra hasta que haya al menos una |
+
+En los huecos con `src: null` (portada, retrato, método) se muestra un marcador rayado «Foto pendiente».
+En la galería, los huecos sin foto simplemente no se publican.
 
 Para poner una foto real:
 

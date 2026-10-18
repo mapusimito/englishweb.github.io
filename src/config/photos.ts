@@ -8,10 +8,14 @@
  *   3. Asigna `src: grupo` y escribe un `alt` que describa lo que se ve.
  * Astro genera automáticamente versiones AVIF/WebP en varios tamaños.
  *
- * La galería acepta cualquier número de fotos y cualquier proporción: la
- * cuadrícula recorta con object-fit respetando `focus`.
+ * La galería solo muestra las fotos que ya tienen `src`; si no hay ninguna, la
+ * sección no aparece. Acepta cualquier número de fotos y cualquier proporción:
+ * la cuadrícula recorta con object-fit respetando `focus`.
  */
 import type { ImageMetadata } from 'astro';
+import claseGrupo from '../assets/photos/clase-grupo-reducido.jpg';
+import explicandoVentana from '../assets/photos/daniel-explicando-ventana.jpg';
+import explicandoGestos from '../assets/photos/daniel-explicando-gestos.jpg';
 
 export type PhotoShape = 'landscape' | 'portrait' | 'square' | 'wide';
 
@@ -32,20 +36,30 @@ export type Photo = {
 
 export const heroPhoto: Photo = {
   id: 'hero',
-  src: null,
-  alt: 'Daniel Guanipa durante una clase de inglés',
+  src: claseGrupo,
+  alt: 'Daniel Guanipa, de pie junto a la mesa, dando clase a un grupo reducido de tres alumnos',
   slot: 'Daniel dando clase: explicando, conversando o guiando una actividad',
   shape: 'portrait',
-  focus: '50% 35%',
+  focus: '50% 40%',
 };
 
 export const portraitPhoto: Photo = {
   id: 'retrato',
-  src: null,
-  alt: 'Retrato de Daniel Guanipa',
+  src: explicandoVentana,
+  alt: 'Daniel Guanipa sonriendo mientras explica junto a una ventana',
   slot: 'Retrato profesional de Daniel, luz natural, fondo neutro',
   shape: 'portrait',
-  focus: '50% 30%',
+  focus: '45% 40%',
+};
+
+/** Foto de apoyo en la sección Método. */
+export const methodPhoto: Photo = {
+  id: 'metodo',
+  src: explicandoGestos,
+  alt: 'Daniel Guanipa explicando con gestos durante una clase',
+  slot: 'Daniel explicando o guiando una actividad',
+  shape: 'portrait',
+  focus: '48% 55%',
 };
 
 export const gallery: Photo[] = [

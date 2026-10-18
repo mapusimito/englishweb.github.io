@@ -1,6 +1,9 @@
 ---
 import PhotoFrame from './PhotoFrame.astro';
-import { gallery } from '../config/photos';
+import { gallery as allPhotos } from '../config/photos';
+
+// Solo fotos reales: los huecos sin foto no se publican.
+const gallery = allPhotos.filter((photo) => photo.src);
 ---
 
 {

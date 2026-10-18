@@ -200,14 +200,10 @@ import { site } from '../config/site';
       justify-self: start;
     }
   }
+  /* En móvil la tarjeta taparía a los alumnos de la foto; el método se explica más abajo. */
   @media (max-width: 520px) {
     .hero__card {
-      left: 0.75rem;
-      bottom: 0.75rem;
-    }
-    .hero__card ol {
-      gap: 0.6rem;
-      font-size: 0.85rem;
+      display: none;
     }
   }
 </style>

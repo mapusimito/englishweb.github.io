@@ -31,7 +31,7 @@ const widths = [480, 768, 1080, 1440, 2000];
       <Picture
         src={photo.src}
         alt={photo.alt}
-        widths={widths.filter((w) => w <= photo.src!.width)}
+        widths={[...new Set([...widths.filter((w) => w < photo.src!.width), photo.src!.width])]}
         sizes={sizes}
         formats={['avif', 'webp']}
         loading={priority ? 'eager' : 'lazy'}

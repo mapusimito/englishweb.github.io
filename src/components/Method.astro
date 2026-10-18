@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import PhotoFrame from './PhotoFrame.astro';
+import { methodPhoto } from '../config/photos';
 
 const pillars = [
   {
@@ -34,15 +36,23 @@ const pillars = [
 
 <section class="section method" id="metodo" aria-labelledby="method-title">
   <div class="container">
-    <div class="method__head" data-reveal>
-      <p class="eyebrow">Método</p>
-      <h2 id="method-title">
-        Saber dónde estás, practicar mucho y revisar a menudo.
-      </h2>
-      <p>
-        Clases amenas y estructura no son opuestas: la estructura es lo que hace que la práctica
-        tenga sentido. Cada clase sigue este ciclo.
-      </p>
+    <div class="method__top">
+      <div class="method__head" data-reveal>
+        <p class="eyebrow">Método</p>
+        <h2 id="method-title">
+          Saber dónde estás, practicar mucho y revisar a menudo.
+        </h2>
+        <p>
+          Clases amenas y estructura no son opuestas: la estructura es lo que hace que la práctica
+          tenga sentido. Cada clase sigue este ciclo.
+        </p>
+      </div>
+      <PhotoFrame
+        photo={methodPhoto}
+        ratio="5 / 4"
+        sizes="(min-width: 900px) 34vw, 92vw"
+        class="method__photo"
+      />
     </div>
 
     <ol class="method__list" role="list">
@@ -94,11 +104,26 @@ const pillars = [
   .method .container {
     position: relative;
   }
+  .method__top {
+    display: grid;
+    gap: clamp(2rem, 1.5rem + 2vw, 3rem);
+    margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  @media (min-width: 900px) {
+    .method__top {
+      grid-template-columns: 1.35fr 0.9fr;
+      align-items: end;
+    }
+  }
   .method__head {
     display: grid;
     gap: 1rem;
     max-width: 46rem;
-    margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .method__top :global(.method__photo) {
+    border-radius: var(--r-lg);
+    max-width: 30rem;
+    background: var(--navy-2);
   }
   .method__head .eyebrow {
     color: var(--accent);
