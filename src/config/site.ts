@@ -22,9 +22,10 @@ export const site = {
   url: 'https://englishweb-mu.vercel.app',
   base: '/',
   locale: 'es_ES',
-  title: 'Clases de inglés en Alicante y online · My Way to English',
+  // ≤ 60 caracteres. «Presencial en Alicante u online» deja claro que online no es en Alicante.
+  title: 'Inglés presencial en Alicante u online · My Way to English',
   description:
-    'Clases de inglés individuales, en pareja o en grupos de hasta 4 en Alicante y online, con un plan adaptado a cómo aprendes.',
+    'Clases de inglés individuales, en pareja o en grupos de hasta 4, presenciales en Alicante u online, con un plan adaptado a cómo aprendes.',
 };
 
 /** Título para páginas interiores: «{Página} · My Way to English». */
@@ -70,7 +71,7 @@ export const pricingTerms = ''; // PENDIENTE
 export const facts = [
   { title: 'Máx. 4 alumnos por grupo', detail: 'Grupos pequeños para seguir a cada alumno.' },
   { title: 'Desde 3 horas a la semana', detail: 'Continuidad semana a semana.' },
-  { title: 'En Alicante u online', detail: 'Presencial en Alicante o por videollamada.' },
+  { title: 'Presencial u online', detail: 'En persona en Alicante, o por videollamada desde donde estés.' },
   { title: 'Un mismo profesor, siempre', detail: 'Cada semana trabajas conmigo.' },
 ];
 

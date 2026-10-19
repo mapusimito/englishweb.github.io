@@ -100,7 +100,7 @@ Los precios de pareja (preguntas y tarjetas de plan) no son marcadores: los calc
 | Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
 | Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
-| Logotipo mw2en (trazados originales de Daniel) | `src/config/logo.ts` (trazados), `src/components/Logo.astro` (colores: `--logo-mw`, `--logo-en`) |
+| Isologo = isotipo mw2en + logotipo «My Way to English.» (igual en cabecera, menú, pie y OG) | `src/components/Logo.astro`; trazados del isotipo (de Daniel, sin modificar) en `src/config/logo.ts`; tamaño con `--wm-size`, colores con `--logo-mw` / `--logo-en` |
 | Icono de pestaña/móvil e imagen para compartir | `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`, `og-image.png` |
 | Textos de cada sección | `src/components/*.astro` |
 | Política de privacidad y aviso legal | `src/pages/privacidad.astro`, `src/pages/aviso-legal.astro` (**pendientes**) |

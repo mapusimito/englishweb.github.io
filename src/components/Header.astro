@@ -96,9 +96,14 @@ const prefix = isHome ? '' : withBase();
     text-decoration: none;
     border-radius: 4px;
   }
-  /* El logo ocupa casi toda la altura de la cabecera (60 px móvil, 72 px escritorio) */
+  /* Isologo: isotipo + logotipo completo, igual en móvil y escritorio */
   .header :global(.header__logo) {
-    --logo-height: 2.5rem;
+    --wm-size: 1.15rem;
+  }
+  @media (max-width: 359px) {
+    .header :global(.header__logo) {
+      --wm-size: 0.95rem;
+    }
   }
 
   .header__nav {
@@ -168,7 +173,7 @@ const prefix = isHome ? '' : withBase();
       height: var(--header-height);
     }
     .header :global(.header__logo) {
-      --logo-height: 3rem;
+      --wm-size: 1.4rem;
     }
     .header__nav {
       display: block;

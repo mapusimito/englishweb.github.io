@@ -16,8 +16,7 @@ const year = new Date().getFullYear();
 <footer class="footer on-ink">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <Logo inverse class="footer__logo" />
-      <p class="footer__credit">My Way to English <span>by Daniel Guanipa</span></p>
+      <Logo inverse signature class="footer__logo" />
     </div>
 
     <nav aria-label="Pie de página">
@@ -48,7 +47,7 @@ const year = new Date().getFullYear();
         {contact.email && <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>}
         {phoneHref && <li><a href={phoneHref}>{contact.phone}</a></li>}
         <li><a href={`${prefix}#contacto`}>Formulario de contacto</a></li>
-        <li>Clases en {site.city} y online</li>
+        <li>Presenciales en {site.city} u online</li>
       </ul>
     </div>
   </div>
@@ -90,16 +89,7 @@ const year = new Date().getFullYear();
     align-content: start;
   }
   .footer__brand :global(.footer__logo) {
-    --logo-height: 7rem;
-  }
-  .footer__credit {
-    display: grid;
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-inverse);
-  }
-  .footer__credit span {
-    font-weight: var(--font-weight-regular);
-    color: var(--color-text-inverse-secondary);
+    --wm-size: 2.1rem;
   }
   .footer__label {
     margin-bottom: var(--space-4);
