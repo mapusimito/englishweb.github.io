@@ -83,24 +83,28 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 
 ---
 ## Sección: horas
-Por qué desde 3 horas semanales
+Por qué una clase por semana
 
-### Aprender necesita continuidad.
-Un idioma se aprende practicándolo con frecuencia, no en una clase suelta de vez en cuando. Por eso mis planes empiezan en 3 horas semanales: es una rutina lo bastante constante para retener lo que trabajamos y avanzar de forma sostenida.
+### Tiempo para procesar, sin olvidar.
+Entre una clase y la siguiente pasa una semana: el tiempo suficiente para que tu mente descanse y procese lo que hemos trabajado, pero no tanto como para olvidarlo. Así vuelves a clase con el contenido fresco y sin sentirte perdido.
+Por eso mis planes empiezan en 3 horas semanales: una rutina constante, con continuidad de una semana a otra.
 317
 experimentos analizados
-En la mayor revisión sobre estudio repartido en el tiempo, repartir las horas a lo largo del tiempo mejoró lo que se recuerda después.
+En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
 Cepeda et al., 2006
-150–200 h
-para subir un nivel
-Las guías de Cambridge English calculan entre 150 y 200 horas de clase guiada para pasar al siguiente nivel a partir del A2.
-Cambridge English, horas de enseñanza guiada
-≈ 1 año
-por nivel con 3 horas semanales
-Con 5 horas, unos 7–9 meses. Con una sola hora semanal, entre 3 y 4 años: la continuidad es lo que hace que se avance.
-Cuenta orientativa a partir de las cifras anteriores
-Resumen del hallazgo: repartir el estudio en el tiempo, en lugar de concentrarlo, ayuda a recordar mejor lo aprendido.
-Las duraciones son orientativas: dependen de cada persona, de su punto de partida y de lo que practique fuera de clase.
+1.350+
+personas estudiadas
+Entre sesión y sesión hay un intervalo que funciona mejor: ni demasiado seguido ni demasiado separado. Y depende de cuánto tiempo se quiera recordar lo aprendido.
+Cepeda et al., 2008
+Dormir
+ayuda a fijar lo aprendido
+En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.
+Gais, Lucas y Born, 2006
+Resumen de lo que dicen los estudios: repartir el estudio en el tiempo y dormir entre sesiones ayuda a recordar mejor lo aprendido. La frecuencia semanal es mi forma de aplicarlo a las clases.
+- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. Ver (se abre en una pestaña nueva)
+- Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102. Ver (se abre en una pestaña nueva)
+- Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13(3), 259–262. Ver (se abre en una pestaña nueva)
+Estos estudios describen cómo funciona la memoria en general; el resultado de cada alumno depende de su punto de partida y de lo que practique fuera de clase.
 
 
 ---

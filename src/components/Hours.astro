@@ -1,28 +1,27 @@
 ---
 /**
- * Por qué clases desde 3 horas semanales. Solo cifras con fuente:
- *  - Cepeda et al. (2006): metaanálisis de 317 experimentos sobre estudio repartido en el tiempo.
- *  - Cambridge English: horas de enseñanza guiada orientativas por nivel del MCER.
- * Las duraciones por nivel son una cuenta orientativa (horas por nivel ÷ horas semanales).
+ * Por qué una clase por semana con mínimo 3 horas semanales: tiempo para procesar sin olvidar.
+ * Solo se citan hallazgos generales con fuente (estudio repartido en el tiempo y sueño); la
+ * frecuencia semanal es el planteamiento del método, no un resultado de esos estudios.
  */
 const stats = [
   {
     value: '317',
     label: 'experimentos analizados',
-    text: 'En la mayor revisión sobre estudio repartido en el tiempo, repartir las horas a lo largo del tiempo mejoró lo que se recuerda después.',
+    text: 'En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.',
     source: 'Cepeda et al., 2006',
   },
   {
-    value: '150–200 h',
-    label: 'para subir un nivel',
-    text: 'Las guías de Cambridge English calculan entre 150 y 200 horas de clase guiada para pasar al siguiente nivel a partir del A2.',
-    source: 'Cambridge English, horas de enseñanza guiada',
+    value: '1.350+',
+    label: 'personas estudiadas',
+    text: 'Entre sesión y sesión hay un intervalo que funciona mejor: ni demasiado seguido ni demasiado separado. Y depende de cuánto tiempo se quiera recordar lo aprendido.',
+    source: 'Cepeda et al., 2008',
   },
   {
-    value: '≈ 1 año',
-    label: 'por nivel con 3 horas semanales',
-    text: 'Con 5 horas, unos 7–9 meses. Con una sola hora semanal, entre 3 y 4 años: la continuidad es lo que hace que se avance.',
-    source: 'Cuenta orientativa a partir de las cifras anteriores',
+    value: 'Dormir',
+    label: 'ayuda a fijar lo aprendido',
+    text: 'En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.',
+    source: 'Gais, Lucas y Born, 2006',
   },
 ];
 ---
@@ -30,12 +29,16 @@ const stats = [
 <section class="section hours" id="horas" aria-labelledby="hours-title">
   <div class="container">
     <header class="hours__head" data-reveal>
-      <p class="eyebrow">Por qué desde 3 horas semanales</p>
-      <h2 id="hours-title">Aprender necesita continuidad.</h2>
+      <p class="eyebrow">Por qué una clase por semana</p>
+      <h2 id="hours-title">Tiempo para procesar, sin olvidar.</h2>
       <p class="lead">
-        Un idioma se aprende practicándolo con frecuencia, no en una clase suelta de vez en cuando. Por
-        eso mis planes empiezan en 3 horas semanales: es una rutina lo bastante constante para
-        retener lo que trabajamos y avanzar de forma sostenida.
+        Entre una clase y la siguiente pasa una semana: el tiempo suficiente para que tu mente
+        descanse y procese lo que hemos trabajado, pero no tanto como para olvidarlo. Así vuelves a
+        clase con el contenido fresco y sin sentirte perdido.
+      </p>
+      <p class="lead">
+        Por eso mis planes empiezan en 3 horas semanales: una rutina constante, con continuidad de una
+        semana a otra.
       </p>
     </header>
 
@@ -54,21 +57,41 @@ const stats = [
 
     <figure class="hours__quote" data-reveal>
       <p class="hours__finding">
-        Resumen del hallazgo: repartir el estudio en el tiempo, en lugar de concentrarlo, ayuda a
-        recordar mejor lo aprendido.
+        Resumen de lo que dicen los estudios: repartir el estudio en el tiempo y dormir entre sesiones
+        ayuda a recordar mejor lo aprendido. La frecuencia semanal es mi forma de aplicarlo a las
+        clases.
       </p>
       <figcaption>
-        Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006).
-        <cite>Distributed practice in verbal recall tasks: A review and quantitative synthesis</cite>.
-        Psychological Bulletin, 132(3), 354–380.
-        <a href="https://pubmed.ncbi.nlm.nih.gov/16719566/" target="_blank" rel="noopener noreferrer"
-          >Ver el estudio<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a
-        >
+        <ul role="list" class="hours__refs">
+          <li>
+            Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006).
+            <cite>Distributed practice in verbal recall tasks: A review and quantitative synthesis</cite>.
+            Psychological Bulletin, 132(3), 354–380.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/16719566/" target="_blank" rel="noopener noreferrer"
+              >Ver<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a
+            >
+          </li>
+          <li>
+            Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008).
+            <cite>Spacing effects in learning: A temporal ridgeline of optimal retention</cite>.
+            Psychological Science, 19(11), 1095–1102.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/19076480/" target="_blank" rel="noopener noreferrer"
+              >Ver<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a
+            >
+          </li>
+          <li>
+            Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall.
+            <cite>Learning &amp; Memory</cite>, 13(3), 259–262.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/16741280" target="_blank" rel="noopener noreferrer"
+              >Ver<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a
+            >
+          </li>
+        </ul>
       </figcaption>
     </figure>
     <p class="hours__note small">
-      Las duraciones son orientativas: dependen de cada persona, de su punto de partida y de lo que
-      practique fuera de clase.
+      Estos estudios describen cómo funciona la memoria en general; el resultado de cada alumno depende
+      de su punto de partida y de lo que practique fuera de clase.
     </p>
   </div>
 </section>
@@ -137,6 +160,10 @@ const stats = [
     font-size: var(--font-size-small);
     line-height: var(--line-height-small);
     color: var(--color-text-secondary);
+  }
+  .hours__refs {
+    display: grid;
+    gap: var(--space-2);
   }
   .hours__note {
     margin-top: var(--space-4);
