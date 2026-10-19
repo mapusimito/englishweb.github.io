@@ -53,9 +53,9 @@ En mis clases Al ser un grupo reducido, puedo detenerme más en lo que hace falt
 En una academia Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.
 En mis clases Si una explicación no funciona, puedo buscar otra forma de abordarla mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.
 
-#### El seguimiento
-En una academia El seguimiento depende de la metodología del centro, del tamaño del grupo y del formato de las clases.
-En mis clases Soy siempre tu profesor, así que conozco el trabajo de las sesiones anteriores y puedo utilizarlo para preparar las siguientes.
+#### El plan y el seguimiento
+En una academia Suele seguirse una metodología y un programa establecidos por el centro, y el seguimiento se organiza dentro de ese marco.
+En mis clases El plan no es una metodología rígida: lo adapto al grupo y lo reviso según vuestro progreso. Al ser siempre el mismo profesor, conozco lo trabajado en las sesiones anteriores y lo utilizo para preparar las siguientes.
 
 #### Los objetivos
 En una academia El programa suele organizarse en torno a un nivel, un temario o una meta común.
