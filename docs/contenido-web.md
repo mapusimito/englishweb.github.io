@@ -83,12 +83,12 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 
 ---
 ## Sección: horas
-Por qué sesiones cortas y frecuentes
+Por qué sesiones de hora y media
 
 ### Tiempo para procesar, sin olvidar.
-Lo ideal es dar clase una hora al día, al menos cuatro días por semana. Esa continuidad mantiene fresco lo aprendido: cada día retomas lo del día anterior sin haberlo olvidado.
-Al terminar la semana, el descanso da tiempo para que tu mente procese lo trabajado, pero no tanto como para olvidarlo. Así empiezas la siguiente semana sin sentirte perdido.
-Si tu agenda no lo permite, puedes empezar desde 3 horas semanales.
+Lo ideal es dar clase varios días por semana: con continuidad, lo aprendido se mantiene fresco y cada día retomas lo anterior sin haberlo olvidado.
+Mis sesiones duran, como mínimo, una hora y media. En mi experiencia, una hora se queda corta y dos horas resultan pesadas: hora y media es el punto medio.
+Con 3 horas semanales son dos sesiones de hora y media, o tres de una hora; con 5 horas, cuatro sesiones. Y entre una semana y la siguiente, el descanso da tiempo para que tu mente procese lo trabajado sin olvidarlo.
 317
 experimentos analizados
 En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
@@ -101,7 +101,7 @@ Dormir
 ayuda a fijar lo aprendido
 En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.
 Gais, Lucas y Born, 2006
-Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La práctica casi diaria es mi forma de aplicarlo a las clases.
+Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La duración de la sesión (hora y media) y la frecuencia semanal vienen de mi experiencia dando clase.
 - Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. Ver (se abre en una pestaña nueva)
 - Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102. Ver (se abre en una pestaña nueva)
 - Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13(3), 259–262. Ver (se abre en una pestaña nueva)
@@ -226,6 +226,8 @@ Puedes escribirme por WhatsApp o utilizar el formulario de contacto. Cuéntame t
 Si estás buscando clases de inglés, escríbeme y cuéntame qué quieres conseguir, qué experiencia tienes y qué aspectos te gustaría trabajar.
 Te responderé personalmente para resolver tus dudas, hablar de las opciones disponibles y ver cómo podemos organizar las clases.
 - Escríbeme por WhatsApp (se abre en una pestaña nueva)
+- dagamapu@gmail.com
+- +34614271142
 
 #### Escríbeme directamente
 El formulario necesita JavaScript y ahora mismo no está disponible. Puedes contactarme sin él:
@@ -258,6 +260,8 @@ Secciones
 - Contacto
 Contacto
 - WhatsApp (se abre en una pestaña nueva)
+- dagamapu@gmail.com
+- +34614271142
 - Formulario de contacto
 © 2026 Daniel Guanipa
 - Aviso legal

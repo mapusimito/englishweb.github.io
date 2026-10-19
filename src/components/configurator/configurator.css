@@ -787,3 +787,8 @@
 .cfg-nav__next {
   min-width: 10rem;
 }
+
+.cfg-card__tag {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-primary);
+}
