@@ -81,6 +81,22 @@ import { site } from '../config/site';
     color: var(--color-text-secondary);
   }
 
+  /* Móvil: más aire dentro de la portada */
+  @media (max-width: 899px) {
+    .hero-wrap {
+      padding-top: var(--space-6);
+    }
+    .hero__grid {
+      row-gap: var(--space-8);
+    }
+    .hero__copy {
+      gap: var(--space-6);
+    }
+    .hero__ctas {
+      gap: var(--space-5);
+    }
+  }
+
   /* Móvil: retrato 4:5 a todo el ancho con su esquina de giro y un waypoint */
   .tiles {
     position: relative;

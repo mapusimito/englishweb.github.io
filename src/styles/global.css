@@ -131,6 +131,30 @@ a:hover {
   padding-block: var(--section-space-tight);
 }
 
+/* Móvil: más aire entre secciones, cabeceras y bloques */
+@media (max-width: 899px) {
+  :root {
+    --page-padding: 1.5rem;
+  }
+  .section {
+    padding-block: 6rem;
+  }
+  .section--tight {
+    padding-block: 4.5rem;
+  }
+  .section-head {
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+  .panel {
+    padding-block: 3.5rem;
+  }
+  .panel .container,
+  .panel > div {
+    row-gap: var(--space-8);
+  }
+}
+
 /* Panel insertado: Blush o Ink, con radio xl, separado de los bordes */
 .panel-wrap {
   padding-inline: var(--page-padding);
