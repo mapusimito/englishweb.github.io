@@ -110,7 +110,7 @@ test('queda claro que «online» no es en Alicante: presenciales en Alicante u o
 test.describe('diferencial: clase personalizada frente a aula masificada', () => {
   test('el pitch está en el hero y en los metadatos', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toHaveText('Una clase pensada para ti, no para veinte.');
+    await expect(page.locator('h1')).toHaveText('Una clase pensada para ti, no para diez.');
     await expect(page.locator('.hero__lead')).toContainText('hasta cuatro');
     const title = await page.title();
     expect(title.length).toBeLessThanOrEqual(62);
@@ -174,7 +174,7 @@ test.describe('diferencial: clase personalizada frente a aula masificada', () =>
     const body = (await page.locator('body').innerText()).replace(/\s+/g, ' ');
     const html = await page.content();
     expect(body.match(/Una clase pensada para ti/gi) ?? []).toHaveLength(1);
-    expect(body.match(/no para veinte/gi) ?? []).toHaveLength(1);
+    expect(body.match(/no para diez/gi) ?? []).toHaveLength(1);
     expect(body.match(/Una academia puede ser/g) ?? []).toHaveLength(1);
     expect(body.match(/hasta cuatro/gi)?.length ?? 0).toBeLessThanOrEqual(2);
     expect(html).not.toMatch(/academia[s]? (como|de) [A-Z]/);

@@ -25,7 +25,7 @@ export const site = {
   // ≤ ~60 caracteres. «en Alicante u online» deja claro que online no es en Alicante.
   title: 'Inglés a tu medida en Alicante u online · My Way to English',
   description:
-    'Inglés en grupos de hasta 4, con el mismo profesor y un plan a tu medida, no en un aula de 20. Clases presenciales en Alicante u online.',
+    'Inglés en grupos de hasta 4, con el mismo profesor y un plan a tu medida, no en un aula de 10. Clases presenciales en Alicante u online.',
 };
 
 /** Título para páginas interiores: «{Página} · My Way to English». */

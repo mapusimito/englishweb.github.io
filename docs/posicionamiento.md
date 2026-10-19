@@ -22,13 +22,13 @@ Una clase pensada para ti: grupos de hasta cuatro, siempre el mismo profesor, y 
 Tuteo, cercano, directo, sin humo. Modelo contra modelo, nunca contra una academia concreta. Reconocer lo bueno de las academias (precio, horarios, preparación de examen): la honestidad vende.
 
 ## Titulares de hero
-- **A (elegido)**: «Una clase pensada para ti, no para veinte.» Concreto, contrasta modelos en una frase, se entiende sin explicación y deja el tagline de marca como cierre.
+- **A (elegido)**: «Una clase pensada para ti, no para diez.» Concreto, contrasta modelos en una frase, se entiende sin explicación y deja el tagline de marca como cierre.
 - B: «Máximo cuatro alumnos. Un profesor que ve dónde te atascas.» Muy claro, pero largo y menos memorable.
 - C: «Aquí nadie se queda atrás sin que yo lo note.» Emocional (útil para familias), pero es una promesa más fuerte y difícil de acotar.
 
 ## Mensajes por público
 - **Familias**: "Si algo no se entiende, lo veo en la clase y cambio la explicación. Y se lo cuento a la familia."
-- **Estudiantes**: "Aquí puedes preguntar sin que te miren veinte personas."
+- **Estudiantes**: "Aquí puedes preguntar sin que te miren diez personas."
 - **Adultos**: "Un plan con tus objetivos y tu horario, con el mismo profesor cada semana."
 
 ## Qué NO decir
