@@ -43,9 +43,9 @@ export const contact = {
    */
   whatsapp: '34614271142',
   /** Teléfono visible (opcional). Formato libre para mostrar, p. ej. '+34 600 00 00 00'. */
-  phone: '', // PENDIENTE
+  phone: '+34614271142',
   /** Email de contacto (opcional). */
-  email: '', // PENDIENTE
+  email: 'dagamapu@gmail.com',
   /** Mensaje con el que se abre WhatsApp desde los botones generales. */
   whatsappMessage: 'Hola, Daniel. Me gustaría recibir información sobre tus clases de inglés.',
   /**
