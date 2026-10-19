@@ -69,6 +69,13 @@ const prefix = isHome ? '' : withBase();
   </div>
 </header>
 
+<style is:global>
+  @property --d1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+  @property --d2 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+  @property --d3 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+  @property --d4 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+</style>
+
 <style>
   .header {
     position: sticky;
@@ -111,12 +118,12 @@ const prefix = isHome ? '' : withBase();
   }
   .header__nav ul {
     display: flex;
-    gap: var(--space-6);
+    gap: var(--space-2);
   }
   .header__nav a {
     position: relative;
     display: inline-block;
-    padding-block: var(--space-2);
+    padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-nav);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-ui);
@@ -124,12 +131,50 @@ const prefix = isHome ? '' : withBase();
     text-decoration: none;
     white-space: nowrap;
   }
-  .header__nav a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 6px;
-    text-decoration-color: var(--color-brand-primary);
+  /* Hover: el borde se dibuja poco a poco alrededor del texto (arriba, derecha, abajo, izquierda).
+     Cada lado es una variable animable con su propio retardo. */
+  .header__nav a {
+    --draw: var(--color-brand-primary);
+    --d1: 0%;
+    --d2: 0%;
+    --d3: 0%;
+    --d4: 0%;
+    background-image:
+      linear-gradient(var(--draw), var(--draw)),
+      linear-gradient(var(--draw), var(--draw)),
+      linear-gradient(var(--draw), var(--draw)),
+      linear-gradient(var(--draw), var(--draw));
+    background-repeat: no-repeat;
+    background-position:
+      left top,
+      right top,
+      right bottom,
+      left bottom;
+    background-size:
+      var(--d1) 2px,
+      2px var(--d2),
+      var(--d3) 2px,
+      2px var(--d4);
+    transition:
+      --d1 0.12s linear 0s,
+      --d2 0.12s linear 0.12s,
+      --d3 0.12s linear 0.24s,
+      --d4 0.12s linear 0.36s,
+      color var(--duration-base) var(--ease-standard);
   }
+  .header__nav a:hover,
+  .header__nav a:focus-visible {
+    --d1: 100%;
+    --d2: 100%;
+    --d3: 100%;
+    --d4: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header__nav a {
+      transition: none;
+    }
+  }
+
   /* Sección actual: color Ink + punto Coral de 6px debajo */
   .header__nav a[aria-current='true'] {
     color: var(--color-brand-primary);

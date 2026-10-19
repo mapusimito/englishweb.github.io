@@ -136,6 +136,11 @@ a:hover {
   :root {
     --page-padding: 1.5rem;
   }
+  @media (max-width: 359px) {
+    :root {
+      --page-padding: 1.25rem;
+    }
+  }
   .section {
     padding-block: 6rem;
   }
@@ -337,6 +342,65 @@ a:hover {
 .on-ink .btn--primary:hover {
   background: var(--color-surface-selected);
   color: var(--color-cta-inverse-text);
+}
+
+/* Hover en escritorio: el fondo se rellena de izquierda a derecha y texto y fondo se invierten */
+@media (hover: hover) and (min-width: 900px) {
+  .btn--primary,
+  .btn--secondary {
+    --fill: var(--color-surface);
+    --fill-text: var(--color-brand-primary);
+    background-image: linear-gradient(var(--fill), var(--fill));
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
+    transition:
+      background-size 0.45s var(--ease-standard),
+      border-color 0.45s var(--ease-standard),
+      color 0.3s var(--ease-standard) 0.05s,
+      transform var(--duration-base) var(--ease-standard);
+  }
+  .btn--primary {
+    border-color: var(--color-cta);
+  }
+  .btn--secondary {
+    --fill: var(--color-brand-primary);
+    --fill-text: var(--color-cta-text);
+  }
+  .on-ink .btn--primary {
+    --fill: var(--color-surface-inverse);
+    --fill-text: var(--color-cta-inverse);
+    border-color: var(--color-cta-inverse);
+  }
+  .btn--primary:hover,
+  .btn--secondary:hover,
+  .on-ink .btn--primary:hover {
+    background-image: linear-gradient(var(--fill), var(--fill));
+    background-size: 100% 100%;
+    color: var(--fill-text);
+  }
+  .btn--primary:active,
+  .btn--secondary:active,
+  .on-ink .btn--primary:active {
+    background-image: linear-gradient(var(--fill), var(--fill));
+    background-size: 100% 100%;
+  }
+  .btn--primary:hover {
+    background-color: var(--color-cta);
+  }
+  .btn--secondary:hover {
+    background-color: transparent;
+    border-color: var(--color-brand-primary);
+  }
+  .on-ink .btn--primary:hover {
+    background-color: var(--color-cta-inverse);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn--primary,
+  .btn--secondary {
+    transition: none !important;
+  }
 }
 .btn--compact {
   min-height: 40px;
