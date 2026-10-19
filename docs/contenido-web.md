@@ -38,28 +38,32 @@ Conozco tu progreso y puedo preparar cada clase teniendo en cuenta lo que hemos 
 Academia y grupos reducidos
 
 ### ¿Qué cambia en una clase más pequeña?
-En una academia, las clases suelen organizarse alrededor de un programa común y un horario establecido. Este modelo puede funcionar muy bien, especialmente si buscas una opción económica, una amplia oferta de horarios o preparación para un examen concreto.
-Mis clases están organizadas para poder dedicar más atención a cada alumno. Trabajo con grupos de hasta cuatro personas y preparo las sesiones teniendo en cuenta los objetivos y las dificultades que vamos identificando. En clases individuales o en pareja esa atención es casi completa; en grupo se reparte, aunque sigue siendo mayor que en un aula grande.
+Una academia es un negocio de números grandes: para que las cuentas salgan, necesita muchos alumnos por aula. Y con tantos alumnos, el profesor no puede dedicarse de forma individual a cada uno.
+Mis clases están organizadas al revés: grupos de hasta cuatro personas para que todo el mundo participe, nadie se quede atrás y cada sesión se prepare teniendo en cuenta lo que vamos viendo. En clases individuales o en pareja la atención es casi completa; en grupo se reparte, pero sigue siendo mucho mayor que en un aula grande.
 
 #### El tamaño del grupo
-En una academia El profesor reparte su atención entre los alumnos de la clase, por lo que el tiempo disponible para trabajar cada dificultad individual puede ser limitado.
+En una academia Con muchos alumnos por aula, el profesor no tiene capacidad para dedicarse de forma individual a cada uno.
 En mis clases Puedes aprender individualmente, en pareja o en un grupo de hasta cuatro personas. Así hay más oportunidades para participar, preguntar y practicar.
 
 #### El ritmo de aprendizaje
-En una academia En un grupo grande, el ritmo lo marca el programa y es posible que alguien se quede rezagado mientras la clase sigue avanzando.
+En una academia El ritmo lo marca el programa. Si te quedas atrás, la clase y el profesor siguen avanzando sin ti.
 En mis clases En un grupo reducido, el ritmo tiene que funcionar para todos: hago que todo el mundo participe y me aseguro de que avancéis a la par.
 
 #### Las explicaciones
-En una academia Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.
+En una academia Se explica el contenido previsto una vez para todos; con tantos alumnos, apenas hay tiempo para volver a explicarlo de otra forma a quien no lo ha entendido.
 En mis clases Si una explicación no funciona, puedo buscar otra forma de abordarla mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.
 
 #### El plan y el seguimiento
-En una academia Suele seguirse una metodología y un programa establecidos por el centro, y el seguimiento se organiza dentro de ese marco.
+En una academia Una metodología y un programa establecidos, iguales para todos los grupos; el seguimiento se limita a ese marco.
 En mis clases El plan no es una metodología rígida: lo adapto al grupo y lo reviso según vuestro progreso. Al ser siempre el mismo profesor, conozco lo trabajado en las sesiones anteriores y lo utilizo para preparar las siguientes.
 
 #### Los objetivos
-En una academia El programa suele organizarse en torno a un nivel, un temario o una meta común.
+En una academia El programa es común para todos y no se adapta a lo que cada alumno quiere conseguir.
 En mis clases Tengo en cuenta los objetivos de cada alumno, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional. En clases individuales el plan gira en torno a los tuyos; en grupo, busco objetivos compatibles.
+
+#### Lo que realmente pagas
+En una academia Una cuota mensual baja resulta atractiva, pero en una clase de diez personas no hay interacción constante con el profesor, y es fácil pasar el curso sin haber aprendido de verdad.
+En mis clases Cada sesión cuenta: hablas, preguntas y practicas con tu profesor de forma constante, y el precio refleja esa atención.
 
 #### ¿Para quién tienen sentido mis clases?
 Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una atención más cercana, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
@@ -158,7 +162,7 @@ No necesitas conocer tu nivel antes de escribirme. En la primera clase hacemos a
 Hablamos de tus objetivos y de tu experiencia con el inglés, comprobamos tu nivel y vemos qué dificultades tienes. Con esa información podemos valorar cómo organizar las siguientes sesiones. La primera clase es gratis y no te compromete a contratar una mensualidad.
 
 **¿Qué diferencia hay entre tus clases y una academia?**
-Trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor. Esto me permite conocer el progreso de cada alumno y ajustar las explicaciones y actividades a lo que el grupo necesita. Una academia puede ofrecer más horarios o precios más económicos, así que la elección depende de lo que estés buscando.
+Una academia es un negocio de números grandes: necesita muchos alumnos por aula y, con tantos, el profesor no puede dedicarse de forma individual a cada uno. Yo trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor, así que conozco el progreso de cada alumno, hago que todo el mundo participe y me aseguro de que el grupo avance a la par. Una cuota baja puede salir cara si no hay interacción constante con el profesor.
 
 **¿Dónde se imparten las clases presenciales?**
 Podemos organizar las clases en Playa de San Juan, en tu domicilio si acordamos esa opción o en otro espacio tranquilo que nos venga bien. También doy clases online por videollamada.
