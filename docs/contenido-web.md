@@ -83,24 +83,25 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 
 ---
 ## Sección: horas
-Por qué una clase por semana
+Por qué sesiones cortas y frecuentes
 
 ### Tiempo para procesar, sin olvidar.
-Entre una clase y la siguiente pasa una semana: el tiempo suficiente para que tu mente descanse y procese lo que hemos trabajado, pero no tanto como para olvidarlo. Así vuelves a clase con el contenido fresco y sin sentirte perdido.
-Por eso mis planes empiezan en 3 horas semanales: una rutina constante, con continuidad de una semana a otra.
+Lo ideal es dar clase una hora al día, al menos cuatro días por semana. Esa continuidad mantiene fresco lo aprendido: cada día retomas lo del día anterior sin haberlo olvidado.
+Al terminar la semana, el descanso da tiempo para que tu mente procese lo trabajado, pero no tanto como para olvidarlo. Así empiezas la siguiente semana sin sentirte perdido.
+Si tu agenda no lo permite, puedes empezar desde 3 horas semanales.
 317
 experimentos analizados
 En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
 Cepeda et al., 2006
-1.350+
-personas estudiadas
-Entre sesión y sesión hay un intervalo que funciona mejor: ni demasiado seguido ni demasiado separado. Y depende de cuánto tiempo se quiera recordar lo aprendido.
+20–40 %
+el intervalo que mejor funciona
+Para recordar algo una semana después, lo mejor era repasar tras un intervalo del 20–40 % de ese tiempo: es decir, cada 1–3 días. Participaron más de 1.350 personas.
 Cepeda et al., 2008
 Dormir
 ayuda a fijar lo aprendido
 En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.
 Gais, Lucas y Born, 2006
-Resumen de lo que dicen los estudios: repartir el estudio en el tiempo y dormir entre sesiones ayuda a recordar mejor lo aprendido. La frecuencia semanal es mi forma de aplicarlo a las clases.
+Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La práctica casi diaria es mi forma de aplicarlo a las clases.
 - Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. Ver (se abre en una pestaña nueva)
 - Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102. Ver (se abre en una pestaña nueva)
 - Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13(3), 259–262. Ver (se abre en una pestaña nueva)
