@@ -36,7 +36,7 @@ export const contact = {
    * Ejemplo de formato: '34600000000'. Vacío = WhatsApp no configurado: el
    * enlace de WhatsApp no aparece y el contacto se hace por el formulario.
    */
-  whatsapp: '', // PENDIENTE
+  whatsapp: '34614271142',
   /** Teléfono visible (opcional). Formato libre para mostrar, p. ej. '+34 600 00 00 00'. */
   phone: '', // PENDIENTE
   /** Email de contacto (opcional). */
@@ -59,77 +59,20 @@ export const legal = {
 };
 
 /**
- * Nota bajo los precios. El brief (§13.6, §19) pide indicar si el precio incluye
+ * Nota bajo el presupuesto. El brief (§13.6, §19) pide indicar si el precio incluye
  * impuestos, cómo se factura y si hay permanencia. Son decisiones de negocio
  * pendientes: mientras esté vacío no se muestra nada inventado.
  * Ejemplo: 'Precios finales con impuestos incluidos. Pago mensual, sin permanencia.'
  */
 export const pricingTerms = ''; // PENDIENTE
 
-/* ------------------------------------------------------------------ */
-/* Planes y precios                                                    */
-/* ------------------------------------------------------------------ */
-
-export type Plan = {
-  id: 'individual' | 'pareja' | 'grupo';
-  name: string;
-  /** Para quién es (una línea). */
-  suits: string;
-  /** Precio mensual por alumno, en euros. */
-  pricePerStudent: number;
-  hoursPerWeek: number;
-  /** Línea aclaratoria bajo el precio (opcional). */
-  note?: string;
-  /** Qué incluye: solo lo que es verdad. */
-  included: string[];
-};
-
-const includedInAll = ['3 horas a la semana', 'Plan inicial tras el diagnóstico', 'Revisión de progreso'];
-
-/** Orden fijo: Individual, En pareja, Grupo reducido. Mismo peso visual para los tres. */
-export const plans: Plan[] = [
-  {
-    id: 'individual',
-    name: 'Individual',
-    suits: 'Para avanzar al ritmo exacto que necesitas.',
-    pricePerStudent: 240,
-    hoursPerWeek: 3,
-    included: includedInAll,
-  },
-  {
-    id: 'pareja',
-    name: 'En pareja',
-    suits: 'Para aprender con alguien de tu nivel.',
-    pricePerStudent: 120,
-    hoursPerWeek: 3,
-    note: '240 € en total para la pareja',
-    included: includedInAll,
-  },
-  {
-    id: 'grupo',
-    name: 'Grupo reducido',
-    suits: 'Para practicar con más voces, hasta 4 alumnos.',
-    pricePerStudent: 75,
-    hoursPerWeek: 3,
-    note: 'Grupos de 3 a 4 alumnos',
-    included: includedInAll,
-  },
-];
-
 /** Datos verificables del servicio (brief §13.4). Sustituyen a cualquier estadística. */
 export const facts = [
   { title: 'Máx. 4 alumnos por grupo', detail: 'Grupos pequeños para seguir a cada alumno.' },
-  { title: '3 horas a la semana', detail: 'Continuidad semana a semana.' },
+  { title: 'Desde 3 horas a la semana', detail: 'Continuidad semana a semana.' },
   { title: 'En Alicante u online', detail: 'Presencial en Alicante o por videollamada.' },
   { title: 'Un mismo profesor, siempre', detail: 'Cada semana trabajas conmigo.' },
 ];
-
-export const formatPrice = (value: number) =>
-  new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  }).format(value);
 
 /* ------------------------------------------------------------------ */
 /* Helpers de contacto                                                 */

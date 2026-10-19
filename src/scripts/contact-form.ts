@@ -110,14 +110,6 @@ export function initContactForm() {
     revalidate(event);
   });
 
-  // «Escribirme sobre este plan» preselecciona el formato en el formulario.
-  document.querySelectorAll<HTMLAnchorElement>('a[data-plan]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const option = form.querySelector<HTMLInputElement>(`[data-plan-option="${link.dataset.plan}"]`);
-      if (option) option.checked = true;
-    });
-  });
-
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
