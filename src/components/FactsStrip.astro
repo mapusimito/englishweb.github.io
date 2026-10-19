@@ -27,8 +27,32 @@ import { facts } from '../config/site';
   }
   .facts__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-5) var(--grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 899px) {
+    .facts {
+      padding-block: var(--space-8) 0;
+    }
+    .facts__item {
+      padding-block: var(--space-5);
+      border-bottom: var(--border-hairline) solid var(--color-border);
+    }
+    .facts__item:last-child {
+      border-bottom: 0;
+    }
+    .facts__title {
+      font-size: var(--font-size-h4);
+    }
+    .facts__detail {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+  @media (min-width: 900px) {
+    .facts__list {
+      gap: var(--space-5) var(--grid-gap);
+    }
   }
   @media (min-width: 900px) {
     .facts__list {

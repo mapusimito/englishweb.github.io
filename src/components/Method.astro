@@ -181,6 +181,21 @@ const slots = ['top', 'right', 'bottom', 'left'] as const;
     padding-bottom: 0;
     border-bottom: 0;
   }
+  /* Móvil: número sobre el título y texto a todo el ancho, con más aire entre fases */
+  @media (max-width: 899px) {
+    .stage {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-2);
+      padding-bottom: var(--space-6);
+    }
+    .stage:not(:last-child) {
+      margin-bottom: var(--space-6);
+    }
+    .stage__text {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+    }
+  }
   .stage__number {
     font-family: var(--font-display);
     font-size: var(--font-size-h3);

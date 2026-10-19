@@ -250,7 +250,8 @@
   font-weight: var(--font-weight-semibold);
 }
 .cfg-card__tagline {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular, 400);
+  color: var(--color-text-primary);
   line-height: var(--line-height-h4);
 }
 .cfg-card__text,

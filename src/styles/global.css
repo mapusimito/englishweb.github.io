@@ -158,6 +158,52 @@ a:hover {
   .panel > div {
     row-gap: var(--space-8);
   }
+
+  /* Jerarquía en móvil: titulares más grandes, cabeceras centradas, párrafo de entrada destacado */
+  h2 {
+    font-size: clamp(1.875rem, 1.2rem + 3.6vw, 2.25rem);
+    line-height: 1.12;
+    max-width: 18ch;
+  }
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .section-head,
+  .compare__head,
+  .approach__label,
+  .method__head,
+  .contact__intro,
+  .about__body > h2 {
+    text-align: center;
+    justify-items: center;
+  }
+  .section-head > *,
+  .compare__head > *,
+  .approach__label > *,
+  .method__head > *,
+  .contact__intro > *,
+  .about__body > h2 {
+    margin-inline: auto;
+  }
+  /* Los párrafos largos se leen mejor alineados a la izquierda */
+  .compare__head .lead,
+  .contact__intro .lead,
+  .section-head .lead {
+    text-align: left;
+  }
+  .prose {
+    gap: var(--space-5);
+  }
+  .prose > p:first-child {
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    color: var(--color-text-primary);
+  }
+  .prose > p + p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
 }
 
 /* Panel insertado: Blush o Ink, con radio xl, separado de los bordes */
