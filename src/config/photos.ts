@@ -14,7 +14,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import claseGrupo from '../assets/photos/clase-grupo-reducido.jpg';
-import explicandoVentana from '../assets/photos/daniel-explicando-ventana.jpg';
+import heroAlumnos from '../assets/photos/hero-alumnos-en-clase.webp';
 import explicandoGestos from '../assets/photos/daniel-explicando-gestos.jpg';
 
 export type PhotoShape = 'landscape' | 'portrait' | 'square' | 'wide';
@@ -34,14 +34,14 @@ export type Photo = {
   caption?: string;
 };
 
-/** Portada: retrato de Daniel, 4:5, con la esquina de giro abajo a la derecha. */
+/** Portada: alumnos en clase (foto libre de derechos, no es de Daniel), 4:5, esquina de giro abajo a la derecha. */
 export const heroPhoto: Photo = {
   id: 'hero',
-  src: explicandoVentana,
-  alt: 'Daniel Guanipa sonriendo mientras explica junto a una ventana',
-  slot: 'Retrato de Daniel: cabeza y hombros, mirando a cámara, luz natural',
+  src: heroAlumnos,
+  alt: 'Estudiantes en un aula escribiendo en sus cuadernos mientras una alumna de pie sonríe con un libro en los brazos',
+  slot: 'Alumnos en clase',
   shape: 'portrait',
-  focus: '42% 35%',
+  focus: '62% 40%',
 };
 
 /** Biografía: Daniel dando clase, 4:5, esquina de giro arriba a la izquierda. */

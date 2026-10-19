@@ -132,7 +132,7 @@ Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
 
 | Hueco | Archivo |
 | --- | --- |
-| Portada (4:5, esquina de giro abajo a la derecha) | `daniel-explicando-ventana.jpg` |
+| Portada (4:5, esquina de giro abajo a la derecha) | `hero-alumnos-en-clase.webp` (foto libre de derechos, no es de Daniel) |
 | Biografía (4:5, esquina de giro arriba a la izquierda) | `daniel-explicando-gestos.jpg` |
 | «Cómo son las clases» | `clase-grupo-reducido.jpg` |
 
