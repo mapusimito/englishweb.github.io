@@ -66,7 +66,7 @@ En una academia Una cuota baja resulta atractiva, pero si hay poca interacción 
 En mis clases Mi objetivo es que aprendas, no que pases el curso: hablas, preguntas y practicas con tu profesor de forma constante, y el precio refleja esa atención.
 
 #### ¿Para quién tienen sentido mis clases?
-Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una atención más cercana, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
+Si tu objetivo es aprender inglés a fondo, usarlo de forma profesional o convertirlo en tu idioma, hasta llegar a pensar en inglés, estas clases son para ti. No se trata solo de aprender a comunicarte: se trata de entender el inglés como idioma e interiorizarlo. Para eso hace falta una atención cercana y personalizada, con tiempo para practicar, preguntar y corregir hasta que lo hagas tuyo.
 [Botón] Pide tu primera clase gratis
 [Botón] Consulta los planes
 
