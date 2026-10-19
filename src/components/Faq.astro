@@ -4,54 +4,59 @@ import Icon from './Icon.astro';
 import { hasWhatsapp } from '../config/site';
 import { cancellationNoticeHours, inPersonPlace, paymentMethod, showPending } from '../config/policies';
 import { visibleFaqs, type FaqItem } from '../lib/content';
-import { calculateQuote } from '../lib/pricing/engine';
-import { formatEuros } from '../lib/pricing/format';
-
-// Precio por persona de una pareja en cada plan fijo: lo calcula el motor de precios,
-// así que nunca se desincroniza de lo que ve el cliente en el configurador.
-const pairPrice = (hours: number) => formatEuros(calculateQuote(2, hours).monthlyPerStudentCents, true);
 
 const allFaqs: FaqItem[] = [
   {
     q: '¿Cómo sé qué nivel de inglés tengo?',
-    a: 'No hace falta que lo sepas antes de escribirme. Lo primero que hacemos es el diagnóstico: compruebo tu nivel con ejercicios y una conversación, y te digo por escrito desde dónde empezamos.',
+    a: 'No necesitas conocer tu nivel antes de escribirme. En la primera clase hacemos algunos ejercicios y hablamos para comprobar qué sabes, cómo utilizas el inglés y qué aspectos necesitas trabajar. Después te explico desde dónde empezaremos.',
   },
   {
-    q: '¿Qué pasa en la primera sesión?',
-    a: 'Empezamos por el diagnóstico: vemos tu nivel, hablamos de tus objetivos y de lo que más te cuesta. Con eso preparo el plan de las siguientes semanas. Esa primera sesión no tiene coste, así que puedes decidir después si quieres seguir con una mensualidad.',
+    q: '¿Qué hacemos en la primera clase?',
+    a: 'Hablamos de tus objetivos y de tu experiencia con el inglés, comprobamos tu nivel y vemos qué dificultades tienes. Con esa información podemos valorar cómo organizar las siguientes sesiones. La primera clase es gratis y no te compromete a contratar una mensualidad.',
   },
   {
-    q: '¿En qué se diferencia de una academia?',
-    a: 'Sobre todo en cuántos somos y en quién te sigue. Una academia suele ser buena opción si buscas precio ajustado, horarios variados o preparar un examen. Yo trabajo con grupos de hasta cuatro, soy siempre el mismo profesor y ajusto el plan a lo que le cuesta a cada alumno. Si prefieres el ambiente de un aula grande, quizá no sea lo tuyo.',
+    q: '¿Qué diferencia hay entre tus clases y una academia?',
+    a: 'Trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor. Esto me permite conocer el progreso de cada alumno y adaptar las explicaciones y actividades a sus necesidades. Una academia puede ofrecer más horarios o precios más económicos, así que la elección depende de lo que estés buscando.',
   },
   {
-    q: '¿Dónde son las clases presenciales?',
-    a: `En ${inPersonPlace}, en tu casa o en un espacio tranquilo que acordemos. También online por videollamada.`,
+    q: '¿Dónde se imparten las clases presenciales?',
+    a: `Podemos organizar las clases en ${inPersonPlace}, en tu domicilio si acordamos esa opción o en otro espacio tranquilo que nos venga bien. También doy clases online por videollamada.`,
   },
   {
-    q: '¿En qué se diferencian individual, pareja y grupo?',
-    a: 'Siguen el mismo método. En individual, toda la sesión se adapta a ti. En pareja o en grupo, de cuatro alumnos como máximo, la atención se reparte, pero ganas conversación y práctica con compañeros, y el precio por persona baja. Las tarifas de grupo se aplican cuando vienes con tus propios compañeros.',
+    q: '¿Qué diferencia hay entre las clases individuales, en pareja y en grupo?',
+    a: 'El método de trabajo es el mismo, pero cambia cómo se organiza la sesión. En las clases individuales toda la atención se centra en ti. En pareja y en grupo puedes practicar con otros alumnos, escuchar distintas formas de expresarse y mantener conversaciones. Además, el precio por persona es menor.',
   },
   {
-    q: '¿Hay precio para parejas?',
-    a: `Sí: ${pairPrice(3)}/mes por persona en el plan Esencial y ${pairPrice(5)}/mes por persona en el Intensivo.`,
+    q: '¿Puedo apuntarme a un grupo si no conozco a nadie?',
+    a: 'Los grupos se forman con compañeros que vienen juntos. Si te interesa compartir clases, puedes venir con otra persona o con un grupo de amigos, familiares o compañeros que tengan objetivos compatibles.',
   },
   {
-    q: '¿Cómo se forman los grupos?',
-    a: 'Vienes con tus propios compañeros: no asigno automáticamente a personas que se inscriben solas a grupos de desconocidos. Las parejas son de 2 alumnos y los grupos de 3 o 4, nunca más.',
+    q: '¿Hay descuentos por contratar más horas?',
+    a: 'Sí. El precio por hora disminuye al contratar más horas semanales. Puedes consultar las opciones en el configurador y ver la mensualidad antes de enviar tu solicitud.',
   },
   {
-    q: '¿Cómo sé si estoy avanzando?',
-    a: 'Revisamos tu progreso de forma regular frente a los objetivos del diagnóstico. Si el alumno es menor, también se lo cuento a la familia.',
+    q: '¿Cómo sabré si estoy avanzando?',
+    a: 'Revisamos los contenidos trabajados y comprobamos cómo los utilizas en ejercicios y actividades prácticas. Según tus objetivos, podemos prestar más atención a la conversación, la gramática, la comprensión oral o cualquier otra habilidad que necesites desarrollar.',
   },
   {
-    q: '¿Qué significa que adaptas la explicación?',
-    a: 'Que el objetivo de la clase no cambia, pero la forma de llegar a él sí: si una explicación no funciona, pruebo con otro ejemplo, una comparación con el español, un juego o más práctica en ese punto.',
+    q: '¿Qué significa que las clases son personalizadas?',
+    a: 'Significa que tengo en cuenta tu nivel, tus objetivos y las dificultades que encontramos durante las sesiones para decidir qué trabajar y cómo hacerlo. Por ejemplo, si entiendes una estructura gramatical al leerla, pero te cuesta utilizarla al hablar, podemos dedicar más tiempo a practicarla en conversaciones.',
   },
   {
-    q: '¿Cómo se organiza el horario?',
-    a: 'Según la disponibilidad de los dos. En pareja y en grupo el horario es común para todo el grupo.',
+    q: '¿Cómo se organizan los horarios?',
+    a: 'Acordamos los horarios según la disponibilidad de ambos. En las clases en pareja o en grupo, todos los participantes deben compartir el mismo horario.',
   },
+  {
+    q: '¿Puedo recibir clases para preparar un examen?',
+    a: 'Podemos valorar tus necesidades y organizar el trabajo según el examen que quieras preparar, tu nivel actual y el tiempo disponible. Conviene hablarlo antes para comprobar que el plan se ajusta a lo que necesitas.',
+  },
+  {
+    q: '¿Cómo puedo pedir información?',
+    a: hasWhatsapp
+      ? 'Puedes escribirme por WhatsApp o utilizar el formulario de contacto. Cuéntame tu nivel aproximado, qué quieres conseguir y si te interesan las clases individuales, en pareja o en grupo. Te responderé personalmente para hablar de las opciones y los horarios.'
+      : 'Puedes utilizar el formulario de contacto. Cuéntame tu nivel aproximado, qué quieres conseguir y si te interesan las clases individuales, en pareja o en grupo. Te responderé personalmente para hablar de las opciones y los horarios.',
+  },
+  // Estas dos se publican solo cuando se rellenan los datos pendientes [entre corchetes].
   {
     q: '¿Cómo se paga?',
     a: `El pago es mensual, por adelantado, mediante ${paymentMethod}.`,
@@ -59,12 +64,6 @@ const allFaqs: FaqItem[] = [
   {
     q: '¿Qué pasa si no puedo asistir a una clase?',
     a: `Si avisas con al menos ${cancellationNoticeHours} horas de antelación, recuperamos la clase otro día de esa semana o la siguiente. Si avisas con menos tiempo, la clase se considera dada.`,
-  },
-  {
-    q: '¿Cómo puedo pedir información?',
-    a: hasWhatsapp
-      ? 'Escríbeme por WhatsApp o rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.'
-      : 'Rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.',
   },
 ];
 
@@ -77,7 +76,7 @@ const faqs = visibleFaqs(allFaqs, showPending);
     <div class="faq__block">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Preguntas</p>
-        <h2 id="faq-title">Lo que suelen preguntarme.</h2>
+        <h2 id="faq-title">Lo que suelen preguntarme</h2>
       </header>
 
       <div class="faq__list">

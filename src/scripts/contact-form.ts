@@ -59,7 +59,9 @@ function buildMessage(data: FormData) {
     `Contacto: ${get('contacto')}`,
     `Clases: ${get('alumno')}`,
     `Formato: ${get('formato')}`,
+    `Nivel aproximado: ${get('nivel')}`,
   ];
+  if (get('objetivos')) lines.push(`Objetivos: ${get('objetivos')}`);
   if (get('mensaje')) lines.push(`Mensaje: ${get('mensaje')}`);
   return lines.join('\n');
 }

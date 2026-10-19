@@ -3,125 +3,125 @@
 Texto publicado tal como aparece hoy en la web (se genera desde las secciones; los textos viven en `src/components/*.astro` y `src/config/*.ts`).
 
 ## Metadatos
-- Inglés a tu medida en Alicante u online · My Way to English
-- description: Inglés en grupos de hasta 4, con el mismo profesor y un plan a tu medida, no en un aula de 10. Clases presenciales en Alicante u online.
-- og:title: Inglés a tu medida en Alicante u online · My Way to English
-- og:description: Inglés en grupos de hasta 4, con el mismo profesor y un plan a tu medida, no en un aula de 10. Clases presenciales en Alicante u online.
+- Clases de inglés personalizadas en Alicante y online | My Way to English
+- description: Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.
+- og:title: Clases de inglés adaptadas a ti | My Way to English
+- og:description: Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.
 
 
 ---
 ## Sección: top
-Clases de inglés presenciales en Alicante u online
+Clases de inglés en Alicante y online
 
-## Una clase pensada para ti, no para diez.
-Grupos de hasta cuatro como máximo y siempre el mismo profesor. Primero entiendo dónde te atascas; después diseño el camino.
+## Aprende inglés con un profesor que se adapta a ti.
+Cada alumno tiene sus propios objetivos y dificultades. En mis clases trabajamos aquello que necesitas mejorar, con explicaciones adaptadas a tu forma de aprender y tiempo para practicar hasta que puedas utilizar lo aprendido.
+Clases individuales, en pareja o en grupos de hasta cuatro personas. Siempre conmigo como profesor.
 [Botón] Escríbeme
 [Botón] Ver planes
-Aprender inglés empieza por entenderte.
+Tu primera clase es gratis.
 
 
 ---
 ## Sección: section
-Máx. 4 alumnos por grupo
-Pocos alumnos, para que nadie pase inadvertido.
-Desde 3 horas a la semana
-Continuidad semana a semana.
-Presencial u online
-En persona en Alicante, o por videollamada desde donde estés.
-Un mismo profesor, siempre
-Cada semana trabajas conmigo.
+Grupos de hasta 4 personas
+Tendrás tiempo para participar, resolver dudas y trabajar los aspectos que más te cuestan.
+Clases desde 3 horas semanales
+Una rutina constante para practicar inglés y avanzar con continuidad.
+Presencial en Alicante u online
+Nos vemos en Playa de San Juan, en tu domicilio si lo acordamos o por videollamada.
+Siempre el mismo profesor
+Conozco tu progreso y puedo preparar cada clase teniendo en cuenta lo que hemos trabajado anteriormente.
 
 
 ---
 ## Sección: diferencia
-Aula grande o clase conmigo
+Academia y clases personalizadas
 
-### Cuando el grupo es pequeño, alguien nota dónde te atascas.
-Cada modelo tiene sus ventajas. Con grupos pequeños, puedo seguir de cerca lo que necesita cada persona. Esto es lo que cambia.
+### ¿Qué puedes conseguir con clases personalizadas?
+En una academia, las clases suelen organizarse alrededor de un programa común y un horario establecido. Este modelo puede funcionar muy bien, especialmente si buscas una opción económica, una amplia oferta de horarios o preparación para un examen concreto.
+Mis clases están organizadas para dedicar más atención a las necesidades de cada alumno. Trabajo con grupos de hasta cuatro personas y preparo las sesiones teniendo en cuenta los objetivos y las dificultades que vamos identificando.
 
-#### Cuántos sois
-En un aula grande Un aula grande, con un solo profesor para todos.
-En clase conmigo Individual, en pareja o en grupo de hasta cuatro.
+#### El tamaño del grupo
+En una academia El profesor reparte su atención entre los alumnos de la clase, por lo que el tiempo disponible para trabajar cada dificultad individual puede ser limitado.
+En mis clases Puedes aprender individualmente, en pareja o en un grupo de hasta cuatro personas. Así hay más oportunidades para participar, preguntar y practicar.
 
-#### El ritmo
-En un aula grande Un ritmo común para todo el grupo.
-En clase conmigo El que marca tu progreso: no sigo adelante hasta que lo has entendido.
+#### El ritmo de aprendizaje
+En una academia El ritmo suele estar condicionado por el programa y las necesidades generales del grupo.
+En mis clases Podemos dedicar más tiempo a los contenidos que necesites reforzar y ajustar la planificación según tu progreso.
 
-#### Cuando te atascas
-En un aula grande Hay menos tiempo para atender a cada persona.
-En clase conmigo Lo noto en el momento y cambio la explicación.
+#### Las explicaciones
+En una academia Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.
+En mis clases Si una explicación no te ayuda a entender un concepto, buscamos otra forma de abordarlo mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.
 
-#### Quién te enseña
-En un aula grande Depende del centro y del curso.
-En clase conmigo El mismo profesor, siempre.
+#### El seguimiento
+En una academia El seguimiento depende de la metodología del centro, del tamaño del grupo y del formato de las clases.
+En mis clases Soy siempre tu profesor, así que conozco el trabajo de las sesiones anteriores y puedo utilizarlo para preparar las siguientes.
 
-#### El plan
-En un aula grande Un programa pensado para el conjunto del grupo.
-En clase conmigo Objetivos propios, revisados con regularidad.
+#### Los objetivos
+En una academia El programa suele organizarse en torno a un nivel, un temario o una meta común.
+En mis clases Tenemos en cuenta tus objetivos personales, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional.
 
-#### Precio y horarios
-En un aula grande Suele costar menos por alumno y ofrecer más franjas donde elegir.
-En clase conmigo Precio por persona que baja si vienes en pareja o en grupo; horario acordado contigo.
-Una academia puede ser una buena opción si buscas un precio ajustado, muchos horarios o preparar un examen concreto. Si lo que te frena es que nadie ve dónde te bloqueas, mejor con alguien que sí lo vea.
+#### El precio y los horarios
+En una academia Las academias suelen disponer de una oferta amplia de grupos y horarios, y pueden resultar más económicas.
+En mis clases El precio depende del número de alumnos y de las horas semanales, mientras que el horario se acuerda según la disponibilidad de los participantes.
+
+#### ¿Para quién tienen sentido mis clases?
+Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una enseñanza más personalizada, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
 [Botón] Pide tu primera clase gratis
-[Botón] Cuéntame tu caso
+[Botón] Consulta los planes
 
 
 ---
 ## Sección: section
 Mi forma de enseñar
 
-### Entender antes que avanzar.
-Terminar el temario no es lo mismo que entenderlo.
-No todos aprendemos igual, así que no enseño igual a todos: adapto la explicación a ti, no al revés. Puedes completar ejercicios y avanzar por el libro sin haber entendido de verdad un concepto, y es ahí donde suele estancarse el progreso.
-Cuando algo no encaja, cambio la explicación: otro ejemplo, una comparación con el español, un juego o más práctica en ese punto. Si entiendes la gramática en clase pero te bloqueas al hablar, trabajamos justo eso. El objetivo no cambia; cambia el camino para llegar a él.
+### Las clases se organizan en función de lo que necesitas aprender.
+Cuando preparas una clase de inglés, es fácil centrarse en el siguiente tema del libro o en completar los ejercicios previstos. Sin embargo, terminar una actividad no siempre significa que hayas entendido el concepto o que sepas utilizarlo por tu cuenta.
+Por eso, adapto las explicaciones y la práctica a las dificultades que vamos encontrando. Si entiendes los tiempos verbales al hacer ejercicios, pero te cuesta utilizarlos al hablar, dedicaremos tiempo a trabajar esa situación. Si confundes determinadas estructuras porque se parecen a las del español, veremos qué diferencias hay y practicaremos con ejemplos.
+El contenido y la planificación dependen de tus objetivos, tu nivel y el progreso que vayas haciendo. De esta manera, las clases tienen una dirección clara y podemos revisar si el trabajo que estamos haciendo te está ayudando a avanzar.
 
 
 ---
 ## Sección: metodo
 Método
 
-### Un método en cuatro pasos.
-El plan no es un temario fijo: se revisa contigo y cambia cuando cambias tú.
+### Cómo trabajaremos juntos
+Las clases siguen una planificación que revisamos según tus avances. Estos son los pasos que utilizo para organizar el aprendizaje.
 Cada revisión es un nuevo diagnóstico.
 01
 
 #### Diagnóstico
-Compruebo tu nivel y hablamos de tus objetivos. Sales con un punto de partida por escrito.
+Empezamos con una conversación y algunos ejercicios para conocer tu nivel de inglés. También hablamos de tus objetivos, de tu experiencia anterior y de las situaciones en las que te gustaría desenvolverte mejor.
+Con esa información establecemos un punto de partida y definimos qué aspectos conviene trabajar.
 02
 
-#### Diseño
-Preparo un plan con objetivos claros y una progresión realista para tus horas semanales.
+#### Planificación
+Preparo un plan de trabajo teniendo en cuenta tu nivel, tus objetivos y las horas semanales que vas a dedicar al inglés. Organizamos los contenidos y la práctica para que las clases tengan continuidad.
 03
 
 #### Adaptación
-Si una explicación no funciona, busco otra: un ejemplo distinto, un puente con el español, un juego o más práctica en ese punto.
+Durante las clases compruebo cómo vas entendiendo los contenidos. Cuando algo se te atasca, podemos cambiar los ejemplos, comparar estructuras con el español, hacer ejercicios adicionales o utilizar actividades que te ayuden a practicar de otra manera.
 04
 
-#### Consolidación
-Compruebo que lo has entendido pidiéndote que lo expliques y lo uses. Revisamos tu progreso antes de seguir.
+#### Seguimiento
+Revisamos periódicamente lo que has aprendido y cómo lo aplicas en ejercicios y situaciones prácticas. Según los resultados, mantenemos el plan o modificamos los aspectos que necesitan más trabajo.
 
 
 ---
 ## Sección: sobre-mi
 
 ### Hola, soy Daniel Guanipa.
-He dado clases de inglés a alumnos de unos 10 a 30 años, en clases individuales y en grupo, presenciales y online. Con perfiles tan distintos aprendí a fijarme primero en qué bloquea a cada alumno y solo después en cómo explicarlo.
-Cuando lo que desbloquea un concepto es explicarlo en español, lo explico en español: los falsos amigos, los tiempos verbales o ciertos sonidos suelen atascar justo ahí.
-Bilingüe
-Inglés a nivel bilingüe
-+2 años Más de 2 años
-Como profesor de inglés y matemáticas
-100 % 100 por ciento
-De retención de alumnos
-Español nativo
-Conozco los errores típicos de los hispanohablantes
+Llevo más de dos años dando clases de inglés y matemáticas a alumnos de distintas edades. He trabajado tanto en clases individuales como grupales, presenciales y online, principalmente con alumnos que estaban empezando a aprender inglés.
+Durante mi experiencia como profesor he participado en la preparación de materiales, la renovación de actividades y la mejora de sistemas de evaluación. También he utilizado recursos digitales, como Kahoot y Lingoclip, además de juegos de mesa para practicar los contenidos de clase.
+Mi forma de enseñar parte de algo que he podido observar trabajando con alumnos diferentes: las dificultades no siempre son las mismas, aunque dos personas estén estudiando el mismo tema. Por eso, intento identificar qué necesita cada alumno y utilizar esa información para organizar las explicaciones y los ejercicios.
+Como hablante nativo de español, también puedo explicar las diferencias entre ambos idiomas cuando resultan útiles para comprender una estructura gramatical, evitar errores frecuentes o mejorar la pronunciación.
 
-#### Mi trayectoria en el aula
-- Clases individuales y en grupo, presenciales y online.
-- Alumnos de unos 10 a 30 años, sobre todo de nivel A1–A2, también en grupos numerosos.
-- Rediseño de un sistema de evaluación y renovación de los materiales de clase.
-- Kahoot, Lingoclip y juegos de mesa, usados para practicar.
+#### Mi experiencia
+- Más de dos años de experiencia dando clases de inglés y matemáticas.
+- Experiencia con alumnos de aproximadamente 10 a 30 años.
+- Clases individuales y grupales, presenciales y online.
+- Participación en la renovación de materiales didácticos y sistemas de evaluación.
+- Uso de ejercicios interactivos, recursos digitales y juegos para practicar.
 
 
 ---
@@ -129,7 +129,9 @@ Conozco los errores típicos de los hispanohablantes
 Planes
 
 ### Tu primera clase es gratis.
-Diseña tu plan en cinco pasos: elige cuántas horas quieres a la semana, cómo repartirlas y con cuántas personas vienes. Verás tu precio exacto antes de enviar nada.
+Encuentra el formato que mejor encaja contigo.
+La primera clase es gratis. Podemos conocer tu nivel, hablar de tus objetivos y ver cómo organizar las clases antes de que te comprometas con una mensualidad.
+Los planes se diferencian por las horas semanales. Después puedes elegir si prefieres clases individuales, en pareja o en un grupo de hasta cuatro personas.
 Paso 1 de 5 · Plan
 - Plan
 - Sesiones
@@ -139,9 +141,10 @@ Paso 1 de 5 · Plan
 
 #### Elige tu plan
 Los tres usan el mismo método. Cambia el tiempo que dedicas cada semana.
-- Campo: Plan Esencial3 h / semanaConstruye una base sólida de inglés con una rutina semanal constante.3 horas semanales para avanzar de forma estructurada, con clases adaptadas a tus objetivos.Individual: 180 € al mesEn pareja: 120 € al mes por personaEn grupo de 4: desde 84 € al mes por alumno
-- Campo: Plan Intensivo5 h / semanaDedica más tiempo a tu inglés y aprovecha cada semana para avanzar.5 horas semanales para practicar con mayor frecuencia y trabajar tus objetivos con continuidad.Individual: 270 € al mesEn pareja: 180 € al mes por personaEn grupo de 4: desde 126 € al mes por alumno
-- Campo: Plan PersonalizadoTú eliges+Tu aprendizaje no tiene por qué encajar en un plan cerrado.Elige las horas semanales que necesitas y descubre una propuesta adaptada a tus objetivos.El precio depende de las horas y del formato; lo verás antes de enviar nada.
+- Campo: Plan Esencial3 h / semanaUna rutina semanal para trabajar tu inglés con continuidad, reforzar las bases y desarrollar las habilidades que necesitas para tus objetivos.Individual: 180 €/mesEn pareja: 120 €/mes por personaGrupo de 3: 96 €/mes por personaGrupo de 4: 84 €/mes por persona
+- Campo: Plan Intensivo5 h / semanaMás tiempo de clase para practicar con mayor frecuencia, trabajar distintas habilidades y dedicar más sesiones a los aspectos que necesitas mejorar.Individual: 270 €/mesEn pareja: 180 €/mes por personaGrupo de 3: 144 €/mes por personaGrupo de 4: 126 €/mes por persona
+- Campo: Plan PersonalizadoDesde 3 h / semana+Si necesitas una distribución diferente de horas, puedes configurar tu plan según tu disponibilidad y tus objetivos.Elige las horas semanales, distribuye las sesiones y selecciona el formato de clase. Verás el precio correspondiente antes de enviar tu solicitud.
+Nota sobre los grupos: las tarifas para parejas y grupos se aplican cuando vienes con tus propios compañeros. No asigno automáticamente a personas que se inscriben por separado para formar grupos de desconocidos.
 Conoce mi metodología, cuéntame tus objetivos y descubre cómo podemos organizar tu aprendizaje antes de comprometerte con una mensualidad.
 [Botón] Siguiente
 
@@ -150,47 +153,51 @@ Conoce mi metodología, cuéntame tus objetivos y descubre cómo podemos organiz
 ## Sección: preguntas
 Preguntas
 
-### Lo que suelen preguntarme.
+### Lo que suelen preguntarme
 
 **¿Cómo sé qué nivel de inglés tengo?**
-No hace falta que lo sepas antes de escribirme. Lo primero que hacemos es el diagnóstico: compruebo tu nivel con ejercicios y una conversación, y te digo por escrito desde dónde empezamos.
+No necesitas conocer tu nivel antes de escribirme. En la primera clase hacemos algunos ejercicios y hablamos para comprobar qué sabes, cómo utilizas el inglés y qué aspectos necesitas trabajar. Después te explico desde dónde empezaremos.
 
-**¿Qué pasa en la primera sesión?**
-Empezamos por el diagnóstico: vemos tu nivel, hablamos de tus objetivos y de lo que más te cuesta. Con eso preparo el plan de las siguientes semanas. Esa primera sesión no tiene coste, así que puedes decidir después si quieres seguir con una mensualidad.
+**¿Qué hacemos en la primera clase?**
+Hablamos de tus objetivos y de tu experiencia con el inglés, comprobamos tu nivel y vemos qué dificultades tienes. Con esa información podemos valorar cómo organizar las siguientes sesiones. La primera clase es gratis y no te compromete a contratar una mensualidad.
 
-**¿En qué se diferencia de una academia?**
-Sobre todo en cuántos somos y en quién te sigue. Una academia suele ser buena opción si buscas precio ajustado, horarios variados o preparar un examen. Yo trabajo con grupos de hasta cuatro, soy siempre el mismo profesor y ajusto el plan a lo que le cuesta a cada alumno. Si prefieres el ambiente de un aula grande, quizá no sea lo tuyo.
+**¿Qué diferencia hay entre tus clases y una academia?**
+Trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor. Esto me permite conocer el progreso de cada alumno y adaptar las explicaciones y actividades a sus necesidades. Una academia puede ofrecer más horarios o precios más económicos, así que la elección depende de lo que estés buscando.
 
-**¿Dónde son las clases presenciales?**
-En Playa San Juan (Alicante), en tu casa o en un espacio tranquilo que acordemos. También online por videollamada.
+**¿Dónde se imparten las clases presenciales?**
+Podemos organizar las clases en Playa de San Juan, en tu domicilio si acordamos esa opción o en otro espacio tranquilo que nos venga bien. También doy clases online por videollamada.
 
-**¿En qué se diferencian individual, pareja y grupo?**
-Siguen el mismo método. En individual, toda la sesión se adapta a ti. En pareja o en grupo, de cuatro alumnos como máximo, la atención se reparte, pero ganas conversación y práctica con compañeros, y el precio por persona baja. Las tarifas de grupo se aplican cuando vienes con tus propios compañeros.
+**¿Qué diferencia hay entre las clases individuales, en pareja y en grupo?**
+El método de trabajo es el mismo, pero cambia cómo se organiza la sesión. En las clases individuales toda la atención se centra en ti. En pareja y en grupo puedes practicar con otros alumnos, escuchar distintas formas de expresarse y mantener conversaciones. Además, el precio por persona es menor.
 
-**¿Hay precio para parejas?**
-Sí: 120 €/mes por persona en el plan Esencial y 180 €/mes por persona en el Intensivo.
+**¿Puedo apuntarme a un grupo si no conozco a nadie?**
+Los grupos se forman con compañeros que vienen juntos. Si te interesa compartir clases, puedes venir con otra persona o con un grupo de amigos, familiares o compañeros que tengan objetivos compatibles.
 
-**¿Cómo se forman los grupos?**
-Vienes con tus propios compañeros: no asigno automáticamente a personas que se inscriben solas a grupos de desconocidos. Las parejas son de 2 alumnos y los grupos de 3 o 4, nunca más.
+**¿Hay descuentos por contratar más horas?**
+Sí. El precio por hora disminuye al contratar más horas semanales. Puedes consultar las opciones en el configurador y ver la mensualidad antes de enviar tu solicitud.
 
-**¿Cómo sé si estoy avanzando?**
-Revisamos tu progreso de forma regular frente a los objetivos del diagnóstico. Si el alumno es menor, también se lo cuento a la familia.
+**¿Cómo sabré si estoy avanzando?**
+Revisamos los contenidos trabajados y comprobamos cómo los utilizas en ejercicios y actividades prácticas. Según tus objetivos, podemos prestar más atención a la conversación, la gramática, la comprensión oral o cualquier otra habilidad que necesites desarrollar.
 
-**¿Qué significa que adaptas la explicación?**
-Que el objetivo de la clase no cambia, pero la forma de llegar a él sí: si una explicación no funciona, pruebo con otro ejemplo, una comparación con el español, un juego o más práctica en ese punto.
+**¿Qué significa que las clases son personalizadas?**
+Significa que tengo en cuenta tu nivel, tus objetivos y las dificultades que encontramos durante las sesiones para decidir qué trabajar y cómo hacerlo. Por ejemplo, si entiendes una estructura gramatical al leerla, pero te cuesta utilizarla al hablar, podemos dedicar más tiempo a practicarla en conversaciones.
 
-**¿Cómo se organiza el horario?**
-Según la disponibilidad de los dos. En pareja y en grupo el horario es común para todo el grupo.
+**¿Cómo se organizan los horarios?**
+Acordamos los horarios según la disponibilidad de ambos. En las clases en pareja o en grupo, todos los participantes deben compartir el mismo horario.
+
+**¿Puedo recibir clases para preparar un examen?**
+Podemos valorar tus necesidades y organizar el trabajo según el examen que quieras preparar, tu nivel actual y el tiempo disponible. Conviene hablarlo antes para comprobar que el plan se ajusta a lo que necesitas.
 
 **¿Cómo puedo pedir información?**
-Escríbeme por WhatsApp o rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.
+Puedes escribirme por WhatsApp o utilizar el formulario de contacto. Cuéntame tu nivel aproximado, qué quieres conseguir y si te interesan las clases individuales, en pareja o en grupo. Te responderé personalmente para hablar de las opciones y los horarios.
 
 
 ---
 ## Sección: contacto
 
-### Cuéntame qué necesitas.
-Dime tu nivel aproximado, qué quieres conseguir y qué formato te interesa. Te contesto yo directamente para resolver dudas y ver horarios.
+### Cuéntame qué necesitas mejorar.
+Si estás buscando clases de inglés, escríbeme y cuéntame qué quieres conseguir, qué experiencia tienes y qué aspectos te gustaría trabajar.
+Te responderé personalmente para resolver tus dudas, hablar de las opciones disponibles y ver cómo podemos organizar las clases.
 - Escríbeme por WhatsApp (se abre en una pestaña nueva)
 
 #### Escríbeme directamente
@@ -204,25 +211,27 @@ El formulario necesita JavaScript y ahora mismo no está disponible. Puedes cont
 - Campo: Pareja
 - Campo: Grupo
 - Campo: Aún no lo sé
+- Campo: Nivel aproximado de inglés
+- Campo: Objetivos o aspectos que quieres mejorar (opcional)
 - Campo: Mensaje (opcional)
 - Campo: No rellenar
 - Campo: He leído y acepto la política de privacidad.
-Al enviarlo se abre WhatsApp con tu mensaje ya escrito; solo tienes que confirmarlo.
+Al enviar el formulario, se abrirá WhatsApp con tu mensaje preparado para que puedas revisarlo y enviarlo.
 [Botón] Enviar mensaje
 
 
 ---
 ## Sección: footer
+Clases de inglés personalizadas en Alicante y online.
 Secciones
 - Cómo trabajo
 - Sobre mí
 - Planes
-- Preguntas
+- Preguntas frecuentes
 - Contacto
 Contacto
 - WhatsApp (se abre en una pestaña nueva)
 - Formulario de contacto
-- Presenciales en Alicante u online
 © 2026 Daniel Guanipa
 - Aviso legal
 - Privacidad

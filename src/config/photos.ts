@@ -60,5 +60,5 @@ export const plansPhoto: Photo = {
   src: claseGrupo,
   alt: 'Daniel de pie junto a la mesa, dando clase a un grupo de tres alumnos',
   slot: 'Clase en grupo reducido',
-  focus: '50% 40%',
+  focus: '50% 75%',
 };

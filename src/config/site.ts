@@ -23,9 +23,13 @@ export const site = {
   base: '/',
   locale: 'es_ES',
   // ≤ ~60 caracteres. «en Alicante u online» deja claro que online no es en Alicante.
-  title: 'Inglés a tu medida en Alicante u online · My Way to English',
+  title: 'Clases de inglés personalizadas en Alicante y online | My Way to English',
   description:
-    'Inglés en grupos de hasta 4, con el mismo profesor y un plan a tu medida, no en un aula de 10. Clases presenciales en Alicante u online.',
+    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.',
+  /** Título y descripción para Open Graph / Twitter (redes sociales). */
+  ogTitle: 'Clases de inglés adaptadas a ti | My Way to English',
+  ogDescription:
+    'Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
 };
 
 /** Título para páginas interiores: «{Página} · My Way to English». */
@@ -69,10 +73,22 @@ export const pricingTerms = ''; // PENDIENTE
 
 /** Datos verificables del servicio (brief §13.4). Sustituyen a cualquier estadística. */
 export const facts = [
-  { title: 'Máx. 4 alumnos por grupo', detail: 'Pocos alumnos, para que nadie pase inadvertido.' },
-  { title: 'Desde 3 horas a la semana', detail: 'Continuidad semana a semana.' },
-  { title: 'Presencial u online', detail: 'En persona en Alicante, o por videollamada desde donde estés.' },
-  { title: 'Un mismo profesor, siempre', detail: 'Cada semana trabajas conmigo.' },
+  {
+    title: 'Grupos de hasta 4 personas',
+    detail: 'Tendrás tiempo para participar, resolver dudas y trabajar los aspectos que más te cuestan.',
+  },
+  {
+    title: 'Clases desde 3 horas semanales',
+    detail: 'Una rutina constante para practicar inglés y avanzar con continuidad.',
+  },
+  {
+    title: 'Presencial en Alicante u online',
+    detail: 'Nos vemos en Playa de San Juan, en tu domicilio si lo acordamos o por videollamada.',
+  },
+  {
+    title: 'Siempre el mismo profesor',
+    detail: 'Conozco tu progreso y puedo preparar cada clase teniendo en cuenta lo que hemos trabajado anteriormente.',
+  },
 ];
 
 /* ------------------------------------------------------------------ */

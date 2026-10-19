@@ -3,6 +3,6 @@ export const navLinks = [
   { label: 'Cómo trabajo', href: '#como-trabajo' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Planes', href: '#planes' },
-  { label: 'Preguntas', href: '#preguntas' },
+  { label: 'Preguntas frecuentes', href: '#preguntas' },
   { label: 'Contacto', href: '#contacto' },
 ];

@@ -9,11 +9,16 @@ import { site } from '../config/site';
   <section class="panel panel--blush hero" id="top" aria-labelledby="hero-title">
     <div class="container grid hero__grid">
       <div class="hero__copy">
-        <p class="eyebrow">Clases de inglés presenciales en {site.city} u online</p>
-        <h1 id="hero-title">Una clase pensada para ti, no para diez.</h1>
+        <p class="eyebrow">Clases de inglés en {site.city} y online</p>
+        <h1 id="hero-title">Aprende inglés con un profesor que se adapta a ti.</h1>
         <p class="lead hero__lead">
-          Grupos de hasta cuatro como máximo y siempre el mismo profesor. Primero entiendo dónde te
-          atascas; después diseño el camino.
+          Cada alumno tiene sus propios objetivos y dificultades. En mis clases trabajamos aquello que
+          necesitas mejorar, con explicaciones adaptadas a tu forma de aprender y tiempo para practicar
+          hasta que puedas utilizar lo aprendido.
+        </p>
+        <p class="hero__more">
+          Clases individuales, en pareja o en grupos de hasta cuatro personas. Siempre conmigo como
+          profesor.
         </p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#contacto">Escríbeme</a>
@@ -45,7 +50,7 @@ import { site } from '../config/site';
 
       <p class="hero__tagline small">
         <span class="waypoint" aria-hidden="true"></span>
-        {site.tagline}
+        Tu primera clase es gratis.
       </p>
     </div>
   </section>
@@ -66,6 +71,10 @@ import { site } from '../config/site';
   }
   .hero__copy h1 {
     margin-top: calc(-1 * var(--space-2));
+  }
+  .hero__more {
+    max-width: var(--measure);
+    color: var(--color-text-secondary);
   }
   .hero__ctas {
     display: flex;

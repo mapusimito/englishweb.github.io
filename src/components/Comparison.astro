@@ -1,39 +1,39 @@
 ---
 /**
- * «Aula grande o clase conmigo»: comparación de modelos, no de centros concretos.
+ * Academia frente a clases personalizadas: comparación de modelos, no de centros concretos.
  * Lista semántica (una fila por criterio) que en escritorio se lee como tabla de tres
- * columnas y en móvil se apila. Sin cifras inventadas: «diez» es un ejemplo de aula grande.
+ * columnas y en móvil se apila. Sin cifras inventadas.
  */
 const rows = [
   {
-    topic: 'Cuántos sois',
-    aula: 'Un aula grande, con un solo profesor para todos.',
-    yo: 'Individual, en pareja o en grupo de hasta cuatro.',
+    topic: 'El tamaño del grupo',
+    aula: 'El profesor reparte su atención entre los alumnos de la clase, por lo que el tiempo disponible para trabajar cada dificultad individual puede ser limitado.',
+    yo: 'Puedes aprender individualmente, en pareja o en un grupo de hasta cuatro personas. Así hay más oportunidades para participar, preguntar y practicar.',
   },
   {
-    topic: 'El ritmo',
-    aula: 'Un ritmo común para todo el grupo.',
-    yo: 'El que marca tu progreso: no sigo adelante hasta que lo has entendido.',
+    topic: 'El ritmo de aprendizaje',
+    aula: 'El ritmo suele estar condicionado por el programa y las necesidades generales del grupo.',
+    yo: 'Podemos dedicar más tiempo a los contenidos que necesites reforzar y ajustar la planificación según tu progreso.',
   },
   {
-    topic: 'Cuando te atascas',
-    aula: 'Hay menos tiempo para atender a cada persona.',
-    yo: 'Lo noto en el momento y cambio la explicación.',
+    topic: 'Las explicaciones',
+    aula: 'Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.',
+    yo: 'Si una explicación no te ayuda a entender un concepto, buscamos otra forma de abordarlo mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.',
   },
   {
-    topic: 'Quién te enseña',
-    aula: 'Depende del centro y del curso.',
-    yo: 'El mismo profesor, siempre.',
+    topic: 'El seguimiento',
+    aula: 'El seguimiento depende de la metodología del centro, del tamaño del grupo y del formato de las clases.',
+    yo: 'Soy siempre tu profesor, así que conozco el trabajo de las sesiones anteriores y puedo utilizarlo para preparar las siguientes.',
   },
   {
-    topic: 'El plan',
-    aula: 'Un programa pensado para el conjunto del grupo.',
-    yo: 'Objetivos propios, revisados con regularidad.',
+    topic: 'Los objetivos',
+    aula: 'El programa suele organizarse en torno a un nivel, un temario o una meta común.',
+    yo: 'Tenemos en cuenta tus objetivos personales, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional.',
   },
   {
-    topic: 'Precio y horarios',
-    aula: 'Suele costar menos por alumno y ofrecer más franjas donde elegir.',
-    yo: 'Precio por persona que baja si vienes en pareja o en grupo; horario acordado contigo.',
+    topic: 'El precio y los horarios',
+    aula: 'Las academias suelen disponer de una oferta amplia de grupos y horarios, y pueden resultar más económicas.',
+    yo: 'El precio depende del número de alumnos y de las horas semanales, mientras que el horario se acuerda según la disponibilidad de los participantes.',
   },
 ];
 ---
@@ -41,19 +41,25 @@ const rows = [
 <section class="section--tight compare" id="diferencia" aria-labelledby="compare-title">
   <div class="container">
     <header class="compare__head" data-reveal>
-      <p class="eyebrow">Aula grande o clase conmigo</p>
-      <h2 id="compare-title">Cuando el grupo es pequeño, alguien nota dónde te atascas.</h2>
+      <p class="eyebrow">Academia y clases personalizadas</p>
+      <h2 id="compare-title">¿Qué puedes conseguir con clases personalizadas?</h2>
       <p class="lead">
-        Cada modelo tiene sus ventajas. Con grupos pequeños, puedo seguir de cerca lo que
-        necesita cada persona. Esto es lo que cambia.
+        En una academia, las clases suelen organizarse alrededor de un programa común y un horario
+        establecido. Este modelo puede funcionar muy bien, especialmente si buscas una opción
+        económica, una amplia oferta de horarios o preparación para un examen concreto.
+      </p>
+      <p class="lead">
+        Mis clases están organizadas para dedicar más atención a las necesidades de cada alumno.
+        Trabajo con grupos de hasta cuatro personas y preparo las sesiones teniendo en cuenta los
+        objetivos y las dificultades que vamos identificando.
       </p>
     </header>
 
     <div class="compare__table" data-reveal>
       <p class="compare__cols" aria-hidden="true">
         <span></span>
-        <span>En un aula grande</span>
-        <span>En clase conmigo</span>
+        <span>En una academia</span>
+        <span>En mis clases</span>
       </p>
       <ul class="compare__rows" role="list">
         {
@@ -61,11 +67,11 @@ const rows = [
             <li class="compare__row">
               <h3 class="compare__topic">{row.topic}</h3>
               <p class="compare__cell compare__cell--aula">
-                <span class="compare__who">En un aula grande</span>
+                <span class="compare__who">En una academia</span>
                 {row.aula}
               </p>
               <p class="compare__cell compare__cell--yo">
-                <span class="compare__who">En clase conmigo</span>
+                <span class="compare__who">En mis clases</span>
                 {row.yo}
               </p>
             </li>
@@ -75,14 +81,16 @@ const rows = [
     </div>
 
     <div class="compare__foot" data-reveal>
+      <h3 class="compare__for">¿Para quién tienen sentido mis clases?</h3>
       <p class="compare__honest">
-        Una academia puede ser una buena opción si buscas un precio ajustado, muchos horarios o
-        preparar un examen concreto. Si lo que te frena es que nadie ve dónde te bloqueas, mejor
-        con alguien que sí lo vea.
+        Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas
+        una enseñanza más personalizada, este formato puede encajarte. Si prefieres una academia con
+        muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también
+        puede ser una buena opción.
       </p>
       <div class="compare__ctas">
         <a class="btn btn--primary" href="#planes">Pide tu primera clase gratis</a>
-        <a class="btn btn--secondary" href="#contacto">Cuéntame tu caso</a>
+        <a class="btn btn--secondary" href="#planes">Consulta los planes</a>
       </div>
     </div>
   </div>
@@ -144,6 +152,9 @@ const rows = [
     gap: var(--space-5);
     margin-top: var(--space-6);
     justify-items: start;
+  }
+  .compare__for {
+    font-size: var(--font-size-h3);
   }
   .compare__honest {
     max-width: var(--measure);

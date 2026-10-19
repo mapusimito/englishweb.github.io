@@ -31,9 +31,14 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
       <div class="plans__copy">
         <p class="eyebrow">Planes</p>
         <h2 id="plans-title" class="plans__title">Tu primera clase es gratis.</h2>
+        <p class="plans__sub">Encuentra el formato que mejor encaja contigo.</p>
         <p class="lead">
-          Diseña tu plan en cinco pasos: elige cuántas horas quieres a la semana, cómo repartirlas y con
-          cuántas personas vienes. Verás tu precio exacto antes de enviar nada.
+          La primera clase es gratis. Podemos conocer tu nivel, hablar de tus objetivos y ver cómo
+          organizar las clases antes de que te comprometas con una mensualidad.
+        </p>
+        <p class="lead">
+          Los planes se diferencian por las horas semanales. Después puedes elegir si prefieres clases
+          individuales, en pareja o en un grupo de hasta cuatro personas.
         </p>
       </div>
     </header>
@@ -100,6 +105,12 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
     width: 100%;
     padding: var(--space-8) clamp(1.25rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3rem);
   }
+  .plans__sub {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverse);
+  }
   .plans__band .eyebrow,
   .plans__band .lead {
     color: var(--color-text-inverse);
@@ -155,7 +166,7 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
         );
     }
     .plans__band {
-      min-height: 48rem;
+      min-height: 62rem;
     }
     .plans__title {
       -webkit-text-stroke-width: 5px;

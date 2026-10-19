@@ -17,6 +17,7 @@ const year = new Date().getFullYear();
   <div class="container footer__grid">
     <div class="footer__brand">
       <Logo inverse signature class="footer__logo" />
+      <p class="footer__claim">Clases de inglés personalizadas en Alicante y online.</p>
     </div>
 
     <nav aria-label="Pie de página">
@@ -47,7 +48,6 @@ const year = new Date().getFullYear();
         {contact.email && <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>}
         {phoneHref && <li><a href={phoneHref}>{contact.phone}</a></li>}
         <li><a href={`${prefix}#contacto`}>Formulario de contacto</a></li>
-        <li>Presenciales en {site.city} u online</li>
       </ul>
     </div>
   </div>
@@ -68,6 +68,11 @@ const year = new Date().getFullYear();
 </script>
 
 <style>
+  .footer__claim {
+    margin-top: var(--space-4);
+    max-width: 28ch;
+    color: var(--color-text-inverse-secondary);
+  }
   .footer {
     padding-block: var(--space-9) var(--space-6);
     background: var(--color-surface-inverse);

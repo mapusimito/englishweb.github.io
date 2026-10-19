@@ -16,9 +16,10 @@ const slots = ['top', 'right', 'bottom', 'left'] as const;
     <div class="container">
       <header class="method__head" data-reveal>
         <p class="eyebrow">Método</p>
-        <h2 id="method-title">Un método en cuatro pasos.</h2>
+        <h2 id="method-title">Cómo trabajaremos juntos</h2>
         <p class="lead">
-          El plan no es un temario fijo: se revisa contigo y cambia cuando cambias tú.
+          Las clases siguen una planificación que revisamos según tus avances. Estos son los pasos que
+          utilizo para organizar el aprendizaje.
         </p>
       </header>
 
@@ -69,7 +70,7 @@ const slots = ['top', 'right', 'bottom', 'left'] as const;
                 <p class="stage__number">0{i + 1}</p>
                 <div>
                   <h3 class="stage__title">{stage.name}</h3>
-                  <p class="stage__text">{stage.text}</p>
+                  {stage.text.map((paragraph) => <p class="stage__text">{paragraph}</p>)}
                 </div>
               </li>
             ))

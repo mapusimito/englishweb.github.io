@@ -28,10 +28,14 @@ const formats = [
   <section class="panel panel--blush contact" id="contacto" aria-labelledby="contact-title">
     <div class="container grid contact__grid">
       <div class="contact__intro">
-        <h2 id="contact-title">Cuéntame qué necesitas.</h2>
+        <h2 id="contact-title">Cuéntame qué necesitas mejorar.</h2>
         <p class="lead">
-          Dime tu nivel aproximado, qué quieres conseguir y qué formato te interesa. Te contesto yo
-          directamente para resolver dudas y ver horarios.
+          Si estás buscando clases de inglés, escríbeme y cuéntame qué quieres conseguir, qué
+          experiencia tienes y qué aspectos te gustaría trabajar.
+        </p>
+        <p class="lead">
+          Te responderé personalmente para resolver tus dudas, hablar de las opciones disponibles y
+          ver cómo podemos organizar las clases.
         </p>
         {
           (hasWhatsapp || contact.email || phoneHref) && (
@@ -128,7 +132,7 @@ const formats = [
           </div>
 
           <fieldset class="field">
-            <legend>¿Para quién son las clases?</legend>
+            <legend>¿Las clases son para ti o para tu hijo o hija?</legend>
             <div class="options">
               <label class="option"><input type="radio" name="alumno" value="Para mí" checked /> Para mí</label>
               <label class="option"><input type="radio" name="alumno" value="Para mi hijo o hija" /> Para mi hijo o hija</label>
@@ -136,7 +140,7 @@ const formats = [
           </fieldset>
 
           <fieldset class="field">
-            <legend>Formato</legend>
+            <legend>Formato que te interesa</legend>
             <div class="options">
               {
                 formats.map((format) => (
@@ -154,6 +158,19 @@ const formats = [
             </div>
           </fieldset>
 
+          <div class="field">
+            <label for="f-nivel">Nivel aproximado de inglés</label>
+            <select id="f-nivel" name="nivel">
+              <option>Todavía no lo sé</option>
+              <option>Principiante (A1–A2)</option>
+              <option>Intermedio (B1–B2)</option>
+              <option>Avanzado (C1–C2)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-objetivos">Objetivos o aspectos que quieres mejorar <span class="field__optional">(opcional)</span></label>
+            <textarea id="f-objetivos" name="objetivos" rows="3"></textarea>
+          </div>
           <div class="field">
             <label for="f-mensaje">Mensaje <span class="field__optional">(opcional)</span></label>
             <textarea id="f-mensaje" name="mensaje" rows="4"></textarea>
@@ -183,7 +200,7 @@ const formats = [
             (channel === 'whatsapp' || channel === 'email') && (
               <p class="form__notice small">
                 {channel === 'whatsapp'
-                  ? 'Al enviarlo se abre WhatsApp con tu mensaje ya escrito; solo tienes que confirmarlo.'
+                  ? 'Al enviar el formulario, se abrirá WhatsApp con tu mensaje preparado para que puedas revisarlo y enviarlo.'
                   : 'Al enviarlo se abre tu correo con el mensaje ya escrito; solo tienes que confirmarlo.'}
               </p>
             )
@@ -284,6 +301,7 @@ const formats = [
     color: var(--color-text-secondary);
   }
   input[type='text'],
+  select,
   textarea {
     width: 100%;
     min-height: 48px;
@@ -301,10 +319,12 @@ const formats = [
     min-height: 7rem;
   }
   input[type='text']:hover,
+  select:hover,
   textarea:hover {
     border-color: var(--color-text-secondary);
   }
   input[type='text']:focus-visible,
+  select:focus-visible,
   textarea:focus-visible {
     border-color: var(--color-brand-primary);
     border-radius: var(--radius-md);

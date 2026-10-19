@@ -69,25 +69,26 @@ export const PLANS: ReadonlyArray<{
     id: 'esencial',
     name: 'Plan Esencial',
     hours: 3,
-    tagline: 'Construye una base sólida de inglés con una rutina semanal constante.',
-    description:
-      '3 horas semanales para avanzar de forma estructurada, con clases adaptadas a tus objetivos.',
+    tagline:
+      'Una rutina semanal para trabajar tu inglés con continuidad, reforzar las bases y desarrollar las habilidades que necesitas para tus objetivos.',
+    description: '',
   },
   {
     id: 'intensivo',
     name: 'Plan Intensivo',
     hours: 5,
-    tagline: 'Dedica más tiempo a tu inglés y aprovecha cada semana para avanzar.',
-    description:
-      '5 horas semanales para practicar con mayor frecuencia y trabajar tus objetivos con continuidad.',
+    tagline:
+      'Más tiempo de clase para practicar con mayor frecuencia, trabajar distintas habilidades y dedicar más sesiones a los aspectos que necesitas mejorar.',
+    description: '',
   },
   {
     id: 'personalizado',
     name: 'Plan Personalizado',
     hours: null,
-    tagline: 'Tu aprendizaje no tiene por qué encajar en un plan cerrado.',
+    tagline:
+      'Si necesitas una distribución diferente de horas, puedes configurar tu plan según tu disponibilidad y tus objetivos.',
     description:
-      'Elige las horas semanales que necesitas y descubre una propuesta adaptada a tus objetivos.',
+      'Elige las horas semanales, distribuye las sesiones y selecciona el formato de clase. Verás el precio correspondiente antes de enviar tu solicitud.',
   },
 ];
 

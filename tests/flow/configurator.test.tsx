@@ -49,7 +49,7 @@ describe('pantalla 1 · plan', () => {
     expect(screen.getAllByRole('radio')).toHaveLength(3);
     expect(screen.getByRole('radio', { name: /Plan Esencial.*3 h/ })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: /Plan Intensivo.*5 h/ })).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: /Plan Personalizado.*Tú eliges/ })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: /Plan Personalizado.*Desde 3 h/ })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Volver' })).not.toBeInTheDocument();
     // El titular de la sección ya dice «Tu primera clase es gratis»; aquí va el detalle.
     expect(screen.getByText(/Conoce mi metodología/)).toBeInTheDocument();
@@ -58,13 +58,14 @@ describe('pantalla 1 · plan', () => {
   it('los precios de las tarjetas salen del motor', () => {
     render(<Configurator />);
     const esencial = screen.getByRole('radio', { name: /Plan Esencial/ });
-    expect(esencial.closest('label')).toHaveTextContent(`Individual: 180${NBSP}€ al mes`);
-    expect(esencial.closest('label')).toHaveTextContent(`En pareja: 120${NBSP}€ al mes por persona`);
-    expect(esencial.closest('label')).toHaveTextContent(`desde 84${NBSP}€ al mes por alumno`);
+    expect(esencial.closest('label')).toHaveTextContent(`Individual: 180${NBSP}€/mes`);
+    expect(esencial.closest('label')).toHaveTextContent(`En pareja: 120${NBSP}€/mes por persona`);
+    expect(esencial.closest('label')).toHaveTextContent(`Grupo de 3: 96${NBSP}€/mes por persona`);
+    expect(esencial.closest('label')).toHaveTextContent(`Grupo de 4: 84${NBSP}€/mes por persona`);
     const intensivo = screen.getByRole('radio', { name: /Plan Intensivo/ }).closest('label');
-    expect(intensivo).toHaveTextContent(`Individual: 270${NBSP}€ al mes`);
-    expect(intensivo).toHaveTextContent(`En pareja: 180${NBSP}€ al mes por persona`);
-    expect(intensivo).toHaveTextContent(`desde 126${NBSP}€`);
+    expect(intensivo).toHaveTextContent(`Individual: 270${NBSP}€/mes`);
+    expect(intensivo).toHaveTextContent(`En pareja: 180${NBSP}€/mes por persona`);
+    expect(intensivo).toHaveTextContent(`Grupo de 3: 144${NBSP}€/mes por persona`);
   });
 
   it('exige elegir un plan antes de continuar', async () => {

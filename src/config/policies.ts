@@ -14,7 +14,7 @@ export const paymentMethod = '[Bizum o transferencia]'; // PENDIENTE
 export const cancellationNoticeHours = '[24]'; // PENDIENTE
 
 /** Dónde se dan las clases presenciales. */
-export const inPersonPlace = 'Playa San Juan (Alicante)';
+export const inPersonPlace = 'Playa de San Juan';
 
 /**
  * Pon esto en true para ver en la web publicada las preguntas y los testimonios

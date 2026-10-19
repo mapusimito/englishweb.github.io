@@ -2,13 +2,13 @@
 /** Biografía (brief §13.5): retrato a la izquierda, texto a la derecha, en primera persona. */
 import PhotoFrame from './PhotoFrame.astro';
 import { bioPhoto } from '../config/photos';
-import { credentials } from '../config/credentials';
 
 const experience = [
-  'Clases individuales y en grupo, presenciales y online.',
-  'Alumnos de unos 10 a 30 años, sobre todo de nivel A1–A2, también en grupos numerosos.',
-  'Rediseño de un sistema de evaluación y renovación de los materiales de clase.',
-  'Kahoot, Lingoclip y juegos de mesa, usados para practicar.',
+  'Más de dos años de experiencia dando clases de inglés y matemáticas.',
+  'Experiencia con alumnos de aproximadamente 10 a 30 años.',
+  'Clases individuales y grupales, presenciales y online.',
+  'Participación en la renovación de materiales didácticos y sistemas de evaluación.',
+  'Uso de ejercicios interactivos, recursos digitales y juegos para practicar.',
 ];
 ---
 
@@ -27,32 +27,31 @@ const experience = [
       <h2 id="about-title">Hola, soy Daniel Guanipa.</h2>
       <div class="prose">
         <p>
-          He dado clases de inglés a alumnos de unos 10 a 30 años, en clases individuales y en grupo,
-          presenciales y online. Con perfiles tan distintos aprendí a fijarme primero en qué bloquea a
-          cada alumno y solo después en cómo explicarlo.
+          Llevo más de dos años dando clases de inglés y matemáticas a alumnos de distintas edades. He
+          trabajado tanto en clases individuales como grupales, presenciales y online, principalmente
+          con alumnos que estaban empezando a aprender inglés.
         </p>
         <p>
-          Cuando lo que desbloquea un concepto es explicarlo en español, lo explico en español: los
-          falsos amigos, los tiempos verbales o ciertos sonidos suelen atascar justo ahí.
+          Durante mi experiencia como profesor he participado en la preparación de materiales, la
+          renovación de actividades y la mejora de sistemas de evaluación. También he utilizado
+          recursos digitales, como Kahoot y Lingoclip, además de juegos de mesa para practicar los
+          contenidos de clase.
+        </p>
+        <p>
+          Mi forma de enseñar parte de algo que he podido observar trabajando con alumnos diferentes:
+          las dificultades no siempre son las mismas, aunque dos personas estén estudiando el mismo
+          tema. Por eso, intento identificar qué necesita cada alumno y utilizar esa información para
+          organizar las explicaciones y los ejercicios.
+        </p>
+        <p>
+          Como hablante nativo de español, también puedo explicar las diferencias entre ambos idiomas
+          cuando resultan útiles para comprender una estructura gramatical, evitar errores frecuentes o
+          mejorar la pronunciación.
         </p>
       </div>
 
-      <ul class="credentials" role="list" aria-label="Datos destacados">
-        {
-          credentials.map((item) => (
-            <li class="credential">
-              <p class="credential__value">
-                <span aria-hidden={item.spoken ? 'true' : undefined}>{item.value}</span>
-                {item.spoken && <span class="visually-hidden">{item.spoken}</span>}
-              </p>
-              <p class="credential__label">{item.label}</p>
-            </li>
-          ))
-        }
-      </ul>
-
       <div class="about__experience">
-        <h3 class="about__label">Mi trayectoria en el aula</h3>
+        <h3 class="about__label">Mi experiencia</h3>
         <ul role="list">
           {experience.map((item) => <li>{item}</li>)}
         </ul>
@@ -115,44 +114,6 @@ const experience = [
   }
 
   /* Datos destacados: cuatro baldosas del mismo peso */
-  .credentials {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-    width: 100%;
-  }
-  .credential {
-    display: grid;
-    align-content: start;
-    gap: var(--space-2);
-    padding: var(--space-4);
-    background: var(--color-surface);
-    border: var(--border-hairline) solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-  .credential__value {
-    font-family: var(--font-display);
-    font-size: var(--font-size-h3);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-h3);
-    letter-spacing: var(--letter-spacing-h3);
-    font-variant-numeric: lining-nums;
-    color: var(--color-brand-primary);
-  }
-  .credential__label {
-    font-size: var(--font-size-small);
-    line-height: var(--line-height-small);
-    color: var(--color-text-secondary);
-  }
-  @media (min-width: 900px) {
-    .credentials {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-    .credential {
-      padding: var(--space-4) var(--space-3);
-    }
-  }
-
   @media (min-width: 600px) {
     .about__media {
       grid-column: 1 / span 6;

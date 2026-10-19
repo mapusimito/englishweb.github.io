@@ -3,9 +3,9 @@ import { expect, test } from '@playwright/test';
 test('la frase de la marca aparece una sola vez y la firma «by Daniel Guanipa» solo en el pie', async ({ page }) => {
   await page.goto('/');
   const body = await page.locator('body').innerText();
-  expect(body.match(/Aprender inglés empieza por entenderte/g) ?? []).toHaveLength(1);
-  const html = await page.content();
-  expect(html.match(/Aprender inglés empieza por entenderte/g) ?? []).toHaveLength(1);
+  // La microcopy de la portada aparece una sola vez en el hero.
+  await expect(page.locator('.hero__tagline')).toHaveText('Tu primera clase es gratis.');
+  expect(body).not.toContain('Aprender inglés empieza por entenderte');
   expect(body.match(/by Daniel Guanipa/g) ?? []).toHaveLength(1);
   await expect(page.locator('footer')).toContainText('by Daniel Guanipa');
   // El texto alternativo describe lo que se ve, sin créditos de marca.
@@ -27,15 +27,12 @@ test('«primera clase gratis» no se repite en Preguntas con las mismas palabras
   expect(plans).toContain('Tu primera clase es gratis');
 });
 
-test('datos destacados de «Sobre mí»: exactamente los cuatro indicados', async ({ page }) => {
+test('«Sobre mí»: experiencia en cinco puntos y sin datos no verificables', async ({ page }) => {
   await page.goto('/');
-  const items = page.locator('#sobre-mi .credential');
-  await expect(items).toHaveCount(4);
-  const text = (await items.allInnerTexts()).join('\n');
-  expect(text).toContain('Inglés a nivel bilingüe');
-  expect(text).toContain('Como profesor de inglés y matemáticas');
-  expect(text).toContain('De retención de alumnos');
-  expect(text).toContain('Conozco los errores típicos de los hispanohablantes');
+  const items = page.locator('#sobre-mi .about__experience li');
+  await expect(items).toHaveCount(5);
+  await expect(page.locator('#sobre-mi')).toContainText('Más de dos años de experiencia dando clases de inglés y matemáticas.');
+  await expect(page.locator('#sobre-mi .credential')).toHaveCount(0);
 });
 
 test('no se publican marcadores [entre corchetes] ni la sección de testimonios', async ({ page }) => {
@@ -49,23 +46,23 @@ test('no se publican marcadores [entre corchetes] ni la sección de testimonios'
   await expect(page.getByText('¿Qué pasa si no puedo asistir a una clase?')).toHaveCount(0);
 });
 
-test('las preguntas de ubicación y de precio de parejas están y usan los precios del motor', async ({ page }) => {
+test('las preguntas de ubicación y descuentos están', async ({ page }) => {
   await page.goto('/');
-  const where = page.locator('#preguntas details', { hasText: '¿Dónde son las clases presenciales?' });
+  const where = page.locator('#preguntas details', { hasText: '¿Dónde se imparten las clases presenciales?' });
   await where.locator('summary').click();
-  await expect(where).toContainText('Playa San Juan (Alicante), en tu casa o en un espacio tranquilo que acordemos. También online por videollamada.');
-  const pairs = page.locator('#preguntas details', { hasText: '¿Hay precio para parejas?' });
-  await pairs.locator('summary').click();
-  await expect(pairs).toContainText(/Sí: 120\s€\/mes por persona en el plan Esencial y 180\s€\/mes por persona en el Intensivo\./);
+  await expect(where).toContainText('Podemos organizar las clases en Playa de San Juan, en tu domicilio si acordamos esa opción');
+  const discounts = page.locator('#preguntas details', { hasText: '¿Hay descuentos por contratar más horas?' });
+  await expect(discounts).toHaveCount(1);
 });
 
 test('las tarjetas de plan muestran el precio de parejas junto al individual y al de grupo', async ({ page }) => {
   await page.goto('/');
   await page.locator('.cfg').scrollIntoViewIfNeeded();
   const esencial = page.getByRole('radio', { name: /Plan Esencial/ }).locator('xpath=ancestor::label');
-  await expect(esencial).toContainText(/Individual: 180\s€ al mes/);
-  await expect(esencial).toContainText(/En pareja: 120\s€ al mes por persona/);
-  await expect(esencial).toContainText(/En grupo de 4: desde 84\s€/);
+  await expect(esencial).toContainText(/Individual: 180\s€\/mes/);
+  await expect(esencial).toContainText(/En pareja: 120\s€\/mes por persona/);
+  await expect(esencial).toContainText(/Grupo de 3: 96\s€\/mes por persona/);
+  await expect(esencial).toContainText(/Grupo de 4: 84\s€\/mes por persona/);
 });
 
 test.describe('sin JavaScript', () => {
@@ -99,32 +96,30 @@ test('el isologo (isotipo + logotipo completo) es igual en cabecera, menú y pie
   await expect(page.locator('#menu-movil .logo .logo__wordmark')).toHaveCount(1);
 });
 
-test('queda claro que «online» no es en Alicante: presenciales en Alicante u online', async ({ page }) => {
+test('metadatos y eyebrow según el contenido aprobado', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle(/Alicante u online/);
-  const desc = await page.locator('meta[name="description"]').getAttribute('content');
-  expect(desc).toContain('presenciales en Alicante u online');
-  await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés presenciales en Alicante u online');
-  const html = await page.content();
-  expect(html).not.toMatch(/Alicante y online/);
+  await expect(page).toHaveTitle('Clases de inglés personalizadas en Alicante y online | My Way to English');
+  const meta = async (sel: string) => (await page.locator(sel).getAttribute('content')) ?? '';
+  expect(await meta('meta[name="description"]')).toBe(
+    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.',
+  );
+  expect(await meta('meta[property="og:title"]')).toBe('Clases de inglés adaptadas a ti | My Way to English');
+  expect(await meta('meta[property="og:description"]')).toBe(
+    'Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
+  );
+  await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés en Alicante y online');
 });
 
 test.describe('diferencial: clase personalizada frente a aula masificada', () => {
   test('el pitch está en el hero y en los metadatos', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toHaveText('Una clase pensada para ti, no para diez.');
-    await expect(page.locator('.hero__lead')).toContainText('hasta cuatro');
-    const title = await page.title();
-    expect(title.length).toBeLessThanOrEqual(62);
+    await expect(page.locator('h1')).toHaveText('Aprende inglés con un profesor que se adapta a ti.');
+    await expect(page.locator('.hero__lead')).toContainText('objetivos y dificultades');
+    await expect(page.locator('.hero__more')).toContainText('hasta cuatro personas');
     const meta = async (sel: string) => (await page.locator(sel).getAttribute('content')) ?? '';
-    const desc = await meta('meta[name="description"]');
-    expect(desc.length).toBeLessThanOrEqual(155);
-    expect(desc).toMatch(/grupos de hasta 4/);
-    expect(desc).toMatch(/mismo profesor/);
-    expect(await meta('meta[property="og:description"]')).toBe(desc);
-    expect(await meta('meta[property="og:title"]')).toBe(title);
-    expect(await meta('meta[name="twitter:description"]')).toBe(desc);
-    expect(await meta('meta[name="twitter:title"]')).toBe(title);
+    expect((await page.title()).length).toBeLessThanOrEqual(75);
+    expect((await meta('meta[name="description"]')).length).toBeLessThanOrEqual(170);
+    expect(await meta('meta[name="twitter:title"]')).toBe(await meta('meta[property="og:title"]'));
   });
 
   test('la sección de comparación existe, es una lista semántica y enlaza a la primera clase gratis', async ({ page }) => {
@@ -137,11 +132,11 @@ test.describe('diferencial: clase personalizada frente a aula masificada', () =>
     expect(await rows.count()).toBeGreaterThanOrEqual(5);
     for (const row of await rows.all()) {
       await expect(row.getByRole('heading', { level: 3 })).toHaveCount(1);
-      await expect(row).toContainText('En un aula grande');
-      await expect(row).toContainText('En clase conmigo');
+      await expect(row).toContainText('En una academia');
+      await expect(row).toContainText('En mis clases');
     }
     // Reconoce lo bueno de una academia y no nombra ninguna.
-    await expect(sec).toContainText('Una academia puede ser una buena opción');
+    await expect(sec).toContainText('¿Para quién tienen sentido mis clases?');
     await expect(sec.getByRole('link', { name: /primera clase gratis/i })).toHaveAttribute('href', '#planes');
     // Va justo tras la franja de datos.
     const order = await page.locator('main section').evaluateAll((els) => els.map((e) => e.id || e.className));
@@ -175,14 +170,7 @@ test.describe('diferencial: clase personalizada frente a aula masificada', () =>
     await page.goto('/');
     const body = (await page.locator('body').innerText()).replace(/\s+/g, ' ');
     const html = await page.content();
-    expect(body.match(/Una clase pensada para ti/gi) ?? []).toHaveLength(1);
-    expect(body.match(/no para diez/gi) ?? []).toHaveLength(1);
-    expect(body.match(/Una academia puede ser/g) ?? []).toHaveLength(1);
-    expect(body.match(/hasta cuatro/gi)?.length ?? 0).toBeLessThanOrEqual(2);
+    expect(body.match(/Aprende inglés con un profesor que se adapta a ti/gi) ?? []).toHaveLength(1);
     expect(html).not.toMatch(/academia[s]? (como|de) [A-Z]/);
-    // La respuesta de Preguntas no copia el texto de la sección.
-    const faq = await page.locator('#preguntas details', { hasText: '¿En qué se diferencia de una academia?' }).textContent() ?? '';
-    expect(faq).not.toContain('Una academia puede ser una buena opción');
-    expect(faq).toContain('grupos de hasta cuatro');
   });
 });

@@ -18,12 +18,13 @@ interface Props {
 
 /** Precios de partida de cada tarjeta: los calcula el motor, no están escritos a mano. */
 function priceHints(hours: number | null): string[] {
-  if (hours === null) return ['El precio depende de las horas y del formato; lo verás antes de enviar nada.'];
+  if (hours === null) return [];
   const monthly = (students: number) => formatEuros(calculateQuote(students, hours).monthlyPerStudentCents, true);
   return [
-    `Individual: ${monthly(1)} al mes`,
-    `En pareja: ${monthly(2)} al mes por persona`,
-    `En grupo de 4: desde ${monthly(4)} al mes por alumno`,
+    `Individual: ${monthly(1)}/mes`,
+    `En pareja: ${monthly(2)}/mes por persona`,
+    `Grupo de 3: ${monthly(3)}/mes por persona`,
+    `Grupo de 4: ${monthly(4)}/mes por persona`,
   ];
 }
 
@@ -59,8 +60,8 @@ export function PlanStep({ state, update, errors }: Props) {
           >
             <span class="cfg-card__name">{plan.name}</span>
             <span class="cfg-hours">
-              <span class="cfg-hours__number">{plan.hours === null ? 'Tú eliges' : `${plan.hours} h`}</span>
-              {plan.hours !== null && <span class="cfg-hours__unit"> / semana</span>}
+              <span class="cfg-hours__number">{plan.hours === null ? 'Desde 3 h' : `${plan.hours} h`}</span>
+              <span class="cfg-hours__unit"> / semana</span>
             </span>
             <span class="cfg-dots" aria-hidden="true">
               {Array.from({ length: plan.hours ?? MIN_WEEKLY_HOURS }, (_, i) => (
@@ -69,12 +70,14 @@ export function PlanStep({ state, update, errors }: Props) {
               {plan.hours === null && <span class="cfg-dots__more">+</span>}
             </span>
             <span class="cfg-card__tagline">{plan.tagline}</span>
-            <span class="cfg-card__text">{plan.description}</span>
-            <span class="cfg-card__hint">
-              {priceHints(plan.hours).map((line) => (
-                <span class="cfg-card__hint-line">{line}</span>
-              ))}
-            </span>
+            {plan.description && <span class="cfg-card__text">{plan.description}</span>}
+            {plan.hours !== null && (
+              <span class="cfg-card__hint">
+                {priceHints(plan.hours).map((line) => (
+                  <span class="cfg-card__hint-line">{line}</span>
+                ))}
+              </span>
+            )}
           </ChoiceCard>
         ))}
       </div>
@@ -142,6 +145,11 @@ export function PlanStep({ state, update, errors }: Props) {
         </div>
       )}
 
+      <p class="cfg-help cfg-group-note">
+        <strong>Nota sobre los grupos:</strong> las tarifas para parejas y grupos se aplican cuando vienes con tus
+        propios compañeros. No asigno automáticamente a personas que se inscriben por separado para formar grupos
+        de desconocidos.
+      </p>
       <FreeLessonNote detailOnly />
     </div>
   );
