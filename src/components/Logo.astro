@@ -1,83 +1,49 @@
 ---
 /**
- * Wordmark «My Way to English.» en texto vivo (brief §7.1) hasta que exista el
- * vector definitivo: «My Way» y «English» en 800, «to» en 500, punto final en
- * Coral. La firma «by Daniel Guanipa» va siempre debajo y alineada a la izquierda.
+ * Logotipo mw2en (trazados de Daniel, sin modificar). Es una imagen con nombre
+ * accesible «My Way to English». Los colores se controlan con --logo-mw y --logo-en:
+ * por defecto es el original (mw tinta, EN coral); `inverse` es para fondos oscuros.
+ * La altura se fija con --logo-height.
  */
+import { logoPaths, logoViewBox } from '../config/logo';
+
 interface Props {
-  layout?: 'horizontal' | 'stacked';
   inverse?: boolean;
-  signature?: boolean;
   class?: string;
 }
-const { layout = 'horizontal', inverse = false, signature = false, class: className } = Astro.props;
+const { inverse = false, class: className } = Astro.props;
 ---
 
-<span class:list={['logo', `logo--${layout}`, { 'logo--inverse': inverse }, className]}>
-  <span class="logo__wordmark" aria-hidden="true">
-    <span class="logo__line">My Way</span>
-    <span class="logo__line"><span class="logo__to">to</span> English<span class="logo__dot"></span></span>
-  </span>
-  <span class="visually-hidden">My Way to English</span>
-  {
-    signature && (
-      <span class="logo__signature">
-        <span aria-hidden="true">by Daniel Guanipa</span>
-        <span class="visually-hidden">, por Daniel Guanipa</span>
-      </span>
-    )
-  }
-</span>
+<svg
+  class:list={['logo', { 'logo--inverse': inverse }, className]}
+  viewBox={logoViewBox}
+  role="img"
+  aria-label="My Way to English"
+  focusable="false"
+>
+  <path class="logo__mw" d={logoPaths.w}></path>
+  <path class="logo__mw" d={logoPaths.m}></path>
+  <path class="logo__en" d={logoPaths.en}></path>
+</svg>
 
 <style>
   .logo {
-    --wm-size: 1.625rem;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: var(--color-brand-primary);
+    --logo-height: 2.75rem;
+    display: block;
+    /* Proporción del dibujo: 7095 × 6434 */
+    height: var(--logo-height);
+    width: auto;
+    aspect-ratio: 7095.1 / 6433.9;
+    overflow: visible;
   }
-  .logo__wordmark {
-    display: inline-flex;
-    flex-wrap: wrap;
-    column-gap: 0.25em;
-    font-family: var(--font-display);
-    font-size: var(--wm-size);
-    font-weight: var(--font-weight-extrabold);
-    font-variation-settings: 'opsz' 96;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    white-space: nowrap;
+  .logo__mw {
+    fill: var(--logo-mw, var(--color-brand-primary));
   }
-  .logo--stacked .logo__wordmark {
-    flex-direction: column;
-    line-height: 0.95;
-  }
-  .logo__to {
-    font-weight: var(--font-weight-medium);
-  }
-  /* El punto final es un círculo perfecto en Coral sobre la línea base */
-  .logo__dot {
-    display: inline-block;
-    width: 0.17em;
-    height: 0.17em;
-    margin-left: 0.05em;
-    border-radius: var(--radius-pill);
-    background: var(--color-accent);
-  }
-  .logo__signature {
-    margin-top: calc(var(--wm-size) * 0.32);
-    font-family: var(--font-body);
-    font-size: calc(var(--wm-size) * 0.3);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: 0.01em;
-    line-height: 1;
-    color: var(--color-text-secondary);
+  .logo__en {
+    fill: var(--logo-en, var(--color-accent));
   }
   .logo--inverse {
-    color: var(--color-text-inverse);
-  }
-  .logo--inverse .logo__signature {
-    color: var(--color-text-inverse-secondary);
+    --logo-mw: var(--color-text-inverse);
+    --logo-en: var(--color-accent);
   }
 </style>

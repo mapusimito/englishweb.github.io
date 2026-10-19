@@ -100,7 +100,8 @@ Los precios de pareja (preguntas y tarjetas de plan) no son marcadores: los calc
 | Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
 | Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
-| Logotipo en texto vivo y símbolo Route Mark | `src/components/Logo.astro`, `src/components/RouteMark.astro`, `public/favicon.svg` |
+| Logotipo mw2en (trazados originales de Daniel) | `src/config/logo.ts` (trazados), `src/components/Logo.astro` (colores: `--logo-mw`, `--logo-en`) |
+| Icono de pestaña/móvil e imagen para compartir | `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`, `og-image.png` |
 | Textos de cada sección | `src/components/*.astro` |
 | Política de privacidad y aviso legal | `src/pages/privacidad.astro`, `src/pages/aviso-legal.astro` (**pendientes**) |
 
@@ -121,8 +122,6 @@ Al compilar, la consola lista los datos de contacto que siguen pendientes.
 - **Decisiones de negocio del brief (§19)**: niveles que se ofrecen, si la primera sesión es de pago,
   canal principal y tiempo de respuesta, impuestos y condiciones de pago, lugar de las clases
   presenciales, versión en inglés. La web no inventa respuestas: cuando las tengas, se añaden.
-- **Logotipo vectorial (§7)**: el wordmark es texto vivo con la fuente de la marca; cuando exista el
-  SVG definitivo, sustituye el contenido de `Logo.astro`.
 - **Política de privacidad**: el formulario recoge datos personales, así que hay que sustituir
   `src/pages/privacidad.astro` por un texto definitivo antes de publicar.
 - **Fotografías**: ver abajo.

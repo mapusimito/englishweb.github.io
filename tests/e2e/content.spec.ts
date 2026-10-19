@@ -6,8 +6,8 @@ test('la frase de la marca aparece una sola vez y la firma «by Daniel Guanipa»
   expect(body.match(/Aprender inglés empieza por entenderte/g) ?? []).toHaveLength(1);
   const html = await page.content();
   expect(html.match(/Aprender inglés empieza por entenderte/g) ?? []).toHaveLength(1);
-  expect(await page.locator('.logo__signature').count()).toBe(1);
-  await expect(page.locator('footer .logo__signature')).toHaveCount(1);
+  expect(body.match(/by Daniel Guanipa/g) ?? []).toHaveLength(1);
+  await expect(page.locator('footer')).toContainText('by Daniel Guanipa');
   // El texto alternativo describe lo que se ve, sin créditos de marca.
   const alts = await page.locator('img').evaluateAll((imgs) => imgs.map((i) => i.getAttribute('alt') ?? ''));
   expect(alts.length).toBeGreaterThan(0);
