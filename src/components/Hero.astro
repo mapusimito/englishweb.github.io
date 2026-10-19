@@ -38,7 +38,7 @@ import { site } from '../config/site';
         <div class="tiles">
           <PhotoFrame
             photo={heroPhoto}
-            sizes="(min-width: 900px) 34vw, 92vw"
+            sizes="(min-width: 900px) 34vw, 400vw"
             priority
             class="tile tile--photo frame--turn-br"
           />
@@ -161,6 +161,78 @@ import { site } from '../config/site';
   /* En móvil solo queda el waypoint, en el hueco de la esquina de giro */
   .tiles__route .waypoint-dot {
     transform: translate(150px, 140px);
+  }
+
+
+  /* Móvil: la foto es el fondo de toda la portada (con una capa oscura) y el texto va encima,
+     en vez de un bloque de foto suelto que solo ocupa espacio. */
+  @media (max-width: 899px) {
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--color-surface-inverse);
+      color: var(--color-text-inverse);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        to bottom,
+        rgba(26, 24, 71, 0.5) 0%,
+        rgba(26, 24, 71, 0.62) 40%,
+        rgba(26, 24, 71, 0.9) 100%
+      );
+    }
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .hero__media .tiles,
+    .hero__media .tiles :global(.tile--photo) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      border-radius: 0;
+    }
+    .tiles__route {
+      display: none;
+    }
+    .hero__grid {
+      row-gap: 0;
+      padding-block: var(--space-4);
+    }
+    .hero__copy {
+      padding-top: 5rem;
+    }
+    .hero h1,
+    .hero .lead {
+      color: var(--color-text-inverse);
+    }
+    .hero .eyebrow,
+    .hero__more {
+      color: var(--color-text-inverse-secondary);
+    }
+    .hero__tagline {
+      background: var(--color-text-inverse);
+      color: var(--color-brand-primary);
+    }
+    .hero__tagline .waypoint {
+      background: var(--color-brand-primary);
+    }
+    .hero .btn--primary {
+      background: var(--color-cta-inverse);
+      color: var(--color-cta-inverse-text);
+    }
+    .hero .btn--secondary {
+      border-color: var(--color-text-inverse);
+      color: var(--color-text-inverse);
+    }
   }
 
   @media (max-width: 599px) {
