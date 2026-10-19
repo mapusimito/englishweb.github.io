@@ -24,3 +24,15 @@ export const mostrarMarcadoresPendientes = false;
 
 /** En desarrollo (`npm run dev`) los marcadores siempre se ven. */
 export const showPending: boolean = import.meta.env.DEV || mostrarMarcadoresPendientes;
+
+/**
+ * Datos del responsable para la política de privacidad.
+ * `nif` y `domicilio` están pendientes hasta el alta como autónomo; mientras tanto la página
+ * muestra el aviso «pendiente» en lugar de inventarlos.
+ */
+export const responsable = {
+  nombre: 'Daniel Alejandro Guanipa Alvarez',
+  nif: '',
+  domicilio: '',
+  email: 'dagamapu@gmail.com',
+};

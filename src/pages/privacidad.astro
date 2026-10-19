@@ -1,11 +1,15 @@
 ---
 /**
- * PENDIENTE: sustituir por la política de privacidad definitiva, redactada o
- * revisada por un profesional (RGPD / LOPDGDD). No se inventan datos legales.
+ * Política de privacidad (RGPD / LOPDGDD). Redactada a partir de las respuestas del titular.
+ * Pendiente: NIF y domicilio (alta como autónomo) y revisión por un profesional antes de
+ * recoger datos de forma habitual.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { pageTitle } from '../config/site';
+import { responsable } from '../config/policies';
 import { withBase } from '../config/paths';
+
+const pendiente = '[pendiente de completar]';
 ---
 
 <BaseLayout title={pageTitle('Política de privacidad')} isHome={false} noindex>
@@ -13,20 +17,78 @@ import { withBase } from '../config/paths';
     <div class="container legal">
       <p class="eyebrow">Legal</p>
       <h1>Política de privacidad</h1>
-      <p class="legal__pending">
-        Documento pendiente. Esta página debe sustituirse por la política de privacidad definitiva
-        antes de publicar la web y de recoger datos a través del formulario.
-      </p>
-      <h2>Contenido mínimo que deberá incluir</h2>
+
+      <h2>Responsable del tratamiento</h2>
       <ul>
-        <li>Responsable del tratamiento: nombre completo, NIF y datos de contacto.</li>
-        <li>Finalidad: responder a las solicitudes de información sobre clases.</li>
-        <li>Base legal: consentimiento de la persona interesada.</li>
-        <li>Plazo de conservación de los datos.</li>
-        <li>Destinatarios y encargados del tratamiento (por ejemplo, el servicio de formularios utilizado).</li>
-        <li>Derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad, y cómo ejercerlos.</li>
-        <li>Derecho a reclamar ante la Agencia Española de Protección de Datos.</li>
+        <li>Nombre: {responsable.nombre}</li>
+        <li>NIF/NIE: {responsable.nif || pendiente}</li>
+        <li>Domicilio: {responsable.domicilio || pendiente}</li>
+        <li>Email de contacto para asuntos de datos: <a href={`mailto:${responsable.email}`}>{responsable.email}</a></li>
       </ul>
+
+      <h2>Qué datos recojo y para qué</h2>
+      <p>
+        Cuando me escribes por el formulario, por WhatsApp o desde el configurador de planes, trato los datos que
+        me facilitas (nombre, medio de contacto, nivel de inglés, horas y formato que te interesan y el mensaje
+        que escribas) para responder a tu solicitud y, si decides empezar, organizar las clases. No uso tus datos
+        para enviar publicidad ni boletines.
+      </p>
+
+      <h2>Base legal</h2>
+      <p>
+        Tu consentimiento al enviarme la solicitud y, una vez que empezamos, la ejecución del servicio de clases
+        que acordamos.
+      </p>
+
+      <h2>Menores de edad</h2>
+      <p>
+        Doy clases a menores. Los datos de un menor los trato solo con la autorización de su madre, padre o
+        tutor legal, que es quien debe escribirme o autorizar expresamente que el menor lo haga.
+      </p>
+
+      <h2>Con quién comparto los datos</h2>
+      <p>
+        No vendo ni cedo tus datos. Para dar el servicio utilizo estas herramientas, que actúan como encargados
+        del tratamiento:
+      </p>
+      <ul>
+        <li>WhatsApp: la solicitud llega a mi conversación de WhatsApp.</li>
+        <li>Zoom o Google Meet: clases por videollamada.</li>
+        <li>Google Drive y Docs: materiales y seguimiento de las clases.</li>
+        <li>Bizum o transferencia bancaria: cobro de las clases.</li>
+      </ul>
+      <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo con las garantías que ofrecen sus propias políticas.</p>
+
+      <h2>Cuánto tiempo los conservo</h2>
+      <p>
+        Conservo tus datos hasta que me pidas que los elimine. Puedes pedirlo en cualquier momento escribiendo
+        al email de arriba.
+      </p>
+
+      <h2>Cookies y analítica</h2>
+      <p>
+        Esta web no utiliza cookies ni herramientas de analítica de terceros, por lo que no muestra un banner de
+        cookies. Si esto cambia, se actualizará esta política y se pedirá tu consentimiento.
+      </p>
+
+      <h2>Fotografías</h2>
+      <p>
+        Las imágenes de esta web no muestran a alumnos identificables. Si en el futuro publico fotos de alumnos,
+        lo haré solo con su consentimiento escrito (y el de su familia si son menores).
+      </p>
+
+      <h2>Tus derechos</h2>
+      <p>
+        Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y
+        portabilidad escribiendo a <a href={`mailto:${responsable.email}`}>{responsable.email}</a>. Si crees que
+        tus datos no se tratan correctamente, puedes reclamar ante la Agencia Española de Protección de Datos
+        (<a href="https://www.aepd.es">www.aepd.es</a>).
+      </p>
+
+      <p class="legal__pending">
+        Última actualización: octubre de 2026. Esta página incluye datos pendientes (NIF y domicilio) hasta el alta
+        como autónomo.
+      </p>
       <p><a class="btn btn--secondary" href={withBase()}>Volver al inicio</a></p>
     </div>
   </section>
