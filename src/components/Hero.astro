@@ -1,208 +1,225 @@
 ---
 import PhotoFrame from './PhotoFrame.astro';
-import WhatsAppButton from './WhatsAppButton.astro';
 import Icon from './Icon.astro';
 import { heroPhoto } from '../config/photos';
 import { site } from '../config/site';
-import { stages } from '../config/approach';
 ---
 
-<section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <p class="eyebrow">Clases de inglés en {site.city}</p>
-      <h1 id="hero-title">
-        Inglés con <span class="mark">estructura</span>, adaptado a <span class="mark">cómo aprendes</span>.
-      </h1>
-      <p class="hero__lead">
-        Soy Daniel Guanipa, profesor de inglés. Mis clases siguen un plan claro, pero la forma de
-        llegar al objetivo se ajusta a ti: tu nivel, tus dificultades y tu manera de entender. Para
-        que no solo completes el temario, sino que <em>sepas usar</em> lo que aprendes.
-      </p>
-      <div class="hero__ctas">
-        <a class="btn btn--ink" href="#clases">
-          Ver clases
-          <Icon name="arrow" />
-        </a>
-        <WhatsAppButton variant="accent" />
+<div class="panel-wrap hero-wrap">
+  <section class="panel panel--blush hero" id="top" aria-labelledby="hero-title">
+    <div class="container grid hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Clases de inglés en {site.city} y online</p>
+        <h1 id="hero-title">Clases de inglés que se adaptan a cómo aprendes.</h1>
+        <p class="lead hero__lead">
+          Individuales, en pareja o en grupos de hasta cuatro. Primero entiendo dónde te atascas;
+          después diseño el camino.
+        </p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#contacto">Escríbeme</a>
+          <a class="btn btn--secondary" href="#planes">
+            Ver planes
+            <Icon name="arrow" />
+          </a>
+        </div>
+        <p class="hero__tagline hero__tagline--desktop small">
+          <span class="waypoint" aria-hidden="true"></span>
+          {site.tagline}
+        </p>
       </div>
-      <ul class="hero__meta" role="list">
-        <li><Icon name="pin" /> {site.city}</li>
-        <li><Icon name="users" /> Individual, en pareja o grupo reducido</li>
-        <li><Icon name="layers" /> Desde nivel inicial</li>
-      </ul>
-    </div>
 
-    <div class="hero__media">
-      <PhotoFrame
-        photo={heroPhoto}
-        ratio="4 / 5"
-        sizes="(min-width: 960px) 40vw, 92vw"
-        priority
-        class="hero__photo"
-      />
-      <div class="hero__card" aria-hidden="true">
-        <span class="hero__card-label">Cómo trabajamos</span>
-        <ol>
-          {
-            stages.map((stage, i) => (
-              <li>
-                <span>{i + 1}</span> {stage.name}
-              </li>
-            ))
-          }
-        </ol>
+      <!-- Composición: retícula 3 × 3 con el retrato y una ruta que termina en el waypoint -->
+      <div class="hero__media">
+        <div class="tiles">
+          <PhotoFrame
+            photo={heroPhoto}
+            sizes="(min-width: 900px) 34vw, 92vw"
+            priority
+            class="tile tile--photo frame--turn-br"
+          />
+          <span class="tile tile--ink" aria-hidden="true"></span>
+          <span class="tile tile--sand" aria-hidden="true"></span>
+          <span class="tile tile--dots dot-grid" aria-hidden="true"></span>
+          <svg class="route-svg tiles__route" viewBox="0 0 400 500" aria-hidden="true" focusable="false">
+            <path d="M0 420H108A24 24 0 0 0 132 396V359A24 24 0 0 1 156 335H210" pathLength="1"></path>
+            <circle class="waypoint-dot" cx="226" cy="335" r="6.5"></circle>
+          </svg>
+        </div>
       </div>
+
+      <p class="hero__tagline hero__tagline--mobile small">
+        <span class="waypoint" aria-hidden="true"></span>
+        {site.tagline}
+      </p>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <style>
-  .hero {
-    padding-block: clamp(1.5rem, 1rem + 3vw, 4.5rem) clamp(3rem, 2rem + 4vw, 6rem);
+  .hero-wrap {
+    padding-top: var(--space-4);
   }
   .hero__grid {
-    display: grid;
-    gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+    row-gap: var(--space-6);
     align-items: center;
   }
-  @media (min-width: 960px) {
-    .hero__grid {
-      grid-template-columns: 1.15fr 0.85fr;
-    }
-  }
-
   .hero__copy {
     display: grid;
-    gap: 1.5rem;
+    gap: var(--space-5);
     justify-items: start;
   }
-  h1 {
-    font-size: var(--step-4);
-    font-weight: 680;
-    letter-spacing: -0.035em;
-    line-height: 1.02;
-    max-width: 15ch;
-  }
-  .hero__lead {
-    max-width: 36rem;
-    font-size: var(--step-1);
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .hero__lead em {
-    font-style: normal;
-    color: var(--ink);
-    font-weight: 600;
+  .hero__copy h1 {
+    margin-top: calc(-1 * var(--space-2));
   }
   .hero__ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 0.25rem;
+    gap: var(--space-4);
+    width: 100%;
   }
-  .hero__meta {
+  .hero__tagline {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.4rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--line);
-    font-size: var(--step--1);
-    color: var(--ink-soft);
-  }
-  .hero__meta li {
-    display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-  }
-  .hero__meta :global(svg) {
-    width: 1.1rem;
-    height: 1.1rem;
-    color: var(--accent-text);
+    gap: var(--space-3);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
   }
 
-  .hero__media {
+  /* Móvil: retrato 4:5 a todo el ancho con su esquina de giro y un waypoint */
+  .tiles {
     position: relative;
-    width: min(100%, 30rem);
-    justify-self: center;
+    container-type: inline-size;
   }
-  .hero__media::before {
-    content: '';
+  .tiles :global(.tile--photo) {
+    aspect-ratio: 4 / 5;
+    --turn: 50cqi;
+  }
+  .tile--ink,
+  .tile--sand,
+  .tile--dots {
+    display: none;
+  }
+  .tiles__route path {
+    display: none;
+  }
+  .tiles__route {
     position: absolute;
-    inset: 1.25rem -1.25rem -1.25rem 1.25rem;
-    border-radius: var(--r-lg);
-    background: var(--navy);
-    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
-  .hero__media :global(.hero__photo) {
-    border-radius: var(--r-lg);
+  /* En móvil solo queda el waypoint, en el hueco de la esquina de giro */
+  .tiles__route .waypoint-dot {
+    transform: translate(150px, 140px);
   }
 
-  .hero__card {
-    position: absolute;
-    left: -1.25rem;
-    bottom: 2rem;
-    display: grid;
-    gap: 0.6rem;
-    padding: 1rem 1.15rem;
-    background: var(--card);
-    border-radius: var(--r);
-    box-shadow: var(--shadow);
+  .hero__tagline--desktop {
+    display: none;
   }
-  .hero__card-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .hero__card ol {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.55rem 1.1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-weight: 600;
-    font-size: 0.92rem;
-  }
-  .hero__card li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .hero__card li span {
-    display: grid;
-    place-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background: var(--accent-wash);
-    color: var(--accent-text);
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 959px) {
-    .hero__media {
-      width: min(100% - 1.25rem, 26rem);
-      justify-self: start;
+  @media (min-width: 900px) {
+    .hero__tagline--desktop {
+      display: flex;
+      margin-top: var(--space-3);
     }
   }
-  /* En móvil la tarjeta taparía a los alumnos de la foto; el método se explica más abajo. */
-  @media (max-width: 520px) {
-    .hero__card {
+  @media (max-width: 599px) {
+    .hero__ctas .btn {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .hero__copy {
+      grid-column: 1 / span 6;
+      grid-row: 1;
+    }
+    .hero__media {
+      grid-column: 7 / span 6;
+      grid-row: 1;
+    }
+    .hero__tagline--mobile {
       display: none;
     }
-    /* Que los dos botones queden visibles sin hacer scroll también en pantallas bajas */
-    .hero__copy {
-      gap: 1.15rem;
+
+    /* Escritorio: retícula 3 × 3 (12px de separación); el retrato ocupa 2 × 2 */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: var(--space-3);
+      aspect-ratio: 4 / 5;
+      max-width: 34rem;
+      margin-left: auto;
     }
-    h1 {
-      font-size: clamp(2.1rem, 9.6vw, 2.5rem);
+    .tiles :global(.tile--photo) {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+      aspect-ratio: auto;
+      height: 100%;
+      --turn: 33cqi;
     }
-    .hero__lead {
-      font-size: var(--step-0);
+    .tile {
+      border-radius: var(--radius-lg);
+    }
+    .tile--ink,
+    .tile--sand,
+    .tile--dots {
+      display: block;
+    }
+    .tile--ink {
+      grid-column: 3;
+      grid-row: 1;
+      background: var(--color-brand-primary);
+    }
+    .tile--sand {
+      grid-column: 3;
+      grid-row: 2;
+      background: var(--color-background-alt);
+    }
+    .tile--dots {
+      grid-column: 2;
+      grid-row: 3;
+      background-color: var(--color-background);
+    }
+    .tiles__route {
+      color: var(--color-route);
+    }
+    .tiles__route path {
+      display: inline;
+      /* En unidades del viewBox (≈ 4px a tamaño completo): el trazo discontinuo
+         que dibuja la ruta no funciona con vector-effect: non-scaling-stroke */
+      vector-effect: none;
+      stroke-width: 3;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+    .tiles__route .waypoint-dot {
+      transform: none;
+    }
+    /* La ruta se dibuja una vez al cargar (sin movimiento reducido: aparece completa) */
+    :global(.js) .tiles__route path {
+      animation: route-draw var(--duration-route-draw) var(--ease-standard) both;
+    }
+    :global(.js) .tiles__route .waypoint-dot {
+      animation: waypoint-in var(--duration-base) var(--ease-standard) both;
+      animation-delay: var(--duration-route-draw);
+    }
+  }
+
+  @keyframes route-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes waypoint-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 </style>

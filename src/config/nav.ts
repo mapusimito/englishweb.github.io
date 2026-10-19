@@ -1,8 +1,8 @@
-// En el mismo orden en que aparecen las secciones en la página.
+// En el mismo orden en que aparecen las secciones en la página (brief §13.2).
 export const navLinks = [
-  { label: 'Enfoque', href: '#enfoque' },
-  { label: 'Método', href: '#metodo' },
+  { label: 'Cómo trabajo', href: '#como-trabajo' },
   { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Clases', href: '#clases' },
+  { label: 'Planes', href: '#planes' },
+  { label: 'Preguntas', href: '#preguntas' },
   { label: 'Contacto', href: '#contacto' },
 ];

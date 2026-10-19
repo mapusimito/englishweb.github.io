@@ -1,232 +1,128 @@
 ---
+/** Biografía (brief §13.5): retrato a la izquierda, texto a la derecha, en primera persona. */
 import PhotoFrame from './PhotoFrame.astro';
-import Icon from './Icon.astro';
-import { portraitPhoto } from '../config/photos';
-import { site } from '../config/site';
+import Logo from './Logo.astro';
+import { bioPhoto } from '../config/photos';
 
-const inClass = [
-  'Atención uno a uno o en grupos pequeños',
-  'Un ambiente cercano, donde equivocarse forma parte de aprender',
-  'Conversación desde el principio, adaptada a tu nivel',
-  'Explicaciones con ejemplos cotidianos, comparaciones y metáforas',
-];
-
-const resources = [
-  'Materiales y actividades preparados para cada nivel',
-  'Kahoot, Lingoclip y juegos de mesa para practicar pronunciación, gramática y vocabulario',
-  'Dinámicas que hacen participar a todos, también en grupo',
-  'Seguimiento del progreso para saber qué reforzar',
+const experience = [
+  'Clases individuales y en grupo, presenciales y online.',
+  'Alumnos de unos 10 a 30 años, sobre todo de nivel A1–A2, también en grupos numerosos.',
+  'Rediseño de un sistema de evaluación y renovación de los materiales de clase.',
+  'Kahoot, Lingoclip y juegos de mesa, usados para practicar.',
 ];
 ---
 
 <section class="section about" id="sobre-mi" aria-labelledby="about-title">
-  <div class="container about__grid">
-    <aside class="about__side" data-reveal>
+  <div class="container grid about__grid">
+    <div class="about__media" data-reveal>
       <PhotoFrame
-        photo={portraitPhoto}
+        photo={bioPhoto}
         ratio="4 / 5"
-        sizes="(min-width: 960px) 30vw, 92vw"
-        class="about__photo"
+        sizes="(min-width: 900px) 36vw, 92vw"
+        class="frame--turn-tl about__photo"
       />
-      <dl class="about__facts">
-        <div>
-          <dt>Dónde</dt>
-          <dd>{site.city}</dd>
-        </div>
-        <div>
-          <dt>Formatos</dt>
-          <dd>Individual, en pareja y en grupos reducidos</dd>
-        </div>
-        <div>
-          <dt>Alumnos</dt>
-          <dd>Escolares, estudiantes y adultos, desde nivel inicial</dd>
-        </div>
-      </dl>
-    </aside>
+    </div>
 
-      <div class="about__intro" data-reveal>
-        <p class="eyebrow">Sobre mí</p>
-        <h2 id="about-title">Una trayectoria hecha en el aula.</h2>
-        <p class="about__lead">
-          Soy Daniel Guanipa. He dado clases de inglés a alumnos de unos 10 a 30 años, en clases
-          individuales y en grupo, presenciales y online, sobre todo a personas que empezaban desde
-          un nivel inicial.
+    <div class="about__body" data-reveal>
+      <h2 id="about-title">Hola, soy Daniel Guanipa.</h2>
+      <div class="prose">
+        <p>
+          He dado clases de inglés a alumnos de unos 10 a 30 años, en clases individuales y en grupo,
+          presenciales y online. Con perfiles tan distintos aprendí a fijarme primero en qué bloquea a
+          cada alumno y solo después en cómo explicarlo.
         </p>
         <p>
-          Trabajar con perfiles tan distintos, y con grupos grandes y pequeños, me enseñó a fijarme
-          en la dificultad concreta de cada alumno y a buscar la explicación que le funciona. Con el
-          tiempo me impliqué también en lo que hay detrás de una buena clase: preparar materiales,
-          mejorar la forma de evaluar el progreso y elegir recursos que hagan participar.
-        </p>
-        <p>
-          De ahí sale la forma en que doy clase hoy: una estructura clara, atención a lo que cada
-          alumno necesita y actividades que hacen que el inglés se use, no solo se estudie.
+          Hablo español de nacimiento, así que sé dónde suele atascarse un hispanohablante: los
+          falsos amigos, los tiempos verbales, ciertos sonidos. Cuando lo que desbloquea un concepto es
+          explicarlo en español, lo explico en español.
         </p>
       </div>
 
-      <div class="about__timeline" data-reveal>
-        <div class="about__role">
-          <h3 class="about__org">Mi entorno de clase</h3>
-        </div>
-        <div class="about__cols">
-          <div>
-            <h4>En clase</h4>
-            <ul role="list">
-              {
-                inClass.map((item) => (
-                  <li>
-                    <Icon name="check" />
-                    {item}
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-          <div>
-            <h4>Recursos</h4>
-            <ul role="list">
-              {
-                resources.map((item) => (
-                  <li>
-                    <Icon name="check" />
-                    {item}
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
+      <div class="about__experience">
+        <h3 class="about__label">Mi trayectoria en el aula</h3>
+        <ul role="list">
+          {experience.map((item) => <li>{item}</li>)}
+        </ul>
       </div>
+
+      <Logo signature class="about__signature" />
+    </div>
   </div>
 </section>
 
 <style>
   .about__grid {
+    align-items: center;
+  }
+  .about__media {
+    max-width: 28rem;
+  }
+  .about__media :global(.about__photo) {
+    --turn: 30vw;
+  }
+  .about__body {
     display: grid;
-    grid-template-areas: 'intro' 'side' 'timeline';
-    gap: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    gap: var(--space-6);
+    justify-items: start;
   }
-  .about__side {
-    grid-area: side;
+  .about__body .prose {
+    color: var(--color-text-secondary);
   }
-  .about__intro {
-    grid-area: intro;
-  }
-  .about__timeline {
-    grid-area: timeline;
-  }
-  @media (min-width: 960px) {
-    .about__grid {
-      grid-template-columns: 1.25fr 0.75fr;
-      grid-template-rows: auto 1fr;
-      grid-template-areas: 'intro side' 'timeline side';
-      column-gap: clamp(2.5rem, 2rem + 3vw, 5rem);
-      align-items: start;
-    }
-    .about__side {
-      position: sticky;
-      top: calc(var(--header-h) + 2rem);
-    }
-  }
-  .about__side {
-    display: grid;
-    gap: 1.5rem;
-    max-width: 26rem;
-  }
-  .about__facts {
-    margin: 0;
-    display: grid;
-  }
-  .about__facts div {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    gap: 1rem;
-    padding-block: 0.8rem;
-    border-bottom: 1px solid var(--line);
-    font-size: var(--step--1);
-  }
-  .about__facts div:first-child {
-    border-top: 1px solid var(--line);
-  }
-  dt {
-    font-weight: 600;
-    color: var(--ink-soft);
-  }
-  dd {
-    margin: 0;
-  }
-
-  .about__intro {
-    display: grid;
-    gap: 1.25rem;
-    max-width: 40rem;
-  }
-  .about__intro h2 {
-    font-size: var(--step-3);
-  }
-  .about__intro p:not(.eyebrow) {
-    color: var(--ink-soft);
-  }
-  .about__intro .about__lead {
-    font-size: var(--step-1);
-    line-height: 1.5;
-    color: var(--ink);
-  }
-
-  .about__timeline {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  }
-  .about__role {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.5rem 1rem;
-    padding-bottom: 1.25rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .about__org {
-    font-family: var(--font-display);
-    font-size: var(--step-2);
-    font-weight: 650;
-    letter-spacing: -0.02em;
-  }
-  .about__cols {
-    display: grid;
-    gap: 2rem;
-  }
-  @media (min-width: 700px) {
-    .about__cols {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  .about__cols h4 {
-    font-size: 0.8rem;
+  .about__label {
+    margin-bottom: var(--space-3);
     font-family: var(--font-body);
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-eyebrow);
+    line-height: var(--line-height-ui);
     text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
   }
-  .about__cols ul {
+  .about__experience {
+    width: 100%;
+    max-width: var(--measure);
+    padding-top: var(--space-5);
+    border-top: var(--border-hairline) solid var(--color-border);
+  }
+  .about__experience ul {
     display: grid;
-    gap: 0.85rem;
+    gap: var(--space-2);
   }
-  .about__cols li {
-    display: grid;
-    grid-template-columns: 1.25rem 1fr;
-    gap: 0.65rem;
-    line-height: 1.45;
+  .about__experience li {
+    position: relative;
+    padding-left: var(--space-5);
   }
-  .about__cols li :global(svg) {
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-top: 0.1rem;
-    color: var(--accent-text);
+  .about__experience li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+  }
+  .about__body :global(.about__signature) {
+    --wm-size: 2.25rem;
+  }
+
+  @media (min-width: 600px) {
+    .about__media {
+      grid-column: 1 / span 6;
+    }
+    .about__body {
+      grid-column: 1 / span 8;
+    }
+  }
+  @media (min-width: 900px) {
+    .about__media {
+      grid-column: 1 / span 5;
+    }
+    .about__body {
+      grid-column: 6 / span 7;
+    }
+    .about__media :global(.about__photo) {
+      --turn: 9rem;
+    }
   }
 </style>

@@ -1,0 +1,36 @@
+---
+/** Contenido de un marco de foto: la imagen optimizada o el marcador «Foto pendiente». */
+import { Picture } from 'astro:assets';
+import type { Photo } from '../config/photos';
+import Icon from './Icon.astro';
+
+interface Props {
+  photo: Photo;
+  sizes: string;
+  priority?: boolean;
+}
+const { photo, sizes, priority = false } = Astro.props;
+const widths = [480, 768, 1080, 1440, 2000];
+---
+
+{
+  photo.src ? (
+    <Picture
+      src={photo.src}
+      alt={photo.alt}
+      widths={[...new Set([...widths.filter((w) => w < photo.src!.width), photo.src.width])]}
+      sizes={sizes}
+      formats={['avif', 'webp']}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
+      decoding="async"
+      style={photo.focus ? `object-position: ${photo.focus}` : undefined}
+    />
+  ) : (
+    <div class="frame__pending" role="img" aria-label={`Foto pendiente: ${photo.slot}`}>
+      <Icon name="camera" class="frame__icon" />
+      <span class="frame__tag">Foto pendiente</span>
+      <span class="frame__slot">{photo.slot}</span>
+    </div>
+  )
+}

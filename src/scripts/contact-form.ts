@@ -1,8 +1,10 @@
 /**
- * Validación y envío del formulario de contacto.
+ * Validación y envío del formulario de contacto (brief §13.7, §14.2).
  *
+ * Validación en línea al salir de cada campo y resumen de errores al enviar.
  * Canales (definidos en src/config/site.ts, por orden de preferencia):
- *  - endpoint: POST con FormData. Solo se muestra éxito si el servidor responde OK.
+ *  - endpoint: POST con FormData. El mensaje de éxito sustituye al formulario
+ *    solo si el servidor responde OK.
  *  - whatsapp: abre WhatsApp con el mensaje redactado; el usuario lo envía.
  *  - email:    abre el cliente de correo con el mensaje redactado.
  *  - none:     no hay canal; se informa de que no se ha enviado nada.
@@ -13,75 +15,65 @@ type Channel = 'endpoint' | 'whatsapp' | 'email' | 'none';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^\+?[\d\s().-]{9,20}$/;
 
-const validators: Record<string, (form: HTMLFormElement) => string> = {
-  nombre: (form) => {
-    const value = (form.elements.namedItem('nombre') as HTMLInputElement).value.trim();
-    if (!value) return 'Escribe tu nombre.';
-    if (value.length < 2) return 'El nombre parece demasiado corto.';
-    return '';
+const value = (form: HTMLFormElement, name: string) =>
+  ((form.elements.namedItem(name) as HTMLInputElement | null)?.value ?? '').trim();
+
+const validators: Record<string, { label: string; check: (form: HTMLFormElement) => string }> = {
+  nombre: {
+    label: 'Nombre',
+    check: (form) => (value(form, 'nombre') ? '' : 'Escribe tu nombre.'),
   },
-  contacto: (form) => {
-    const value = (form.elements.namedItem('contacto') as HTMLInputElement).value.trim();
-    if (!value) return 'Indica un teléfono o un email para poder responderte.';
-    const digits = value.replace(/\D/g, '');
-    if (value.includes('@')) {
-      return EMAIL_RE.test(value) ? '' : 'Revisa el email: parece que le falta algo (ej.: nombre@correo.com).';
-    }
-    if (PHONE_RE.test(value) && digits.length >= 9) return '';
-    return 'Escribe un teléfono (mínimo 9 dígitos) o un email válido.';
+  contacto: {
+    label: 'Email o teléfono',
+    check: (form) => {
+      const v = value(form, 'contacto');
+      if (!v) return 'Indica un email o un teléfono para poder responderte.';
+      if (v.includes('@')) return EMAIL_RE.test(v) ? '' : 'Revisa el email, por ejemplo: nombre@correo.com.';
+      return PHONE_RE.test(v) && v.replace(/\D/g, '').length >= 9
+        ? ''
+        : 'Escribe un teléfono de al menos 9 dígitos o un email.';
+    },
   },
-  objetivos: (form) => {
-    const value = (form.elements.namedItem('objetivos') as HTMLTextAreaElement).value.trim();
-    if (!value) return 'Cuéntame brevemente qué te gustaría conseguir.';
-    if (value.length < 10) return 'Añade un poco más de detalle (al menos 10 caracteres).';
-    return '';
+  privacidad: {
+    label: 'Política de privacidad',
+    check: (form) =>
+      (form.elements.namedItem('privacidad') as HTMLInputElement).checked
+        ? ''
+        : 'Para enviar el mensaje tienes que aceptar la política de privacidad.',
   },
-  privacidad: (form) =>
-    (form.elements.namedItem('privacidad') as HTMLInputElement).checked
-      ? ''
-      : 'Debes aceptar la política de privacidad para continuar.',
 };
 
 function setError(form: HTMLFormElement, name: string, message: string) {
   const field = form.elements.namedItem(name) as HTMLInputElement | null;
   const error = form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
-  if (field) field.setAttribute('aria-invalid', message ? 'true' : 'false');
+  field?.setAttribute('aria-invalid', message ? 'true' : 'false');
   if (error) error.textContent = message;
-}
-
-function validate(form: HTMLFormElement) {
-  const invalid: string[] = [];
-  for (const [name, check] of Object.entries(validators)) {
-    const message = check(form);
-    setError(form, name, message);
-    if (message) invalid.push(name);
-  }
-  return invalid;
 }
 
 function buildMessage(data: FormData) {
   const get = (key: string) => String(data.get(key) ?? '').trim();
-  return [
+  const lines = [
     'Hola, Daniel. Me gustaría recibir información sobre tus clases de inglés.',
     '',
     `Nombre: ${get('nombre')}`,
     `Contacto: ${get('contacto')}`,
     `Clases: ${get('alumno')}`,
-    `Formato preferido: ${get('formato')}`,
-    `Objetivos: ${get('objetivos')}`,
-  ].join('\n');
+    `Formato: ${get('formato')}`,
+  ];
+  if (get('mensaje')) lines.push(`Mensaje: ${get('mensaje')}`);
+  return lines.join('\n');
 }
 
-function showStatus(form: HTMLFormElement, tone: 'success' | 'info' | 'error', title: string, body: string) {
+function showStatus(form: HTMLFormElement, tone: 'info' | 'error', title: string, body: string) {
   const status = form.querySelector<HTMLElement>('[data-status]');
   if (!status) return;
   status.dataset.tone = tone;
-  status.innerHTML = '';
+  status.replaceChildren();
   const strong = document.createElement('strong');
   strong.textContent = title;
-  const p = document.createElement('span');
-  p.textContent = body;
-  status.append(strong, p);
+  const text = document.createElement('span');
+  text.textContent = body;
+  status.append(strong, text);
   status.hidden = false;
   status.focus({ preventScroll: true });
   status.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -93,38 +85,61 @@ export function initContactForm() {
 
   const channel = (form.dataset.channel ?? 'none') as Channel;
   const summary = form.querySelector<HTMLElement>('[data-error-summary]');
+  const summaryList = form.querySelector<HTMLElement>('[data-error-list]');
   const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
   const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]');
-  let attempted = false;
+  const success = document.querySelector<HTMLElement>('[data-success]');
 
-  // Revalidar en vivo tras el primer intento, para que los errores desaparezcan al corregir.
-  form.addEventListener('input', (event) => {
-    if (!attempted) return;
+  // Validación en línea al salir de cada campo; después, también al corregir.
+  const touched = new Set<string>();
+  const revalidate = (event: Event) => {
     const name = (event.target as HTMLInputElement).name;
-    if (validators[name]) setError(form, name, validators[name](form));
-  });
+    if (!validators[name]) return;
+    if (event.type === 'focusout') {
+      touched.add(name);
+      // Si el foco va al botón de enviar, no mostramos el error ahora: movería el
+      // botón bajo el cursor y el clic se perdería. El envío valida todo igualmente.
+      if ((event as FocusEvent).relatedTarget === submit) return;
+    }
+    if (touched.has(name)) setError(form, name, validators[name].check(form));
+  };
+  form.addEventListener('focusout', revalidate);
+  form.addEventListener('input', revalidate);
   form.addEventListener('change', (event) => {
-    if (!attempted) return;
-    const name = (event.target as HTMLInputElement).name;
-    if (validators[name]) setError(form, name, validators[name](form));
-  });
-
-  // Los botones "Consultar disponibilidad" de cada plan preseleccionan el formato.
-  document.querySelectorAll<HTMLAnchorElement>('a[data-plan]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const option = form.querySelector<HTMLInputElement>(`[data-plan-option="${link.dataset.plan}"]`);
-      if (option) option.checked = true;
-    });
+    touched.add((event.target as HTMLInputElement).name);
+    revalidate(event);
   });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    attempted = true;
 
-    const invalid = validate(form);
+    const invalid = Object.entries(validators).filter(([name, { check }]) => {
+      touched.add(name);
+      const message = check(form);
+      setError(form, name, message);
+      return Boolean(message);
+    });
+
     if (invalid.length) {
-      if (summary) summary.hidden = false;
-      (form.elements.namedItem(invalid[0]) as HTMLElement | null)?.focus();
+      if (summary && summaryList) {
+        summaryList.replaceChildren(
+          ...invalid.map(([name, { label }]) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            const field = form.elements.namedItem(name) as HTMLInputElement;
+            a.href = `#${field.id}`;
+            a.textContent = label;
+            a.addEventListener('click', (e) => {
+              e.preventDefault();
+              field.focus();
+            });
+            li.append(a);
+            return li;
+          }),
+        );
+        summary.hidden = false;
+        summary.focus();
+      }
       return;
     }
     if (summary) summary.hidden = true;
@@ -145,19 +160,17 @@ export function initContactForm() {
           headers: { Accept: 'application/json' },
         });
         if (!response.ok) throw new Error(String(response.status));
-        form.reset();
-        attempted = false;
-        showStatus(
-          form,
-          'success',
-          'Solicitud enviada. ¡Gracias!',
-          'He recibido tu mensaje y te responderé lo antes posible por el medio que has indicado.',
-        );
+        // El mensaje de éxito sustituye al formulario y recibe el foco.
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
       } catch {
         showStatus(
           form,
           'error',
-          'No se ha podido enviar la solicitud.',
+          'No se ha podido enviar el mensaje.',
           'Comprueba tu conexión e inténtalo de nuevo en unos minutos. Tus datos siguen en el formulario.',
         );
       } finally {
@@ -170,13 +183,12 @@ export function initContactForm() {
     const message = buildMessage(data);
 
     if (channel === 'whatsapp') {
-      const url = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank', 'noopener');
+      window.open(`https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
       showStatus(
         form,
         'info',
-        'Hemos abierto WhatsApp con tu mensaje.',
-        'Tu solicitud aún no se ha enviado: pulsa "Enviar" en WhatsApp para completarla. Si no se ha abierto, revisa si tu navegador ha bloqueado la ventana.',
+        'He abierto WhatsApp con tu mensaje.',
+        'Todavía no se ha enviado: pulsa «Enviar» en WhatsApp para completarlo. Si no se ha abierto, revisa si el navegador ha bloqueado la ventana.',
       );
       return;
     }
@@ -187,8 +199,8 @@ export function initContactForm() {
       showStatus(
         form,
         'info',
-        'Hemos abierto tu programa de correo con el mensaje.',
-        'Tu solicitud aún no se ha enviado: envía el email para completarla.',
+        'He abierto tu programa de correo con el mensaje.',
+        'Todavía no se ha enviado: envía el email para completarlo.',
       );
       return;
     }
@@ -197,7 +209,7 @@ export function initContactForm() {
       form,
       'error',
       'Tu mensaje no se ha enviado.',
-      'El formulario todavía no está conectado a ningún canal de envío. Mientras tanto, no es posible solicitar información desde esta web.',
+      'El formulario todavía no está conectado a ningún canal de envío, así que por ahora no es posible escribirme desde aquí.',
     );
   });
 }

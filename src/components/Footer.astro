@@ -1,4 +1,5 @@
 ---
+/** Pie (brief §13.5): Route Ink a sangre, logotipo apilado inverso con firma y tagline. */
 import { withBase } from '../config/paths';
 import Logo from './Logo.astro';
 import { navLinks } from '../config/nav';
@@ -10,14 +11,13 @@ interface Props {
 const { isHome = true } = Astro.props;
 const prefix = isHome ? '' : withBase();
 const year = new Date().getFullYear();
-const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
 ---
 
-<footer class="footer">
+<footer class="footer on-ink">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <Logo light />
-      <p>Clases de inglés particulares, en pareja y en grupos reducidos en {site.city}.</p>
+      <Logo layout="stacked" inverse signature class="footer__logo" />
+      <p class="footer__tagline">{site.tagline}</p>
     </div>
 
     <nav aria-label="Pie de página">
@@ -30,7 +30,6 @@ const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
             </li>
           ))
         }
-        <li><a href={`${prefix}#preguntas`}>Preguntas frecuentes</a></li>
       </ul>
     </nav>
 
@@ -40,21 +39,28 @@ const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
         {
           hasWhatsapp && (
             <li>
-              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                WhatsApp<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+              </a>
             </li>
           )
         }
-        {phoneHref && <li><a href={phoneHref}>{contact.phone}</a></li>}
         {contact.email && <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>}
-        {!hasAnyContact && <li class="footer__pending">Datos de contacto pendientes</li>}
+        {phoneHref && <li><a href={phoneHref}>{contact.phone}</a></li>}
         <li><a href={`${prefix}#contacto`}>Formulario de contacto</a></li>
+        <li>Clases en {site.city} y online</li>
       </ul>
     </div>
   </div>
 
-  <div class="container footer__bottom">
-    <p>© <span data-year>{year}</span> {site.name}</p>
-    <a href={withBase(legal.privacyUrl)}>Política de privacidad</a>
+  <div class="container">
+    <div class="footer__bottom">
+    <p>© <span data-year>{year}</span> {site.brand} · {site.name}</p>
+    <ul role="list" class="footer__legal">
+      <li><a href={withBase(legal.legalNoticeUrl)}>Aviso legal</a></li>
+      <li><a href={withBase(legal.privacyUrl)}>Privacidad</a></li>
+    </ul>
+    </div>
   </div>
 </footer>
 
@@ -64,59 +70,63 @@ const hasAnyContact = hasWhatsapp || phoneHref || contact.email;
 
 <style>
   .footer {
-    background: var(--navy);
-    color: var(--on-navy-soft);
-    padding-block: clamp(3rem, 2rem + 4vw, 5rem) 2rem;
-    font-size: var(--step--1);
+    padding-block: var(--space-9) var(--space-6);
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse-secondary);
+    font-size: var(--font-size-small);
   }
   .footer__grid {
     display: grid;
-    gap: 2.5rem;
+    gap: var(--space-7);
   }
-  @media (min-width: 760px) {
+  @media (min-width: 900px) {
     .footer__grid {
-      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-columns: 6fr 3fr 3fr;
     }
   }
   .footer__brand {
     display: grid;
-    gap: 1rem;
+    gap: var(--space-5);
     align-content: start;
-    max-width: 22rem;
+  }
+  .footer__brand :global(.footer__logo) {
+    --wm-size: 2.5rem;
+  }
+  .footer__tagline {
+    font-weight: var(--font-weight-medium);
   }
   .footer__label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-eyebrow);
     text-transform: uppercase;
-    color: var(--on-navy);
-    margin-bottom: 0.9rem;
+    color: var(--color-text-inverse);
   }
   ul {
     display: grid;
-    gap: 0.55rem;
+    gap: var(--space-2);
   }
   a {
-    color: var(--on-navy-soft);
+    color: var(--color-text-inverse);
     text-decoration: none;
-    transition: color 0.2s var(--ease);
   }
   a:hover {
-    color: var(--on-navy);
+    color: var(--color-text-inverse);
     text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .footer__pending {
-    font-style: italic;
-    opacity: 0.8;
+    text-decoration-thickness: 2px;
   }
   .footer__bottom {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1rem;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgb(255 255 255 / 0.1);
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: var(--border-hairline) solid var(--color-border-inverse);
+  }
+  .footer__legal {
+    display: flex;
+    gap: var(--space-5);
   }
 </style>

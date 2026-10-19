@@ -1,356 +1,156 @@
 ---
-import PhotoFrame from './PhotoFrame.astro';
-import WhatsAppButton from './WhatsAppButton.astro';
-import Icon from './Icon.astro';
-import { methodPhoto } from '../config/photos';
+/**
+ * Metodología en un panel Ink (brief §13.5): cuatro paradas sobre una ruta que
+ * termina en el waypoint, con una vuelta atrás entre 02 y 03 (adaptar es volver
+ * a diseñar). La ruta es decorativa (SVG aria-hidden); los números son texto.
+ */
 import { stages } from '../config/approach';
-
-/** La fase que mejor resume el enfoque se destaca en el ciclo. */
-const keyStage = 'Adaptar';
 ---
 
-<section class="section method" id="metodo" aria-labelledby="method-title">
-  <div class="container">
-    <div class:list={['method__top', { 'method__top--photo': methodPhoto.src }]}>
-      <div class="method__head" data-reveal>
+<div class="panel-wrap">
+  <section class="panel panel--ink on-ink method" id="metodo" aria-labelledby="method-title">
+    <div class="container">
+      <header class="method__head" data-reveal>
         <p class="eyebrow">Método</p>
-        <h2 id="method-title">Cuatro fases. Un ciclo continuo.</h2>
-        <p>
-          Una estructura clara da la dirección. La adaptación decide la mejor manera de llegar al
-          objetivo.
+        <h2 id="method-title">Un método en cuatro pasos.</h2>
+        <p class="lead">
+          Cada semana sabes qué estamos trabajando, por qué y cómo te acerca a tu objetivo.
         </p>
-      </div>
-      {
-        methodPhoto.src && (
-          <PhotoFrame
-            photo={methodPhoto}
-            ratio="4 / 3"
-            sizes="(min-width: 900px) 34vw, 92vw"
-            class="method__photo"
-          />
-        )
-      }
-    </div>
+      </header>
 
-    <ol class="cycle" role="list" data-reveal>
-      {
-        stages.map((stage, i) => (
-          <li
-            class:list={['cycle__stage', { 'cycle__stage--key': stage.name === keyStage }]}
-            style={`--i: ${i}`}
-          >
-            <span class="cycle__node" aria-hidden="true">
-              0{i + 1}
-            </span>
-            <h3 class="cycle__name">
-              <span class="visually-hidden">Fase {i + 1}: </span>
-              {stage.name}
-            </h3>
-            <p class="cycle__lead">{stage.lead}</p>
-            <ul class="cycle__points" role="list">
-              {stage.points.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          </li>
-        ))
-      }
-    </ol>
-    <p class="cycle__loop">
-      <span class="cycle__loop-icon" aria-hidden="true">↺</span>
-      Al consolidar, vuelve a empezar el ciclo: cada revisión sirve como nuevo diagnóstico.
-    </p>
-
-    <div class="method__cta" data-reveal>
-      <div>
-        <h3>Encuentra la modalidad que mejor se adapta a ti.</h3>
-        <p>
-          Cuéntame qué necesitas mejorar en inglés y encontraremos un punto de partida para organizar
-          tu aprendizaje.
-        </p>
-      </div>
-      <div class="method__cta-actions">
-        <WhatsAppButton variant="accent" />
-        <a class="btn btn--ghost-light" href="#clases">
-          Ver clases y precios
-          <Icon name="arrow" />
-        </a>
-      </div>
+      <ol class="stages" role="list">
+        {
+          stages.map((stage, i) => (
+            <li class="stage">
+              <svg class="route-svg stage__route" aria-hidden="true" focusable="false">
+                {i < stages.length - 1 ? (
+                  <line class="stage__line" x1="12" y1="16" x2="100%" y2="16" />
+                ) : (
+                  <>
+                    <line class="stage__line" x1="12" y1="16" x2="40%" y2="16" />
+                    <svg x="40%" overflow="visible">
+                      <circle class="waypoint-dot" cx="9" cy="16" r="6" />
+                    </svg>
+                  </>
+                )}
+                {i === 1 && (
+                  <svg x="100%" overflow="visible">
+                    <path class="stage__loop" d="M-10 16V40A24 24 0 0 1 -34 64H-58A24 24 0 0 1 -82 40V16" />
+                  </svg>
+                )}
+                <circle class="stage__stop" cx="6" cy="16" r="5" />
+              </svg>
+              <svg class="route-svg stage__route-v" aria-hidden="true" focusable="false">
+                {i < stages.length - 1 ? (
+                  <line x1="16" y1="28" x2="16" y2="100%" />
+                ) : (
+                  <>
+                    <line x1="16" y1="28" x2="16" y2="100%" />
+                    <svg y="100%" overflow="visible">
+                      <circle class="waypoint-dot" cx="16" cy="9" r="6" />
+                    </svg>
+                  </>
+                )}
+                {i === 1 && (
+                  <svg y="100%" overflow="visible">
+                    <path d="M16 -10H40A24 24 0 0 0 64 -34V-58A24 24 0 0 0 40 -82H16" />
+                  </svg>
+                )}
+                {i > 0 && <line x1="16" y1="0" x2="16" y2="11" />}
+                <circle class="stage__stop" cx="16" cy="16" r="5" />
+              </svg>
+              <p class="stage__number">0{i + 1}</p>
+              <h3 class="stage__title">{stage.name}</h3>
+              <p class="stage__text">{stage.text}</p>
+            </li>
+          ))
+        }
+      </ol>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <style>
-  .method {
-    --node: 3.25rem;
-    --gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
-    --track: rgb(255 255 255 / 0.18);
-    background: var(--navy);
-    color: var(--on-navy);
-    position: relative;
-    overflow: hidden;
-  }
-  .method::before {
-    /* Retícula muy sutil, evoca un cuaderno */
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: linear-gradient(to bottom, black, transparent 70%);
-    pointer-events: none;
-  }
-  .method .container {
-    position: relative;
-  }
-
-  .method__top {
-    display: grid;
-    gap: clamp(2rem, 1.5rem + 2vw, 3rem);
-    margin-bottom: clamp(3rem, 2rem + 4vw, 5rem);
-  }
-  @media (min-width: 900px) {
-    .method__top--photo {
-      grid-template-columns: 1.35fr 0.9fr;
-      align-items: end;
-    }
-  }
   .method__head {
     display: grid;
-    gap: 1rem;
-    max-width: 44rem;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
-  .method__head .eyebrow {
-    color: var(--accent);
-  }
-  .method__head h2 {
-    font-size: var(--step-3);
-  }
-  .method__head p:last-child {
-    font-size: var(--step-1);
-    line-height: 1.5;
-    color: var(--on-navy-soft);
-  }
-  .method__top :global(.method__photo) {
-    border-radius: var(--r-lg);
-    max-width: 30rem;
-  }
-
-  /* ---------------------------------------------------------------- */
-  /* Ciclo: móvil = línea vertical; escritorio = línea horizontal      */
-  /* ---------------------------------------------------------------- */
-  .cycle {
-    display: grid;
-  }
-  .cycle__stage {
+  .stages {
     position: relative;
     display: grid;
-    grid-template-columns: var(--node) 1fr;
-    column-gap: 1.25rem;
-    padding-bottom: 2.25rem;
   }
-  .cycle__stage > :not(.cycle__node) {
-    grid-column: 2;
-  }
-  /* Tramo de línea que une cada fase con la siguiente */
-  .cycle__stage::after {
-    content: '';
-    position: absolute;
-    left: calc(var(--node) / 2 - 1px);
-    top: calc(var(--node) + 0.5rem);
-    bottom: 0.5rem;
-    width: 2px;
-    background: var(--track);
-    transform-origin: top;
-    transition: transform 0.6s var(--ease) calc(var(--i) * 0.18s + 0.2s);
-  }
-
-  .cycle__node {
-    grid-row: 1 / span 3;
+  .stage {
+    position: relative;
     display: grid;
-    place-items: center;
-    width: var(--node);
-    height: var(--node);
-    border-radius: 50%;
-    border: 2px solid rgb(255 255 255 / 0.35);
-    background: var(--navy);
+    align-content: start;
+    gap: var(--space-2);
+    padding: 0 0 var(--space-7) 56px;
+  }
+  /* La vuelta atrás de móvil necesita espacio bajo la fase 02 */
+  .stage:nth-child(2) {
+    padding-bottom: var(--space-9);
+  }
+  .stage:last-child {
+    padding-bottom: var(--space-6);
+  }
+  .stage__number {
     font-family: var(--font-display);
-    font-weight: 650;
-    font-size: 1rem;
-    letter-spacing: -0.02em;
-    transition:
-      background-color 0.25s var(--ease),
-      border-color 0.25s var(--ease),
-      color 0.25s var(--ease);
-  }
-  .cycle__stage--key .cycle__node,
-  .cycle__stage:hover .cycle__node {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--navy);
-  }
-  .cycle__name {
-    font-size: var(--step-2);
-    padding-top: 0.55rem;
-  }
-  .cycle__lead {
-    margin-top: 0.6rem;
-    font-size: var(--step-0);
-    line-height: 1.5;
-    color: var(--on-navy);
-  }
-  .cycle__points {
-    display: grid;
-    gap: 0.4rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgb(255 255 255 / 0.1);
-    font-size: var(--step--1);
-    color: var(--on-navy-soft);
-  }
-  .cycle__points li {
-    position: relative;
-    padding-left: 1rem;
-  }
-  .cycle__points li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  /* Vuelta al inicio */
-  .cycle__loop {
-    display: grid;
-    grid-template-columns: var(--node) 1fr;
-    column-gap: 1.25rem;
-    align-items: center;
-    font-size: var(--step--1);
-    color: var(--on-navy-soft);
-  }
-  .cycle__loop-icon {
-    display: grid;
-    place-items: center;
-    width: var(--node);
-    height: var(--node);
-    border-radius: 50%;
-    border: 2px dashed rgb(255 255 255 / 0.35);
-    color: var(--accent);
-    font-size: 1.35rem;
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
     line-height: 1;
+    color: var(--color-text-inverse-secondary);
+  }
+  .stage__title {
+    color: var(--color-text-inverse);
+  }
+  .stage__text {
+    max-width: 34ch;
+    color: var(--color-text-inverse-secondary);
   }
 
-  @media (min-width: 900px) {
-    .cycle {
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: var(--gap);
-    }
-    .cycle__stage {
-      grid-template-columns: 1fr;
-      align-content: start;
-      padding-bottom: 0;
-    }
-    .cycle__stage > :not(.cycle__node) {
-      grid-column: 1;
-    }
-    .cycle__node {
-      grid-row: auto;
-      margin-bottom: 1.25rem;
-    }
-    .cycle__name {
-      padding-top: 0;
-    }
-    /* La línea pasa a ser horizontal, del nodo actual al siguiente */
-    .cycle__stage::after {
-      left: calc(var(--node) + 0.75rem);
-      right: calc(-1 * var(--gap) + 0.75rem);
-      top: calc(var(--node) / 2 - 1px);
-      bottom: auto;
-      width: auto;
-      height: 2px;
-      transform-origin: left;
-    }
-
-    /* Bucle de 04 a 01: un trazo discontinuo por debajo de las fases */
-    .cycle__loop {
-      position: relative;
-      display: block;
-      margin-top: 2.5rem;
-      padding-top: 2.75rem;
-      text-align: center;
-    }
-    .cycle__loop::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: calc(var(--node) / 2);
-      right: calc(25% - 0.75 * var(--gap) - var(--node) / 2);
-      height: 1.6rem;
-      border: 2px dashed rgb(255 255 255 / 0.28);
-      border-top: 0;
-      border-radius: 0 0 14px 14px;
-    }
-    .cycle__loop::after {
-      /* Punta de flecha hacia la fase 01 */
-      content: '';
-      position: absolute;
-      top: -0.35rem;
-      left: calc(var(--node) / 2 - 5px);
-      border: 6px solid transparent;
-      border-bottom: 8px solid rgb(255 255 255 / 0.5);
-      border-top: 0;
-    }
-    .cycle__loop-icon {
-      display: none;
-    }
+  /* Rutas: color Paper sobre Ink, paradas huecas */
+  .stage__route,
+  .stage__route-v {
+    position: absolute;
+    color: var(--color-route-inverse);
   }
-  /* El último tramo no conecta con nada: el bucle cierra el ciclo */
-  .cycle__stage:last-child::after {
+  .stage__stop {
+    fill: var(--color-surface-inverse);
+    stroke: var(--color-route-inverse);
+    stroke-width: 2px;
+  }
+  /* Móvil: ruta vertical a 16px del borde izquierdo */
+  .stage__route {
     display: none;
   }
-
-  /* Los tramos se dibujan en orden al entrar en pantalla */
-  :global(.js) .cycle .cycle__stage::after {
-    transform: scale(0);
-  }
-  :global(.js) .cycle.is-visible .cycle__stage::after {
-    transform: none;
+  .stage__route-v {
+    left: -16px;
+    top: 0;
+    width: 80px;
+    height: 100%;
   }
 
-  /* CTA */
-  .method__cta {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: clamp(3rem, 2rem + 4vw, 5rem);
-    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-    border-radius: var(--r-lg);
-    background: var(--navy-2);
-    border: 1px solid rgb(255 255 255 / 0.08);
-  }
   @media (min-width: 900px) {
-    .method__cta {
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 3rem;
+    .stages {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: var(--grid-gap);
     }
-  }
-  .method__cta h3 {
-    font-size: var(--step-2);
-    margin-bottom: 0.6rem;
-  }
-  .method__cta p {
-    color: var(--on-navy-soft);
-    max-width: 38rem;
-  }
-  .method__cta-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    .stage,
+    .stage:nth-child(2),
+    .stage:last-child {
+      padding: 88px 0 0;
+    }
+    .stage__route-v {
+      display: none;
+    }
+    /* Escritorio: la ruta corre sobre las columnas y salva el hueco entre ellas */
+    .stage__route {
+      display: block;
+      left: 0;
+      top: 0;
+      width: calc(100% + var(--grid-gap));
+      height: 72px;
+    }
   }
 </style>

@@ -1,7 +1,8 @@
-# Daniel Guanipa · Clases de inglés en Alicante
+# My Way to English · by Daniel Guanipa
 
-Web personal de una sola página, construida con [Astro](https://astro.build) como sitio estático
-(HTML + CSS, con un poco de JavaScript para el menú móvil, las animaciones de aparición y el formulario).
+Web de una sola página de **My Way to English**, la práctica de clases de inglés de Daniel Guanipa
+en Alicante y online. Construida con [Astro](https://astro.build) como sitio estático, siguiendo el
+*Brand Strategy & Visual Identity Brief v1.0* (2026-10-18).
 
 ## Uso
 
@@ -21,21 +22,70 @@ una URL de vista previa. No hay que configurar nada más.
 Si añades un dominio propio en Vercel, cambia `site.url` en `src/config/site.ts`
 (la URL canónica ya sigue automáticamente al dominio de producción del proyecto).
 
+## Configurador de planes y motor de precios
+
+La sección **Planes** es un asistente de cinco pantallas (plan → sesiones → formato → participantes →
+presupuesto) que termina en un mensaje de WhatsApp. Está hecho con Preact como una «isla» de Astro: solo
+se descarga cuando el visitante llega a esa sección.
+
+**Los tres planes son tres entradas al mismo motor.** Esencial (3 h) e Intensivo (5 h) pasan sus horas
+fijas; Personalizado pasa las que elige el cliente (mínimo 3, en tramos de 0,5, sin máximo arbitrario).
+No existe lógica de precios separada por plan.
+
+### Dónde está cada cosa
+
+| Qué | Archivo |
+| --- | --- |
+| **Tarifas base por alumno/hora, escala de descuento por horas, planes, formatos, duraciones de sesión** | `src/config/pricing.ts` (**único sitio para cambiar precios**) |
+| Motor de precios (cálculo y redondeo, funciones puras) | `src/lib/pricing/engine.ts` |
+| Combinaciones de sesiones de 1 h / 1,5 h / 2 h | `src/lib/pricing/sessions.ts` |
+| Formato de importes y porcentajes (es-ES) | `src/lib/pricing/format.ts` |
+| Estado, validación por pantallas y resumen | `src/lib/configurator/state.ts` |
+| Mensaje y enlace de WhatsApp | `src/lib/configurator/whatsapp.ts` |
+| Interfaz del asistente | `src/components/configurator/*` |
+| **Número de WhatsApp** | `src/config/site.ts` → `contact.whatsapp` (formato internacional, solo dígitos) |
+| Nota de impuestos / condiciones de pago (opcional) | `src/config/site.ts` → `pricingTerms` |
+
+### Reglas internas (no se muestran al cliente)
+
+Con *n* alumnos y *h* horas semanales: `P_final = P_n · (1 − D_h)`, `M_alumno = 4 · h · P_final`,
+`M_grupo = n · M_alumno`, `D_total = 1 − (1 − D_n)(1 − D_h)` con `D_n = 1 − P_n / 15 €`. El descuento por
+horas se interpola linealmente entre los puntos de `HOURS_DISCOUNT_SCHEDULE` y se mantiene en el 20 % por
+encima de 8 horas.
+
+**Dinero y redondeo.** Todo se calcula en céntimos enteros. El precio mensual se calcula con la tarifa
+*sin redondear* y se redondea **una sola vez** (mitades hacia arriba). El total del grupo es
+`n × precio mensual por alumno ya redondeado`, así que siempre coincide con lo que se ve por alumno, y el
+ahorro en euros es `referencia − precio`, calculado con importes ya redondeados. Si la tarifa por hora
+mostrada está redondeada, la pantalla lo indica («≈»). La interfaz nunca contiene fórmulas.
+
+### Pruebas
+
+```bash
+npm test            # unitarias (motor, sesiones, estado, WhatsApp) + flujo de la interfaz (Vitest)
+npm run test:e2e    # navegador (Playwright + axe): responsive, teclado, WCAG 2.2 AA. Requiere npm run build
+npm run test:all    # todo, en orden
+```
+
+`tests/unit/engine.test.ts` contiene la tabla de validación del encargo (11 combinaciones), verificada
+de forma independiente con aritmética exacta de fracciones.
+
 ## Dónde cambiar cada cosa
 
 | Qué | Archivo |
 | --- | --- |
-| Precios, horas y descripción de los planes | `src/config/site.ts` → `plans` |
+| Tokens de diseño (colores, tipografía, espacios, radios) | `src/styles/tokens.css` — copia literal del brief §14, **no añadir valores fuera de él** |
+| Fuentes autoalojadas (Inter y Bricolage Grotesque, latin + latin-ext) | `src/styles/fonts/`, `src/styles/fonts.css` |
+| Datos verificables, tagline, título y descripción | `src/config/site.ts` |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
-| Dominio, título y descripción SEO | `src/config/site.ts` → `site` |
-| Fotografías (principal, enfoque, retrato, opcionales, galería) | `src/config/photos.ts` |
-| Fases del método (Diagnosticar, Diseñar, Adaptar, Consolidar) | `src/config/approach.ts` |
+| Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
+| Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
-| Colores, tipografía, espaciado | `src/styles/global.css` (variables en `:root`) |
+| Logotipo en texto vivo y símbolo Route Mark | `src/components/Logo.astro`, `src/components/RouteMark.astro`, `public/favicon.svg` |
 | Textos de cada sección | `src/components/*.astro` |
-| Política de privacidad | `src/pages/privacidad.astro` (**pendiente**) |
+| Política de privacidad y aviso legal | `src/pages/privacidad.astro`, `src/pages/aviso-legal.astro` (**pendientes**) |
 
-Al compilar, la consola lista los datos que siguen pendientes.
+Al compilar, la consola lista los datos de contacto que siguen pendientes.
 
 ## Datos pendientes de configurar
 
@@ -49,6 +99,11 @@ Al compilar, la consola lista los datos que siguen pendientes.
   4. Sin nada configurado: el formulario valida, pero avisa claramente de que **no se ha enviado**.
 - **Teléfono y email** (`contact.phone`, `contact.email`): opcionales; si se rellenan aparecen en Contacto y en el pie.
 - **Dominio propio** (opcional): ahora se usa `englishweb-mu.vercel.app`; ver «Publicación».
+- **Decisiones de negocio del brief (§19)**: niveles que se ofrecen, si la primera sesión es de pago,
+  canal principal y tiempo de respuesta, impuestos y condiciones de pago, lugar de las clases
+  presenciales, versión en inglés. La web no inventa respuestas: cuando las tengas, se añaden.
+- **Logotipo vectorial (§7)**: el wordmark es texto vivo con la fuente de la marca; cuando exista el
+  SVG definitivo, sustituye el contenido de `Logo.astro`.
 - **Política de privacidad**: el formulario recoge datos personales, así que hay que sustituir
   `src/pages/privacidad.astro` por un texto definitivo antes de publicar.
 - **Fotografías**: ver abajo.
@@ -59,16 +114,13 @@ Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
 
 | Hueco | Archivo |
 | --- | --- |
-| Portada (hero) | `clase-grupo-reducido.jpg` |
-| Mi enfoque | `daniel-explicando-gestos.jpg` |
-| Sobre mí | `daniel-explicando-ventana.jpg` |
-| Método (opcional: recursos o actividad) | pendiente |
-| Clases, comparación individual/grupo (opcional) | pendiente |
-| Galería | sin fotos todavía: la sección no se muestra hasta que haya al menos una |
+| Portada (4:5, esquina de giro abajo a la derecha) | `daniel-explicando-ventana.jpg` |
+| Biografía (4:5, esquina de giro arriba a la izquierda) | `daniel-explicando-gestos.jpg` |
+| «Cómo son las clases» | `clase-grupo-reducido.jpg` |
 
-Los huecos opcionales y la galería no muestran nada mientras no tengan foto: la sección se maqueta
-sin ella y, al añadirla, se coloca sola (sin rediseño). En los huecos obligatorios (portada, enfoque,
-retrato) un `src: null` muestra un marcador rayado «Foto pendiente».
+La galería solo publica fotos reales, con un pie que describe la actividad sin nombrar alumnos.
+Con una sola foto se muestra junto al texto; con más, en mosaico. Antes de publicar a alumnos
+identificables hace falta su consentimiento por escrito (y el de la familia si son menores).
 
 Para poner una foto real:
 

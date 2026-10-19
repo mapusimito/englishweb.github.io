@@ -1,34 +1,22 @@
 /**
- * Las cuatro fases del método. Se usan en la sección Método y en la tarjeta
- * de la portada, así que el nombre de cada fase se cambia solo aquí.
+ * Las cuatro fases del método (brief §13.5). Se usan en la sección Método;
+ * el nombre y el texto de cada fase se cambian solo aquí.
  */
 export const stages = [
   {
-    name: 'Diagnosticar',
-    lead: 'Antes de decidir cómo avanzar, necesitamos entender dónde estás y qué necesitas.',
-    points: ['Tu nivel actual y tus objetivos', 'Las dificultades que se repiten', 'Lo que necesita refuerzo'],
+    name: 'Diagnóstico',
+    text: 'Compruebo tu nivel y hablamos de tus objetivos. Sales con un punto de partida por escrito.',
   },
   {
-    name: 'Diseñar',
-    lead: 'Un plan con dirección, construido alrededor de tus objetivos.',
-    points: ['Objetivos de aprendizaje claros', 'Actividades adecuadas a tu nivel', 'Una progresión realista'],
+    name: 'Diseño',
+    text: 'Preparo un plan con objetivos claros y una progresión realista para tus horas semanales.',
   },
   {
-    name: 'Adaptar',
-    lead: 'Cuando algo no se entiende, cambia la explicación, no el objetivo.',
-    points: [
-      'Otras explicaciones y ejemplos',
-      'Analogías y situaciones cotidianas',
-      'Ritmo ajustado a cada concepto',
-    ],
+    name: 'Adaptación',
+    text: 'Si una explicación no funciona, busco otra: un ejemplo distinto, un puente con el español, un juego o más práctica en ese punto.',
   },
   {
-    name: 'Consolidar',
-    lead: 'Comprender, practicar y comprobar que puedes utilizar lo aprendido.',
-    points: [
-      'Comprobar la comprensión, sin darla por supuesta',
-      'Práctica con conversación, ejercicios y recursos interactivos',
-      'Revisar el progreso antes de seguir',
-    ],
+    name: 'Consolidación',
+    text: 'Compruebo que lo has entendido pidiéndote que lo expliques y lo uses. Revisamos tu progreso antes de seguir.',
   },
 ];

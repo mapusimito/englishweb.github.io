@@ -1,129 +1,129 @@
 ---
+/** Preguntas frecuentes (brief §13.5, §14.2): bloque centrado de 8 columnas, <details> nativo. */
 import Icon from './Icon.astro';
-import { hasWhatsapp, plans } from '../config/site';
-
-const hours = plans[0].hoursPerWeek;
+import { hasWhatsapp } from '../config/site';
 
 const faqs = [
   {
     q: '¿Cómo sé qué nivel de inglés tengo?',
-    a: 'No hace falta que lo sepas antes de escribirme. Al empezar hacemos una valoración inicial con una conversación y algunos ejercicios. A partir de ahí te indico tu punto de partida y qué plan tiene más sentido para ti.',
+    a: 'No hace falta que lo sepas antes de escribirme. Lo primero que hacemos es el diagnóstico: compruebo tu nivel con ejercicios y una conversación, y te digo por escrito desde dónde empezamos.',
   },
   {
-    q: '¿Qué significa que las clases se adaptan al alumno?',
-    a: 'Que el objetivo y la estructura del curso están claros, pero las explicaciones, los ejemplos, las actividades y el ritmo se ajustan a lo que necesitas y a cómo respondes en clase. No es improvisar: es elegir, dentro del plan, la mejor manera de llegar a cada objetivo.',
-  },
-  {
-    q: '¿Qué diferencia hay entre las clases individuales y los grupos reducidos?',
-    a: 'En las clases individuales todo el tiempo se dedica a ti y el ritmo es completamente tuyo. En pareja y en grupos reducidos (3–4 alumnos) hay más conversación e interacción entre compañeros, y el precio por alumno es menor. Ningún formato es mejor para todos: depende de tus objetivos y de cómo aprendes mejor.',
-  },
-  {
-    q: '¿Cuántas horas de clase se imparten cada semana?',
-    a: `Todos los planes incluyen ${hours} horas de clase a la semana. Cómo se reparten esas horas a lo largo de la semana se acuerda al confirmar el horario.`,
+    q: '¿Qué pasa en la primera sesión?',
+    a: 'Tu primera clase es gratis. Empezamos por el diagnóstico: vemos tu nivel, hablamos de tus objetivos y de lo que más te cuesta. Con eso preparo el plan de las siguientes semanas, antes de que te comprometas con una mensualidad.',
   },
   {
     q: '¿Las clases son presenciales u online?',
-    a: 'Tengo experiencia dando clase en ambos formatos. La modalidad disponible para cada plan —y el lugar, en el caso de las clases presenciales— se confirma cuando consultas disponibilidad.',
+    a: 'Las dos opciones: presenciales en Alicante u online por videollamada. El lugar de las clases presenciales lo concretamos cuando hablamos.',
+  },
+  {
+    q: '¿En qué se diferencian individual, pareja y grupo?',
+    a: 'Siguen el mismo método. En individual, toda la sesión se adapta a ti. En pareja o en grupo, de cuatro alumnos como máximo, la atención se reparte, pero ganas conversación y práctica con compañeros, y el precio por persona baja. Las tarifas de grupo se aplican cuando vienes con tus propios compañeros.',
+  },
+  {
+    q: '¿Cómo se forman los grupos?',
+    a: 'Vienes con tus propios compañeros: no asigno automáticamente a personas que se inscriben solas a grupos de desconocidos. Las parejas son de 2 alumnos y los grupos de 3 o 4, nunca más.',
+  },
+  {
+    q: '¿Cómo sé si estoy avanzando?',
+    a: 'Revisamos tu progreso de forma regular frente a los objetivos del diagnóstico. Si el alumno es menor, también se lo cuento a la familia.',
+  },
+  {
+    q: '¿Qué significa que adaptas la explicación?',
+    a: 'Que el objetivo de la clase no cambia, pero la forma de llegar a él sí: si una explicación no funciona, pruebo con otro ejemplo, una comparación con el español, un juego o más práctica en ese punto.',
   },
   {
     q: '¿Cómo se organiza el horario?',
-    a: 'Según la disponibilidad de ambas partes. En pareja y en grupo reducido el horario es común para todo el grupo, y se procura que los compañeros tengan un nivel compatible.',
+    a: 'Según la disponibilidad de los dos. En pareja y en grupo el horario es común para todo el grupo.',
   },
   {
-    q: '¿Cómo puedo solicitar información?',
+    q: '¿Cómo puedo pedir información?',
     a: hasWhatsapp
-      ? 'Escríbeme por WhatsApp o rellena el formulario de contacto contándome tu nivel aproximado, tus objetivos y el formato que te interesa. Te responderé para resolver dudas y ver disponibilidad.'
-      : 'Rellena el formulario de contacto contándome tu nivel aproximado, tus objetivos y el formato que te interesa. Te responderé para resolver dudas y ver disponibilidad.',
+      ? 'Escríbeme por WhatsApp o rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.'
+      : 'Rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.',
   },
 ];
 ---
 
 <section class="section faq" id="preguntas" aria-labelledby="faq-title">
-  <div class="container faq__grid">
-    <div class="section-head faq__head" data-reveal>
-      <p class="eyebrow">Preguntas frecuentes</p>
-      <h2 id="faq-title">Antes de escribirme, quizá te preguntes…</h2>
-      <p>¿No encuentras tu duda? <a href="#contacto">Pregúntame directamente</a>.</p>
-    </div>
+  <div class="container grid">
+    <div class="faq__block">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Preguntas</p>
+        <h2 id="faq-title">Lo que suelen preguntarme.</h2>
+      </header>
 
-    <div class="faq__list" data-reveal>
-      {
-        faqs.map((item) => (
-          <details class="faq__item" name="faq">
-            <summary>
-              <span>{item.q}</span>
-              <Icon name="plus" class="faq__icon" />
-            </summary>
-            <div class="faq__answer">
-              <p>{item.a}</p>
-            </div>
-          </details>
-        ))
-      }
+      <div class="faq__list">
+        {
+          faqs.map((item) => (
+            <details class="faq__item" name="faq">
+              <summary>
+                <span>{item.q}</span>
+                <Icon name="plus" class="faq__icon" />
+              </summary>
+              <p class="faq__answer">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .faq__grid {
-    display: grid;
-    gap: 1rem;
-  }
-  @media (min-width: 960px) {
-    .faq__grid {
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .faq__head {
-      position: sticky;
-      top: calc(var(--header-h) + 2rem);
+  @media (min-width: 900px) {
+    .faq__block {
+      grid-column: 3 / span 8;
     }
   }
-  .faq__head a {
-    color: var(--accent-text);
-    font-weight: 600;
-    text-underline-offset: 3px;
-  }
-
   .faq__list {
-    border-top: 1px solid var(--line-strong);
+    display: grid;
+    gap: var(--space-2);
   }
   .faq__item {
-    border-bottom: 1px solid var(--line-strong);
+    background: var(--color-surface);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--duration-base) var(--ease-standard);
+  }
+  .faq__item[open] {
+    border-color: var(--color-brand-primary);
   }
   summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.35rem 0;
+    gap: var(--space-5);
+    min-height: 56px;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     list-style: none;
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-h4);
   }
   summary::-webkit-details-marker {
     display: none;
   }
-  summary:hover {
-    color: var(--accent-text);
+  summary:hover span {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
   summary :global(.faq__icon) {
     flex: none;
-    width: 1.4rem;
-    height: 1.4rem;
-    transition: transform 0.25s var(--ease);
+    width: 20px;
+    height: 20px;
+    color: var(--color-brand-primary);
+    transition: transform var(--duration-base) var(--ease-standard);
   }
   details[open] summary :global(.faq__icon) {
     transform: rotate(45deg);
   }
   .faq__answer {
-    padding: 0 2.5rem 1.5rem 0;
-    color: var(--ink-soft);
-    max-width: 40rem;
+    max-width: var(--measure);
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--color-text-secondary);
   }
 </style>
