@@ -23,9 +23,9 @@ export const site = {
   base: '/',
   locale: 'es_ES',
   // ≤ ~60 caracteres. «en Alicante u online» deja claro que online no es en Alicante.
-  title: 'Clases de inglés en Alicante y online | My Way to English',
+  title: 'Clases de inglés presenciales en Alicante u online | My Way to English',
   description:
-    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.',
+    'Clases de inglés individuales o en grupos de hasta 4. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. Presencial en Alicante u online.',
   /** Título y descripción para Open Graph / Twitter (redes sociales). */
   ogTitle: 'Clases de inglés en grupos reducidos | My Way to English',
   ogDescription:

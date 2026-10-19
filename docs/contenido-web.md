@@ -3,22 +3,22 @@
 Texto publicado tal como aparece hoy en la web (se genera desde las secciones; los textos viven en `src/components/*.astro` y `src/config/*.ts`).
 
 ## Metadatos
-- Clases de inglés en Alicante y online | My Way to English
-- description: Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.
+- Clases de inglés presenciales en Alicante u online | My Way to English
+- description: Clases de inglés individuales o en grupos de hasta 4. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. Presencial en Alicante u online.
 - og:title: Clases de inglés en grupos reducidos | My Way to English
 - og:description: Aprende inglés en clases individuales o en grupos reducidos, con seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.
 
 
 ---
 ## Sección: top
-Clases de inglés en Alicante y online
+Clases de inglés presenciales en Alicante u online
 
 ## Aprende inglés con un profesor que conoce tu progreso.
 Cada alumno tiene sus propios objetivos y dificultades. Al ser grupos reducidos, puedo dedicar tiempo a lo que más cuesta, explicarlo de distintas formas y dejar espacio para practicar hasta que puedas utilizar lo aprendido.
 Clases individuales, en pareja o en grupos de hasta cuatro personas. Siempre conmigo como profesor.
+Tu primera clase es gratis.
 [Botón] Escríbeme
 [Botón] Ver planes
-Tu primera clase es gratis.
 
 
 ---
@@ -222,7 +222,7 @@ Al enviar el formulario, se abrirá WhatsApp con tu mensaje preparado para que p
 
 ---
 ## Sección: footer
-Clases de inglés en grupos reducidos, en Alicante y online.
+Clases de inglés en grupos reducidos, presenciales en Alicante u online.
 Secciones
 - Cómo trabajo
 - Sobre mí

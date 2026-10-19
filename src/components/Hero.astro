@@ -9,7 +9,7 @@ import { site } from '../config/site';
   <section class="panel panel--blush hero" id="top" aria-labelledby="hero-title">
     <div class="container grid hero__grid">
       <div class="hero__copy">
-        <p class="eyebrow">Clases de inglés en {site.city} y online</p>
+        <p class="eyebrow">Clases de inglés presenciales en {site.city} u online</p>
         <h1 id="hero-title">Aprende inglés con un profesor que conoce tu progreso.</h1>
         <p class="lead hero__lead">
           Cada alumno tiene sus propios objetivos y dificultades. Al ser grupos reducidos, puedo
@@ -19,6 +19,10 @@ import { site } from '../config/site';
         <p class="hero__more">
           Clases individuales, en pareja o en grupos de hasta cuatro personas. Siempre conmigo como
           profesor.
+        </p>
+        <p class="hero__tagline">
+          <span class="waypoint" aria-hidden="true"></span>
+          Tu primera clase es gratis.
         </p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#contacto">Escríbeme</a>
@@ -48,10 +52,6 @@ import { site } from '../config/site';
         </div>
       </div>
 
-      <p class="hero__tagline small">
-        <span class="waypoint" aria-hidden="true"></span>
-        Tu primera clase es gratis.
-      </p>
     </div>
   </section>
 </div>
@@ -82,12 +82,23 @@ import { site } from '../config/site';
     gap: var(--space-4);
     width: 100%;
   }
+  /* Insignia bien visible: es el mayor argumento de conversión de la portada */
   .hero__tagline {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: var(--space-3);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-primary);
+    color: var(--color-text-inverse);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .hero__tagline .waypoint {
+    background: var(--color-text-inverse);
   }
 
   /* Móvil: más aire dentro de la portada */
@@ -141,7 +152,7 @@ import { site } from '../config/site';
   }
 
   @media (min-width: 900px) {
-    /* Una sola frase de marca: bajo los botones en escritorio y bajo la foto en móvil.
+    /* Texto y botones centrados junto a la foto.
        Filas 1fr | auto | auto | 1fr: el texto y la frase quedan juntos y centrados. */
     .hero__grid {
       grid-template-rows: 1fr auto auto 1fr;
@@ -150,11 +161,6 @@ import { site } from '../config/site';
     .hero__copy {
       grid-column: 1 / span 6;
       grid-row: 2;
-    }
-    .hero__tagline {
-      grid-column: 1 / span 6;
-      grid-row: 3;
-      margin-top: var(--space-5);
     }
     .hero__media {
       grid-column: 7 / span 6;

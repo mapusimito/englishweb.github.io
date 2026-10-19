@@ -98,16 +98,16 @@ test('el isologo (isotipo + logotipo completo) es igual en cabecera, menú y pie
 
 test('metadatos y eyebrow según el contenido aprobado', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle('Clases de inglés en Alicante y online | My Way to English');
+  await expect(page).toHaveTitle('Clases de inglés presenciales en Alicante u online | My Way to English');
   const meta = async (sel: string) => (await page.locator(sel).getAttribute('content')) ?? '';
   expect(await meta('meta[name="description"]')).toBe(
-    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.',
+    'Clases de inglés individuales o en grupos de hasta 4. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. Presencial en Alicante u online.',
   );
   expect(await meta('meta[property="og:title"]')).toBe('Clases de inglés en grupos reducidos | My Way to English');
   expect(await meta('meta[property="og:description"]')).toBe(
     'Aprende inglés en clases individuales o en grupos reducidos, con seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
   );
-  await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés en Alicante y online');
+  await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés presenciales en Alicante u online');
 });
 
 test.describe('diferencial: clase personalizada frente a aula masificada', () => {
