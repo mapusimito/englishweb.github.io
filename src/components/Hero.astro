@@ -22,10 +22,6 @@ import { site } from '../config/site';
             <Icon name="arrow" />
           </a>
         </div>
-        <p class="hero__tagline hero__tagline--desktop small">
-          <span class="waypoint" aria-hidden="true"></span>
-          {site.tagline}
-        </p>
       </div>
 
       <!-- Composición: retícula 3 × 3 con el retrato y una ruta que termina en el waypoint -->
@@ -47,7 +43,7 @@ import { site } from '../config/site';
         </div>
       </div>
 
-      <p class="hero__tagline hero__tagline--mobile small">
+      <p class="hero__tagline small">
         <span class="waypoint" aria-hidden="true"></span>
         {site.tagline}
       </p>
@@ -113,15 +109,6 @@ import { site } from '../config/site';
     transform: translate(150px, 140px);
   }
 
-  .hero__tagline--desktop {
-    display: none;
-  }
-  @media (min-width: 900px) {
-    .hero__tagline--desktop {
-      display: flex;
-      margin-top: var(--space-3);
-    }
-  }
   @media (max-width: 599px) {
     .hero__ctas .btn {
       width: 100%;
@@ -129,16 +116,24 @@ import { site } from '../config/site';
   }
 
   @media (min-width: 900px) {
+    /* Una sola frase de marca: bajo los botones en escritorio y bajo la foto en móvil.
+       Filas 1fr | auto | auto | 1fr: el texto y la frase quedan juntos y centrados. */
+    .hero__grid {
+      grid-template-rows: 1fr auto auto 1fr;
+      row-gap: 0;
+    }
     .hero__copy {
       grid-column: 1 / span 6;
-      grid-row: 1;
+      grid-row: 2;
+    }
+    .hero__tagline {
+      grid-column: 1 / span 6;
+      grid-row: 3;
+      margin-top: var(--space-5);
     }
     .hero__media {
       grid-column: 7 / span 6;
-      grid-row: 1;
-    }
-    .hero__tagline--mobile {
-      display: none;
+      grid-row: 1 / span 4;
     }
 
     /* Escritorio: retícula 3 × 3 (12px de separación); el retrato ocupa 2 × 2 */

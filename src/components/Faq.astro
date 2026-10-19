@@ -2,23 +2,35 @@
 /** Preguntas frecuentes (brief §13.5, §14.2): bloque centrado de 8 columnas, <details> nativo. */
 import Icon from './Icon.astro';
 import { hasWhatsapp } from '../config/site';
+import { cancellationNoticeHours, inPersonPlace, paymentMethod, showPending } from '../config/policies';
+import { visibleFaqs, type FaqItem } from '../lib/content';
+import { calculateQuote } from '../lib/pricing/engine';
+import { formatEuros } from '../lib/pricing/format';
 
-const faqs = [
+// Precio por persona de una pareja en cada plan fijo: lo calcula el motor de precios,
+// así que nunca se desincroniza de lo que ve el cliente en el configurador.
+const pairPrice = (hours: number) => formatEuros(calculateQuote(2, hours).monthlyPerStudentCents, true);
+
+const allFaqs: FaqItem[] = [
   {
     q: '¿Cómo sé qué nivel de inglés tengo?',
     a: 'No hace falta que lo sepas antes de escribirme. Lo primero que hacemos es el diagnóstico: compruebo tu nivel con ejercicios y una conversación, y te digo por escrito desde dónde empezamos.',
   },
   {
     q: '¿Qué pasa en la primera sesión?',
-    a: 'Tu primera clase es gratis. Empezamos por el diagnóstico: vemos tu nivel, hablamos de tus objetivos y de lo que más te cuesta. Con eso preparo el plan de las siguientes semanas, antes de que te comprometas con una mensualidad.',
+    a: 'Empezamos por el diagnóstico: vemos tu nivel, hablamos de tus objetivos y de lo que más te cuesta. Con eso preparo el plan de las siguientes semanas. Esa primera sesión no tiene coste, así que puedes decidir después si quieres seguir con una mensualidad.',
   },
   {
-    q: '¿Las clases son presenciales u online?',
-    a: 'Las dos opciones: presenciales en Alicante u online por videollamada. El lugar de las clases presenciales lo concretamos cuando hablamos.',
+    q: '¿Dónde son las clases presenciales?',
+    a: `En ${inPersonPlace}, en tu casa o en un espacio tranquilo que acordemos. También online por videollamada.`,
   },
   {
     q: '¿En qué se diferencian individual, pareja y grupo?',
     a: 'Siguen el mismo método. En individual, toda la sesión se adapta a ti. En pareja o en grupo, de cuatro alumnos como máximo, la atención se reparte, pero ganas conversación y práctica con compañeros, y el precio por persona baja. Las tarifas de grupo se aplican cuando vienes con tus propios compañeros.',
+  },
+  {
+    q: '¿Hay precio para parejas?',
+    a: `Sí: ${pairPrice(3)}/mes por persona en el plan Esencial y ${pairPrice(5)}/mes por persona en el Intensivo.`,
   },
   {
     q: '¿Cómo se forman los grupos?',
@@ -37,12 +49,23 @@ const faqs = [
     a: 'Según la disponibilidad de los dos. En pareja y en grupo el horario es común para todo el grupo.',
   },
   {
+    q: '¿Cómo se paga?',
+    a: `El pago es mensual, por adelantado, mediante ${paymentMethod}.`,
+  },
+  {
+    q: '¿Qué pasa si no puedo asistir a una clase?',
+    a: `Si avisas con al menos ${cancellationNoticeHours} horas de antelación, recuperamos la clase otro día de esa semana o la siguiente. Si avisas con menos tiempo, la clase se considera dada.`,
+  },
+  {
     q: '¿Cómo puedo pedir información?',
     a: hasWhatsapp
       ? 'Escríbeme por WhatsApp o rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.'
       : 'Rellena el formulario de contacto con tu nivel aproximado, tus objetivos y el formato que te interesa.',
   },
 ];
+
+// Las preguntas con datos pendientes [entre corchetes] no se publican hasta que se rellenen.
+const faqs = visibleFaqs(allFaqs, showPending);
 ---
 
 <section class="section faq" id="preguntas" aria-labelledby="faq-title">

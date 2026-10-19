@@ -16,15 +16,15 @@ interface Props {
   errors: FieldError[];
 }
 
-/** Punto de partida de cada tarjeta: lo calcula el motor, no está escrito a mano. */
-function priceHint(hours: number | null): string {
-  if (hours === null) return 'El precio depende de las horas y del formato; lo verás antes de enviar nada.';
-  const solo = calculateQuote(1, hours);
-  const four = calculateQuote(4, hours);
-  return `Individual: ${formatEuros(solo.monthlyPerStudentCents, true)} al mes · En grupo de 4: desde ${formatEuros(
-    four.monthlyPerStudentCents,
-    true,
-  )} al mes por alumno`;
+/** Precios de partida de cada tarjeta: los calcula el motor, no están escritos a mano. */
+function priceHints(hours: number | null): string[] {
+  if (hours === null) return ['El precio depende de las horas y del formato; lo verás antes de enviar nada.'];
+  const monthly = (students: number) => formatEuros(calculateQuote(students, hours).monthlyPerStudentCents, true);
+  return [
+    `Individual: ${monthly(1)} al mes`,
+    `En pareja: ${monthly(2)} al mes por persona`,
+    `En grupo de 4: desde ${monthly(4)} al mes por alumno`,
+  ];
 }
 
 const asInput = (hours: number) => formatNumber(hours);
@@ -70,7 +70,11 @@ export function PlanStep({ state, update, errors }: Props) {
             </span>
             <span class="cfg-card__tagline">{plan.tagline}</span>
             <span class="cfg-card__text">{plan.description}</span>
-            <span class="cfg-card__hint">{priceHint(plan.hours)}</span>
+            <span class="cfg-card__hint">
+              {priceHints(plan.hours).map((line) => (
+                <span class="cfg-card__hint-line">{line}</span>
+              ))}
+            </span>
           </ChoiceCard>
         ))}
       </div>

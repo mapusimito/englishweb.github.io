@@ -67,6 +67,24 @@ const formats = [
       </div>
 
       <div class="contact__card">
+        {
+          (hasWhatsapp || contact.email) && (
+            <div class="form__nojs">
+              <h3>Escríbeme directamente</h3>
+              <p>
+                El formulario necesita JavaScript y ahora mismo no está disponible. Puedes contactarme
+                sin él:
+              </p>
+              {hasWhatsapp && (
+                <a class="btn btn--primary" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                  Escríbeme por WhatsApp
+                  <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+                </a>
+              )}
+              {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+            </div>
+          )
+        }
         <form
           class="form"
           novalidate
@@ -467,6 +485,19 @@ const formats = [
   .form__status :global(strong) {
     display: block;
   }
+  /* Sin JavaScript: el formulario no funcionaría, así que se sustituye por un enlace directo */
+  .form__nojs {
+    display: none;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+  :global(html:not(.js)) .form__nojs {
+    display: grid;
+  }
+  :global(html:not(.js)) .form {
+    display: none;
+  }
+
   .form__success {
     display: grid;
     gap: var(--space-3);

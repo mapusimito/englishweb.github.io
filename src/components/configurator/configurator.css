@@ -258,6 +258,8 @@
   color: var(--color-text-secondary);
 }
 .cfg-card__hint {
+  display: grid;
+  gap: var(--space-1);
   margin-top: auto;
   padding-top: var(--space-3);
   border-top: var(--border-hairline) solid var(--color-border);
