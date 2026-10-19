@@ -1,0 +1,200 @@
+---
+/**
+ * «Aula grande o clase conmigo»: comparación de modelos, no de centros concretos.
+ * Lista semántica (una fila por criterio) que en escritorio se lee como tabla de tres
+ * columnas y en móvil se apila. Sin cifras inventadas: «veinte» es un ejemplo de aula grande.
+ */
+const rows = [
+  {
+    topic: 'Cuántos sois',
+    aula: 'Un aula grande, con un solo profesor para todos.',
+    yo: 'Individual, en pareja o en grupo de hasta cuatro.',
+  },
+  {
+    topic: 'El ritmo',
+    aula: 'Uno solo para todo el grupo; quien se despista, se queda atrás.',
+    yo: 'El que marca tu progreso: no sigo adelante hasta que lo has entendido.',
+  },
+  {
+    topic: 'Cuando te atascas',
+    aula: 'Con tan poco tiempo por alumno, es fácil que pase inadvertido.',
+    yo: 'Lo noto en el momento y cambio la explicación.',
+  },
+  {
+    topic: 'Quién te enseña',
+    aula: 'Depende del centro y del curso.',
+    yo: 'El mismo profesor, siempre.',
+  },
+  {
+    topic: 'El plan',
+    aula: 'Un programa común para todos.',
+    yo: 'Objetivos propios, revisados con regularidad.',
+  },
+  {
+    topic: 'Precio y horarios',
+    aula: 'Suele costar menos por alumno y ofrecer más franjas donde elegir.',
+    yo: 'Precio por persona que baja si vienes en pareja o en grupo; horario acordado contigo.',
+  },
+];
+---
+
+<section class="section--tight compare" id="diferencia" aria-labelledby="compare-title">
+  <div class="container">
+    <header class="compare__head" data-reveal>
+      <p class="eyebrow">Aula grande o clase conmigo</p>
+      <h2 id="compare-title">Con veinte en el aula, es fácil que nadie note dónde te atascas.</h2>
+      <p class="lead">
+        No es culpa de nadie: un profesor no puede seguir a veinte personas a la vez. Con
+        grupos pequeños, sí. Esto es lo que cambia.
+      </p>
+    </header>
+
+    <div class="compare__table" data-reveal>
+      <p class="compare__cols" aria-hidden="true">
+        <span></span>
+        <span>En un aula grande</span>
+        <span>En clase conmigo</span>
+      </p>
+      <ul class="compare__rows" role="list">
+        {
+          rows.map((row) => (
+            <li class="compare__row">
+              <h3 class="compare__topic">{row.topic}</h3>
+              <p class="compare__cell compare__cell--aula">
+                <span class="compare__who">En un aula grande</span>
+                {row.aula}
+              </p>
+              <p class="compare__cell compare__cell--yo">
+                <span class="compare__who">En clase conmigo</span>
+                {row.yo}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="compare__foot" data-reveal>
+      <p class="compare__honest">
+        Una academia puede ser una buena opción si buscas un precio ajustado, muchos horarios o
+        preparar un examen concreto. Si lo que te frena es que nadie ve dónde te bloqueas, mejor
+        con alguien que sí lo vea.
+      </p>
+      <div class="compare__ctas">
+        <a class="btn btn--primary" href="#planes">Pide tu primera clase gratis</a>
+        <a class="btn btn--secondary" href="#contacto">Cuéntame tu caso</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .compare__head {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+  }
+  .compare__head h2 {
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .compare__rows {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .compare__row {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .compare__topic {
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-h4);
+    margin-bottom: var(--space-1);
+  }
+  .compare__cell {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    overflow-wrap: anywhere;
+    color: var(--color-text-secondary);
+  }
+  .compare__cell--yo {
+    background: var(--color-brand-secondary);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+  }
+  .compare__who {
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+  .compare__cols {
+    display: none;
+  }
+
+  .compare__foot {
+    display: grid;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+    justify-items: start;
+  }
+  .compare__honest {
+    max-width: var(--measure);
+    color: var(--color-text-secondary);
+  }
+  .compare__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    width: 100%;
+  }
+  @media (max-width: 599px) {
+    .compare__ctas .btn {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .compare__cols,
+    .compare__row {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 5fr);
+      column-gap: var(--space-4);
+    }
+    .compare__cols {
+      padding-inline: var(--space-5);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-eyebrow);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-eyebrow);
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+    .compare__row {
+      align-items: center;
+      padding: var(--space-4) var(--space-5);
+    }
+    .compare__topic {
+      margin: 0;
+    }
+    .compare__who {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .compare__cell {
+      padding: var(--space-3) var(--space-4);
+    }
+  }
+</style>

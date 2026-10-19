@@ -73,6 +73,9 @@ const jsonLd = {
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Isologo de My Way to English: el isotipo «mw» en azul sobre «EN» en coral junto al texto «My Way to English» con «English» también en coral, con «Clases de inglés presenciales en Alicante u online, by Daniel Guanipa»." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     {isHome && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <script is:inline>
