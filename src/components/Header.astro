@@ -13,9 +13,8 @@ const prefix = isHome ? '' : withBase();
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="header__brand" href={isHome ? '#top' : withBase()}>
+    <a class="header__brand" href={isHome ? '#top' : withBase()} aria-label="My Way to English, inicio">
       <Logo class="header__logo" />
-      <span class="visually-hidden">, inicio</span>
     </a>
 
     <nav class="header__nav" aria-label="Principal">
@@ -97,14 +96,9 @@ const prefix = isHome ? '' : withBase();
     text-decoration: none;
     border-radius: 4px;
   }
-  /* Cap height ≈ 16px en móvil y 18px en escritorio (§13.2) */
+  /* El logo ocupa casi toda la altura de la cabecera (60 px móvil, 72 px escritorio) */
   .header :global(.header__logo) {
-    --wm-size: 1.375rem;
-  }
-  @media (max-width: 479px) {
-    .header__brand :global(.header__logo) {
-      --wm-size: 1.25rem;
-    }
+    --logo-height: 2.5rem;
   }
 
   .header__nav {
@@ -174,7 +168,7 @@ const prefix = isHome ? '' : withBase();
       height: var(--header-height);
     }
     .header :global(.header__logo) {
-      --wm-size: 1.625rem;
+      --logo-height: 3rem;
     }
     .header__nav {
       display: block;

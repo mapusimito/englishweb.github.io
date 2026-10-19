@@ -16,7 +16,8 @@ const year = new Date().getFullYear();
 <footer class="footer on-ink">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <Logo layout="stacked" inverse signature class="footer__logo" />
+      <Logo inverse class="footer__logo" />
+      <p class="footer__credit">My Way to English <span>by Daniel Guanipa</span></p>
     </div>
 
     <nav aria-label="Pie de página">
@@ -89,7 +90,16 @@ const year = new Date().getFullYear();
     align-content: start;
   }
   .footer__brand :global(.footer__logo) {
-    --wm-size: 2.5rem;
+    --logo-height: 7rem;
+  }
+  .footer__credit {
+    display: grid;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-inverse);
+  }
+  .footer__credit span {
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-inverse-secondary);
   }
   .footer__label {
     margin-bottom: var(--space-4);
