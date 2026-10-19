@@ -14,8 +14,8 @@
   --color-brand-primary: #262364;   /* Route Ink: primary brand, dark sections, CTA fill */
   --color-brand-primary-hover: #34308A;
   --color-brand-primary-pressed: #1A1847;
-  --color-brand-secondary: #FBE4D8; /* Blush: hero/contact panels, warm highlight surface */
-  --color-accent: #E0592F;          /* Waypoint Coral: route end-dots, markers. NEVER text */
+  --color-brand-secondary: #E8E7F5; /* Mist: hero/contact panels, highlight surface (cool; coral lives only in the logo) */
+  --color-accent: #E0592F;          /* Waypoint Coral: ONLY inside the logo (EN + dot). Never backgrounds, text or UI */
 
   /* ---------- Color: neutrals ---------- */
   --color-background: #FBF8F3;      /* Paper: default page background */
@@ -43,7 +43,7 @@
   --color-cta-inverse: #FBF8F3;     /* CTA on dark sections */
   --color-cta-inverse-text: #262364;
   --color-focus: #262364;           /* focus ring on light surfaces, 13:1 */
-  --color-focus-inverse: #E0592F;   /* focus ring on Route Ink, 3.7:1 */
+  --color-focus-inverse: #FBF8F3;   /* focus ring on Route Ink */
 
   /* ---------- Color: functional ---------- */
   --color-success: #1E6B47;

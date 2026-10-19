@@ -81,3 +81,28 @@ test.describe('sin JavaScript', () => {
     await expect(page.locator('#planes noscript, #planes .plans__noscript').first()).toBeAttached();
   });
 });
+
+test('el isologo (isotipo + logotipo completo) es igual en cabecera, menú y pie', async ({ page }) => {
+  await page.goto('/');
+  for (const scope of ['header .header__inner .logo', 'footer .logo']) {
+    const logo = page.locator(scope);
+    await expect(logo).toHaveCount(1);
+    await expect(logo.locator('.logo__mark')).toHaveCount(1);
+    await expect(logo.locator('.logo__wordmark')).toContainText('My Way');
+    await expect(logo.locator('.logo__wordmark')).toContainText('English');
+    await expect(logo.locator('.visually-hidden')).toContainText('My Way to English');
+  }
+  // El menú móvil usa el mismo conjunto.
+  await expect(page.locator('#menu-movil .logo .logo__mark')).toHaveCount(1);
+  await expect(page.locator('#menu-movil .logo .logo__wordmark')).toHaveCount(1);
+});
+
+test('queda claro que «online» no es en Alicante: presenciales en Alicante u online', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveTitle(/Inglés presencial en Alicante u online/);
+  const desc = await page.locator('meta[name="description"]').getAttribute('content');
+  expect(desc).toContain('presenciales en Alicante u online');
+  await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés presenciales en Alicante u online');
+  const html = await page.content();
+  expect(html).not.toMatch(/Alicante y online/);
+});

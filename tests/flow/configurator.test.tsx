@@ -51,7 +51,8 @@ describe('pantalla 1 · plan', () => {
     expect(screen.getByRole('radio', { name: /Plan Intensivo.*5 h/ })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: /Plan Personalizado.*Tú eliges/ })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Volver' })).not.toBeInTheDocument();
-    expect(screen.getByText(/Tu primera clase es gratis/)).toBeInTheDocument();
+    // El titular de la sección ya dice «Tu primera clase es gratis»; aquí va el detalle.
+    expect(screen.getByText(/Conoce mi metodología/)).toBeInTheDocument();
   });
 
   it('los precios de las tarjetas salen del motor', () => {

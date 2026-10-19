@@ -44,12 +44,17 @@ export function FieldErrorText({ id, message }: { id: string; message?: string }
 }
 
 /** Nota de la primera clase gratuita (texto exacto del encargo). */
-export function FreeLessonNote({ short = false }: { short?: boolean }) {
+export function FreeLessonNote({ short = false, detailOnly = false }: { short?: boolean; detailOnly?: boolean }) {
   return (
     <p class="cfg-free">
       <span class="waypoint" aria-hidden="true" />
       <span>
-        {short ? (
+        {detailOnly ? (
+          <>
+            Conoce mi metodología, cuéntame tus objetivos y descubre cómo podemos organizar tu aprendizaje
+            antes de comprometerte con una mensualidad.
+          </>
+        ) : short ? (
           <>
             <strong>Tu primera clase es gratis.</strong> Sin compromiso de mensualidad.
           </>

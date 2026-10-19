@@ -12,10 +12,10 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
   <div class="container">
     <header class="section-head" data-reveal>
       <p class="eyebrow">Planes</p>
-      <h2 id="plans-title">Diseña tu plan en cinco pasos.</h2>
+      <h2 id="plans-title" class="plans__title">Tu primera clase es gratis.</h2>
       <p class="lead">
-        Elige cuántas horas quieres a la semana, cómo repartirlas y con cuántas personas vienes. Verás tu
-        precio exacto antes de enviar nada.
+        Diseña tu plan en cinco pasos: elige cuántas horas quieres a la semana, cómo repartirlas y con
+        cuántas personas vienes. Verás tu precio exacto antes de enviar nada.
       </p>
     </header>
 
@@ -40,6 +40,30 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
 <style>
   .plans {
     background: var(--color-background-alt);
+  }
+  /* Titular con contorno: Bricolage Grotesque ExtraBold. El relleno del color del fondo (con el trazo pintado debajo)
+     oculta los contornos solapados de la fuente variable y deja solo la línea exterior. */
+  .plans__title {
+    max-width: none;
+    font-size: clamp(2.5rem, 1.25rem + 5.6vw, 5.75rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-h1);
+    color: var(--color-background-alt);
+    -webkit-text-stroke: 4px var(--color-brand-primary);
+    paint-order: stroke fill;
+  }
+  @media (min-width: 900px) {
+    .plans__title {
+      -webkit-text-stroke-width: 5px;
+    }
+  }
+  /* Modos de contraste forzado: sin relleno el texto podría desaparecer */
+  @media (forced-colors: active) {
+    .plans__title {
+      color: CanvasText;
+      -webkit-text-stroke: 0;
+    }
   }
   .plans__noscript {
     margin-top: var(--space-4);

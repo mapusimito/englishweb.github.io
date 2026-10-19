@@ -328,7 +328,11 @@ a:hover {
   width: var(--waypoint-size);
   height: var(--waypoint-size);
   border-radius: var(--radius-pill);
-  background: var(--color-accent);
+  /* Como viñeta es azul tinta: el acento se reserva para el destino de las rutas */
+  background: var(--color-brand-primary);
+}
+.waypoint--destination {
+  background: var(--color-brand-primary);
 }
 .route-svg {
   display: block;
@@ -344,7 +348,7 @@ a:hover {
   vector-effect: non-scaling-stroke;
 }
 .route-svg .waypoint-dot {
-  fill: var(--color-accent);
+  fill: var(--color-brand-primary);
   stroke: none;
 }
 .dot-grid {
