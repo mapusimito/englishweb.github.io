@@ -142,7 +142,7 @@ export function PlanStep({ state, update, errors }: Props) {
         </div>
       )}
 
-      <FreeLessonNote />
+      <FreeLessonNote detailOnly />
     </div>
   );
 }

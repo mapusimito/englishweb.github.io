@@ -1,10 +1,14 @@
 ---
 /**
- * Metodología en un panel Ink (brief §13.5): cuatro paradas sobre una ruta que
- * termina en el waypoint, con una vuelta atrás entre 02 y 03 (adaptar es volver
- * a diseñar). La ruta es decorativa (SVG aria-hidden); los números son texto.
+ * Metodología en un panel Ink: un círculo de cuatro fases en el sentido de las agujas
+ * del reloj, porque aprender es un ciclo que se repite (cada revisión es un nuevo
+ * diagnóstico). El círculo es decorativo (aria-hidden); las fases se leen en la lista
+ * ordenada, que es la fuente de verdad para lectores de pantalla.
  */
 import { stages } from '../config/approach';
+
+// Posición de cada fase en el círculo: arriba, derecha, abajo, izquierda.
+const slots = ['top', 'right', 'bottom', 'left'] as const;
 ---
 
 <div class="panel-wrap">
@@ -18,54 +22,60 @@ import { stages } from '../config/approach';
         </p>
       </header>
 
-      <ol class="stages" role="list">
-        {
-          stages.map((stage, i) => (
-            <li class="stage">
-              <svg class="route-svg stage__route" aria-hidden="true" focusable="false">
-                {i < stages.length - 1 ? (
-                  <line class="stage__line" x1="12" y1="16" x2="100%" y2="16" />
-                ) : (
-                  <>
-                    <line class="stage__line" x1="12" y1="16" x2="40%" y2="16" />
-                    <svg x="40%" overflow="visible">
-                      <circle class="waypoint-dot" cx="9" cy="16" r="6" />
-                    </svg>
-                  </>
-                )}
-                {i === 1 && (
-                  <svg x="100%" overflow="visible">
-                    <path class="stage__loop" d="M-10 16V40A24 24 0 0 1 -34 64H-58A24 24 0 0 1 -82 40V16" />
-                  </svg>
-                )}
-                <circle class="stage__stop" cx="6" cy="16" r="5" />
-              </svg>
-              <svg class="route-svg stage__route-v" aria-hidden="true" focusable="false">
-                {i < stages.length - 1 ? (
-                  <line x1="16" y1="28" x2="16" y2="100%" />
-                ) : (
-                  <>
-                    <line x1="16" y1="28" x2="16" y2="100%" />
-                    <svg y="100%" overflow="visible">
-                      <circle class="waypoint-dot" cx="16" cy="9" r="6" />
-                    </svg>
-                  </>
-                )}
-                {i === 1 && (
-                  <svg y="100%" overflow="visible">
-                    <path d="M16 -10H40A24 24 0 0 0 64 -34V-58A24 24 0 0 0 40 -82H16" />
-                  </svg>
-                )}
-                {i > 0 && <line x1="16" y1="0" x2="16" y2="11" />}
-                <circle class="stage__stop" cx="16" cy="16" r="5" />
-              </svg>
-              <p class="stage__number">0{i + 1}</p>
-              <h3 class="stage__title">{stage.name}</h3>
-              <p class="stage__text">{stage.text}</p>
-            </li>
-          ))
-        }
-      </ol>
+      <div class="method__body">
+        <div class="cycle" aria-hidden="true" data-reveal>
+          <svg class="cycle__ring cycle__ring--wide" viewBox="0 0 720 480" focusable="false">
+            <defs>
+              <marker id="arrow-w" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M1 1L8 5L1 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </marker>
+            </defs>
+            <path class="cycle__arc" d="M389.00 82.65A160 160 0 0 1 517.35 211.00" marker-end="url(#arrow-w)" />
+            <path class="cycle__arc" d="M517.35 269.00A160 160 0 0 1 389.00 397.35" marker-end="url(#arrow-w)" />
+            <path class="cycle__arc" d="M331.00 397.35A160 160 0 0 1 202.65 269.00" marker-end="url(#arrow-w)" />
+            <path class="cycle__arc" d="M202.65 211.00A160 160 0 0 1 331.00 82.65" marker-end="url(#arrow-w)" />
+          </svg>
+          <svg class="cycle__ring cycle__ring--square" viewBox="0 0 400 400" focusable="false">
+            <defs>
+              <marker id="arrow-s" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M1 1L8 5L1 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </marker>
+            </defs>
+            <path class="cycle__arc" d="M227.00 77.95A125 125 0 0 1 322.05 173.00" marker-end="url(#arrow-s)" />
+            <path class="cycle__arc" d="M322.05 227.00A125 125 0 0 1 227.00 322.05" marker-end="url(#arrow-s)" />
+            <path class="cycle__arc" d="M173.00 322.05A125 125 0 0 1 77.95 227.00" marker-end="url(#arrow-s)" />
+            <path class="cycle__arc" d="M77.95 173.00A125 125 0 0 1 173.00 77.95" marker-end="url(#arrow-s)" />
+          </svg>
+
+          {
+            stages.map((stage, i) => (
+              <>
+                <span class={`cycle__node cycle__node--${slots[i]}`} data-stage={i + 1}>
+                  0{i + 1}
+                </span>
+                <span class={`cycle__label cycle__label--${slots[i]}`} data-stage={i + 1}>
+                  {stage.name}
+                </span>
+              </>
+            ))
+          }
+          <p class="cycle__center">Cada revisión es un nuevo diagnóstico.</p>
+        </div>
+
+        <ol class="stages" role="list">
+          {
+            stages.map((stage, i) => (
+              <li class="stage" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+                <p class="stage__number">0{i + 1}</p>
+                <div>
+                  <h3 class="stage__title">{stage.name}</h3>
+                  <p class="stage__text">{stage.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
     </div>
   </section>
 </div>
@@ -74,25 +84,101 @@ import { stages } from '../config/approach';
   .method__head {
     display: grid;
     gap: var(--space-4);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-7);
   }
-  .stages {
-    position: relative;
+  .method__body {
     display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  /* ---------------- Círculo ---------------- */
+  .cycle {
+    --node: 2.5rem;
+    position: relative;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+    aspect-ratio: 1 / 1;
+    color: var(--color-route-inverse);
+  }
+  .cycle__ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .cycle__ring--wide {
+    display: none;
+  }
+  .cycle__ring path:not([fill='none']) {
+    fill: none;
+  }
+  .cycle__arc {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--route-stroke);
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .cycle__node {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: var(--node);
+    height: var(--node);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-inverse);
+    border: var(--border-emphasis) solid var(--color-route-inverse);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    color: var(--color-text-inverse);
+    transform: translate(-50%, -50%);
+    transition:
+      background-color var(--duration-base) var(--ease-standard),
+      color var(--duration-base) var(--ease-standard);
+  }
+  /* Móvil: el círculo es un cuadrado de 400 × 400 con r = 125 */
+  .cycle__node--top { left: 50%; top: 18.75%; }
+  .cycle__node--right { left: 81.25%; top: 50%; }
+  .cycle__node--bottom { left: 50%; top: 81.25%; }
+  .cycle__node--left { left: 18.75%; top: 50%; }
+
+  /* Las leyendas con el nombre de cada fase solo caben a partir de tablet; en móvil las da la lista */
+  .cycle__label {
+    display: none;
+  }
+  .cycle__center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 46%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-small);
+    color: var(--color-text-inverse-secondary);
+  }
+
+  /* ---------------- Lista ---------------- */
+  .stages {
+    display: grid;
+    gap: var(--space-5);
   }
   .stage {
-    position: relative;
     display: grid;
-    align-content: start;
-    gap: var(--space-2);
-    padding: 0 0 var(--space-7) 56px;
-  }
-  /* La vuelta atrás de móvil necesita espacio bajo la fase 02 */
-  .stage:nth-child(2) {
-    padding-bottom: var(--space-9);
+    grid-template-columns: 3.25rem 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    padding-bottom: var(--space-5);
+    border-bottom: var(--border-hairline) solid var(--color-border-inverse);
   }
   .stage:last-child {
-    padding-bottom: var(--space-6);
+    padding-bottom: 0;
+    border-bottom: 0;
   }
   .stage__number {
     font-family: var(--font-display);
@@ -105,52 +191,60 @@ import { stages } from '../config/approach';
     color: var(--color-text-inverse);
   }
   .stage__text {
-    max-width: 34ch;
+    max-width: 44ch;
+    margin-top: var(--space-2);
     color: var(--color-text-inverse-secondary);
   }
 
-  /* Rutas: color Paper sobre Ink, paradas huecas */
-  .stage__route,
-  .stage__route-v {
-    position: absolute;
-    color: var(--color-route-inverse);
-  }
-  .stage__stop {
-    fill: var(--color-surface-inverse);
-    stroke: var(--color-route-inverse);
-    stroke-width: 2px;
-  }
-  /* Móvil: ruta vertical a 16px del borde izquierdo */
-  .stage__route {
-    display: none;
-  }
-  .stage__route-v {
-    left: -16px;
-    top: 0;
-    width: 80px;
-    height: 100%;
+  /* Al señalar una fase de la lista se resalta su nodo en el círculo */
+  .method__body:has(.stage:nth-child(1):hover) .cycle__node[data-stage='1'],
+  .method__body:has(.stage:nth-child(2):hover) .cycle__node[data-stage='2'],
+  .method__body:has(.stage:nth-child(3):hover) .cycle__node[data-stage='3'],
+  .method__body:has(.stage:nth-child(4):hover) .cycle__node[data-stage='4'] {
+    background: var(--color-text-inverse);
+    color: var(--color-surface-inverse);
   }
 
   @media (min-width: 900px) {
-    .stages {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      column-gap: var(--grid-gap);
+    .method__body {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: var(--space-8);
     }
-    .stage,
-    .stage:nth-child(2),
-    .stage:last-child {
-      padding: 88px 0 0;
+    .cycle {
+      --node: 2.75rem;
+      max-width: none;
+      aspect-ratio: 3 / 2;
     }
-    .stage__route-v {
+    .cycle__ring--wide {
+      display: block;
+    }
+    .cycle__ring--square {
       display: none;
     }
-    /* Escritorio: la ruta corre sobre las columnas y salva el hueco entre ellas */
-    .stage__route {
+    /* Escritorio: lienzo de 720 × 480 con r = 160 */
+    .cycle__node--top { left: 50%; top: 16.667%; }
+    .cycle__node--right { left: 72.222%; top: 50%; }
+    .cycle__node--bottom { left: 50%; top: 83.333%; }
+    .cycle__node--left { left: 27.778%; top: 50%; }
+
+    .cycle__label {
+      position: absolute;
       display: block;
-      left: 0;
-      top: 0;
-      width: calc(100% + var(--grid-gap));
-      height: 72px;
+      font-family: var(--font-display);
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.1;
+      letter-spacing: var(--letter-spacing-h3);
+      color: var(--color-text-inverse);
+      white-space: nowrap;
+    }
+    .cycle__label--top { left: 50%; top: 9.5%; transform: translate(-50%, -100%); }
+    .cycle__label--bottom { left: 50%; top: 90.5%; transform: translate(-50%, 0); }
+    .cycle__label--right { left: 77%; top: 50%; transform: translate(0, -50%); }
+    .cycle__label--left { left: 23%; top: 50%; transform: translate(-100%, -50%); text-align: right; }
+    .cycle__center {
+      width: 30%;
+      font-size: var(--font-size-small);
     }
   }
 </style>
