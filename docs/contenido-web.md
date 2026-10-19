@@ -85,22 +85,23 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 ## Sección: horas
 Por qué la continuidad
 
-### Tiempo para procesar, sin olvidar.
-Lo ideal es dar clase varios días por semana: con continuidad, lo aprendido se mantiene fresco y cada día retomas lo anterior sin haberlo olvidado.
-Con 3 horas semanales ya tienes una rutina constante, y con 5 horas, todavía más continuidad. Entre una semana y la siguiente, el descanso da tiempo para que tu mente procese lo trabajado sin olvidarlo.
-317
-experimentos analizados
-En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
-Cepeda et al., 2006
-20–40 %
-el intervalo que mejor funciona
-Para recordar algo una semana después, lo mejor era repasar tras un intervalo del 20–40 % de ese tiempo: es decir, cada 1–3 días. Participaron más de 1.350 personas.
-Cepeda et al., 2008
+### Lo que aprendes hoy, mañana ya está firme.
+Cuando aprendes algo nuevo, tu cerebro necesita descansar para fijarlo: durante el sueño se consolida lo que estudiaste ese día.
+Por eso importa la continuidad. Si das clase varios días por semana, cada noche tu mente fija lo trabajado y a la mañana siguiente empiezas desde ahí, sin partir de cero. Cada clase se construye sobre una base que ya está firme.
+Si pasa demasiado tiempo entre clases, esa base se debilita y hay que reconstruirla. Con continuidad, lo que aprendes se suma. Por eso mis planes empiezan en 3 horas semanales.
 Dormir
 ayuda a fijar lo aprendido
 En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.
 Gais, Lucas y Born, 2006
-Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La continuidad semanal es mi forma de aplicarlo a las clases.
+20–40 %
+el intervalo que mejor funciona
+Para recordar algo una semana después, lo mejor era repasar tras un intervalo del 20–40 % de ese tiempo: es decir, cada 1–3 días. Participaron más de 1.350 personas.
+Cepeda et al., 2008
+317
+experimentos analizados
+En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
+Cepeda et al., 2006
+Resumen de lo que dicen los estudios: dormir entre sesiones y repartir el estudio en el tiempo ayuda a recordar mejor lo aprendido. La continuidad es mi forma de aplicarlo a las clases.
 - Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. Ver (se abre en una pestaña nueva)
 - Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102. Ver (se abre en una pestaña nueva)
 - Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13(3), 259–262. Ver (se abre en una pestaña nueva)
