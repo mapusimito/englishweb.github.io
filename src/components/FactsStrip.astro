@@ -1,0 +1,54 @@
+---
+/** Franja de datos verificables bajo la portada (brief §13.4). */
+import { facts } from '../config/site';
+---
+
+<section class="facts" aria-label="El servicio en cuatro datos">
+  <div class="container">
+    <ul class="facts__list" role="list">
+      {
+        facts.map((fact) => (
+          <li class="facts__item">
+            <span class="waypoint" aria-hidden="true" />
+            <div>
+              <p class="facts__title">{fact.title}</p>
+              <p class="facts__detail small">{fact.detail}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .facts {
+    padding-block: var(--space-7) 0;
+  }
+  .facts__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--grid-gap);
+  }
+  @media (min-width: 900px) {
+    .facts__list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .facts__item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+  .facts__item .waypoint {
+    transform: translateY(1px);
+  }
+  .facts__title {
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-h4);
+  }
+  .facts__detail {
+    margin-top: var(--space-1);
+    color: var(--color-text-secondary);
+  }
+</style>

@@ -1,75 +1,83 @@
 ---
+/**
+ * Wordmark «My Way to English.» en texto vivo (brief §7.1) hasta que exista el
+ * vector definitivo: «My Way» y «English» en 800, «to» en 500, punto final en
+ * Coral. La firma «by Daniel Guanipa» va siempre debajo y alineada a la izquierda.
+ */
 interface Props {
-  light?: boolean;
+  layout?: 'horizontal' | 'stacked';
+  inverse?: boolean;
+  signature?: boolean;
+  class?: string;
 }
-const { light = false } = Astro.props;
+const { layout = 'horizontal', inverse = false, signature = false, class: className } = Astro.props;
 ---
 
-<span class:list={['logo', { 'logo--light': light }]}>
-  <span class="logo__mark" aria-hidden="true">DG</span>
-  <span class="logo__text">
-    <span class="logo__name">Daniel Guanipa</span>
-    <span class="logo__role">English teacher · Alicante</span>
+<span class:list={['logo', `logo--${layout}`, { 'logo--inverse': inverse }, className]}>
+  <span class="logo__wordmark" aria-hidden="true">
+    <span class="logo__line">My Way</span>
+    <span class="logo__line"><span class="logo__to">to</span> English<span class="logo__dot"></span></span>
   </span>
+  <span class="visually-hidden">My Way to English</span>
+  {
+    signature && (
+      <span class="logo__signature">
+        <span aria-hidden="true">by Daniel Guanipa</span>
+        <span class="visually-hidden">, por Daniel Guanipa</span>
+      </span>
+    )
+  }
 </span>
 
 <style>
   .logo {
+    --wm-size: 1.625rem;
     display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    color: var(--ink);
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--color-brand-primary);
   }
-  .logo__mark {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: var(--ink);
-    color: var(--paper);
+  .logo__wordmark {
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 0.25em;
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-size: var(--wm-size);
+    font-weight: var(--font-weight-extrabold);
+    font-variation-settings: 'opsz' 96;
     letter-spacing: -0.02em;
-    position: relative;
+    line-height: 1;
+    white-space: nowrap;
   }
-  .logo__mark::after {
-    content: '';
-    position: absolute;
-    right: -3px;
-    bottom: -3px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--paper);
+  .logo--stacked .logo__wordmark {
+    flex-direction: column;
+    line-height: 0.95;
   }
-  .logo__text {
-    display: grid;
-    line-height: 1.15;
+  .logo__to {
+    font-weight: var(--font-weight-medium);
   }
-  .logo__name {
-    font-family: var(--font-display);
-    font-weight: 650;
-    font-size: 1.08rem;
-    letter-spacing: -0.01em;
+  /* El punto final es un círculo perfecto en Coral sobre la línea base */
+  .logo__dot {
+    display: inline-block;
+    width: 0.17em;
+    height: 0.17em;
+    margin-left: 0.05em;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
   }
-  .logo__role {
-    font-size: 0.78rem;
-    color: var(--ink-soft);
+  .logo__signature {
+    margin-top: calc(var(--wm-size) * 0.32);
+    font-family: var(--font-body);
+    font-size: calc(var(--wm-size) * 0.3);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.01em;
+    line-height: 1;
+    color: var(--color-text-secondary);
   }
-  .logo--light {
-    color: var(--on-navy);
+  .logo--inverse {
+    color: var(--color-text-inverse);
   }
-  .logo--light .logo__mark {
-    background: var(--on-navy);
-    color: var(--navy);
-  }
-  .logo--light .logo__mark::after {
-    border-color: var(--navy);
-  }
-  .logo--light .logo__role {
-    color: var(--on-navy-soft);
+  .logo--inverse .logo__signature {
+    color: var(--color-text-inverse-secondary);
   }
 </style>

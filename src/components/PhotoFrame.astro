@@ -1,12 +1,11 @@
 ---
 /**
- * Muestra una foto optimizada (AVIF/WebP, varios tamaños) o, si aún no hay
- * foto, un marcador "Foto pendiente" inconfundible. El contenedor reserva
- * siempre su espacio, así que no hay saltos de diseño al cargar.
+ * Foto optimizada (AVIF/WebP, varios tamaños) dentro de un marco de 20px, o un
+ * marcador «Foto pendiente» si aún no hay foto. El marco reserva su espacio, así
+ * que no hay saltos de diseño al cargar.
  */
-import { Picture } from 'astro:assets';
+import FrameContent from './FrameContent.astro';
 import type { Photo } from '../config/photos';
-import Icon from './Icon.astro';
 
 interface Props {
   photo: Photo;
@@ -16,100 +15,64 @@ interface Props {
   ratio?: string;
   priority?: boolean;
   class?: string;
+  /** Pie de foto visible bajo la imagen (describe la actividad, nunca nombra alumnos). */
+  caption?: string;
 }
 
-const { photo, sizes, ratio, priority = false, class: className } = Astro.props;
-const widths = [480, 768, 1080, 1440, 2000];
+const { photo, sizes, ratio, priority = false, class: className, caption } = Astro.props;
 ---
 
-<figure
-  class:list={['photo', className, { 'photo--pending': !photo.src }]}
-  style={ratio ? `aspect-ratio: ${ratio}` : undefined}
->
-  {
-    photo.src ? (
-      <Picture
-        src={photo.src}
-        alt={photo.alt}
-        widths={[...new Set([...widths.filter((w) => w < photo.src!.width), photo.src!.width])]}
-        sizes={sizes}
-        formats={['avif', 'webp']}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchpriority={priority ? 'high' : 'auto'}
-        decoding="async"
-        style={photo.focus ? `object-position: ${photo.focus}` : undefined}
-      />
-    ) : (
-      <div class="photo__placeholder" role="img" aria-label={`Foto pendiente: ${photo.slot}`}>
-        <Icon name="camera" class="photo__icon" />
-        <span class="photo__tag">Foto pendiente</span>
-        <span class="photo__slot">{photo.slot}</span>
+{
+  caption ? (
+    <figure class="figure">
+      <div class:list={['frame', className]} style={ratio ? `aspect-ratio: ${ratio}` : undefined}>
+        <FrameContent photo={photo} sizes={sizes} priority={priority} />
       </div>
-    )
-  }
-  {photo.src && photo.caption && <figcaption>{photo.caption}</figcaption>}
-</figure>
+      <figcaption class="caption">{caption}</figcaption>
+    </figure>
+  ) : (
+    <div class:list={['frame', className]} style={ratio ? `aspect-ratio: ${ratio}` : undefined}>
+      <FrameContent photo={photo} sizes={sizes} priority={priority} />
+    </div>
+  )
+}
 
 <style>
-  .photo {
-    position: relative;
+  .figure {
+    display: grid;
+    gap: var(--space-3);
     margin: 0;
-    overflow: hidden;
-    border-radius: var(--r);
-    background: var(--paper-2);
-    isolation: isolate;
   }
-  .photo :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .photo :global(picture) {
+  .frame :global(picture) {
     display: contents;
   }
-  figcaption {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 2.5rem 1rem 0.9rem;
-    color: #fff;
-    font-size: var(--step--1);
-    background: linear-gradient(to top, rgb(15 27 51 / 0.7), transparent);
-  }
-
-  .photo__placeholder {
+  .frame :global(.frame__pending) {
     position: absolute;
     inset: 0;
     display: grid;
     place-content: center;
     justify-items: center;
-    gap: 0.45rem;
-    padding: 1.25rem;
+    gap: var(--space-2);
+    padding: var(--space-5);
     text-align: center;
-    color: var(--ink-soft);
-    background-color: var(--paper-2);
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent 0 14px,
-      rgb(20 33 61 / 0.035) 14px 28px
-    );
-    border: 1.5px dashed var(--line-strong);
+    color: var(--color-text-secondary);
+    background: var(--color-background-alt);
+    border: var(--border-control) dashed var(--color-border-strong);
     border-radius: inherit;
   }
-  .photo__placeholder :global(.photo__icon) {
-    width: 1.75rem;
-    height: 1.75rem;
-    opacity: 0.7;
+  .frame :global(.frame__icon) {
+    width: 28px;
+    height: 28px;
   }
-  .photo__tag {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+  .frame :global(.frame__tag) {
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-eyebrow);
     text-transform: uppercase;
-    color: var(--accent-text);
   }
-  .photo__slot {
+  .frame :global(.frame__slot) {
     max-width: 24ch;
-    font-size: var(--step--1);
-    line-height: 1.4;
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-small);
   }
 </style>

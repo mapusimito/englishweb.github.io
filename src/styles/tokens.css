@@ -1,0 +1,174 @@
+/* ==========================================================================
+   My Way to English · Design Tokens v1.0
+   Canonical source for the web implementation. Values are final.
+   Do not add colors, fonts, or radii outside this file without a brief update.
+   ========================================================================== */
+
+/* Fonts: self-host (WOFF2, variable) rather than hot-linking Google Fonts.
+   Bricolage Grotesque: opsz 12–96, wdth 75–100, wght 200–800 (SIL OFL).
+   Inter: opsz 14–32, wght 100–900 (SIL OFL).
+   Subsets needed: latin + latin-ext (Spanish diacritics, €, «»). */
+
+:root {
+  /* ---------- Color: brand ---------- */
+  --color-brand-primary: #262364;   /* Route Ink: primary brand, dark sections, CTA fill */
+  --color-brand-primary-hover: #34308A;
+  --color-brand-primary-pressed: #1A1847;
+  --color-brand-secondary: #FBE4D8; /* Blush: hero/contact panels, warm highlight surface */
+  --color-accent: #E0592F;          /* Waypoint Coral: route end-dots, markers. NEVER text */
+
+  /* ---------- Color: neutrals ---------- */
+  --color-background: #FBF8F3;      /* Paper: default page background */
+  --color-background-alt: #F3EDE3;  /* Sand: alternate sections (plans) */
+  --color-surface: #FFFFFF;         /* Cards, inputs, FAQ items */
+  --color-surface-selected: #E8E7F5;/* Mist: selected/active states only */
+  --color-surface-inverse: #262364; /* Dark sections (= brand primary) */
+
+  /* ---------- Color: text ---------- */
+  --color-text-primary: #1C1B33;    /* 15.8:1 on Paper */
+  --color-text-secondary: #55546B;  /* 6.9:1 on Paper, >=6.0:1 on all light surfaces */
+  --color-text-inverse: #FBF8F3;    /* on Route Ink, 13.2:1 */
+  --color-text-inverse-secondary: #B9B6D6; /* on Route Ink, 7.1:1 */
+  --color-link: #262364;
+  --color-link-hover: #34308A;
+
+  /* ---------- Color: lines ---------- */
+  --color-border: #E3DDD2;          /* decorative dividers & card outlines (non-essential) */
+  --color-border-strong: #8F8BA3;   /* form controls & essential UI boundaries, 3.1:1 on Paper */
+  --color-border-inverse: rgba(251, 248, 243, 0.24);
+
+  /* ---------- Color: interaction ---------- */
+  --color-cta: #262364;
+  --color-cta-text: #FFFFFF;
+  --color-cta-inverse: #FBF8F3;     /* CTA on dark sections */
+  --color-cta-inverse-text: #262364;
+  --color-focus: #262364;           /* focus ring on light surfaces, 13:1 */
+  --color-focus-inverse: #E0592F;   /* focus ring on Route Ink, 3.7:1 */
+
+  /* ---------- Color: functional ---------- */
+  --color-success: #1E6B47;
+  --color-error: #B42318;
+  --color-warning-text: #8A5300;
+
+  /* ---------- Graphic language ---------- */
+  --color-route: #262364;           /* route line on light */
+  --color-route-inverse: #FBF8F3;   /* route line on dark */
+  --color-grid-dot: #C9C3D9;        /* structural dot grid on light (decorative) */
+  --color-grid-dot-inverse: rgba(251, 248, 243, 0.28);
+  --route-stroke: 3px;
+  --route-stroke-hero: 4px;
+  --route-corner: 24px;             /* every route turn is a quarter-circle of this radius */
+  --waypoint-size: 12px;            /* filled end dot */
+  --waypoint-size-hero: 16px;
+  --grid-dot-size: 3px;
+  --grid-dot-pitch: 24px;
+
+  /* ---------- Typography: families ---------- */
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  /* ---------- Typography: weights ---------- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;     /* wordmark & H1 only */
+
+  /* ---------- Typography: scale (fluid 375px -> 1280px) ---------- */
+  --font-size-h1: clamp(2.5rem, 1.879rem + 2.652vw, 4rem);          /* 40 -> 64 */
+  --font-size-h2: clamp(1.875rem, 1.513rem + 1.547vw, 2.75rem);     /* 30 -> 44 */
+  --font-size-h3: clamp(1.375rem, 1.22rem + 0.663vw, 1.75rem);      /* 22 -> 28 */
+  --font-size-h4: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);     /* 18 -> 20 */
+  --font-size-lead: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);   /* 18 -> 20 */
+  --font-size-body: clamp(1.0625rem, 1.037rem + 0.11vw, 1.125rem);  /* 17 -> 18 */
+  --font-size-small: 0.9375rem;     /* 15 */
+  --font-size-caption: 0.875rem;    /* 14 */
+  --font-size-eyebrow: 0.8125rem;   /* 13, uppercase */
+  --font-size-nav: 1rem;            /* 16 */
+  --font-size-button: 1rem;         /* 16 */
+  --font-size-price: clamp(2.5rem, 2.189rem + 1.326vw, 3.25rem);    /* 40 -> 52 */
+
+  /* ---------- Typography: line height ---------- */
+  --line-height-h1: 1.05;
+  --line-height-h2: 1.1;
+  --line-height-h3: 1.2;
+  --line-height-h4: 1.3;
+  --line-height-body: 1.6;
+  --line-height-small: 1.5;
+  --line-height-ui: 1.2;
+
+  /* ---------- Typography: letter spacing ---------- */
+  --letter-spacing-h1: -0.025em;
+  --letter-spacing-h2: -0.02em;
+  --letter-spacing-h3: -0.01em;
+  --letter-spacing-body: 0;
+  --letter-spacing-eyebrow: 0.08em;
+
+  --measure: 66ch;                  /* max line length for running text */
+  --measure-hero: 18ch;             /* max H1 width */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;          /* content */
+  --container-wide: 1360px;         /* inset hero/contact panels */
+  --page-padding: clamp(1.25rem, 0.525rem + 3.094vw, 3rem);         /* 20 -> 48 */
+  --section-space: clamp(4rem, 2.34rem + 7.07vw, 8rem);             /* 64 -> 128 */
+  --section-space-tight: clamp(3rem, 2.17rem + 3.54vw, 5rem);       /* 48 -> 80 */
+  --grid-columns: 12;               /* 4 below 600px, 8 at 600-899px */
+  --grid-gap: clamp(1rem, 0.586rem + 1.768vw, 2rem);                /* 16 -> 32 */
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 8px;    /* tags, small chips */
+  --radius-md: 12px;   /* buttons, inputs */
+  --radius-lg: 20px;   /* cards, images, FAQ items */
+  --radius-xl: 32px;   /* inset section panels */
+  --radius-turn: 50%;  /* the single "route turn" corner on featured image frames */
+  --radius-pill: 999px;/* dots, avatar, badges */
+
+  /* ---------- Borders ---------- */
+  --border-hairline: 1px;
+  --border-control: 1.5px;
+  --border-emphasis: 2px;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ---------- Elevation (used sparingly) ---------- */
+  --shadow-sm: 0 1px 2px rgba(28, 27, 51, 0.06);
+  --shadow-md: 0 8px 24px rgba(28, 27, 51, 0.08);
+
+  /* ---------- Header ---------- */
+  --header-height: 72px;
+  --header-height-mobile: 60px;
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+  --duration-route-draw: 900ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-route-draw: 0ms;
+  }
+}
+
+/* Breakpoints (CSS variables cannot be used in media queries; use these literals):
+   sm >= 600px   md >= 900px   lg >= 1200px   (mobile-first, min-width) */

@@ -3,7 +3,7 @@
  * Iconos de línea propios (SVG inline, sin dependencias).
  * Decorativos por defecto: aria-hidden.
  */
-export type IconName = 'whatsapp' | 'arrow' | 'users' | 'layers' | 'pencil' | 'chart' | 'check' | 'camera' | 'mail' | 'phone' | 'pin' | 'menu' | 'close' | 'plus';
+export type IconName = 'whatsapp' | 'arrow' | 'users' | 'layers' | 'pencil' | 'chart' | 'check' | 'camera' | 'mail' | 'phone' | 'pin' | 'menu' | 'close' | 'plus' | 'alert';
 
 interface Props {
   name: IconName;
@@ -98,4 +98,12 @@ const { name, class: className } = Astro.props;
   {name === 'menu' && <path d="M4 7h16M4 12h16M4 17h16" />}
   {name === 'close' && <path d="M6 6l12 12M18 6L6 18" />}
   {name === 'plus' && <path d="M12 5v14M5 12h14" />}
+  {
+    name === 'alert' && (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7.5v5.5M12 16.5v.01" />
+      </>
+    )
+  }
 </svg>

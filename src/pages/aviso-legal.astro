@@ -1,0 +1,54 @@
+---
+/**
+ * PENDIENTE: sustituir por el aviso legal definitivo (LSSI-CE, art. 10), con los
+ * datos reales del titular. No se inventan datos legales.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageTitle } from '../config/site';
+import { withBase } from '../config/paths';
+---
+
+<BaseLayout title={pageTitle('Aviso legal')} isHome={false} noindex>
+  <section class="section">
+    <div class="container legal">
+      <p class="eyebrow">Legal</p>
+      <h1>Aviso legal</h1>
+      <p class="legal__pending">
+        Documento pendiente. Esta página debe sustituirse por el aviso legal definitivo antes de
+        publicar la web con fines comerciales.
+      </p>
+      <h2>Contenido mínimo que deberá incluir</h2>
+      <ul>
+        <li>Titular de la web: nombre completo y NIF.</li>
+        <li>Domicilio y datos de contacto, incluido un email.</li>
+        <li>Datos de inscripción en un registro, si los hubiera.</li>
+        <li>Condiciones de uso del sitio y propiedad intelectual.</li>
+      </ul>
+      <p><a class="btn btn--secondary" href={withBase()}>Volver al inicio</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    display: grid;
+    gap: var(--space-5);
+    max-width: calc(var(--measure) + 2 * var(--page-padding));
+  }
+  h2 {
+    font-size: var(--font-size-h3);
+    margin-top: var(--space-4);
+  }
+  ul {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: var(--space-5);
+    color: var(--color-text-secondary);
+  }
+  .legal__pending {
+    padding: var(--space-4);
+    border: var(--border-control) dashed var(--color-border-strong);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

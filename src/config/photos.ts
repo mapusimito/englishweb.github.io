@@ -34,86 +34,37 @@ export type Photo = {
   caption?: string;
 };
 
+/** Portada: retrato de Daniel, 4:5, con la esquina de giro abajo a la derecha. */
 export const heroPhoto: Photo = {
   id: 'hero',
-  src: claseGrupo,
-  alt: 'Daniel Guanipa, de pie junto a la mesa, dando clase a un grupo reducido de tres alumnos',
-  slot: 'Daniel dando clase: explicando, conversando o guiando una actividad',
-  shape: 'portrait',
-  focus: '50% 40%',
-};
-
-export const portraitPhoto: Photo = {
-  id: 'retrato',
   src: explicandoVentana,
   alt: 'Daniel Guanipa sonriendo mientras explica junto a una ventana',
-  slot: 'Retrato profesional de Daniel, luz natural, fondo neutro',
+  slot: 'Retrato de Daniel: cabeza y hombros, mirando a cámara, luz natural',
   shape: 'portrait',
-  focus: '45% 40%',
+  focus: '42% 35%',
 };
 
-/** Foto junto a la explicación del enfoque («Mi enfoque»). */
-export const approachPhoto: Photo = {
-  id: 'enfoque',
+/** Biografía: Daniel dando clase, 4:5, esquina de giro arriba a la izquierda. */
+export const bioPhoto: Photo = {
+  id: 'bio',
   src: explicandoGestos,
-  alt: 'Daniel Guanipa explicando con gestos durante una clase',
-  slot: 'Daniel explicando o guiando una actividad',
+  alt: 'Daniel Guanipa explica algo con las manos durante una clase',
+  slot: 'Daniel explicando en una mesa o pizarra',
   shape: 'portrait',
-  focus: '48% 55%',
+  focus: '48% 45%',
 };
 
-/*
- * Huecos opcionales: solo se muestran cuando tienen `src`. Si están vacíos,
- * la sección se maqueta sin foto, así que añadirlos no requiere rediseño.
+/**
+ * «Cómo son las clases» (brief §13.5): solo fotos reales, con pie que describe
+ * la actividad sin nombrar alumnos. Con menos de 4 fotos se muestran más grandes.
  */
-
-/** Junto a las cuatro fases del método: recursos o una actividad en marcha. */
-export const methodPhoto: Photo = {
-  id: 'metodo-recursos',
-  src: null,
-  alt: 'Materiales y recursos preparados para una actividad de clase',
-  slot: 'Recursos o actividad en marcha: fichas, juegos, pizarra',
-  shape: 'landscape',
-};
-
-/** Junto a la comparación entre clases individuales y en grupo. */
-export const formatsPhoto: Photo = {
-  id: 'formatos',
-  src: null,
-  alt: 'Alumnos conversando durante una actividad en grupo reducido',
-  slot: 'Interacción entre alumnos en pareja o grupo reducido',
-  shape: 'landscape',
-};
-
 export const gallery: Photo[] = [
   {
     id: 'grupo',
-    src: null,
-    alt: 'Grupo reducido de alumnos participando en una actividad de clase',
+    src: claseGrupo,
+    alt: 'Daniel de pie junto a la mesa, dando clase a un grupo de tres alumnos',
     slot: 'Interacción en grupo: alumnos hablando o trabajando juntos',
-  },
-  {
-    id: 'materiales',
-    src: null,
-    alt: 'Materiales didácticos preparados para una clase de inglés',
-    slot: 'Materiales y recursos: fichas, libros, tarjetas',
-  },
-  {
-    id: 'dinamica',
-    src: null,
-    alt: 'Juego de mesa utilizado como actividad de práctica en clase',
-    slot: 'Dinámica o juego en clase',
-  },
-  {
-    id: 'pizarra',
-    src: null,
-    alt: 'Explicación en la pizarra durante una clase',
-    slot: 'Explicación en pizarra o pantalla',
-  },
-  {
-    id: 'seguimiento',
-    src: null,
-    alt: 'Profesor revisando el trabajo de un alumno',
-    slot: 'Atención individual o corrección',
+    caption: 'Clase en grupo reducido, trabajando en torno a la mesa.',
+    focus: '50% 45%',
   },
 ];

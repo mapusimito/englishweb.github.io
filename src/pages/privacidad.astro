@@ -4,11 +4,11 @@
  * revisada por un profesional (RGPD / LOPDGDD). No se inventan datos legales.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../config/site';
+import { pageTitle } from '../config/site';
 import { withBase } from '../config/paths';
 ---
 
-<BaseLayout title={`Política de privacidad · ${site.name}`} isHome={false} noindex>
+<BaseLayout title={pageTitle('Política de privacidad')} isHome={false} noindex>
   <section class="section">
     <div class="container legal">
       <p class="eyebrow">Legal</p>
@@ -27,7 +27,7 @@ import { withBase } from '../config/paths';
         <li>Derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad, y cómo ejercerlos.</li>
         <li>Derecho a reclamar ante la Agencia Española de Protección de Datos.</li>
       </ul>
-      <p><a class="btn btn--ghost" href={withBase()}>Volver al inicio</a></p>
+      <p><a class="btn btn--secondary" href={withBase()}>Volver al inicio</a></p>
     </div>
   </section>
 </BaseLayout>
@@ -35,27 +35,23 @@ import { withBase } from '../config/paths';
 <style>
   .legal {
     display: grid;
-    gap: 1.25rem;
-    max-width: 46rem;
-  }
-  h1 {
-    font-size: var(--step-3);
+    gap: var(--space-5);
+    max-width: calc(var(--measure) + 2 * var(--page-padding));
   }
   h2 {
-    font-size: var(--step-1);
-    margin-top: 1rem;
+    font-size: var(--font-size-h3);
+    margin-top: var(--space-4);
   }
   ul {
     display: grid;
-    gap: 0.5rem;
-    padding-left: 1.25rem;
-    color: var(--ink-soft);
+    gap: var(--space-2);
+    padding-left: var(--space-5);
+    color: var(--color-text-secondary);
   }
   .legal__pending {
-    padding: 1rem 1.1rem;
-    border: 1.5px dashed var(--accent-text);
-    border-radius: var(--r-sm);
-    color: var(--accent-text);
-    font-weight: 600;
+    padding: var(--space-4);
+    border: var(--border-control) dashed var(--color-border-strong);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
   }
 </style>

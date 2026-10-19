@@ -1,7 +1,8 @@
-# Daniel Guanipa · Clases de inglés en Alicante
+# My Way to English · by Daniel Guanipa
 
-Web personal de una sola página, construida con [Astro](https://astro.build) como sitio estático
-(HTML + CSS, con un poco de JavaScript para el menú móvil, las animaciones de aparición y el formulario).
+Web de una sola página de **My Way to English**, la práctica de clases de inglés de Daniel Guanipa
+en Alicante y online. Construida con [Astro](https://astro.build) como sitio estático, siguiendo el
+*Brand Strategy & Visual Identity Brief v1.0* (2026-10-18).
 
 ## Uso
 
@@ -25,17 +26,19 @@ Si añades un dominio propio en Vercel, cambia `site.url` en `src/config/site.ts
 
 | Qué | Archivo |
 | --- | --- |
-| Precios, horas y descripción de los planes | `src/config/site.ts` → `plans` |
+| Tokens de diseño (colores, tipografía, espacios, radios) | `src/styles/tokens.css` — copia literal del brief §14, **no añadir valores fuera de él** |
+| Fuentes autoalojadas (Inter y Bricolage Grotesque, latin + latin-ext) | `src/styles/fonts/`, `src/styles/fonts.css` |
+| Precios, planes, datos verificables, tagline, título y descripción | `src/config/site.ts` |
+| Nota de impuestos / facturación bajo los precios | `src/config/site.ts` → `pricingTerms` (**pendiente**) |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
-| Dominio, título y descripción SEO | `src/config/site.ts` → `site` |
-| Fotografías (principal, enfoque, retrato, opcionales, galería) | `src/config/photos.ts` |
-| Fases del método (Diagnosticar, Diseñar, Adaptar, Consolidar) | `src/config/approach.ts` |
+| Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
+| Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
-| Colores, tipografía, espaciado | `src/styles/global.css` (variables en `:root`) |
+| Logotipo en texto vivo y símbolo Route Mark | `src/components/Logo.astro`, `src/components/RouteMark.astro`, `public/favicon.svg` |
 | Textos de cada sección | `src/components/*.astro` |
-| Política de privacidad | `src/pages/privacidad.astro` (**pendiente**) |
+| Política de privacidad y aviso legal | `src/pages/privacidad.astro`, `src/pages/aviso-legal.astro` (**pendientes**) |
 
-Al compilar, la consola lista los datos que siguen pendientes.
+Al compilar, la consola lista los datos de contacto que siguen pendientes.
 
 ## Datos pendientes de configurar
 
@@ -49,6 +52,11 @@ Al compilar, la consola lista los datos que siguen pendientes.
   4. Sin nada configurado: el formulario valida, pero avisa claramente de que **no se ha enviado**.
 - **Teléfono y email** (`contact.phone`, `contact.email`): opcionales; si se rellenan aparecen en Contacto y en el pie.
 - **Dominio propio** (opcional): ahora se usa `englishweb-mu.vercel.app`; ver «Publicación».
+- **Decisiones de negocio del brief (§19)**: niveles que se ofrecen, si la primera sesión es de pago,
+  canal principal y tiempo de respuesta, impuestos y condiciones de pago, lugar de las clases
+  presenciales, versión en inglés. La web no inventa respuestas: cuando las tengas, se añaden.
+- **Logotipo vectorial (§7)**: el wordmark es texto vivo con la fuente de la marca; cuando exista el
+  SVG definitivo, sustituye el contenido de `Logo.astro`.
 - **Política de privacidad**: el formulario recoge datos personales, así que hay que sustituir
   `src/pages/privacidad.astro` por un texto definitivo antes de publicar.
 - **Fotografías**: ver abajo.
@@ -59,16 +67,13 @@ Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
 
 | Hueco | Archivo |
 | --- | --- |
-| Portada (hero) | `clase-grupo-reducido.jpg` |
-| Mi enfoque | `daniel-explicando-gestos.jpg` |
-| Sobre mí | `daniel-explicando-ventana.jpg` |
-| Método (opcional: recursos o actividad) | pendiente |
-| Clases, comparación individual/grupo (opcional) | pendiente |
-| Galería | sin fotos todavía: la sección no se muestra hasta que haya al menos una |
+| Portada (4:5, esquina de giro abajo a la derecha) | `daniel-explicando-ventana.jpg` |
+| Biografía (4:5, esquina de giro arriba a la izquierda) | `daniel-explicando-gestos.jpg` |
+| «Cómo son las clases» | `clase-grupo-reducido.jpg` |
 
-Los huecos opcionales y la galería no muestran nada mientras no tengan foto: la sección se maqueta
-sin ella y, al añadirla, se coloca sola (sin rediseño). En los huecos obligatorios (portada, enfoque,
-retrato) un `src: null` muestra un marcador rayado «Foto pendiente».
+La galería solo publica fotos reales, con un pie que describe la actividad sin nombrar alumnos.
+Con una sola foto se muestra junto al texto; con más, en mosaico. Antes de publicar a alumnos
+identificables hace falta su consentimiento por escrito (y el de la familia si son menores).
 
 Para poner una foto real:
 
