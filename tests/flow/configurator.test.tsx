@@ -58,8 +58,12 @@ describe('pantalla 1 · plan', () => {
     render(<Configurator />);
     const esencial = screen.getByRole('radio', { name: /Plan Esencial/ });
     expect(esencial.closest('label')).toHaveTextContent(`Individual: 180${NBSP}€ al mes`);
+    expect(esencial.closest('label')).toHaveTextContent(`En pareja: 120${NBSP}€ al mes por persona`);
     expect(esencial.closest('label')).toHaveTextContent(`desde 84${NBSP}€ al mes por alumno`);
-    expect(screen.getByRole('radio', { name: /Plan Intensivo/ }).closest('label')).toHaveTextContent(`desde 126${NBSP}€`);
+    const intensivo = screen.getByRole('radio', { name: /Plan Intensivo/ }).closest('label');
+    expect(intensivo).toHaveTextContent(`Individual: 270${NBSP}€ al mes`);
+    expect(intensivo).toHaveTextContent(`En pareja: 180${NBSP}€ al mes por persona`);
+    expect(intensivo).toHaveTextContent(`desde 126${NBSP}€`);
   });
 
   it('exige elegir un plan antes de continuar', async () => {

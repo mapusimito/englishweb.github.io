@@ -70,6 +70,23 @@ npm run test:all    # todo, en orden
 `tests/unit/engine.test.ts` contiene la tabla de validación del encargo (11 combinaciones), verificada
 de forma independiente con aritmética exacta de fracciones.
 
+## Contenido pendiente de rellenar (marcadores [entre corchetes])
+
+Los datos que decide el titular están marcados entre corchetes y **no se publican** hasta que se
+rellenen: ni los testimonios ni las preguntas con corchetes aparecen en la web.
+
+| Dónde | Qué falta |
+| --- | --- |
+| `src/config/testimonials.ts` | 3 testimonios reales con su autor, y poner `mostrarTestimonios = true`. Con permiso por escrito. |
+| `src/config/policies.ts` → `paymentMethod` | Medio de pago: «[Bizum o transferencia]». Publica la pregunta «¿Cómo se paga?». |
+| `src/config/policies.ts` → `cancellationNoticeHours` | Horas de antelación: «[24]». Publica «¿Qué pasa si no puedo asistir…?». |
+
+Para **revisar** cómo quedan con los marcadores a la vista (sin publicarlos), usa `npm run dev` (siempre
+se ven) o pon `mostrarMarcadoresPendientes = true` en `src/config/policies.ts`.
+
+Los precios de pareja (preguntas y tarjetas de plan) no son marcadores: los calcula el motor de precios
+(`src/config/pricing.ts`), para que nunca contradigan al configurador.
+
 ## Dónde cambiar cada cosa
 
 | Qué | Archivo |
@@ -77,6 +94,8 @@ de forma independiente con aritmética exacta de fracciones.
 | Tokens de diseño (colores, tipografía, espacios, radios) | `src/styles/tokens.css` — copia literal del brief §14, **no añadir valores fuera de él** |
 | Fuentes autoalojadas (Inter y Bricolage Grotesque, latin + latin-ext) | `src/styles/fonts/`, `src/styles/fonts.css` |
 | Datos verificables, tagline, título y descripción | `src/config/site.ts` |
+| Datos destacados de «Sobre mí» | `src/config/credentials.ts` |
+| Pago, plazo de cancelación y lugar de las clases | `src/config/policies.ts` |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
 | Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
 | Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |

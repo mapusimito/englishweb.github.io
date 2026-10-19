@@ -5,7 +5,7 @@
  * Las tarifas y los descuentos viven en src/config/pricing.ts.
  */
 import Configurator from './configurator/Configurator';
-import { contact, pricingTerms } from '../config/site';
+import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site';
 ---
 
 <section class="section plans" id="planes" aria-labelledby="plans-title">
@@ -22,8 +22,16 @@ import { contact, pricingTerms } from '../config/site';
     <Configurator client:visible whatsapp={contact.whatsapp} pricingTerms={pricingTerms} />
     <noscript>
       <p class="plans__noscript">
-        El configurador necesita JavaScript. Mientras tanto, puedes escribirme desde el formulario de
-        <a href="#contacto">contacto</a>.
+        El configurador necesita JavaScript.
+        {hasWhatsapp ? (
+          <>
+            Mientras tanto, <a href={whatsappUrl()}>escríbeme por WhatsApp</a> y te preparo tu propuesta.
+          </>
+        ) : (
+          <>
+            Mientras tanto, puedes escribirme desde la sección de <a href="#contacto">contacto</a>.
+          </>
+        )}
       </p>
     </noscript>
   </div>

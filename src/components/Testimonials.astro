@@ -1,0 +1,77 @@
+---
+/**
+ * «Lo que dicen mis alumnos». Solo se muestra si `mostrarTestimonios` está activado
+ * y hay testimonios reales (ver src/config/testimonials.ts). Nunca se inventan.
+ */
+import { mostrarTestimonios, testimonials } from '../config/testimonials';
+import { showPending } from '../config/policies';
+import { visibleTestimonials } from '../lib/content';
+
+const items = visibleTestimonials(testimonials, mostrarTestimonios, showPending);
+---
+
+{
+  items.length > 0 && (
+    <section class="section testimonials" id="testimonios" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Opiniones</p>
+          <h2 id="testimonials-title">Lo que dicen mis alumnos.</h2>
+        </header>
+        <ul class="testimonials__list" role="list">
+          {items.map((item) => (
+            <li>
+              <figure class="testimonial">
+                <blockquote>
+                  <p>{item.text}</p>
+                </blockquote>
+                <figcaption>{item.author}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .testimonials__list {
+    display: grid;
+    gap: var(--grid-gap);
+  }
+  @media (min-width: 900px) {
+    .testimonials__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .testimonials__list > li {
+    display: grid;
+  }
+  .testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin: 0;
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .testimonial blockquote {
+    margin: 0;
+  }
+  .testimonial blockquote p {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-h4);
+  }
+  .testimonial figcaption {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: var(--border-hairline) solid var(--color-border);
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+  }
+</style>

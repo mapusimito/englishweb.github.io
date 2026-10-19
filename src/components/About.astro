@@ -1,8 +1,8 @@
 ---
 /** Biografía (brief §13.5): retrato a la izquierda, texto a la derecha, en primera persona. */
 import PhotoFrame from './PhotoFrame.astro';
-import Logo from './Logo.astro';
 import { bioPhoto } from '../config/photos';
+import { credentials } from '../config/credentials';
 
 const experience = [
   'Clases individuales y en grupo, presenciales y online.',
@@ -32,11 +32,24 @@ const experience = [
           cada alumno y solo después en cómo explicarlo.
         </p>
         <p>
-          Hablo español de nacimiento, así que sé dónde suele atascarse un hispanohablante: los
-          falsos amigos, los tiempos verbales, ciertos sonidos. Cuando lo que desbloquea un concepto es
-          explicarlo en español, lo explico en español.
+          Cuando lo que desbloquea un concepto es explicarlo en español, lo explico en español: los
+          falsos amigos, los tiempos verbales o ciertos sonidos suelen atascar justo ahí.
         </p>
       </div>
+
+      <ul class="credentials" role="list" aria-label="Datos destacados">
+        {
+          credentials.map((item) => (
+            <li class="credential">
+              <p class="credential__value">
+                <span aria-hidden={item.spoken ? 'true' : undefined}>{item.value}</span>
+                {item.spoken && <span class="visually-hidden">{item.spoken}</span>}
+              </p>
+              <p class="credential__label">{item.label}</p>
+            </li>
+          ))
+        }
+      </ul>
 
       <div class="about__experience">
         <h3 class="about__label">Mi trayectoria en el aula</h3>
@@ -44,8 +57,6 @@ const experience = [
           {experience.map((item) => <li>{item}</li>)}
         </ul>
       </div>
-
-      <Logo signature class="about__signature" />
     </div>
   </div>
 </section>
@@ -102,8 +113,44 @@ const experience = [
     border-radius: var(--radius-pill);
     background: var(--color-accent);
   }
-  .about__body :global(.about__signature) {
-    --wm-size: 2.25rem;
+
+  /* Datos destacados: cuatro baldosas del mismo peso */
+  .credentials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    width: 100%;
+  }
+  .credential {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .credential__value {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-h3);
+    letter-spacing: var(--letter-spacing-h3);
+    font-variant-numeric: lining-nums;
+    color: var(--color-brand-primary);
+  }
+  .credential__label {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    color: var(--color-text-secondary);
+  }
+  @media (min-width: 900px) {
+    .credentials {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .credential {
+      padding: var(--space-4) var(--space-3);
+    }
   }
 
   @media (min-width: 600px) {
