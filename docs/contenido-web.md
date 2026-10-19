@@ -3,18 +3,18 @@
 Texto publicado tal como aparece hoy en la web (se genera desde las secciones; los textos viven en `src/components/*.astro` y `src/config/*.ts`).
 
 ## Metadatos
-- Clases de inglés personalizadas en Alicante y online | My Way to English
-- description: Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.
-- og:title: Clases de inglés adaptadas a ti | My Way to English
-- og:description: Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.
+- Clases de inglés en Alicante y online | My Way to English
+- description: Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.
+- og:title: Clases de inglés en grupos reducidos | My Way to English
+- og:description: Aprende inglés en clases individuales o en grupos reducidos, con seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.
 
 
 ---
 ## Sección: top
 Clases de inglés en Alicante y online
 
-## Aprende inglés con un profesor que se adapta a ti.
-Cada alumno tiene sus propios objetivos y dificultades. En mis clases trabajamos aquello que necesitas mejorar, con explicaciones adaptadas a tu forma de aprender y tiempo para practicar hasta que puedas utilizar lo aprendido.
+## Aprende inglés con un profesor que conoce tu progreso.
+Cada alumno tiene sus propios objetivos y dificultades. Al ser grupos reducidos, puedo dedicar tiempo a lo que más cuesta, explicarlo de distintas formas y dejar espacio para practicar hasta que puedas utilizar lo aprendido.
 Clases individuales, en pareja o en grupos de hasta cuatro personas. Siempre conmigo como profesor.
 [Botón] Escríbeme
 [Botón] Ver planes
@@ -35,11 +35,11 @@ Conozco tu progreso y puedo preparar cada clase teniendo en cuenta lo que hemos 
 
 ---
 ## Sección: diferencia
-Academia y clases personalizadas
+Academia y grupos reducidos
 
-### ¿Qué puedes conseguir con clases personalizadas?
+### ¿Qué cambia en una clase más pequeña?
 En una academia, las clases suelen organizarse alrededor de un programa común y un horario establecido. Este modelo puede funcionar muy bien, especialmente si buscas una opción económica, una amplia oferta de horarios o preparación para un examen concreto.
-Mis clases están organizadas para dedicar más atención a las necesidades de cada alumno. Trabajo con grupos de hasta cuatro personas y preparo las sesiones teniendo en cuenta los objetivos y las dificultades que vamos identificando.
+Mis clases están organizadas para poder dedicar más atención a cada alumno. Trabajo con grupos de hasta cuatro personas y preparo las sesiones teniendo en cuenta los objetivos y las dificultades que vamos identificando. En clases individuales o en pareja esa atención es casi completa; en grupo se reparte, aunque sigue siendo mayor que en un aula grande.
 
 #### El tamaño del grupo
 En una academia El profesor reparte su atención entre los alumnos de la clase, por lo que el tiempo disponible para trabajar cada dificultad individual puede ser limitado.
@@ -47,11 +47,11 @@ En mis clases Puedes aprender individualmente, en pareja o en un grupo de hasta 
 
 #### El ritmo de aprendizaje
 En una academia El ritmo suele estar condicionado por el programa y las necesidades generales del grupo.
-En mis clases Podemos dedicar más tiempo a los contenidos que necesites reforzar y ajustar la planificación según tu progreso.
+En mis clases Al ser un grupo reducido, puedo detenerme más en lo que hace falta reforzar y ajustar la planificación según el progreso de quienes participan.
 
 #### Las explicaciones
 En una academia Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.
-En mis clases Si una explicación no te ayuda a entender un concepto, buscamos otra forma de abordarlo mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.
+En mis clases Si una explicación no funciona, puedo buscar otra forma de abordarla mediante ejemplos, ejercicios, comparaciones con el español o actividades prácticas.
 
 #### El seguimiento
 En una academia El seguimiento depende de la metodología del centro, del tamaño del grupo y del formato de las clases.
@@ -59,14 +59,14 @@ En mis clases Soy siempre tu profesor, así que conozco el trabajo de las sesion
 
 #### Los objetivos
 En una academia El programa suele organizarse en torno a un nivel, un temario o una meta común.
-En mis clases Tenemos en cuenta tus objetivos personales, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional.
+En mis clases Tengo en cuenta los objetivos de cada alumno, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional. En clases individuales el plan gira en torno a los tuyos; en grupo, busco objetivos compatibles.
 
 #### El precio y los horarios
 En una academia Las academias suelen disponer de una oferta amplia de grupos y horarios, y pueden resultar más económicas.
 En mis clases El precio depende del número de alumnos y de las horas semanales, mientras que el horario se acuerda según la disponibilidad de los participantes.
 
 #### ¿Para quién tienen sentido mis clases?
-Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una enseñanza más personalizada, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
+Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una atención más cercana, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
 [Botón] Pide tu primera clase gratis
 [Botón] Consulta los planes
 
@@ -77,8 +77,8 @@ Mi forma de enseñar
 
 ### Las clases se organizan en función de lo que necesitas aprender.
 Cuando preparas una clase de inglés, es fácil centrarse en el siguiente tema del libro o en completar los ejercicios previstos. Sin embargo, terminar una actividad no siempre significa que hayas entendido el concepto o que sepas utilizarlo por tu cuenta.
-Por eso, adapto las explicaciones y la práctica a las dificultades que vamos encontrando. Si entiendes los tiempos verbales al hacer ejercicios, pero te cuesta utilizarlos al hablar, dedicaremos tiempo a trabajar esa situación. Si confundes determinadas estructuras porque se parecen a las del español, veremos qué diferencias hay y practicaremos con ejemplos.
-El contenido y la planificación dependen de tus objetivos, tu nivel y el progreso que vayas haciendo. De esta manera, las clases tienen una dirección clara y podemos revisar si el trabajo que estamos haciendo te está ayudando a avanzar.
+Por eso, ajusto las explicaciones y la práctica a las dificultades que vamos encontrando, tanto en clases individuales como en grupo. Si entiendes los tiempos verbales al hacer ejercicios, pero te cuesta utilizarlos al hablar, dedicaremos tiempo a trabajar esa situación. Si confundes determinadas estructuras porque se parecen a las del español, veremos qué diferencias hay y practicaremos con ejemplos.
+El contenido y la planificación dependen de los objetivos, el nivel y el progreso de quienes participan en la clase. De esta manera, las clases tienen una dirección clara y podemos revisar si el trabajo que estamos haciendo te está ayudando a avanzar.
 
 
 ---
@@ -162,7 +162,7 @@ No necesitas conocer tu nivel antes de escribirme. En la primera clase hacemos a
 Hablamos de tus objetivos y de tu experiencia con el inglés, comprobamos tu nivel y vemos qué dificultades tienes. Con esa información podemos valorar cómo organizar las siguientes sesiones. La primera clase es gratis y no te compromete a contratar una mensualidad.
 
 **¿Qué diferencia hay entre tus clases y una academia?**
-Trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor. Esto me permite conocer el progreso de cada alumno y adaptar las explicaciones y actividades a sus necesidades. Una academia puede ofrecer más horarios o precios más económicos, así que la elección depende de lo que estés buscando.
+Trabajo con grupos de hasta cuatro personas y soy siempre el mismo profesor. Esto me permite conocer el progreso de cada alumno y ajustar las explicaciones y actividades a lo que el grupo necesita. Una academia puede ofrecer más horarios o precios más económicos, así que la elección depende de lo que estés buscando.
 
 **¿Dónde se imparten las clases presenciales?**
 Podemos organizar las clases en Playa de San Juan, en tu domicilio si acordamos esa opción o en otro espacio tranquilo que nos venga bien. También doy clases online por videollamada.
@@ -180,7 +180,7 @@ Sí. El precio por hora disminuye al contratar más horas semanales. Puedes cons
 Revisamos los contenidos trabajados y comprobamos cómo los utilizas en ejercicios y actividades prácticas. Según tus objetivos, podemos prestar más atención a la conversación, la gramática, la comprensión oral o cualquier otra habilidad que necesites desarrollar.
 
 **¿Qué significa que las clases son personalizadas?**
-Significa que tengo en cuenta tu nivel, tus objetivos y las dificultades que encontramos durante las sesiones para decidir qué trabajar y cómo hacerlo. Por ejemplo, si entiendes una estructura gramatical al leerla, pero te cuesta utilizarla al hablar, podemos dedicar más tiempo a practicarla en conversaciones.
+Significa que preparo las clases teniendo en cuenta el nivel, los objetivos y las dificultades que vamos viendo. En clases individuales eso se centra por completo en ti; en pareja o en grupo busco un punto común y dedico tiempo a las dudas de cada persona. Por ejemplo, si entiendes una estructura gramatical al leerla, pero te cuesta utilizarla al hablar, podemos dedicar más tiempo a practicarla en conversaciones.
 
 **¿Cómo se organizan los horarios?**
 Acordamos los horarios según la disponibilidad de ambos. En las clases en pareja o en grupo, todos los participantes deben compartir el mismo horario.
@@ -222,7 +222,7 @@ Al enviar el formulario, se abrirá WhatsApp con tu mensaje preparado para que p
 
 ---
 ## Sección: footer
-Clases de inglés personalizadas en Alicante y online.
+Clases de inglés en grupos reducidos, en Alicante y online.
 Secciones
 - Cómo trabajo
 - Sobre mí

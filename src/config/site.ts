@@ -23,13 +23,13 @@ export const site = {
   base: '/',
   locale: 'es_ES',
   // ≤ ~60 caracteres. «en Alicante u online» deja claro que online no es en Alicante.
-  title: 'Clases de inglés personalizadas en Alicante y online | My Way to English',
+  title: 'Clases de inglés en Alicante y online | My Way to English',
   description:
-    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.',
+    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.',
   /** Título y descripción para Open Graph / Twitter (redes sociales). */
-  ogTitle: 'Clases de inglés adaptadas a ti | My Way to English',
+  ogTitle: 'Clases de inglés en grupos reducidos | My Way to English',
   ogDescription:
-    'Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
+    'Aprende inglés en clases individuales o en grupos reducidos, con seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
 };
 
 /** Título para páginas interiores: «{Página} · My Way to English». */

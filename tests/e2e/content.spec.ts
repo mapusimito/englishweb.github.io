@@ -98,14 +98,14 @@ test('el isologo (isotipo + logotipo completo) es igual en cabecera, menú y pie
 
 test('metadatos y eyebrow según el contenido aprobado', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle('Clases de inglés personalizadas en Alicante y online | My Way to English');
+  await expect(page).toHaveTitle('Clases de inglés en Alicante y online | My Way to English');
   const meta = async (sel: string) => (await page.locator(sel).getAttribute('content')) ?? '';
   expect(await meta('meta[name="description"]')).toBe(
-    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tus dificultades y adapta las clases a tus objetivos. En Alicante y online.',
+    'Clases de inglés individuales y en grupos de hasta 4 personas. Un profesor que conoce tu progreso y ajusta las clases a lo que necesitáis. En Alicante y online.',
   );
-  expect(await meta('meta[property="og:title"]')).toBe('Clases de inglés adaptadas a ti | My Way to English');
+  expect(await meta('meta[property="og:title"]')).toBe('Clases de inglés en grupos reducidos | My Way to English');
   expect(await meta('meta[property="og:description"]')).toBe(
-    'Aprende inglés con clases personalizadas, seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
+    'Aprende inglés en clases individuales o en grupos reducidos, con seguimiento de tu progreso y un profesor que trabaja contigo semana a semana. Desde 3 horas semanales.',
   );
   await expect(page.locator('.hero .eyebrow')).toHaveText('Clases de inglés en Alicante y online');
 });
@@ -113,7 +113,7 @@ test('metadatos y eyebrow según el contenido aprobado', async ({ page }) => {
 test.describe('diferencial: clase personalizada frente a aula masificada', () => {
   test('el pitch está en el hero y en los metadatos', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toHaveText('Aprende inglés con un profesor que se adapta a ti.');
+    await expect(page.locator('h1')).toHaveText('Aprende inglés con un profesor que conoce tu progreso.');
     await expect(page.locator('.hero__lead')).toContainText('objetivos y dificultades');
     await expect(page.locator('.hero__more')).toContainText('hasta cuatro personas');
     const meta = async (sel: string) => (await page.locator(sel).getAttribute('content')) ?? '';
@@ -170,7 +170,7 @@ test.describe('diferencial: clase personalizada frente a aula masificada', () =>
     await page.goto('/');
     const body = (await page.locator('body').innerText()).replace(/\s+/g, ' ');
     const html = await page.content();
-    expect(body.match(/Aprende inglés con un profesor que se adapta a ti/gi) ?? []).toHaveLength(1);
+    expect(body.match(/Aprende inglés con un profesor que conoce tu progreso/gi) ?? []).toHaveLength(1);
     expect(html).not.toMatch(/academia[s]? (como|de) [A-Z]/);
   });
 });
