@@ -4,19 +4,38 @@
  * configurador de cinco pantallas con presupuesto y mensaje de WhatsApp.
  * Las tarifas y los descuentos viven en src/config/pricing.ts.
  */
+import { Image } from 'astro:assets';
+import { plansPhoto } from '../config/photos';
 import Configurator from './configurator/Configurator';
 import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site';
 ---
 
 <section class="section plans" id="planes" aria-labelledby="plans-title">
   <div class="container">
-    <header class="section-head" data-reveal>
-      <p class="eyebrow">Planes</p>
-      <h2 id="plans-title" class="plans__title">Tu primera clase es gratis.</h2>
-      <p class="lead">
-        Diseña tu plan en cinco pasos: elige cuántas horas quieres a la semana, cómo repartirlas y con
-        cuántas personas vienes. Verás tu precio exacto, con atención a tu medida, antes de enviar nada.
-      </p>
+    <header class="plans__band" data-reveal>
+      {
+        plansPhoto.src && (
+          <Image
+            class="plans__bg"
+            src={plansPhoto.src}
+            alt=""
+            widths={[640, 960]}
+            sizes="(min-width: 900px) 960px, 100vw"
+            style={`object-position: ${plansPhoto.focus}`}
+            loading="lazy"
+            aria-hidden="true"
+          />
+        )
+      }
+      <div class="plans__scrim" aria-hidden="true"></div>
+      <div class="plans__copy">
+        <p class="eyebrow">Planes</p>
+        <h2 id="plans-title" class="plans__title">Tu primera clase es gratis.</h2>
+        <p class="lead">
+          Diseña tu plan en cinco pasos: elige cuántas horas quieres a la semana, cómo repartirlas y con
+          cuántas personas vienes. Verás tu precio exacto antes de enviar nada.
+        </p>
+      </div>
     </header>
 
     <Configurator client:visible whatsapp={contact.whatsapp} pricingTerms={pricingTerms} />
@@ -41,24 +60,107 @@ import { contact, hasWhatsapp, pricingTerms, whatsappUrl } from '../config/site'
   .plans {
     background: var(--color-background-alt);
   }
-  /* Titular con contorno: Bricolage Grotesque ExtraBold. El relleno del color del fondo (con el trazo pintado debajo)
-     oculta los contornos solapados de la fuente variable y deja solo la línea exterior. */
+  /* Banda con la foto de clase de fondo: el texto va abajo, sobre una capa que lo hace destacar
+     sin tapar a los tres alumnos de la mesa. */
+  .plans__band {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: flex-end;
+    min-height: 32rem;
+    margin-bottom: var(--space-8);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+  }
+  .plans__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .plans__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(26, 24, 71, 0.92) 0%,
+      rgba(26, 24, 71, 0.78) 38%,
+      rgba(26, 24, 71, 0.2) 70%,
+      rgba(26, 24, 71, 0.05) 100%
+    );
+  }
+  .plans__copy {
+    display: grid;
+    gap: var(--space-4);
+    width: 100%;
+    padding: var(--space-8) clamp(1.25rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3rem);
+  }
+  .plans__band .eyebrow,
+  .plans__band .lead {
+    color: var(--color-text-inverse);
+  }
+  /* Titular ExtraBold con contorno crema y relleno Ink: se lee sobre la foto */
   .plans__title {
     max-width: none;
     font-size: clamp(2.5rem, 1.25rem + 5.6vw, 5.75rem);
     font-weight: var(--font-weight-extrabold);
     line-height: 1;
     letter-spacing: var(--letter-spacing-h1);
-    color: var(--color-background-alt);
-    -webkit-text-stroke: 4px var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    -webkit-text-stroke: 4px var(--color-text-inverse);
     paint-order: stroke fill;
   }
+  /* Móvil: la foto ocupa la parte alta y se funde con el Ink donde va el texto */
+  @media (max-width: 899px) {
+    .plans__band {
+      min-height: 43rem;
+    }
+    .plans__bg {
+      bottom: auto;
+      height: 62%;
+    }
+    .plans__scrim {
+      background: linear-gradient(
+        to bottom,
+        rgba(26, 24, 71, 0) 0%,
+        rgba(26, 24, 71, 0) 45%,
+        rgba(26, 24, 71, 0.9) 60%,
+        var(--color-surface-inverse) 64%
+      );
+    }
+  }
+  /* Escritorio: la foto original mide 960 px de ancho; se muestra a su tamaño real (sin ampliarla,
+     para que no pierda nitidez) y se funde con el Ink a los lados. */
   @media (min-width: 900px) {
+    .plans__bg {
+      inset: 0 auto 0 50%;
+      width: 960px;
+      max-width: 100%;
+      transform: translateX(-50%);
+    }
+    .plans__scrim {
+      background:
+        linear-gradient(to right, var(--color-surface-inverse) 10%, rgba(38, 35, 100, 0) 25%, rgba(38, 35, 100, 0) 75%, var(--color-surface-inverse) 90%),
+        linear-gradient(
+          to top,
+          rgba(26, 24, 71, 0.92) 0%,
+          rgba(26, 24, 71, 0.78) 34%,
+          rgba(26, 24, 71, 0.15) 66%,
+          rgba(26, 24, 71, 0.05) 100%
+        );
+    }
+    .plans__band {
+      min-height: 48rem;
+    }
     .plans__title {
       -webkit-text-stroke-width: 5px;
     }
   }
-  /* Modos de contraste forzado: sin relleno el texto podría desaparecer */
   @media (forced-colors: active) {
     .plans__title {
       color: CanvasText;

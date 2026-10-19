@@ -9,7 +9,9 @@ test('la frase de la marca aparece una sola vez y la firma «by Daniel Guanipa»
   expect(body.match(/by Daniel Guanipa/g) ?? []).toHaveLength(1);
   await expect(page.locator('footer')).toContainText('by Daniel Guanipa');
   // El texto alternativo describe lo que se ve, sin créditos de marca.
-  const alts = await page.locator('img').evaluateAll((imgs) => imgs.map((i) => i.getAttribute('alt') ?? ''));
+  const alts = await page.locator('img').evaluateAll((imgs) =>
+    imgs.map((i) => i.getAttribute('alt') ?? '').filter((alt) => alt !== ''), // alt vacío = decorativa
+  );
   expect(alts.length).toBeGreaterThan(0);
   for (const alt of alts) {
     expect(alt.length).toBeGreaterThan(15);

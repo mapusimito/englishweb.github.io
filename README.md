@@ -97,7 +97,7 @@ Los precios de pareja (preguntas y tarjetas de plan) no son marcadores: los calc
 | Datos destacados de «Sobre mí» | `src/config/credentials.ts` |
 | Pago, plazo de cancelación y lugar de las clases | `src/config/policies.ts` |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
-| Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
+| Fotografías (portada, biografía, fondo de Planes) | `src/config/photos.ts` |
 | Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
 | Enlaces del menú | `src/config/nav.ts` |
 | Isologo = isotipo mw2en + logotipo «My Way to English.» (igual en cabecera, menú, pie y OG) | `src/components/Logo.astro`; trazados del isotipo (de Daniel, sin modificar) en `src/config/logo.ts`; tamaño con `--wm-size`, colores con `--logo-mw` / `--logo-en` |
@@ -134,9 +134,9 @@ Cada hueco de foto está definido en `src/config/photos.ts`. Fotos actuales:
 | --- | --- |
 | Portada (4:5, esquina de giro abajo a la derecha) | `hero-alumnos-en-clase.webp` (foto libre de derechos, no es de Daniel) |
 | Biografía (4:5, esquina de giro arriba a la izquierda) | `daniel-explicando-gestos.jpg` |
-| «Cómo son las clases» | `clase-grupo-reducido.jpg` |
+| Fondo de «Tu primera clase es gratis» (Planes) | `clase-grupo-reducido.jpg` |
 
-La galería solo publica fotos reales, con un pie que describe la actividad sin nombrar alumnos.
+Las fotos de alumnos solo se publican con su consentimiento.
 Con una sola foto se muestra junto al texto; con más, en mosaico. Antes de publicar a alumnos
 identificables hace falta su consentimiento por escrito (y el de la familia si son menores).
 

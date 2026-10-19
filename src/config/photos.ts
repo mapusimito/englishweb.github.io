@@ -8,9 +8,6 @@
  *   3. Asigna `src: grupo` y escribe un `alt` que describa lo que se ve.
  * Astro genera automáticamente versiones AVIF/WebP en varios tamaños.
  *
- * La galería solo muestra las fotos que ya tienen `src`; si no hay ninguna, la
- * sección no aparece. Acepta cualquier número de fotos y cualquier proporción:
- * la cuadrícula recorta con object-fit respetando `focus`.
  */
 import type { ImageMetadata } from 'astro';
 import claseGrupo from '../assets/photos/clase-grupo-reducido.jpg';
@@ -26,7 +23,7 @@ export type Photo = {
   alt: string;
   /** Qué tipo de foto encaja en este hueco (solo se muestra en el marcador). */
   slot: string;
-  /** Proporción del hueco (retrato y foto principal). En la galería la decide la cuadrícula. */
+  /** Proporción del hueco (retrato y foto principal). */
   shape?: PhotoShape;
   /** Punto focal para el recorte responsive (CSS object-position). */
   focus?: string;
@@ -55,16 +52,13 @@ export const bioPhoto: Photo = {
 };
 
 /**
- * «Cómo son las clases» (brief §13.5): solo fotos reales, con pie que describe
- * la actividad sin nombrar alumnos. Con menos de 4 fotos se muestran más grandes.
+ * Fondo de «Tu primera clase es gratis» (sección Planes): una clase real en grupo reducido,
+ * tres alumnos en la mesa. `focus` mantiene a los tres a la vista al recortar.
  */
-export const gallery: Photo[] = [
-  {
-    id: 'grupo',
-    src: claseGrupo,
-    alt: 'Daniel de pie junto a la mesa, dando clase a un grupo de tres alumnos',
-    slot: 'Interacción en grupo: alumnos hablando o trabajando juntos',
-    caption: 'Clase en grupo reducido, trabajando en torno a la mesa.',
-    focus: '50% 45%',
-  },
-];
+export const plansPhoto: Photo = {
+  id: 'planes',
+  src: claseGrupo,
+  alt: 'Daniel de pie junto a la mesa, dando clase a un grupo de tres alumnos',
+  slot: 'Clase en grupo reducido',
+  focus: '50% 40%',
+};
