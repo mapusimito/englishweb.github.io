@@ -9,7 +9,7 @@ export const stages = [
   },
   {
     name: 'Diseño',
-    text: 'Preparo un plan con objetivos claros y una progresión realista para tus tres horas semanales.',
+    text: 'Preparo un plan con objetivos claros y una progresión realista para tus horas semanales.',
   },
   {
     name: 'Adaptación',

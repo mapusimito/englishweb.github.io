@@ -1,52 +1,31 @@
 ---
-/** Planes y precios (brief §13.6): tres tarjetas iguales, sin destacados ni preselección. */
-import { plans, formatPrice, pricingTerms } from '../config/site';
+/**
+ * Planes (brief §13.6): tres planes de igual peso visual que desembocan en un
+ * configurador de cinco pantallas con presupuesto y mensaje de WhatsApp.
+ * Las tarifas y los descuentos viven en src/config/pricing.ts.
+ */
+import Configurator from './configurator/Configurator';
+import { contact, pricingTerms } from '../config/site';
 ---
 
 <section class="section plans" id="planes" aria-labelledby="plans-title">
   <div class="container">
     <header class="section-head" data-reveal>
       <p class="eyebrow">Planes</p>
-      <h2 id="plans-title">Tres formatos, el mismo método.</h2>
+      <h2 id="plans-title">Diseña tu plan en cinco pasos.</h2>
       <p class="lead">
-        Los tres incluyen tres horas a la semana y el mismo plan de trabajo. En individual, toda la
-        sesión se adapta a ti; en pareja o en grupo, la atención se reparte entre pocos alumnos y
-        ganas conversación con compañeros.
+        Elige cuántas horas quieres a la semana, cómo repartirlas y con cuántas personas vienes. Verás tu
+        precio exacto antes de enviar nada.
       </p>
     </header>
 
-    <ul class="plans__list" role="list">
-      {
-        plans.map((plan) => (
-          <li>
-            <article class="plan" aria-labelledby={`plan-${plan.id}`}>
-              <h3 id={`plan-${plan.id}`}>{plan.name}</h3>
-              <p class="plan__suits small">{plan.suits}</p>
-              <p class="plan__price">
-                <span class="price">{formatPrice(plan.pricePerStudent)}</span>
-                <span class="small"> / mes por alumno</span>
-              </p>
-              <p class:list={['plan__note small', { 'plan__note--empty': !plan.note }]}>{plan.note ?? '\u00a0'}</p>
-              <ul class="plan__included" role="list">
-                {plan.included.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-              <a class="btn btn--secondary plan__cta" href="#contacto" data-plan={plan.id}>
-                Escribirme sobre este plan
-              </a>
-            </article>
-          </li>
-        ))
-      }
-    </ul>
-
-    <p class="plans__terms small">
-      Tres horas a la semana es un compromiso: es lo que hace falta para avanzar con continuidad.
-      Antes de empezar confirmamos disponibilidad, horario y nivel; en pareja y en grupo, también que
-      el nivel de los compañeros sea compatible.
-      {pricingTerms && ` ${pricingTerms}`}
-    </p>
+    <Configurator client:visible whatsapp={contact.whatsapp} pricingTerms={pricingTerms} />
+    <noscript>
+      <p class="plans__noscript">
+        El configurador necesita JavaScript. Mientras tanto, puedes escribirme desde el formulario de
+        <a href="#contacto">contacto</a>.
+      </p>
+    </noscript>
   </div>
 </section>
 
@@ -54,101 +33,8 @@ import { plans, formatPrice, pricingTerms } from '../config/site';
   .plans {
     background: var(--color-background-alt);
   }
-  .plans__list {
-    display: grid;
-    gap: var(--grid-gap);
-    align-items: stretch;
-  }
-  @media (min-width: 900px) {
-    .plans__list {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .plans__list > li {
-    display: grid;
-  }
-  /* Subgrid: nombre, precio y lista alineados entre las tres tarjetas */
-  @media (min-width: 900px) {
-    @supports (grid-template-rows: subgrid) {
-      .plans__list > li {
-        grid-row: span 6;
-        grid-template-rows: subgrid;
-      }
-      .plans__list .plan {
-        display: grid;
-        grid-row: span 6;
-        grid-template-rows: subgrid;
-        row-gap: var(--space-3);
-      }
-    }
-  }
-  .plan {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding: var(--space-5);
-    background: var(--color-surface);
-    border: var(--border-hairline) solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-  @media (min-width: 900px) {
-    .plan {
-      padding: var(--space-6);
-    }
-  }
-  .plan__suits {
-    color: var(--color-text-secondary);
-  }
-  .plan__price {
-    margin-top: var(--space-3);
-    color: var(--color-text-secondary);
-  }
-  .price {
-    font-family: var(--font-display);
-    font-size: var(--font-size-price);
-    font-weight: var(--font-weight-bold);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums lining-nums;
-    color: var(--color-text-primary);
-  }
-  .plan__note {
-    color: var(--color-text-secondary);
-  }
-  /* Línea vacía solo para alinear las tarjetas en escritorio */
-  @media (max-width: 899px) {
-    .plan__note--empty {
-      display: none;
-    }
-  }
-  .plan__included {
-    display: grid;
-    gap: var(--space-2);
-    margin-block: var(--space-3) var(--space-5);
-    padding-top: var(--space-4);
-    border-top: var(--border-hairline) solid var(--color-border);
-  }
-  .plan__included li {
-    position: relative;
-    padding-left: var(--space-5);
-  }
-  .plan__included li::before {
-    content: '';
-    position: absolute;
-    left: 2px;
-    top: 0.65em;
-    width: 6px;
-    height: 6px;
-    border-radius: var(--radius-pill);
-    background: var(--color-accent);
-  }
-  .plan__cta {
-    margin-top: auto;
-    width: 100%;
-  }
-  .plans__terms {
-    max-width: var(--measure);
-    margin-top: var(--space-6);
+  .plans__noscript {
+    margin-top: var(--space-4);
     color: var(--color-text-secondary);
   }
 </style>

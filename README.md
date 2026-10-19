@@ -22,14 +22,61 @@ una URL de vista previa. No hay que configurar nada más.
 Si añades un dominio propio en Vercel, cambia `site.url` en `src/config/site.ts`
 (la URL canónica ya sigue automáticamente al dominio de producción del proyecto).
 
+## Configurador de planes y motor de precios
+
+La sección **Planes** es un asistente de cinco pantallas (plan → sesiones → formato → participantes →
+presupuesto) que termina en un mensaje de WhatsApp. Está hecho con Preact como una «isla» de Astro: solo
+se descarga cuando el visitante llega a esa sección.
+
+**Los tres planes son tres entradas al mismo motor.** Esencial (3 h) e Intensivo (5 h) pasan sus horas
+fijas; Personalizado pasa las que elige el cliente (mínimo 3, en tramos de 0,5, sin máximo arbitrario).
+No existe lógica de precios separada por plan.
+
+### Dónde está cada cosa
+
+| Qué | Archivo |
+| --- | --- |
+| **Tarifas base por alumno/hora, escala de descuento por horas, planes, formatos, duraciones de sesión** | `src/config/pricing.ts` (**único sitio para cambiar precios**) |
+| Motor de precios (cálculo y redondeo, funciones puras) | `src/lib/pricing/engine.ts` |
+| Combinaciones de sesiones de 1 h / 1,5 h / 2 h | `src/lib/pricing/sessions.ts` |
+| Formato de importes y porcentajes (es-ES) | `src/lib/pricing/format.ts` |
+| Estado, validación por pantallas y resumen | `src/lib/configurator/state.ts` |
+| Mensaje y enlace de WhatsApp | `src/lib/configurator/whatsapp.ts` |
+| Interfaz del asistente | `src/components/configurator/*` |
+| **Número de WhatsApp** | `src/config/site.ts` → `contact.whatsapp` (formato internacional, solo dígitos) |
+| Nota de impuestos / condiciones de pago (opcional) | `src/config/site.ts` → `pricingTerms` |
+
+### Reglas internas (no se muestran al cliente)
+
+Con *n* alumnos y *h* horas semanales: `P_final = P_n · (1 − D_h)`, `M_alumno = 4 · h · P_final`,
+`M_grupo = n · M_alumno`, `D_total = 1 − (1 − D_n)(1 − D_h)` con `D_n = 1 − P_n / 15 €`. El descuento por
+horas se interpola linealmente entre los puntos de `HOURS_DISCOUNT_SCHEDULE` y se mantiene en el 20 % por
+encima de 8 horas.
+
+**Dinero y redondeo.** Todo se calcula en céntimos enteros. El precio mensual se calcula con la tarifa
+*sin redondear* y se redondea **una sola vez** (mitades hacia arriba). El total del grupo es
+`n × precio mensual por alumno ya redondeado`, así que siempre coincide con lo que se ve por alumno, y el
+ahorro en euros es `referencia − precio`, calculado con importes ya redondeados. Si la tarifa por hora
+mostrada está redondeada, la pantalla lo indica («≈»). La interfaz nunca contiene fórmulas.
+
+### Pruebas
+
+```bash
+npm test            # unitarias (motor, sesiones, estado, WhatsApp) + flujo de la interfaz (Vitest)
+npm run test:e2e    # navegador (Playwright + axe): responsive, teclado, WCAG 2.2 AA. Requiere npm run build
+npm run test:all    # todo, en orden
+```
+
+`tests/unit/engine.test.ts` contiene la tabla de validación del encargo (11 combinaciones), verificada
+de forma independiente con aritmética exacta de fracciones.
+
 ## Dónde cambiar cada cosa
 
 | Qué | Archivo |
 | --- | --- |
 | Tokens de diseño (colores, tipografía, espacios, radios) | `src/styles/tokens.css` — copia literal del brief §14, **no añadir valores fuera de él** |
 | Fuentes autoalojadas (Inter y Bricolage Grotesque, latin + latin-ext) | `src/styles/fonts/`, `src/styles/fonts.css` |
-| Precios, planes, datos verificables, tagline, título y descripción | `src/config/site.ts` |
-| Nota de impuestos / facturación bajo los precios | `src/config/site.ts` → `pricingTerms` (**pendiente**) |
+| Datos verificables, tagline, título y descripción | `src/config/site.ts` |
 | WhatsApp, teléfono, email, envío del formulario | `src/config/site.ts` → `contact` |
 | Fotografías (portada, biografía, galería) | `src/config/photos.ts` |
 | Fases del método (Diagnóstico, Diseño, Adaptación, Consolidación) | `src/config/approach.ts` |
