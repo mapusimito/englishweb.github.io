@@ -5,8 +5,8 @@
  * Es el mismo conjunto en cabecera, menú, pie e imagen para compartir; solo cambia
  * el tamaño (--wm-size) y la versión de color (`inverse` para fondos oscuros).
  *
- * Logotipo: «My Way» y «English» en Bricolage Grotesque 800, «to» en 500, punto final
- * coral. La firma «by Daniel Guanipa» (opcional) va debajo, alineada a la izquierda.
+ * Logotipo: «My Way» y «English» en Bricolage Grotesque 800, «to» en 500, «English» y punto
+ * final en coral, como el «EN» del isotipo. La firma «by Daniel Guanipa» (opcional) va debajo, alineada a la izquierda.
  */
 import { logoPaths, logoViewBox } from '../config/logo';
 
@@ -26,8 +26,8 @@ const { inverse = false, signature = false, class: className } = Astro.props;
   </svg>
   <span class="logo__text" aria-hidden="true">
     <span class="logo__wordmark">
-      <span>My Way</span>
-      <span><span class="logo__to">to</span> English<span class="logo__dot"></span></span>
+      <span>My Way</span>{' '}
+      <span><span class="logo__to">to</span> <span class="logo__en-word">English</span><span class="logo__dot"></span></span>
     </span>
     {signature && <span class="logo__signature">by Daniel Guanipa</span>}
   </span>
@@ -46,7 +46,7 @@ const { inverse = false, signature = false, class: className } = Astro.props;
   .logo__mark {
     flex: none;
     display: block;
-    height: calc(var(--wm-size) * 2.05);
+    height: var(--mark-h, calc(var(--wm-size) * 2.05));
     width: auto;
     aspect-ratio: 7095.1 / 6433.9;
     overflow: visible;
@@ -72,6 +72,10 @@ const { inverse = false, signature = false, class: className } = Astro.props;
     letter-spacing: -0.02em;
     line-height: 0.95;
     white-space: nowrap;
+  }
+  /* «English» y el punto en Coral, igual que el «EN» del isotipo y del favicon */
+  .logo__en-word {
+    color: var(--logo-en, var(--color-accent));
   }
   .logo__to {
     font-weight: var(--font-weight-medium);
