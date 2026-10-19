@@ -61,10 +61,6 @@ En mis clases Soy siempre tu profesor, así que conozco el trabajo de las sesion
 En una academia El programa suele organizarse en torno a un nivel, un temario o una meta común.
 En mis clases Tengo en cuenta los objetivos de cada alumno, ya sea mejorar la conversación, reforzar la gramática, comprender mejor el inglés hablado o preparar una situación académica o profesional. En clases individuales el plan gira en torno a los tuyos; en grupo, busco objetivos compatibles.
 
-#### El precio y los horarios
-En una academia Las academias suelen disponer de una oferta amplia de grupos y horarios, y pueden resultar más económicas.
-En mis clases El precio depende del número de alumnos y de las horas semanales, mientras que el horario se acuerda según la disponibilidad de los participantes.
-
 #### ¿Para quién tienen sentido mis clases?
 Si quieres practicar inglés con frecuencia, necesitas trabajar dificultades concretas o buscas una atención más cercana, este formato puede encajarte. Si prefieres una academia con muchos horarios disponibles o un programa de preparación de exámenes ya establecido, también puede ser una buena opción.
 [Botón] Pide tu primera clase gratis
