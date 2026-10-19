@@ -83,12 +83,11 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 
 ---
 ## Sección: horas
-Por qué sesiones de hora y media
+Por qué la continuidad
 
 ### Tiempo para procesar, sin olvidar.
 Lo ideal es dar clase varios días por semana: con continuidad, lo aprendido se mantiene fresco y cada día retomas lo anterior sin haberlo olvidado.
-Mis sesiones duran, como mínimo, una hora y media. En mi experiencia, una hora se queda corta y dos horas resultan pesadas: hora y media es el punto medio.
-Con 3 horas semanales son dos sesiones de hora y media, o tres de una hora; con 5 horas, cuatro sesiones. Y entre una semana y la siguiente, el descanso da tiempo para que tu mente procese lo trabajado sin olvidarlo.
+Con 3 horas semanales ya tienes una rutina constante, y con 5 horas, todavía más continuidad. Entre una semana y la siguiente, el descanso da tiempo para que tu mente procese lo trabajado sin olvidarlo.
 317
 experimentos analizados
 En la mayor revisión sobre estudio repartido en el tiempo, repartir las sesiones mejoró lo que se recordaba después frente a concentrarlas.
@@ -101,7 +100,7 @@ Dormir
 ayuda a fijar lo aprendido
 En un estudio con estudiantes que aprendían vocabulario, dormir poco después de estudiar mejoró el recuerdo posterior.
 Gais, Lucas y Born, 2006
-Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La duración de la sesión (hora y media) y la frecuencia semanal vienen de mi experiencia dando clase.
+Resumen de lo que dicen los estudios: repartir el estudio en sesiones frecuentes y dormir entre ellas ayuda a recordar mejor lo aprendido. La continuidad semanal es mi forma de aplicarlo a las clases.
 - Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. Ver (se abre en una pestaña nueva)
 - Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095–1102. Ver (se abre en una pestaña nueva)
 - Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13(3), 259–262. Ver (se abre en una pestaña nueva)

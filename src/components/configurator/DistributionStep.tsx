@@ -32,12 +32,6 @@ export function DistributionStep({ state, update, errors, goToHours }: Props) {
   const hours = weeklyHoursOf(state);
   const result = hours === null ? null : buildDistributions(hours);
   const error = errorFor(errors, 'distribution');
-  // Recomendada: la combinación con más sesiones de 1,5 h (a igualdad, la que menos sesiones de 2 h tenga).
-  const recommendedId = result?.supported
-    ? [...result.options]
-        .filter((o) => o.oneAndHalf > 0)
-        .sort((x, y) => y.oneAndHalf - x.oneAndHalf || x.twoHours - y.twoHours)[0]?.id
-    : undefined;
   const lengths = SESSION_LENGTHS.map((l) => `${formatNumber(l)} h`).join(', ');
 
   return (
@@ -49,13 +43,6 @@ export function DistributionStep({ state, update, errors, goToHours }: Props) {
         Sesiones de {lengths}. Más adelante coordinamos los días y las horas; ahora solo necesito saber cómo
         prefieres dividir la semana.
       </p>
-
-      {result && result.supported && recommendedId && (
-        <p class="cfg-help">
-          <strong>Mi recomendación:</strong> sesiones de 1,5 horas. Una hora se queda corta y dos resultan
-          pesadas; hora y media es el punto medio.
-        </p>
-      )}
 
       {result && result.supported ? (
         <div
@@ -73,10 +60,7 @@ export function DistributionStep({ state, update, errors, goToHours }: Props) {
               onSelect={() => update({ distributionId: option.id })}
               class="cfg-card--row"
             >
-              <span class="cfg-card__name">
-                {option.label}
-                {option.id === recommendedId && <span class="cfg-card__tag"> · Recomendada</span>}
-              </span>
+              <span class="cfg-card__name">{option.label}</span>
               <span class="cfg-card__text">
                 {option.sessions} {option.sessions === 1 ? 'sesión' : 'sesiones'} a la semana
               </span>
