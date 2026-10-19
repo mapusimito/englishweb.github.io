@@ -46,8 +46,8 @@ En una academia El profesor reparte su atención entre los alumnos de la clase, 
 En mis clases Puedes aprender individualmente, en pareja o en un grupo de hasta cuatro personas. Así hay más oportunidades para participar, preguntar y practicar.
 
 #### El ritmo de aprendizaje
-En una academia El ritmo suele estar condicionado por el programa y las necesidades generales del grupo.
-En mis clases Al ser un grupo reducido, puedo detenerme más en lo que hace falta reforzar y ajustar la planificación según el progreso de quienes participan.
+En una academia En un grupo grande, el ritmo lo marca el programa y es posible que alguien se quede rezagado mientras la clase sigue avanzando.
+En mis clases En un grupo reducido, el ritmo tiene que funcionar para todos: hago que todo el mundo participe y me aseguro de que avancéis a la par.
 
 #### Las explicaciones
 En una academia Se trabaja el contenido previsto para la clase, aunque algunos alumnos puedan necesitar explicaciones adicionales.
