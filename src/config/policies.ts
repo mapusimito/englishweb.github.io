@@ -26,13 +26,10 @@ export const mostrarMarcadoresPendientes = false;
 export const showPending: boolean = import.meta.env.DEV || mostrarMarcadoresPendientes;
 
 /**
- * Datos del responsable para la política de privacidad.
- * `nif` y `domicilio` están pendientes hasta el alta como autónomo; mientras tanto la página
- * muestra el aviso «pendiente» en lugar de inventarlos.
+ * Datos del responsable en la política de privacidad y el aviso legal.
+ * NIF/NIE y domicilio no se publican (decisión del titular).
  */
 export const responsable = {
   nombre: 'Daniel Alejandro Guanipa Alvarez',
-  nif: '',
-  domicilio: '',
   email: 'dagamapu@gmail.com',
 };

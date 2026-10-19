@@ -1,15 +1,12 @@
 ---
 /**
  * Política de privacidad (RGPD / LOPDGDD). Redactada a partir de las respuestas del titular.
- * Pendiente: NIF y domicilio (alta como autónomo) y revisión por un profesional antes de
- * recoger datos de forma habitual.
+ * NIF y domicilio no se publican por decisión del titular. Revisión por un profesional pendiente.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { pageTitle } from '../config/site';
 import { responsable } from '../config/policies';
 import { withBase } from '../config/paths';
-
-const pendiente = '[pendiente de completar]';
 ---
 
 <BaseLayout title={pageTitle('Política de privacidad')} isHome={false} noindex>
@@ -21,8 +18,6 @@ const pendiente = '[pendiente de completar]';
       <h2>Responsable del tratamiento</h2>
       <ul>
         <li>Nombre: {responsable.nombre}</li>
-        <li>NIF/NIE: {responsable.nif || pendiente}</li>
-        <li>Domicilio: {responsable.domicilio || pendiente}</li>
         <li>Email de contacto para asuntos de datos: <a href={`mailto:${responsable.email}`}>{responsable.email}</a></li>
       </ul>
 
@@ -86,8 +81,7 @@ const pendiente = '[pendiente de completar]';
       </p>
 
       <p class="legal__pending">
-        Última actualización: octubre de 2026. Esta página incluye datos pendientes (NIF y domicilio) hasta el alta
-        como autónomo.
+        Última actualización: octubre de 2026.
       </p>
       <p><a class="btn btn--secondary" href={withBase()}>Volver al inicio</a></p>
     </div>

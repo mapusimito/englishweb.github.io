@@ -1,10 +1,12 @@
 ---
 /**
- * PENDIENTE: sustituir por el aviso legal definitivo (LSSI-CE, art. 10), con los
- * datos reales del titular. No se inventan datos legales.
+ * Aviso legal (LSSI-CE, art. 10). Datos del titular en src/config/policies.ts → responsable.
+ * Por decisión del titular NO se publican NIF/NIE ni domicilio. Su abogado debe confirmar que
+ * es suficiente mientras no haya actividad económica; al empezar a cobrar habrá que revisarlo.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { pageTitle } from '../config/site';
+import { responsable } from '../config/policies';
 import { withBase } from '../config/paths';
 ---
 
@@ -13,17 +15,55 @@ import { withBase } from '../config/paths';
     <div class="container legal">
       <p class="eyebrow">Legal</p>
       <h1>Aviso legal</h1>
-      <p class="legal__pending">
-        Documento pendiente. Esta página debe sustituirse por el aviso legal definitivo antes de
-        publicar la web con fines comerciales.
-      </p>
-      <h2>Contenido mínimo que deberá incluir</h2>
+
+      <h2>Titular del sitio web</h2>
       <ul>
-        <li>Titular de la web: nombre completo y NIF.</li>
-        <li>Domicilio y datos de contacto, incluido un email.</li>
-        <li>Datos de inscripción en un registro, si los hubiera.</li>
-        <li>Condiciones de uso del sitio y propiedad intelectual.</li>
+        <li>Titular: {responsable.nombre}</li>
+        <li>Nombre comercial: My Way to English</li>
+        <li>Email: <a href={`mailto:${responsable.email}`}>{responsable.email}</a></li>
+        <li>Inscripción en registros públicos: no aplica.</li>
       </ul>
+
+      <h2>Objeto</h2>
+      <p>
+        Este sitio web presenta los servicios de clases de inglés de Daniel Guanipa, bajo el nombre My Way to English (presenciales en Alicante u
+        online) y permite solicitar información y presupuesto sin compromiso. Su uso implica la aceptación de
+        este aviso.
+      </p>
+
+      <h2>Condiciones de uso</h2>
+      <p>
+        Te comprometes a usar la web de forma lícita y a no realizar actuaciones que puedan dañarla o impedir su
+        funcionamiento. Los precios mostrados en el configurador son orientativos hasta que se confirmen por
+        escrito con cada alumno.
+      </p>
+
+      <h2>Propiedad intelectual</h2>
+      <p>
+        El nombre «My Way to English», el logotipo, los textos y el diseño de esta web pertenecen a su titular.
+        No se pueden reproducir ni distribuir sin su permiso. Las fotografías de stock se usan con licencia que
+        lo permite.
+      </p>
+
+      <h2>Responsabilidad</h2>
+      <p>
+        Me esfuerzo por que la información sea exacta y esté actualizada, pero no garantizo la ausencia de
+        errores ni la disponibilidad continua del sitio. Los enlaces a terceros se ofrecen como referencia y no
+        me hago responsable de sus contenidos.
+      </p>
+
+      <h2>Protección de datos</h2>
+      <p>
+        El tratamiento de tus datos se describe en la <a href={withBase('privacidad/')}>política de privacidad</a>.
+      </p>
+
+      <h2>Legislación aplicable</h2>
+      <p>
+        Este aviso se rige por la ley española. Para cualquier controversia, y si eres consumidor, serán
+        competentes los juzgados y tribunales que correspondan conforme a la normativa de consumidores.
+      </p>
+
+      <p class="legal__pending">Última actualización: octubre de 2026.</p>
       <p><a class="btn btn--secondary" href={withBase()}>Volver al inicio</a></p>
     </div>
   </section>
