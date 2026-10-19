@@ -172,8 +172,13 @@ const prefix = isHome ? '' : withBase();
     .header__inner {
       height: var(--header-height);
     }
+    /* Hay sitio de sobra: logotipo en una sola línea junto al isotipo */
     .header :global(.header__logo) {
-      --wm-size: 1.4rem;
+      --wm-size: 1.75rem;
+      --mark-h: 2.75rem;
+    }
+    .header :global(.header__logo .logo__wordmark) {
+      display: block;
     }
     .header__nav {
       display: block;

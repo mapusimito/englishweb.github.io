@@ -26,7 +26,7 @@ const { inverse = false, signature = false, class: className } = Astro.props;
   </svg>
   <span class="logo__text" aria-hidden="true">
     <span class="logo__wordmark">
-      <span>My Way</span>
+      <span>My Way</span>{' '}
       <span><span class="logo__to">to</span> <span class="logo__en-word">English</span><span class="logo__dot"></span></span>
     </span>
     {signature && <span class="logo__signature">by Daniel Guanipa</span>}
@@ -46,7 +46,7 @@ const { inverse = false, signature = false, class: className } = Astro.props;
   .logo__mark {
     flex: none;
     display: block;
-    height: calc(var(--wm-size) * 2.05);
+    height: var(--mark-h, calc(var(--wm-size) * 2.05));
     width: auto;
     aspect-ratio: 7095.1 / 6433.9;
     overflow: visible;
