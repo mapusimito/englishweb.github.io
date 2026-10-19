@@ -1,0 +1,160 @@
+---
+/**
+ * Por qué clases desde 3 horas semanales. Solo cifras con fuente:
+ *  - Cepeda et al. (2006): metaanálisis de 317 experimentos sobre estudio repartido en el tiempo.
+ *  - Cambridge English: horas de enseñanza guiada orientativas por nivel del MCER.
+ * Las duraciones por nivel son una cuenta orientativa (horas por nivel ÷ horas semanales).
+ */
+const stats = [
+  {
+    value: '317',
+    label: 'experimentos analizados',
+    text: 'En la mayor revisión sobre estudio repartido en el tiempo, repartir las horas a lo largo del tiempo mejoró lo que se recuerda después.',
+    source: 'Cepeda et al., 2006',
+  },
+  {
+    value: '150–200 h',
+    label: 'para subir un nivel',
+    text: 'Las guías de Cambridge English calculan entre 150 y 200 horas de clase guiada para pasar al siguiente nivel a partir del A2.',
+    source: 'Cambridge English, horas de enseñanza guiada',
+  },
+  {
+    value: '≈ 1 año',
+    label: 'por nivel con 3 horas semanales',
+    text: 'Con 5 horas, unos 7–9 meses. Con una sola hora semanal, entre 3 y 4 años: la continuidad es lo que hace que se avance.',
+    source: 'Cuenta orientativa a partir de las cifras anteriores',
+  },
+];
+---
+
+<section class="section hours" id="horas" aria-labelledby="hours-title">
+  <div class="container">
+    <header class="hours__head" data-reveal>
+      <p class="eyebrow">Por qué desde 3 horas semanales</p>
+      <h2 id="hours-title">Aprender necesita continuidad.</h2>
+      <p class="lead">
+        Un idioma se aprende practicándolo con frecuencia, no en una clase suelta de vez en cuando. Por
+        eso mis planes empiezan en 3 horas semanales: es una rutina lo bastante constante para
+        retener lo que trabajamos y avanzar de forma sostenida.
+      </p>
+    </header>
+
+    <ul class="hours__stats" role="list" data-reveal>
+      {
+        stats.map((stat) => (
+          <li class="stat">
+            <p class="stat__value">{stat.value}</p>
+            <p class="stat__label">{stat.label}</p>
+            <p class="stat__text">{stat.text}</p>
+            <p class="stat__source">{stat.source}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <figure class="hours__quote" data-reveal>
+      <p class="hours__finding">
+        Resumen del hallazgo: repartir el estudio en el tiempo, en lugar de concentrarlo, ayuda a
+        recordar mejor lo aprendido.
+      </p>
+      <figcaption>
+        Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T. y Rohrer, D. (2006).
+        <cite>Distributed practice in verbal recall tasks: A review and quantitative synthesis</cite>.
+        Psychological Bulletin, 132(3), 354–380.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/16719566/" target="_blank" rel="noopener noreferrer"
+          >Ver el estudio<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a
+        >
+      </figcaption>
+    </figure>
+    <p class="hours__note small">
+      Las duraciones son orientativas: dependen de cada persona, de su punto de partida y de lo que
+      practique fuera de clase.
+    </p>
+  </div>
+</section>
+
+<style>
+  .hours__head {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 48rem;
+    margin-bottom: var(--space-7);
+  }
+  .hours__stats {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .stat {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .stat__value {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 2rem + 4vw, 4.25rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-h1);
+    font-variant-numeric: lining-nums;
+    color: var(--color-brand-primary);
+  }
+  .stat__label {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-h4);
+  }
+  .stat__text {
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+  .stat__source {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: var(--border-hairline) solid var(--color-border);
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+  .hours__quote {
+    margin: var(--space-7) 0 0;
+    padding-left: var(--space-5);
+    border-left: 3px solid var(--color-brand-primary);
+    max-width: 48rem;
+  }
+  .hours__finding {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-h3);
+  }
+  .hours__quote figcaption {
+    margin-top: var(--space-3);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    color: var(--color-text-secondary);
+  }
+  .hours__note {
+    margin-top: var(--space-4);
+    color: var(--color-text-secondary);
+  }
+  @media (min-width: 900px) {
+    .hours__stats {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+  }
+  @media (max-width: 899px) {
+    .hours__head {
+      text-align: center;
+      justify-items: center;
+    }
+    .hours__head .lead {
+      text-align: left;
+    }
+  }
+</style>

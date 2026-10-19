@@ -82,6 +82,28 @@ El contenido y la planificación dependen de los objetivos, el nivel y el progre
 
 
 ---
+## Sección: horas
+Por qué desde 3 horas semanales
+
+### Aprender necesita continuidad.
+Un idioma se aprende practicándolo con frecuencia, no en una clase suelta de vez en cuando. Por eso mis planes empiezan en 3 horas semanales: es una rutina lo bastante constante para retener lo que trabajamos y avanzar de forma sostenida.
+317
+experimentos analizados
+En la mayor revisión sobre estudio repartido en el tiempo, repartir las horas a lo largo del tiempo mejoró lo que se recuerda después.
+Cepeda et al., 2006
+150–200 h
+para subir un nivel
+Las guías de Cambridge English calculan entre 150 y 200 horas de clase guiada para pasar al siguiente nivel a partir del A2.
+Cambridge English, horas de enseñanza guiada
+≈ 1 año
+por nivel con 3 horas semanales
+Con 5 horas, unos 7–9 meses. Con una sola hora semanal, entre 3 y 4 años: la continuidad es lo que hace que se avance.
+Cuenta orientativa a partir de las cifras anteriores
+Resumen del hallazgo: repartir el estudio en el tiempo, en lugar de concentrarlo, ayuda a recordar mejor lo aprendido.
+Las duraciones son orientativas: dependen de cada persona, de su punto de partida y de lo que practique fuera de clase.
+
+
+---
 ## Sección: metodo
 Método
 
