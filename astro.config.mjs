@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
+import vercel from '@astrojs/vercel';
 import { site } from './src/config/site.ts';
 
 // En Vercel, la URL canónica sigue al dominio de producción del proyecto
@@ -13,4 +14,9 @@ export default defineConfig({
   trailingSlash: 'ignore',
   // Preact solo se carga en el configurador de planes (isla interactiva).
   integrations: [preact()],
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });
